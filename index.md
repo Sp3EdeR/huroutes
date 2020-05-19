@@ -93,8 +93,8 @@ Jó vonalvezetés, közepes útminőség, kis forgalom, kellemes
 
     document.getElementById("contents").innerHTML =
         document.getElementById("contents").innerHTML.replace(
-            /<h([\d])>([^<]+)<\/h([\d])>/gi,
-            function (str, openLevel, titleText, closeLevel) {
+            /<h([\d]) id="([^>]+)">([^<]+)<\/h([\d])>/gi,
+            function (str, openLevel, id, titleText, closeLevel) {
                 if (openLevel != closeLevel) {
                     return str;
                 }
@@ -107,7 +107,7 @@ Jó vonalvezetés, közepes útminőség, kis forgalom, kellemes
 
                 level = parseInt(openLevel);
 
-                var anchor = titleText.replace(/ /g, "_");
+                var anchor = id;
                 toc += "<li><a href=\"#" + anchor + "\">" + titleText
                     + "</a></li>";
 
