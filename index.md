@@ -87,7 +87,8 @@ Jó vonalvezetés, közepes útminőség, kis forgalom, kellemes
 
 ## Kőröshegyi szerpentin
 
-<iframe src="https://www.google.com/maps/dir/46.8160334,17.9076789/46.8154472,17.9190466/46.8160512,17.907697/@46.8147676,17.9168606,15.5z/data=!4m2!4m1!3e0" width="100%" height="450" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
+<iframe src="https://www.google.com/maps/embed?pb=!1m24!1m8!1m3!1d10921.875438849067!2d17.9168606!3d46.8147676!3m2!1i1024!2i768!4f13.1!4m13!3e0!4m3!3m2!1d46.816033399999995!2d17.9076789!4m3!3m2!1d46.8154472!2d17.919046599999998!4m3!3m2!1d46.8160512!2d17.907697!5e0!3m2!1shu!2shu!4v1589917479597!5m2!1shu!2shu" width="100%" height="450" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
+
 
 <!------------------------------- End ----------------------------->
 
