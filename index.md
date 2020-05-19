@@ -35,7 +35,7 @@ Kissé keskeny és nagyon rövid, tökéletes útminőség, alacsony forgalom
 
 <iframe src="https://www.google.com/maps/embed?pb=!1m24!1m12!1m3!1d27093.592827726377!2d18.55906646249844!3d47.64482836746744!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!4m9!3e0!4m3!3m2!1d47.6428714!2d18.520293799999997!4m3!3m2!1d47.6582217!2d18.5883279!5e0!3m2!1shu!2shu!4v1589888460002!5m2!1shu!2shu" width="100%" height="450" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
 
-<h1>Északkeleti országrész</h1>
+# Északkeleti országrész
 
 ## Bükk
 
@@ -93,8 +93,8 @@ Jó vonalvezetés, közepes útminőség, kis forgalom, kellemes
 
     document.getElementById("contents").innerHTML =
         document.getElementById("contents").innerHTML.replace(
-            /<h([\d])>([^<]+)<\/h([\d])>/gi,
-            function (str, openLevel, titleText, closeLevel) {
+            /<h([\d]) id="([^>]+)">([^<]+)<\/h([\d])>/gi,
+            function (str, openLevel, id, titleText, closeLevel) {
                 if (openLevel != closeLevel) {
                     return str;
                 }
@@ -107,7 +107,7 @@ Jó vonalvezetés, közepes útminőség, kis forgalom, kellemes
 
                 level = parseInt(openLevel);
 
-                var anchor = titleText.replace(/ /g, "_");
+                var anchor = id;
                 toc += "<li><a href=\"#" + anchor + "\">" + titleText
                     + "</a></li>";
 
