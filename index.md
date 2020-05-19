@@ -35,6 +35,12 @@ Kissé keskeny és nagyon rövid, tökéletes útminőség, alacsony forgalom
 
 <iframe src="https://www.google.com/maps/embed?pb=!1m24!1m12!1m3!1d27093.592827726377!2d18.55906646249844!3d47.64482836746744!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!4m9!3e0!4m3!3m2!1d47.6428714!2d18.520293799999997!4m3!3m2!1d47.6582217!2d18.5883279!5e0!3m2!1shu!2shu!4v1589888460002!5m2!1shu!2shu" width="100%" height="450" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
 
+### Héreg v2
+<iframe src="https://www.google.com/maps/embed?pb=!1m36!1m8!1m3!1d204416.10052701336!2d18.600180423767647!3d47.68782873668753!3m2!1i1024!2i768!4f13.1!4m25!3e0!4m5!1s0x476a6227b1317923%3A0xbe2a180c05793793!2sEsztergom!3m2!1d47.7883949!2d18.7434451!4m5!1s0x476a427172150933%3A0x4ae04f8f8a9efacd!2zS8O8bHRlbGVrIHRlbGVwIDEsIEjDqXJlZywgMjgzMg!3m2!1d47.6368539!2d18.5142244!4m5!1s0x476a43f11ceb071f%3A0xf852196a9cf39bbb!2zMTEyOCwgVGFyasOhbiwgMjgzMQ!3m2!1d47.6614341!2d18.414614699999998!4m5!1s0x476a460d6f84ab01%3A0xb620f00f0720fe22!2sTata!3m2!1d47.645817199999996!2d18.3303022!5e0!3m2!1shu!2shu!4v1589918186137!5m2!1shu!2shu" width="100%" height="450" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
+
+### Csákvár környéke, meg Etyek-Alcsútdoboz:
+<iframe src="https://www.google.com/maps/embed?pb=!1m40!1m8!1m3!1d266804.09023632196!2d18.57251675983646!3d47.350637511540754!3m2!1i1024!2i768!4f13.1!4m29!3e0!4m5!1s0x476a0adc08ca211f%3A0x400c4290c1e2620!2sBiatorb%C3%A1gy%2C%202051!3m2!1d47.4706818!2d18.8205591!4m5!1s0x476a0c7cfde70bdd%3A0x400c4290c1e3680!2sEtyek%2C%202091!3m2!1d47.4467098!2d18.751179!4m5!1s0x476a123784e78197%3A0x400c4290c1e6830!2zRmVsY3PDunQ!3m2!1d47.4541851!2d18.5865775!4m3!3m2!1d47.3895607!2d18.4626692!4m5!1s0x476a218a85dd3373%3A0x400c4290c1ec640!2zU8O2csOpZA!3m2!1d47.322683!2d18.280507999999998!5e0!3m2!1shu!2shu!4v1589917983887!5m2!1shu!2shu" width="100%" height="450" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
+
 # Északkeleti országrész
 
 ## Bükk
@@ -86,9 +92,24 @@ Jó vonalvezetés, közepes útminőség, kis forgalom, kellemes
 # Balaton környéke
 
 ## Kőröshegyi szerpentin
-
 <iframe src="https://www.google.com/maps/embed?pb=!1m24!1m8!1m3!1d10921.875438849067!2d17.9168606!3d46.8147676!3m2!1i1024!2i768!4f13.1!4m13!3e0!4m3!3m2!1d46.816033399999995!2d17.9076789!4m3!3m2!1d46.8154472!2d17.919046599999998!4m3!3m2!1d46.8160512!2d17.907697!5e0!3m2!1shu!2shu!4v1589917479597!5m2!1shu!2shu" width="100%" height="450" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
 
+## Balaton-felvidék
+<iframe src="https://www.google.com/maps/embed?pb=!1m48!1m8!1m3!1d123175.19514016011!2d17.77352609514949!3d46.98500762199274!3m2!1i1024!2i768!4f13.1!4m37!3e0!4m5!1s0x476998a1a0f1aac9%3A0xab057cba99d4ec72!2zVMOzdHbDoXpzb255!3m2!1d47.007785899999995!2d17.7872418!4m5!1s0x4769a3a87fd27e73%3A0x400c4290c1e6ff0!2zUMOpY3NlbHk!3m2!1d46.9556714!2d17.7856485!4m5!1s0x4769a5facfcf209f%3A0x400c4290c1e7270!2zWsOhbmth!3m2!1d46.8750577!2d17.685025!4m5!1s0x476905e5bcb97a35%3A0x5b25c3b7b3b0d6dd!2sTapolcai-tavasbarlang!3m2!1d46.8832376!2d17.4434239!4m5!1s0x476901471716e175%3A0xb12e1365fd0271ba!2sSzigliget%2C%20Szigligeti%20v%C3%A1r%2C%20Magyarorsz%C3%A1g!3m2!1d46.804325!2d17.4364187!4m5!1s0x4769024701891c15%3A0xac47f3befa5778d0!2zQmFsYXRvbmd5w7Zyw7ZrLCBCYWxhdG9uZ3nDtnLDtmtpIGtpbMOhdMOz!3m2!1d46.7771731!2d17.357045!5e0!3m2!1shu!2shu!4v1589917780705!5m2!1shu!2shu" width="100%" height="450" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
+
+## Bakony
+
+Bakonybél-Bakonykoppány szakasz tök új itt
+
+<iframe src="https://www.google.com/maps/embed?pb=!1m30!1m8!1m3!1d412379.601266887!2d17.80333410892141!3d47.23362001672774!3m2!1i1024!2i768!4f13.1!4m19!3e0!4m5!1s0x476a218a85dd3373%3A0x400c4290c1ec640!2zU8O2csOpZA!3m2!1d47.322683!2d18.280507999999998!4m5!1s0x4769810f522a703f%3A0xa7974d0606403d6a!2sZirc!3m2!1d47.2620958!2d17.8707843!4m5!1s0x4769610c449a4107%3A0xa5062e116529d97b!2zUMOhcGE!3m2!1d47.326046399999996!2d17.4697834!5e0!3m2!1shu!2shu!4v1589917863071!5m2!1shu!2shu" width="100%" height="450" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
+
+# Déli országrész 
+
+## Nyugat-Mecsek
+<iframe src="https://www.google.com/maps/embed?pb=!1m40!1m8!1m3!1d88529.2728436828!2d18.1575403!3d46.1001503!3m2!1i1024!2i768!4f13.1!4m29!3e0!4m5!1s0x4742bacbb0452627%3A0xf5dcfc427cbc6ec!2zTcOhbmZhLCA3MzA0!3m2!1d46.1620219!2d18.2424376!4m3!3m2!1d46.0913051!2d18.2205479!4m3!3m2!1d46.091686499999994!2d18.186272499999998!4m5!1s0x4742af7cf1c51677%3A0x86a90d187d90d11e!2zT3JmxbEsIE9yZsWxaS10w7M!3m2!1d46.142818999999996!2d18.1533592!4m3!3m2!1d46.118215799999994!2d18.0362158!4m3!3m2!1d46.0614164!2d18.1180901!5e0!3m2!1shu!2shu!4v1589917670720!5m2!1shu!2shu" width="100%" height="450" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
+
+## Kelet-Mecsek
+<iframe src="https://www.google.com/maps/embed?pb=!1m38!1m8!1m3!1d44221.58431986787!2d18.253648!3d46.1537525!3m2!1i1024!2i768!4f13.1!4m27!3e0!4m5!1s0x4742bacbb0452627%3A0xf5dcfc427cbc6ec!2zTcOhbmZhLCA3MzA0!3m2!1d46.1620219!2d18.2424376!4m5!1s0x4742bd8f7ad27907%3A0x400c4290c1e2b00!2zU3rDoXN6dsOhcg!3m2!1d46.2739639!2d18.377478099999998!4m3!3m2!1d46.2560837!2d18.499167099999998!4m3!3m2!1d46.1704307!2d18.3318212!4m5!1s0x4742bacbb0452627%3A0xf5dcfc427cbc6ec!2zTcOhbmZh!3m2!1d46.1620219!2d18.2424376!5e0!3m2!1shu!2shu!4v1589917703050!5m2!1shu!2shu" width="100%" height="450" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
 
 <!------------------------------- End ----------------------------->
 
