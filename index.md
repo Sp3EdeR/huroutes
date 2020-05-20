@@ -23,6 +23,30 @@ Kissé keskeny, sok parkolóval ahol vigyázni kell, rossz útminőség, de a je
 
 <iframe src="https://www.google.com/maps/embed?pb=!1m28!1m12!1m3!1d15163.29308036384!2d18.987314379652666!3d47.790816131361034!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!4m13!3e0!4m3!3m2!1d47.8018486!2d18.983227199999998!4m3!3m2!1d47.7938469!2d18.9833335!4m3!3m2!1d47.786107099999995!2d18.9673902!5e0!3m2!1shu!2shu!4v1589888351272!5m2!1shu!2shu" width="100%" height="450" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
 
+### Szob - Letkés - Esztergom
+
+A magyar oldalon Szob után már kevésbé forgalmas, de azért ügyelni kell a Letkés felé és onnan érkező forgalomra. A Szlovák oldalon jobb az út minősége azonban nagyobb is a forgalom.
+
+<iframe src="https://www.google.com/maps/embed?pb=!1m34!1m12!1m3!1d85690.2890208286!2d18.716374872582602!3d47.84305070051216!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!4m19!3e0!4m5!1s0x476a885f4c8313bd%3A0x1ac7e2343c0a299d!2sSzob%2C%202628!3m2!1d47.8186867!2d18.8699819!4m5!1s0x476a8bf072287e45%3A0xf14a6c1f334101da!2zTGV0a8OpcywgMjYzMg!3m2!1d47.8843259!2d18.7755541!4m5!1s0x476a61942ad6ea8d%3A0xb5095cbb6331b000!2zOTQzIDAxIFDDoXJrw6FueSwgU3psb3bDoWtpYQ!3m2!1d47.7984163!2d18.7003596!5e0!3m2!1shu!2shu!4v1589995077585!5m2!1shu!2shu" width="100%" height="450" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
+
+
+### Vác - Rétság
+
+A 2-es út egy elég forgalmas útszakasz, de a kanyargós részeknél a nagy kamionforgalom miatt kapaszkodósávok is vannak. Az út minősége jó, azonban elég gyakran trafipaxoznak a települések és a - jól belátható - kereszteződéseknél található sebességkorlátozások környékén
+
+<iframe src="https://www.google.com/maps/embed?pb=!1m26!1m12!1m3!1d85638.64272174491!2d19.043324023995478!3d47.87430805283964!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!4m11!3e0!4m3!3m2!1d47.8191998!2d19.090695099999998!4m5!1s0x476a9cc489d82a17%3A0x400c4290c1e1eb0!2zUsOpdHPDoWcsIDI2NTE!3m2!1d47.9294927!2d19.1351898!5e0!3m2!1shu!2shu!4v1589995181001!5m2!1shu!2shu" width="100%" height="450" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
+
+### Üvegtigris
+
+A Pilisjászfaluról Tinnye felé vezető úton megy az M1 felé a kamion és az autós forgalom nagy része és sajnos ez meg is viseli az utat. Tinnye és Piliscsaba között is ráférne már egy felújítás, valamint az Üvegtigris miatt nagy forgalomra lehet számítani a Garancsi tónál, ahol a legendás Üvegtigris büfé is van.
+
+<iframe src="https://www.google.com/maps/embed?pb=!1m34!1m12!1m3!1d43013.64013235772!2d18.76989336646622!3d47.63871632168969!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!4m19!3e0!4m5!1s0x476a7a988dcbd7b7%3A0xb00c428eaee2803!2s2080%2C%20Pilisj%C3%A1szfalu!3m2!1d47.6576964!2d18.7962569!4m5!1s0x476a703f10988d7b%3A0x400c4290c1e8330!2sTinnye%2C%202086!3m2!1d47.6206785!2d18.7772389!4m5!1s0x476a709107890adf%3A0x400c4290c1e1e30!2sPiliscsaba!3m2!1d47.6356691!2d18.8335907!5e0!3m2!1shu!2shu!4v1589995455844!5m2!1shu!2shu" width="100%" height="450" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
+
+### Hilltop borászat
+
+A 10-es útról felkanyarodva egy új burkolattal ellátott, de keskeny út vezet a Hilltop borászathoz ahol egy kiváló panorámájú étterem is van. Az út tovább vezet a szőlősök között Tata irányába, de ott az út minősége már nem túl jó.
+
+<iframe src="https://www.google.com/maps/embed?pb=!1m26!1m12!1m3!1d42958.27170722568!2d18.310428567071188!3d47.70593462285939!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!4m11!3e0!4m3!3m2!1d47.738357!2d18.3821275!4m5!1s0x476a4509d7c328b9%3A0x87a27c7f5dfdbb54!2zU3pvbcOzZCwgMjg5Ng!3m2!1d47.6818612!2d18.3408412!5e0!3m2!1shu!2shu!4v1589995763626!5m2!1shu!2shu" width="100%" height="450" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
 ## Egyéb
 
 ### Héreg
@@ -34,6 +58,10 @@ Kissé keskeny és nagyon rövid, tökéletes útminőség, alacsony forgalom
 
 ### Héreg v2
 <iframe src="https://www.google.com/maps/embed?pb=!1m36!1m8!1m3!1d204416.10052701336!2d18.600180423767647!3d47.68782873668753!3m2!1i1024!2i768!4f13.1!4m25!3e0!4m5!1s0x476a6227b1317923%3A0xbe2a180c05793793!2sEsztergom!3m2!1d47.7883949!2d18.7434451!4m5!1s0x476a427172150933%3A0x4ae04f8f8a9efacd!2zS8O8bHRlbGVrIHRlbGVwIDEsIEjDqXJlZywgMjgzMg!3m2!1d47.6368539!2d18.5142244!4m5!1s0x476a43f11ceb071f%3A0xf852196a9cf39bbb!2zMTEyOCwgVGFyasOhbiwgMjgzMQ!3m2!1d47.6614341!2d18.414614699999998!4m5!1s0x476a460d6f84ab01%3A0xb620f00f0720fe22!2sTata!3m2!1d47.645817199999996!2d18.3303022!5e0!3m2!1shu!2shu!4v1589918186137!5m2!1shu!2shu" width="100%" height="450" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
+
+### Héreg v3 Tatabányára
+
+<iframe src="https://www.google.com/maps/embed?pb=!1m28!1m12!1m3!1d171977.0605619197!2d18.339879935296157!3d47.662246094601976!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!4m13!3e0!4m5!1s0x476a66d6ae5c8393%3A0x2a0e2dd2a944ba0!2zVMOhdCwgMjUzNA!3m2!1d47.740983299999996!2d18.648829!4m5!1s0x476a4079ae970e87%3A0x400c4290c1e1280!2sTatab%C3%A1nya%2C%202800!3m2!1d47.569246!2d18.404818!5e0!3m2!1shu!2shu!4v1589995958903!5m2!1shu!2shu" width="100%" height="450" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
 
 ### Csákvár környéke, meg Etyek-Alcsútdoboz:
 <iframe src="https://www.google.com/maps/embed?pb=!1m40!1m8!1m3!1d266804.09023632196!2d18.57251675983646!3d47.350637511540754!3m2!1i1024!2i768!4f13.1!4m29!3e0!4m5!1s0x476a0adc08ca211f%3A0x400c4290c1e2620!2sBiatorb%C3%A1gy%2C%202051!3m2!1d47.4706818!2d18.8205591!4m5!1s0x476a0c7cfde70bdd%3A0x400c4290c1e3680!2sEtyek%2C%202091!3m2!1d47.4467098!2d18.751179!4m5!1s0x476a123784e78197%3A0x400c4290c1e6830!2zRmVsY3PDunQ!3m2!1d47.4541851!2d18.5865775!4m3!3m2!1d47.3895607!2d18.4626692!4m5!1s0x476a218a85dd3373%3A0x400c4290c1ec640!2zU8O2csOpZA!3m2!1d47.322683!2d18.280507999999998!5e0!3m2!1shu!2shu!4v1589917983887!5m2!1shu!2shu" width="100%" height="450" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
