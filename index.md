@@ -1,6 +1,3 @@
-<div id="toc"><h1>Tartalomjegyzék</h1></div><hr/><div id="contents" markdown="1">
-<!------------------------------- Start ----------------------------->
-
 # Budapest környéke
 
 ## Pilis
@@ -113,43 +110,4 @@ Bakonybél-Bakonykoppány szakasz tök új itt
 ## Kelet-Mecsek
 <iframe src="https://www.google.com/maps/embed?pb=!1m38!1m8!1m3!1d44221.58431986787!2d18.253648!3d46.1537525!3m2!1i1024!2i768!4f13.1!4m27!3e0!4m5!1s0x4742bacbb0452627%3A0xf5dcfc427cbc6ec!2zTcOhbmZhLCA3MzA0!3m2!1d46.1620219!2d18.2424376!4m5!1s0x4742bd8f7ad27907%3A0x400c4290c1e2b00!2zU3rDoXN6dsOhcg!3m2!1d46.2739639!2d18.377478099999998!4m3!3m2!1d46.2560837!2d18.499167099999998!4m3!3m2!1d46.1704307!2d18.3318212!4m5!1s0x4742bacbb0452627%3A0xf5dcfc427cbc6ec!2zTcOhbmZh!3m2!1d46.1620219!2d18.2424376!5e0!3m2!1shu!2shu!4v1589917703050!5m2!1shu!2shu" width="100%" height="450" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
 
-<!------------------------------- End ----------------------------->
-
-</div>
-<script lang="javascript">
-  window.onload = function () {
-    var toc = "";
-    var level = 0;
-
-    document.getElementById("contents").innerHTML =
-        document.getElementById("contents").innerHTML.replace(
-            /<h([\d]) id="([^>]+)">([^<]+)<\/h([\d])>/gi,
-            function (str, openLevel, id, titleText, closeLevel) {
-                if (openLevel != closeLevel) {
-                    return str;
-                }
-
-                if (openLevel > level) {
-                    toc += (new Array(openLevel - level + 1)).join("<ul>");
-                } else if (openLevel < level) {
-                    toc += (new Array(level - openLevel + 1)).join("</ul>");
-                }
-
-                level = parseInt(openLevel);
-
-                var anchor = id;
-                toc += "<li><a href=\"#" + anchor + "\">" + titleText
-                    + "</a></li>";
-
-                return "<h" + openLevel + "><a name=\"" + anchor + "\">"
-                    + titleText + "</a></h" + closeLevel + ">";
-            }
-        );
-
-    if (level) {
-        toc += (new Array(level + 1)).join("</ul>");
-    }
-
-    document.getElementById("toc").innerHTML += toc;
-};
-</script>
+<script src="toc.js"></script>
