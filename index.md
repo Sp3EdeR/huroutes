@@ -107,6 +107,9 @@ Jó vonalvezetés, közepes útminőség, kis forgalom, kellemes
 ## Egyéb
 
 ### Ceredi Szerpentin
+8 pont
+
+Nagyon jó vonalvezetés, többségében nagyon jó útminőség. Valamivel keskenyebb, mint a 24-es. Alacsony a forgalom az úton, jó eséllyel lehet haladni rendesen
 
 <iframe src="https://www.google.com/maps/embed?pb=!1m24!1m12!1m3!1d42603.738632716704!2d19.9086977396797!3d48.13344064632517!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!4m9!3e0!4m3!3m2!1d48.146060999999996!2d19.9664623!4m3!3m2!1d48.1184285!2d19.8346724!5e0!3m2!1shu!2shu!4v1589887641776!5m2!1shu!2shu" width="100%" height="450" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
 
