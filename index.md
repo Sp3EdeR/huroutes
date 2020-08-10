@@ -73,18 +73,20 @@ Kissé keskeny és nagyon rövid, tökéletes útminőség, alacsony forgalom
 ### Bükk / 2505
 8 pont
 
-A legjobb magyar szerpentin, jó útminőség, nagy forgalom, rendőrök
+A legjobb magyar szerpentin mind közül. Jó útminőség, közepes forgalom, időnként rendőrök találhatóak erre. Ezen a szerpentinen szinte megszakítás nélkül, folyamatosan kanyarogni lehet. A kanyarok viszonylag szűkek, bár hagynak tempós közlekedést.
 
 <iframe src="https://www.google.com/maps/embed?pb=!1m24!1m12!1m3!1d100168.46582498758!2d20.550642403296674!3d48.04802562070628!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!4m9!3e0!4m3!3m2!1d47.9823534!2d20.433000699999997!4m3!3m2!1d48.104963999999995!2d20.622595!5e0!3m2!1shu!2shu!4v1589886977909!5m2!1shu!2shu" width="100%" height="450" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
 
 ### Bükk / Lillafüred-Mályinka
+
+Rossz útminőségre lehet számítani.
 
 <iframe src="https://www.google.com/maps/embed?pb=!1m24!1m12!1m3!1d42611.9198519277!2d20.555377375210885!3d48.1247986208386!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!4m9!3e0!4m3!3m2!1d48.104963999999995!2d20.622595!4m3!3m2!1d48.152504699999994!2d20.498784399999998!5e0!3m2!1shu!2shu!4v1589887345567!5m2!1shu!2shu" width="100%" height="450" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
 
 ### Bükk / Mexikóvölgy
 5 pont
 
-Nagyon keskeny, csak felfelé lehet normálisan közlekedni, nagyon rossz útminőség, néha szembeforgalom
+Nagyon keskeny, csak felfelé lehet normálisan közlekedni, nagyon rossz útminőség, néha szembeforgalom.
 
 <iframe src="https://www.google.com/maps/embed?pb=!1m24!1m12!1m3!1d30160.11801631419!2d20.681408026723144!3d48.07544540802806!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!4m9!3e0!4m3!3m2!1d48.0868922!2d20.7149269!4m3!3m2!1d48.0679441!2d20.633659299999998!5e0!3m2!1shu!2shu!4v1589887152544!5m2!1shu!2shu" width="100%" height="450" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
 
@@ -93,7 +95,7 @@ Nagyon keskeny, csak felfelé lehet normálisan közlekedni, nagyon rossz útmin
 ### Mátra / 24
 8 pont
 
-Izgalmas vonalvezetés, nagyon jó útminőség, nagy forgalom, rendőrök
+Magyarország egyik legjobb szerpentinje, amit sajnos az átutazó forgalom nehezen élvezhetővé tesz. Izgalmas vonalvezetés, nagyon jó útminőség, nagy forgalom, rendőrök szinte mindig vannak itt.
 
 <iframe src="https://www.google.com/maps/embed?pb=!1m24!1m12!1m3!1d42822.10503534959!2d19.970889648711044!3d47.87383605723462!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!4m9!3e0!4m3!3m2!1d47.8340767!2d19.967095699999998!4m3!3m2!1d47.9131741!2d19.987891299999998!5e0!3m2!1shu!2shu!4v1589886403641!5m2!1shu!2shu" width="100%" height="450" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
 
@@ -109,9 +111,16 @@ Jó vonalvezetés, közepes útminőség, kis forgalom, kellemes
 ### Ceredi Szerpentin
 8 pont
 
-Nagyon jó vonalvezetés, többségében nagyon jó útminőség. Valamivel keskenyebb, mint a 24-es. Alacsony a forgalom az úton, jó eséllyel lehet haladni rendesen
+Az egyik legjobb magyar szerpentin. Nagyon jó vonalvezetés, többségében nagyon jó útminőség. Valamivel keskenyebb, mint a 24-es. Alacsony a forgalom az úton, jó eséllyel lehet haladni rendesen
 
 <iframe src="https://www.google.com/maps/embed?pb=!1m24!1m12!1m3!1d3487.6403431963345!2d19.877696856291614!3d48.11955682276526!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!4m9!3e0!4m3!3m2!1d48.142944299999996!2d19.960096099999998!4m3!3m2!1d48.116059799999995!2d19.864380399999998!5e0!3m2!1shu!2shu!4v1593378242234!5m2!1shu!2shu" width="100%" height="450" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
+
+### Hagony - Zabar
+7 pont
+
+Keletről nyugatra haladva ez az útvonal egy igazán hangulatos szakasz. Hagony után egy enyhén kanyargó, tempós útvonallal kezdődik, mely körül változatos és szép kilátásban gyönyörködhetünk. A Megyehatárhoz közeledve hegyessé válik a környezet és egy szűk, izgalmas szerpentin dobja fel az adrenalint. Amennyiben nyugat felé haladunk, nagyon vigyázzunk az [utolsó, lejtmeneti hajtűkanyarnál](https://goo.gl/maps/nQ2WiaupZrbcq7Rh6), ugyanis itt könnyen el lehet szállni nagy tempónál. Ez az útvonal egy tökéletes bevezető a Ceredi szerpentinhez.
+
+<iframe src="https://www.google.com/maps/embed?pb=!1m24!1m12!1m3!1d42565.14252409505!2d20.101087828672902!3d48.18115852244082!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!4m9!3e0!4m3!3m2!1d48.2235623!2d20.191308499999998!4m3!3m2!1d48.142228499999995!2d20.0533947!5e0!3m2!1shu!2shu!4v1597068491624!5m2!1shu!2shu" width="100%" height="450" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
 
 ### Balaton - Borsodnádasd
 
