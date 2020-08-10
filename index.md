@@ -115,10 +115,10 @@ Az egyik legjobb magyar szerpentin. Nagyon jó vonalvezetés, többségében nag
 
 <iframe src="https://www.google.com/maps/embed?pb=!1m24!1m12!1m3!1d3487.6403431963345!2d19.877696856291614!3d48.11955682276526!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!4m9!3e0!4m3!3m2!1d48.142944299999996!2d19.960096099999998!4m3!3m2!1d48.116059799999995!2d19.864380399999998!5e0!3m2!1shu!2shu!4v1593378242234!5m2!1shu!2shu" width="100%" height="450" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
 
-### Hagony - Zabar
+### Hangony - Zabar
 7 pont
 
-Keletről nyugatra haladva ez az útvonal egy igazán hangulatos szakasz. Hagony után egy enyhén kanyargó, tempós útvonallal kezdődik, mely körül változatos és szép kilátásban gyönyörködhetünk. A Megyehatárhoz közeledve hegyessé válik a környezet és egy szűk, izgalmas szerpentin dobja fel az adrenalint. Amennyiben nyugat felé haladunk, nagyon vigyázzunk az [utolsó, lejtmeneti hajtűkanyarnál](https://goo.gl/maps/nQ2WiaupZrbcq7Rh6), ugyanis itt könnyen el lehet szállni nagy tempónál. Ez az útvonal egy tökéletes bevezető a Ceredi szerpentinhez.
+Keletről nyugatra haladva ez az útvonal egy igazán hangulatos szakasz. Hangony után egy enyhén kanyargó, tempós útvonallal kezdődik, mely körül változatos és szép kilátásban gyönyörködhetünk. A Megyehatárhoz közeledve hegyessé válik a környezet és egy szűk, izgalmas szerpentin dobja fel az adrenalint. Amennyiben nyugat felé haladunk, nagyon vigyázzunk az [utolsó, lejtmeneti hajtűkanyarnál](https://goo.gl/maps/nQ2WiaupZrbcq7Rh6), ugyanis itt könnyen el lehet szállni nagy tempónál. Ez az útvonal egy tökéletes bevezető a Ceredi szerpentinhez.
 
 <iframe src="https://www.google.com/maps/embed?pb=!1m24!1m12!1m3!1d42565.14252409505!2d20.101087828672902!3d48.18115852244082!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!4m9!3e0!4m3!3m2!1d48.2235623!2d20.191308499999998!4m3!3m2!1d48.142228499999995!2d20.0533947!5e0!3m2!1shu!2shu!4v1597068491624!5m2!1shu!2shu" width="100%" height="450" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
 
