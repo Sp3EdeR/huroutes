@@ -16,6 +16,7 @@ A weblap tartalmát közösségileg szerkesztheti bárki. Ehhez először is sz�
 	* Ezt tehetjük akár a GitHub webes felületén is vagy haladók a git program segítségével.
 	* Törekedjünk arra, hogy a beírt tartalom tartsa a [GitHub Markdown formátumát](https://guides.github.com/features/mastering-markdown). Illetve szimplán kövessük a már elkészített példákat.
 		* Egy útvonal beépülő elkészítéséhez használjuk a [Google Maps](https://www.google.com/maps)-et, azon belül is a főmenüben a "Térkép megosztása vagy beágyazása" menüpont alatt a "Térkép beágyazása" tabon látható kódot.
+		* A kimásolt kódban a `width="600"` részt érdemes átírni `width="100%"`-ra, hogy a weblapon szép egyenletes szélességű legyen minden doboz.
 	* Minden módosítás után írjunk rövid összefoglalót arról, hogy mit is módosítottunk.
 	* Ha nem vagyunk egészen biztosak abban, hogy a módosításunk jól fog kinézni / működni, akkor teszteljük a saját weboldalunkon.
 		1. Ehhez a saját repónk beállításaiban görgessünk le a GitHub Pages szekcióra.
