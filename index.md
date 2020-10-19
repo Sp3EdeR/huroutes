@@ -7,7 +7,7 @@
 
 A legjobb Budapest-környéki szerpentin, tűrhető útminőség, közepes forgalom.
 
-Bemutató videó Draskovics Andristól: https://youtu.be/Tg1TaZPti2E
+[Bemutató videó Draskovics Andristól](https://youtu.be/Tg1TaZPti2E)
 
 <iframe src="https://www.google.com/maps/embed?pb=!1m24!1m12!1m3!1d51072.07157112342!2d19.02517801587691!3d47.719420842938725!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!4m9!3e0!4m3!3m2!1d47.673628099999995!2d19.0720109!4m3!3m2!1d47.765400299999996!2d18.9536001!5e0!3m2!1shu!2shu!4v1589888000942!5m2!1shu!2shu" width="100%" height="450" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
 
@@ -56,7 +56,7 @@ A 10-es útról felkanyarodva egy új burkolattal ellátott, de keskeny út veze
 
 Kissé keskeny és nagyon rövid, tökéletes útminőség, alacsony forgalom.
 
-Bemutató videó Draskovics Andristól: https://youtu.be/xDhJktK-ca4
+[Bemutató videó Draskovics Andristól](https://youtu.be/xDhJktK-ca4)
 
 <iframe src="https://www.google.com/maps/embed?pb=!1m24!1m12!1m3!1d27093.592827726377!2d18.55906646249844!3d47.64482836746744!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!4m9!3e0!4m3!3m2!1d47.6428714!2d18.520293799999997!4m3!3m2!1d47.6582217!2d18.5883279!5e0!3m2!1shu!2shu!4v1589888460002!5m2!1shu!2shu" width="100%" height="450" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
 
@@ -79,7 +79,7 @@ Bemutató videó Draskovics Andristól: https://youtu.be/xDhJktK-ca4
 
 A legjobb magyar szerpentin mind közül. Jó útminőség, közepes forgalom, időnként rendőrök találhatóak erre. Ezen a szerpentinen szinte megszakítás nélkül, folyamatosan kanyarogni lehet. A kanyarok viszonylag szűkek, bár hagynak tempós közlekedést.
 
-Bemutató videó Draskovics Andristól: https://youtu.be/J8CYfAB5cnQ
+[Bemutató videó Draskovics Andristól](https://youtu.be/J8CYfAB5cnQ)
 
 <iframe src="https://www.google.com/maps/embed?pb=!1m24!1m12!1m3!1d100168.46582498758!2d20.550642403296674!3d48.04802562070628!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!4m9!3e0!4m3!3m2!1d47.9823534!2d20.433000699999997!4m3!3m2!1d48.104963999999995!2d20.622595!5e0!3m2!1shu!2shu!4v1589886977909!5m2!1shu!2shu" width="100%" height="450" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
 
