@@ -5,21 +5,23 @@
 ### Pilisszentlászló
 7 pont
 
-A legjobb Budapest-környéki szerpentin, tűrhető útminőség, közepes forgalom
+A legjobb Budapest-környéki szerpentin, tűrhető útminőség, közepes forgalom.
+
+Bemutató videó Draskovics Andristól: https://youtu.be/Tg1TaZPti2E
 
 <iframe src="https://www.google.com/maps/embed?pb=!1m24!1m12!1m3!1d51072.07157112342!2d19.02517801587691!3d47.719420842938725!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!4m9!3e0!4m3!3m2!1d47.673628099999995!2d19.0720109!4m3!3m2!1d47.765400299999996!2d18.9536001!5e0!3m2!1shu!2shu!4v1589888000942!5m2!1shu!2shu" width="100%" height="450" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
 
 ### Dobogókő
 7 pont
 
-Jó szerpentin, tűrhető útminőség, közepes forgalom
+Jó szerpentin, tűrhető útminőség, közepes forgalom.
 
 <iframe src="https://www.google.com/maps/embed?pb=!1m24!1m12!1m3!1d102152.91834589804!2d18.930978409743222!3d47.71487139748728!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!4m9!3e0!4m3!3m2!1d47.6472907!2d19.026671099999998!4m3!3m2!1d47.7671662!2d18.758060999999998!5e0!3m2!1shu!2shu!4v1589888207611!5m2!1shu!2shu" width="100%" height="450" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
 
 ### Fellegvár
 6 pont
 
-Kissé keskeny, sok parkolóval ahol vigyázni kell, rossz útminőség, de a jelölt irányban tűrhető, közepes forgalom
+Kissé keskeny, sok parkolóval ahol vigyázni kell, rossz útminőség, de a jelölt irányban tűrhető, közepes forgalom.
 
 <iframe src="https://www.google.com/maps/embed?pb=!1m28!1m12!1m3!1d15163.29308036384!2d18.987314379652666!3d47.790816131361034!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!4m13!3e0!4m3!3m2!1d47.8018486!2d18.983227199999998!4m3!3m2!1d47.7938469!2d18.9833335!4m3!3m2!1d47.786107099999995!2d18.9673902!5e0!3m2!1shu!2shu!4v1589888351272!5m2!1shu!2shu" width="100%" height="450" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
 
@@ -32,7 +34,7 @@ A magyar oldalon Szob után már kevésbé forgalmas, de azért ügyelni kell a 
 
 ### Vác - Rétság
 
-A 2-es út egy elég forgalmas útszakasz, de a kanyargós részeknél a nagy kamionforgalom miatt kapaszkodósávok is vannak. Az út minősége jó, azonban elég gyakran trafipaxoznak a települések és a - jól belátható - kereszteződéseknél található sebességkorlátozások környékén
+A 2-es út egy elég forgalmas útszakasz, de a kanyargós részeknél a nagy kamionforgalom miatt kapaszkodósávok is vannak. Az út minősége jó, azonban elég gyakran trafipaxoznak a települések és a - jól belátható - kereszteződéseknél található sebességkorlátozások környékén.
 
 <iframe src="https://www.google.com/maps/embed?pb=!1m26!1m12!1m3!1d85638.64272174491!2d19.043324023995478!3d47.87430805283964!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!4m11!3e0!4m3!3m2!1d47.8191998!2d19.090695099999998!4m5!1s0x476a9cc489d82a17%3A0x400c4290c1e1eb0!2zUsOpdHPDoWcsIDI2NTE!3m2!1d47.9294927!2d19.1351898!5e0!3m2!1shu!2shu!4v1589995181001!5m2!1shu!2shu" width="100%" height="450" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
 
@@ -52,7 +54,9 @@ A 10-es útról felkanyarodva egy új burkolattal ellátott, de keskeny út veze
 ### Héreg
 6 pont
 
-Kissé keskeny és nagyon rövid, tökéletes útminőség, alacsony forgalom
+Kissé keskeny és nagyon rövid, tökéletes útminőség, alacsony forgalom.
+
+Bemutató videó Draskovics Andristól: https://youtu.be/xDhJktK-ca4
 
 <iframe src="https://www.google.com/maps/embed?pb=!1m24!1m12!1m3!1d27093.592827726377!2d18.55906646249844!3d47.64482836746744!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!4m9!3e0!4m3!3m2!1d47.6428714!2d18.520293799999997!4m3!3m2!1d47.6582217!2d18.5883279!5e0!3m2!1shu!2shu!4v1589888460002!5m2!1shu!2shu" width="100%" height="450" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
 
@@ -74,6 +78,8 @@ Kissé keskeny és nagyon rövid, tökéletes útminőség, alacsony forgalom
 8 pont
 
 A legjobb magyar szerpentin mind közül. Jó útminőség, közepes forgalom, időnként rendőrök találhatóak erre. Ezen a szerpentinen szinte megszakítás nélkül, folyamatosan kanyarogni lehet. A kanyarok viszonylag szűkek, bár hagynak tempós közlekedést.
+
+Bemutató videó Draskovics Andristól: https://youtu.be/J8CYfAB5cnQ
 
 <iframe src="https://www.google.com/maps/embed?pb=!1m24!1m12!1m3!1d100168.46582498758!2d20.550642403296674!3d48.04802562070628!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!4m9!3e0!4m3!3m2!1d47.9823534!2d20.433000699999997!4m3!3m2!1d48.104963999999995!2d20.622595!5e0!3m2!1shu!2shu!4v1589886977909!5m2!1shu!2shu" width="100%" height="450" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
 
@@ -102,7 +108,7 @@ Magyarország egyik legjobb szerpentinje, amit sajnos az átutazó forgalom nehe
 ### Mátra / 2408
 6 pont
 
-Jó vonalvezetés, közepes útminőség, kis forgalom, kellemes
+Jó vonalvezetés, közepes útminőség, kis forgalom, kellemes.
 
 <iframe src="https://www.google.com/maps/embed?pb=!1m24!1m12!1m3!1d35985.541618297066!2d19.877357930381066!3d47.904625991182016!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!4m9!3e0!4m3!3m2!1d47.8970749!2d19.823146899999998!4m3!3m2!1d47.8889808!2d19.9745356!5e0!3m2!1shu!2shu!4v1589906828555!5m2!1shu!2shu" width="100%" height="450" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
 
@@ -111,7 +117,7 @@ Jó vonalvezetés, közepes útminőség, kis forgalom, kellemes
 ### Ceredi Szerpentin
 8 pont
 
-Az egyik legjobb magyar szerpentin. Nagyon jó vonalvezetés, többségében nagyon jó útminőség. Valamivel keskenyebb, mint a 24-es. Alacsony a forgalom az úton, jó eséllyel lehet haladni rendesen
+Az egyik legjobb magyar szerpentin. Nagyon jó vonalvezetés, többségében nagyon jó útminőség. Valamivel keskenyebb, mint a 24-es. Alacsony a forgalom az úton, jó eséllyel lehet haladni rendesen.
 
 <iframe src="https://www.google.com/maps/embed?pb=!1m24!1m12!1m3!1d3487.6403431963345!2d19.877696856291614!3d48.11955682276526!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!4m9!3e0!4m3!3m2!1d48.142944299999996!2d19.960096099999998!4m3!3m2!1d48.116059799999995!2d19.864380399999998!5e0!3m2!1shu!2shu!4v1593378242234!5m2!1shu!2shu" width="100%" height="450" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
 
@@ -129,7 +135,7 @@ Keletről nyugatra haladva ez az útvonal egy igazán hangulatos szakasz. Hangon
 <h1>Balaton környéke</h1>
 
 ## Kőröshegyi szerpentin
-Elég rövid, de élvezetes kanyarok, mindkét végén körforgalom fordítónak, nagyon jó útminőség, kis forgalom, irányonként osztott
+Elég rövid, de élvezetes kanyarok, mindkét végén körforgalom fordítónak, nagyon jó útminőség, kis forgalom, irányonként osztott.
 
 <iframe src="https://www.google.com/maps/embed?pb=!1m24!1m8!1m3!1d10921.875438849067!2d17.9168606!3d46.8147676!3m2!1i1024!2i768!4f13.1!4m13!3e0!4m3!3m2!1d46.816033399999995!2d17.9076789!4m3!3m2!1d46.8154472!2d17.919046599999998!4m3!3m2!1d46.8160512!2d17.907697!5e0!3m2!1shu!2shu!4v1589917479597!5m2!1shu!2shu" width="100%" height="450" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
 
@@ -138,7 +144,7 @@ Elég rövid, de élvezetes kanyarok, mindkét végén körforgalom fordítónak
 
 ## Bakony
 
-Bakonybél-Bakonykoppány szakasz tök új itt
+Bakonybél-Bakonykoppány szakasz tök új itt.
 
 <iframe src="https://www.google.com/maps/embed?pb=!1m30!1m8!1m3!1d412379.601266887!2d17.80333410892141!3d47.23362001672774!3m2!1i1024!2i768!4f13.1!4m19!3e0!4m5!1s0x476a218a85dd3373%3A0x400c4290c1ec640!2zU8O2csOpZA!3m2!1d47.322683!2d18.280507999999998!4m5!1s0x4769810f522a703f%3A0xa7974d0606403d6a!2sZirc!3m2!1d47.2620958!2d17.8707843!4m5!1s0x4769610c449a4107%3A0xa5062e116529d97b!2zUMOhcGE!3m2!1d47.326046399999996!2d17.4697834!5e0!3m2!1shu!2shu!4v1589917863071!5m2!1shu!2shu" width="100%" height="450" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
 
