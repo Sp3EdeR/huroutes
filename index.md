@@ -103,12 +103,16 @@ Nagyon keskeny, csak felfelé lehet normálisan közlekedni, nagyon rossz útmin
 
 Magyarország egyik legjobb szerpentinje, amit sajnos az átutazó forgalom nehezen élvezhetővé tesz. Izgalmas vonalvezetés, nagyon jó útminőség, nagy forgalom, rendőrök szinte mindig vannak itt.
 
+[Bemutató videó Draskovics Andristól](https://youtu.be/EZHj94m7IBw?t=334)
+
 <iframe src="https://www.google.com/maps/embed?pb=!1m24!1m12!1m3!1d42822.10503534959!2d19.970889648711044!3d47.87383605723462!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!4m9!3e0!4m3!3m2!1d47.8340767!2d19.967095699999998!4m3!3m2!1d47.9131741!2d19.987891299999998!5e0!3m2!1shu!2shu!4v1589886403641!5m2!1shu!2shu" width="100%" height="450" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
 
 ### Mátra / 2408
 6 pont
 
 Jó vonalvezetés, közepes útminőség, kis forgalom, kellemes.
+
+[Bemutató videó Draskovics Andristól](https://youtu.be/EZHj94m7IBw?t=446)
 
 <iframe src="https://www.google.com/maps/embed?pb=!1m24!1m12!1m3!1d35985.541618297066!2d19.877357930381066!3d47.904625991182016!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!4m9!3e0!4m3!3m2!1d47.8970749!2d19.823146899999998!4m3!3m2!1d47.8889808!2d19.9745356!5e0!3m2!1shu!2shu!4v1589906828555!5m2!1shu!2shu" width="100%" height="450" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
 
