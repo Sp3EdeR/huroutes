@@ -14,7 +14,7 @@ A legjobb Budapest-környéki szerpentin, tűrhető útminőség, közepes forga
 ### Dobogókő
 7 pont
 
-Jó szerpentin, tűrhető útminőség, közepes forgalom. Kevés az előzési lehetőség és kedvelt motoros útvonal. A Bp - Dobogókő felöli oldalon átlagosan nagyobb a forgalom, de a Dobogókő - Esztergom szakaszon is sok a túrista jó időben.
+Jó szerpentin, tűrhető útminőség, közepes forgalom. Kevés az előzési lehetőség és kedvelt motoros útvonal. A Bp - Dobogókő felöli oldalon átlagosan nagyobb a forgalom, de a Dobogókő - Esztergom szakaszon is sok a turista jó időben.
 
 <iframe src="https://www.google.com/maps/embed?pb=!1m24!1m12!1m3!1d102152.91834589804!2d18.930978409743222!3d47.71487139748728!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!4m9!3e0!4m3!3m2!1d47.6472907!2d19.026671099999998!4m3!3m2!1d47.7671662!2d18.758060999999998!5e0!3m2!1shu!2shu!4v1589888207611!5m2!1shu!2shu" width="100%" height="450" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
 
