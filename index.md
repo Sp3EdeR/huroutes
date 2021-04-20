@@ -61,6 +61,7 @@ A Pilisjászfaluról Tinnye felé vezető úton megy az M1 felé a kamion és az
 A 10-es útról felkanyarodva egy új burkolattal ellátott, de keskeny út vezet a Hilltop borászathoz ahol egy kiváló panorámájú étterem is van. Az út tovább vezet a szőlősök között Tata irányába, de ott az út minősége már nem túl jó.
 
 <iframe src="https://www.google.com/maps/embed?pb=!1m26!1m12!1m3!1d42958.27170722568!2d18.310428567071188!3d47.70593462285939!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!4m11!3e0!4m3!3m2!1d47.738357!2d18.3821275!4m5!1s0x476a4509d7c328b9%3A0x87a27c7f5dfdbb54!2zU3pvbcOzZCwgMjg5Ng!3m2!1d47.6818612!2d18.3408412!5e0!3m2!1shu!2shu!4v1589995763626!5m2!1shu!2shu" width="100%" height="450" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
+
 ## Egyéb
 
 ### Héreg
@@ -132,9 +133,9 @@ Jó vonalvezetés, közepes útminőség, kis forgalom, kellemes.
 ## Egyéb
 
 ### Ceredi Szerpentin
-8 pont
+8 pont, **Frissítés 2021:** 7 pont
 
-Az egyik legjobb magyar szerpentin. Nagyon jó vonalvezetés, többségében nagyon jó útminőség. Valamivel keskenyebb, mint a 24-es. Alacsony a forgalom az úton, jó eséllyel lehet haladni rendesen.
+Az egyik legjobb magyar szerpentin. Nagyon jó vonalvezetés, többségében nagyon jó útminőség. Valamivel keskenyebb, mint a 24-es. Alacsony a forgalom az úton, jó eséllyel lehet haladni rendesen. **Frissítés 2021:** Sajnos a tél nem kímélte, és érezhetően romlott az útminőség.
 
 <iframe src="https://www.google.com/maps/embed?pb=!1m24!1m12!1m3!1d3487.6403431963345!2d19.877696856291614!3d48.11955682276526!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!4m9!3e0!4m3!3m2!1d48.142944299999996!2d19.960096099999998!4m3!3m2!1d48.116059799999995!2d19.864380399999998!5e0!3m2!1shu!2shu!4v1593378242234!5m2!1shu!2shu" width="100%" height="450" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
 
