@@ -2,7 +2,7 @@
 
 ## Pilis
 
-### Pilisszentlászló
+### Pilisszentlászló (utolsó frissítés: 2021 március)
 7 pont
 
 A legjobb Budapest-környéki szerpentin, tűrhető útminőség, közepes forgalom.
@@ -11,15 +11,15 @@ A legjobb Budapest-környéki szerpentin, tűrhető útminőség, közepes forga
 
 <iframe src="https://www.google.com/maps/embed?pb=!1m24!1m12!1m3!1d51072.07157112342!2d19.02517801587691!3d47.719420842938725!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!4m9!3e0!4m3!3m2!1d47.673628099999995!2d19.0720109!4m3!3m2!1d47.765400299999996!2d18.9536001!5e0!3m2!1shu!2shu!4v1589888000942!5m2!1shu!2shu" width="100%" height="450" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
 
-### Dobogókő
-7 pont
+### Dobogókő (utolsó frissítés: 2021 március)
+6 pont
 
-Jó szerpentin, tűrhető útminőség, közepes forgalom. Kevés az előzési lehetőség és kedvelt motoros útvonal. A Bp - Dobogókő felöli oldalon átlagosan nagyobb a forgalom, de a Dobogókő - Esztergom szakaszon is sok a túrista jó időben.
+Jó szerpentin, tűrhető útminőség, közepes forgalom. Kevés az előzési lehetőség és kedvelt motoros útvonal. A Bp - Dobogókő felöli oldalon átlagosan nagyobb a forgalom, de a Dobogókő - Esztergom szakaszon is sok a turista jó időben.
 
 <iframe src="https://www.google.com/maps/embed?pb=!1m24!1m12!1m3!1d102152.91834589804!2d18.930978409743222!3d47.71487139748728!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!4m9!3e0!4m3!3m2!1d47.6472907!2d19.026671099999998!4m3!3m2!1d47.7671662!2d18.758060999999998!5e0!3m2!1shu!2shu!4v1589888207611!5m2!1shu!2shu" width="100%" height="450" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
 
-### Fellegvár
-6 pont
+### Fellegvár (utolsó frissítés: 2021 március)
+5 pont
 
 Kissé keskeny, sok parkolóval ahol vigyázni kell, rossz útminőség, de a jelölt irányban tűrhető, közepes forgalom.
 
@@ -40,7 +40,7 @@ A 2-es út egy elég forgalmas útszakasz, de a kanyargós részeknél a nagy ka
 
 <iframe src="https://www.google.com/maps/embed?pb=!1m26!1m12!1m3!1d85638.64272174491!2d19.043324023995478!3d47.87430805283964!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!4m11!3e0!4m3!3m2!1d47.8191998!2d19.090695099999998!4m5!1s0x476a9cc489d82a17%3A0x400c4290c1e1eb0!2zUsOpdHPDoWcsIDI2NTE!3m2!1d47.9294927!2d19.1351898!5e0!3m2!1shu!2shu!4v1589995181001!5m2!1shu!2shu" width="100%" height="450" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
 
-### Bánk - Aszód (Bag - M3 felhajtó)
+### Bánk - Aszód (Bag - M3 felhajtó) (utolsó frissítés: 2021 április)
 6 pont
 
 A Vác - Rétság útvonal folytatásaként vagy egy oda-vissza menetként is megállja a helyét. Helyenként vannak rosszabb minőségű szakaszok, de az útvonal kb. 70-80%-a felújított. A kisforgalmú kanyargós szakaszok tempós kanyarokkal és egyenesekkel jó kis élményt adnak. Nem tapasztaltam nagyobb motoros forgalmat és a Bánki tónál a bowling pizzériában jóféle a kaja. 
@@ -64,7 +64,7 @@ A 10-es útról felkanyarodva egy új burkolattal ellátott, de keskeny út veze
 
 ## Egyéb
 
-### Héreg
+### Héreg (utolsó frissítés: 2021 március)
 6 pont
 
 Kissé keskeny és nagyon rövid, tökéletes útminőség, alacsony forgalom. Egyre népszerűbb motoros útvonal, azonban az átmenő forgalom átlagos így ha kevésbé forgalmas időszakoban alkalmas egy tempósabb autózásra. Kiemelten jó (és ezáltal népszerű) a Bajna és Héreg közötti szakasz.
@@ -77,11 +77,11 @@ Kissé keskeny és nagyon rövid, tökéletes útminőség, alacsony forgalom. E
 
 <iframe src="https://www.google.com/maps/embed?pb=!1m36!1m8!1m3!1d204416.10052701336!2d18.600180423767647!3d47.68782873668753!3m2!1i1024!2i768!4f13.1!4m25!3e0!4m5!1s0x476a6227b1317923%3A0xbe2a180c05793793!2sEsztergom!3m2!1d47.7883949!2d18.7434451!4m5!1s0x476a427172150933%3A0x4ae04f8f8a9efacd!2zS8O8bHRlbGVrIHRlbGVwIDEsIEjDqXJlZywgMjgzMg!3m2!1d47.6368539!2d18.5142244!4m5!1s0x476a43f11ceb071f%3A0xf852196a9cf39bbb!2zMTEyOCwgVGFyasOhbiwgMjgzMQ!3m2!1d47.6614341!2d18.414614699999998!4m5!1s0x476a460d6f84ab01%3A0xb620f00f0720fe22!2sTata!3m2!1d47.645817199999996!2d18.3303022!5e0!3m2!1shu!2shu!4v1589918186137!5m2!1shu!2shu" width="100%" height="450" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
 
-### Héreg v3 Tatabányára
+### Héreg v3 Tatabányára (utolsó frissítés: 2021 március)
 
 <iframe src="https://www.google.com/maps/embed?pb=!1m28!1m12!1m3!1d171977.0605619197!2d18.339879935296157!3d47.662246094601976!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!4m13!3e0!4m5!1s0x476a66d6ae5c8393%3A0x2a0e2dd2a944ba0!2zVMOhdCwgMjUzNA!3m2!1d47.740983299999996!2d18.648829!4m5!1s0x476a4079ae970e87%3A0x400c4290c1e1280!2sTatab%C3%A1nya%2C%202800!3m2!1d47.569246!2d18.404818!5e0!3m2!1shu!2shu!4v1589995958903!5m2!1shu!2shu" width="100%" height="450" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
 
-### Csákvár környéke, meg Etyek-Alcsútdoboz:
+### Csákvár környéke, meg Etyek-Alcsútdoboz (utolsó frissítés: 2021 március)
 <iframe src="https://www.google.com/maps/embed?pb=!1m40!1m8!1m3!1d266804.09023632196!2d18.57251675983646!3d47.350637511540754!3m2!1i1024!2i768!4f13.1!4m29!3e0!4m5!1s0x476a0adc08ca211f%3A0x400c4290c1e2620!2sBiatorb%C3%A1gy%2C%202051!3m2!1d47.4706818!2d18.8205591!4m5!1s0x476a0c7cfde70bdd%3A0x400c4290c1e3680!2sEtyek%2C%202091!3m2!1d47.4467098!2d18.751179!4m5!1s0x476a123784e78197%3A0x400c4290c1e6830!2zRmVsY3PDunQ!3m2!1d47.4541851!2d18.5865775!4m3!3m2!1d47.3895607!2d18.4626692!4m5!1s0x476a218a85dd3373%3A0x400c4290c1ec640!2zU8O2csOpZA!3m2!1d47.322683!2d18.280507999999998!5e0!3m2!1shu!2shu!4v1589917983887!5m2!1shu!2shu" width="100%" height="450" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
 
 <h1>Északkeleti országrész</h1>
@@ -112,7 +112,7 @@ Nagyon keskeny, csak felfelé lehet normálisan közlekedni, nagyon rossz útmin
 
 ## Mátra
 
-### Mátra / 24
+### Mátra / 24 (utolsó frissítés: 2021 április)
 8 pont
 
 Magyarország egyik legjobb szerpentinje, amit sajnos az átutazó forgalom nehezen élvezhetővé tesz. Izgalmas vonalvezetés, nagyon jó útminőség, nagy forgalom, rendőrök szinte mindig vannak itt.
@@ -132,14 +132,14 @@ Jó vonalvezetés, közepes útminőség, kis forgalom, kellemes.
 
 ## Egyéb
 
-### Ceredi Szerpentin
-8 pont, **Frissítés 2021:** 7 pont
+### Ceredi Szerpentin (utolsó frissítés: 2021 április)
+7 pont
 
-Az egyik legjobb magyar szerpentin. Nagyon jó vonalvezetés, többségében nagyon jó útminőség. Valamivel keskenyebb, mint a 24-es. Alacsony a forgalom az úton, jó eséllyel lehet haladni rendesen. **Frissítés 2021:** Sajnos a tél nem kímélte, és érezhetően romlott az útminőség.
+Az egyik legjobb magyar szerpentin. Nagyon jó vonalvezetés, közepes útminőség. Valamivel keskenyebb, mint a 24-es. Alacsony a forgalom az úton, jó eséllyel lehet haladni rendesen.
 
 <iframe src="https://www.google.com/maps/embed?pb=!1m24!1m12!1m3!1d3487.6403431963345!2d19.877696856291614!3d48.11955682276526!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!4m9!3e0!4m3!3m2!1d48.142944299999996!2d19.960096099999998!4m3!3m2!1d48.116059799999995!2d19.864380399999998!5e0!3m2!1shu!2shu!4v1593378242234!5m2!1shu!2shu" width="100%" height="450" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
 
-### Hangony - Zabar
+### Hangony - Zabar (utolsó frissítés: 2021 április)
 7 pont
 
 Keletről nyugatra haladva ez az útvonal egy igazán hangulatos szakasz. Hangony után egy enyhén kanyargó, tempós útvonallal kezdődik, mely körül változatos és szép kilátásban gyönyörködhetünk. A Megyehatárhoz közeledve hegyessé válik a környezet és egy szűk, izgalmas szerpentin dobja fel az adrenalint. Amennyiben nyugat felé haladunk, nagyon vigyázzunk az [utolsó, lejtmeneti hajtűkanyarnál](https://goo.gl/maps/nQ2WiaupZrbcq7Rh6), ugyanis itt könnyen el lehet szállni nagy tempónál. Ez az útvonal egy tökéletes bevezető a Ceredi szerpentinhez.
