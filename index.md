@@ -88,10 +88,10 @@ Kissé keskeny és nagyon rövid, tökéletes útminőség, alacsony forgalom. E
 
 ## Bükk
 
-### Bükk / 2505
+### Bükk / 2505 (utolsó frissítés: 2021 június)
 8 pont
 
-A legjobb magyar szerpentin mind közül. Jó útminőség, közepes forgalom, időnként rendőrök találhatóak erre. Ezen a szerpentinen szinte megszakítás nélkül, folyamatosan kanyarogni lehet. A kanyarok viszonylag szűkek, bár hagynak tempós közlekedést.
+A legjobb magyar szerpentin mind közül. Jó útminőség, alacsony-közepes forgalom, időnként rendőrök találhatóak erre. Ezen a szerpentinen szinte megszakítás nélkül, folyamatosan kanyarogni lehet, szép erdei környezetben. A kanyarok viszonylag szűkek, bár hagynak tempós közlekedést. Az úton hirtelen váltakozó fényviszonyok nehezítik helyenként az út beláthatóságát, ezért érdemes vigyázni ilyen helyeken. Néhány helyen a padka kevésbé ápolt, illetve vannak kanyarok ahol a "szakadék"-ot nem védi korlát, itt érdemes visszavenni a tempóból.
 
 [Bemutató videó Draskovics Andristól](https://youtu.be/J8CYfAB5cnQ)
 
@@ -106,16 +106,16 @@ Rossz útminőségre lehet számítani.
 ### Bükk / Mexikóvölgy
 5 pont
 
-Nagyon keskeny, csak felfelé lehet normálisan közlekedni, nagyon rossz útminőség, néha szembeforgalom.
+Ez egy rally útvonal, így érdemes felkészülni a kissé nehézkesebb közlekedésre. Nagyon keskeny, csak felfelé lehet haladósabban közlekedni, nagyon rossz útminőség. Néha szembeforgalom jön, amikor általában valakinek állóra kell fékezni. Nagyon élvezhető, de nagyon észnél kell lenni, vagy biztosított úton kell menni.
 
 <iframe src="https://www.google.com/maps/embed?pb=!1m24!1m12!1m3!1d30160.11801631419!2d20.681408026723144!3d48.07544540802806!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!4m9!3e0!4m3!3m2!1d48.0868922!2d20.7149269!4m3!3m2!1d48.0679441!2d20.633659299999998!5e0!3m2!1shu!2shu!4v1589887152544!5m2!1shu!2shu" width="100%" height="450" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0" loading="lazy"></iframe>
 
 ## Mátra
 
-### Mátra / 24 (utolsó frissítés: 2021 április)
+### Mátra / 24 (utolsó frissítés: 2021 június)
 8 pont
 
-Magyarország egyik legjobb szerpentinje, amit sajnos az átutazó forgalom nehezen élvezhetővé tesz. Izgalmas vonalvezetés, nagyon jó útminőség, nagy forgalom, rendőrök szinte mindig vannak itt.
+Magyarország egyik legjobb szerpentinje, amit sajnos az átutazó forgalom nehezen élvezhetővé tesz gyakran. Érdemes nagyon korai, vagy esetleg délutáni órákban próbálkozni. Izgalmas vonalvezetés, nagyon jó útminőség jellemzi a Mátrafüred és Parádsasvár közti szakaszt. Épp ezért ez a szakasz a legforgalmasabb. Nagy forgalom, rendőrök szinte mindig vannak itt. A Sirok és Eger közti szakaszon is találhatunk érdekesebb kanyarokat, ez is jó szakasz alacsonyabb forgalommal. Ezen a szerpentinünkön van az egyik legszélesebb út.
 
 [Bemutató videó Draskovics Andristól](https://youtu.be/EZHj94m7IBw?t=334)
 
@@ -134,17 +134,17 @@ Budapest felől érkezve, csak Pest megyei matricával, elég gyorsan megközel�
 
 ## Egyéb
 
-### Ceredi Szerpentin (utolsó frissítés: 2021 április)
-7 pont
+### Ceredi Szerpentin (utolsó frissítés: 2021 június)
+8 pont
 
-Az egyik legjobb magyar szerpentin. Nagyon jó vonalvezetés, közepes útminőség. Valamivel keskenyebb, mint a 24-es. Alacsony a forgalom az úton, jó eséllyel lehet haladni rendesen.
+Az egyik legjobb magyar szerpentin. Nagyon jó vonalvezetés, vannak szűk és kevésbé szűk kanyarok, jó a ritmusuk. Sok az emelkedő, lejtő és döntött kanyar is, így nagy a dinamikája. Jó útminőség Cered irányából, közepes útminőség Zagyvaróna irányából. Valamivel keskenyebb, mint a 24-es. Alacsony a forgalom az úton, jó eséllyel lehet haladni rendesen. Rónabányához közel van 1-2 pár nagyon éles visszafordító ahol nagyon le kell lassítani, erre fontos koncentrálni.
 
 <iframe src="https://www.google.com/maps/embed?pb=!1m24!1m12!1m3!1d3487.6403431963345!2d19.877696856291614!3d48.11955682276526!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!4m9!3e0!4m3!3m2!1d48.142944299999996!2d19.960096099999998!4m3!3m2!1d48.116059799999995!2d19.864380399999998!5e0!3m2!1shu!2shu!4v1593378242234!5m2!1shu!2shu" width="100%" height="450" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0" loading="lazy"></iframe>
 
-### Hangony - Zabar (utolsó frissítés: 2021 április)
+### Hangony - Zabar (utolsó frissítés: 2021 június)
 7 pont
 
-Keletről nyugatra haladva ez az útvonal egy igazán hangulatos szakasz. Hangony után egy enyhén kanyargó, tempós útvonallal kezdődik, mely körül változatos és szép kilátásban gyönyörködhetünk. A Megyehatárhoz közeledve hegyessé válik a környezet és egy szűk, izgalmas szerpentin dobja fel az adrenalint. Amennyiben nyugat felé haladunk, nagyon vigyázzunk az [utolsó, lejtmeneti hajtűkanyarnál](https://goo.gl/maps/nQ2WiaupZrbcq7Rh6), ugyanis itt könnyen el lehet szállni nagy tempónál. Ez az útvonal egy tökéletes bevezető a Ceredi szerpentinhez.
+Keletről nyugatra haladva ez az útvonal egy igazán hangulatos szakasz. Hangony után egy enyhén kanyargó, tempós útvonallal kezdődik, mely körül változatos és szép kilátásban gyönyörködhetünk. A Megyehatárhoz közeledve hegyessé válik a környezet és egy szűk, izgalmas szerpentin dobja fel az adrenalint. Amennyiben nyugat felé haladunk, nagyon vigyázzunk az [utolsó, lejtmeneti hajtűkanyarnál](https://goo.gl/maps/nQ2WiaupZrbcq7Rh6), ugyanis itt könnyen el lehet szállni nagy tempónál. Ez az útvonal egy tökéletes bevezető a Ceredi szerpentinhez. Az útminőség nagyon jó.
 
 <iframe src="https://www.google.com/maps/embed?pb=!1m24!1m12!1m3!1d42565.14252409505!2d20.101087828672902!3d48.18115852244082!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!4m9!3e0!4m3!3m2!1d48.2235623!2d20.191308499999998!4m3!3m2!1d48.142228499999995!2d20.0533947!5e0!3m2!1shu!2shu!4v1597068491624!5m2!1shu!2shu" width="100%" height="450" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0" loading="lazy"></iframe>
 
