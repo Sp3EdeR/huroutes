@@ -124,7 +124,7 @@ Magyarország egyik legjobb szerpentinje, amit sajnos az átutazó forgalom nehe
 ### Mátra / 2408
 6 pont
 
-Jó vonalvezetésű, keskeny útszakasz át az erdőkön. Az útminőség sajnos eléggé közepes. Időnként töredezett az aszfalt a kanyarban is. Párszor megszakítják lakott szakaszok a ritmust. A forgalma alacsony, főleg a 24-eshez képest. A szakasz nagyrészt kellemes erdei kilátást nyújt.
+Jó vonalvezetésű, keskeny útszakasz át az erdőkön. Az útminőség eléggé vegyes, időnként töredezett az aszfalt a kanyarban is, máshol meg teljesen új aszfalt található. Párszor megszakítják lakott szakaszok a ritmust. A forgalma alacsony, főleg a 24-eshez képest. A szakasz nagyrészt kellemes erdei kilátást nyújt.
 
 Budapest felől érkezve, csak Pest megyei matricával, elég gyorsan megközelíthető a 21-esen keresztül. A tömött, forgalmas nyári napokon gyakran érdemes lehet inkább ezen az úton közelíteni Parádsasvár felé mint Gyöngyös felől.
 
