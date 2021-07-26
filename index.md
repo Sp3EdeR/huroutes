@@ -62,7 +62,7 @@ A 10-es útról felkanyarodva egy új burkolattal ellátott, de keskeny út veze
 
 <iframe src="https://www.google.com/maps/embed?pb=!1m26!1m12!1m3!1d42958.27170722568!2d18.310428567071188!3d47.70593462285939!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!4m11!3e0!4m3!3m2!1d47.738357!2d18.3821275!4m5!1s0x476a4509d7c328b9%3A0x87a27c7f5dfdbb54!2zU3pvbcOzZCwgMjg5Ng!3m2!1d47.6818612!2d18.3408412!5e0!3m2!1shu!2shu!4v1589995763626!5m2!1shu!2shu" width="100%" height="450" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0" loading="lazy"></iframe>
 
-## Egyéb
+## Gerecse Környéke
 
 ### Héreg (utolsó frissítés: 2021 március)
 6 pont
@@ -73,16 +73,39 @@ Kissé keskeny és nagyon rövid, tökéletes útminőség, alacsony forgalom. E
 
 <iframe src="https://www.google.com/maps/embed?pb=!1m24!1m12!1m3!1d27093.592827726377!2d18.55906646249844!3d47.64482836746744!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!4m9!3e0!4m3!3m2!1d47.6428714!2d18.520293799999997!4m3!3m2!1d47.6582217!2d18.5883279!5e0!3m2!1shu!2shu!4v1589888460002!5m2!1shu!2shu" width="100%" height="450" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0" loading="lazy"></iframe>
 
-### Héreg v2
+### Gerecsei Bejáróút: Tát - Tatabányára (utolsó frissítés: 2021 március)
 
-<iframe src="https://www.google.com/maps/embed?pb=!1m36!1m8!1m3!1d204416.10052701336!2d18.600180423767647!3d47.68782873668753!3m2!1i1024!2i768!4f13.1!4m25!3e0!4m5!1s0x476a6227b1317923%3A0xbe2a180c05793793!2sEsztergom!3m2!1d47.7883949!2d18.7434451!4m5!1s0x476a427172150933%3A0x4ae04f8f8a9efacd!2zS8O8bHRlbGVrIHRlbGVwIDEsIEjDqXJlZywgMjgzMg!3m2!1d47.6368539!2d18.5142244!4m5!1s0x476a43f11ceb071f%3A0xf852196a9cf39bbb!2zMTEyOCwgVGFyasOhbiwgMjgzMQ!3m2!1d47.6614341!2d18.414614699999998!4m5!1s0x476a460d6f84ab01%3A0xb620f00f0720fe22!2sTata!3m2!1d47.645817199999996!2d18.3303022!5e0!3m2!1shu!2shu!4v1589918186137!5m2!1shu!2shu" width="100%" height="450" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0" loading="lazy"></iframe>
-
-### Héreg v3 Tatabányára (utolsó frissítés: 2021 március)
+Az alábbi egy lehetőség a Gerecse környéki utak alaposabb bejárására. Az egyes szakaszokról feljebb találhatóak bővebb információk.
 
 <iframe src="https://www.google.com/maps/embed?pb=!1m28!1m12!1m3!1d171977.0605619197!2d18.339879935296157!3d47.662246094601976!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!4m13!3e0!4m5!1s0x476a66d6ae5c8393%3A0x2a0e2dd2a944ba0!2zVMOhdCwgMjUzNA!3m2!1d47.740983299999996!2d18.648829!4m5!1s0x476a4079ae970e87%3A0x400c4290c1e1280!2sTatab%C3%A1nya%2C%202800!3m2!1d47.569246!2d18.404818!5e0!3m2!1shu!2shu!4v1589995958903!5m2!1shu!2shu" width="100%" height="450" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
 
-### Csákvár környéke, meg Etyek-Alcsútdoboz (utolsó frissítés: 2021 március)
-<iframe src="https://www.google.com/maps/embed?pb=!1m40!1m8!1m3!1d266804.09023632196!2d18.57251675983646!3d47.350637511540754!3m2!1i1024!2i768!4f13.1!4m29!3e0!4m5!1s0x476a0adc08ca211f%3A0x400c4290c1e2620!2sBiatorb%C3%A1gy%2C%202051!3m2!1d47.4706818!2d18.8205591!4m5!1s0x476a0c7cfde70bdd%3A0x400c4290c1e3680!2sEtyek%2C%202091!3m2!1d47.4467098!2d18.751179!4m5!1s0x476a123784e78197%3A0x400c4290c1e6830!2zRmVsY3PDunQ!3m2!1d47.4541851!2d18.5865775!4m3!3m2!1d47.3895607!2d18.4626692!4m5!1s0x476a218a85dd3373%3A0x400c4290c1ec640!2zU8O2csOpZA!3m2!1d47.322683!2d18.280507999999998!5e0!3m2!1shu!2shu!4v1589917983887!5m2!1shu!2shu" width="100%" height="450" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0" loading="lazy"></iframe>
+### Gerecsei Bejáróút: Esztergom - Tata
+
+Az alábbi egy lehetőség a Gerecse környéki utak alaposabb bejárására. Az egyes szakaszokról feljebb találhatóak bővebb információk.
+
+<iframe src="https://www.google.com/maps/embed?pb=!1m36!1m8!1m3!1d204416.10052701336!2d18.600180423767647!3d47.68782873668753!3m2!1i1024!2i768!4f13.1!4m25!3e0!4m5!1s0x476a6227b1317923%3A0xbe2a180c05793793!2sEsztergom!3m2!1d47.7883949!2d18.7434451!4m5!1s0x476a427172150933%3A0x4ae04f8f8a9efacd!2zS8O8bHRlbGVrIHRlbGVwIDEsIEjDqXJlZywgMjgzMg!3m2!1d47.6368539!2d18.5142244!4m5!1s0x476a43f11ceb071f%3A0xf852196a9cf39bbb!2zMTEyOCwgVGFyasOhbiwgMjgzMQ!3m2!1d47.6614341!2d18.414614699999998!4m5!1s0x476a460d6f84ab01%3A0xb620f00f0720fe22!2sTata!3m2!1d47.645817199999996!2d18.3303022!5e0!3m2!1shu!2shu!4v1589918186137!5m2!1shu!2shu" width="100%" height="450" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0" loading="lazy"></iframe>
+
+## Egyéb
+
+### Etyek - Alcsútdoboz (utolsó frissítés: 2021 július)
+5 pont
+
+A híres és felkapott bortermelő város, Etyek és Alcsútdoboz között kanyarog egy rövidke, hullámos útszakasz. A jó minőségű aszfalton több lágy kanyarral és bukkanóval találkozhatunk. A forgalom közepes szokott lenni, de kifoghatóak üres pillanatok is. A kilátás is meglehetősen szép, itt fás, ott mezős. Komolyabb adrenalinlöketet viszont ne várjunk ettől az útszakasztól, mert komolyabb csapatásra nem alkalmas keskenysége, és a több helyen erősen túlzó sebességkorlátozó táblák miatt.
+
+Érdemes összevonni ezt az útszakaszt a Söréd - Gánt közti szakasszal egy kirándulásba.
+
+<iframe src="https://www.google.com/maps/embed?pb=!1m24!1m12!1m3!1d66564.75869893747!2d18.615273729178465!3d47.456922057153314!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!4m9!3e0!4m3!3m2!1d47.4433235!2d18.7364928!4m3!3m2!1d47.432280399999996!2d18.604755!5e0!3m2!1shu!2shu!4v1627318246264!5m2!1shu!2shu" width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+
+### Söréd - Gánt (utolsó frissítés: 2021 július)
+5 pont
+
+[Bemutató videó Draskovics Andristól](https://youtu.be/mRzK1IuPpSU)
+
+Ezen a rövid útszakaszon igazán kellemes kilátásban gyönyörködhetünk, amint jó minőségű úton suhanunk tova. Általában viszonylag kevés forgalommal kell közösködnünk. Az úton  nagyon enyhe kanyarok vannak csak, amik nagyobb sebességet tennének lehetővé, viszont szinte lépten-nyomon 60-as táblák próbálják lassítani a forgalmat (teljesen alaptalanul). Az idelátogatóknak érdemes inkább a kényelmes "krúzolást" keresni az útvonalban, mint csapatni. Ezt tükrözi a pontszáma is.
+
+Érdemes összevonni ezt az útszakaszt az Etyek - Alcsútdobozi szakasszal egy kirándulásba.
+
+<iframe src="https://www.google.com/maps/embed?pb=!1m24!1m12!1m3!1d56096.08063125156!2d18.3095749904384!3d47.342020982866515!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!4m9!3e0!4m3!3m2!1d47.322924199999996!2d18.2852782!4m3!3m2!1d47.3895117!2d18.3872225!5e0!3m2!1shu!2shu!4v1627318305569!5m2!1shu!2shu" width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
 
 <h1>Északkeleti országrész</h1>
 
