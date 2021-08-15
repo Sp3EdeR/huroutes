@@ -2,7 +2,7 @@
 
 ## Pilis
 
-### Pilisszentlászló (utolsó frissítés: 2021 március)
+### Lepence / Pilisszentlászló (utolsó frissítés: 2021 március)
 7 pont
 
 A legjobb Budapest-környéki szerpentin, tűrhető útminőség, közepes forgalom.
@@ -11,17 +11,17 @@ A legjobb Budapest-környéki szerpentin, tűrhető útminőség, közepes forga
 
 <iframe src="https://www.google.com/maps/embed?pb=!1m24!1m12!1m3!1d51072.07157112342!2d19.02517801587691!3d47.719420842938725!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!4m9!3e0!4m3!3m2!1d47.673628099999995!2d19.0720109!4m3!3m2!1d47.765400299999996!2d18.9536001!5e0!3m2!1shu!2shu!4v1589888000942!5m2!1shu!2shu" width="100%" height="450" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0" loading="lazy"></iframe>
 
-### Dobogókő (utolsó frissítés: 2021 március)
+### Dobogókő (utolsó frissítés: 2021 augusztus)
 6 pont
 
-Jó szerpentin, tűrhető útminőség, közepes forgalom. Kevés az előzési lehetőség és kedvelt motoros útvonal. A Bp - Dobogókő felöli oldalon átlagosan nagyobb a forgalom, de a Dobogókő - Esztergom szakaszon is sok a turista jó időben.
+Jó szerpentin, közepes útminőség, közepes forgalom. Kevés az előzési lehetőség és kedvelt motoros útvonal. A Budapest - Dobogókő felöli oldalon átlagosan nagyobb a forgalom, de a Dobogókő - Esztergom szakaszon is sok a turista jó időben. A Dobogókő - Esztergom szakaszon helyenként eléggé összetöredezett az út, néha kanyarban.
 
 <iframe src="https://www.google.com/maps/embed?pb=!1m24!1m12!1m3!1d102152.91834589804!2d18.930978409743222!3d47.71487139748728!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!4m9!3e0!4m3!3m2!1d47.6472907!2d19.026671099999998!4m3!3m2!1d47.7671662!2d18.758060999999998!5e0!3m2!1shu!2shu!4v1589888207611!5m2!1shu!2shu" width="100%" height="450" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0" loading="lazy"></iframe>
 
-### Fellegvár (utolsó frissítés: 2021 március)
+### Fellegvár (utolsó frissítés: 2021 július)
 5 pont
 
-Kissé keskeny, sok parkolóval ahol vigyázni kell, rossz útminőség, de a jelölt irányban tűrhető, közepes forgalom.
+Kissé keskeny, rövid szerpentin melyen sok turista fordul meg. Az út mellett több helyen parkolók vannak, itt vigyázni kell a gyalogosok és parkolásból kiálló autók miatt. A csúcstól délre eső szakaszon frissen fel lettek töltve a kátyúk, így ezen a szakaszon mindkét irányban tűrhető az útminőség. Az északi felén lefelé nagyon rossz az útminőség, felfelé viszont többségében tűrhető. Ezért ajánlott inkább észak-déli irányban vezetni, vagy óvatosan menni lefelé.
 
 <iframe src="https://www.google.com/maps/embed?pb=!1m28!1m12!1m3!1d15163.29308036384!2d18.987314379652666!3d47.790816131361034!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!4m13!3e0!4m3!3m2!1d47.8018486!2d18.983227199999998!4m3!3m2!1d47.7938469!2d18.9833335!4m3!3m2!1d47.786107099999995!2d18.9673902!5e0!3m2!1shu!2shu!4v1589888351272!5m2!1shu!2shu" width="100%" height="450" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0" loading="lazy"></iframe>
 
@@ -67,7 +67,7 @@ A 10-es útról felkanyarodva egy új burkolattal ellátott, de keskeny út veze
 ### Héreg (utolsó frissítés: 2021 március)
 6 pont
 
-Kissé keskeny és nagyon rövid, tökéletes útminőség, alacsony forgalom. Egyre népszerűbb motoros útvonal, azonban az átmenő forgalom átlagos így ha kevésbé forgalmas időszakoban alkalmas egy tempósabb autózásra. Kiemelten jó (és ezáltal népszerű) a Bajna és Héreg közötti szakasz.
+Kissé keskeny és nagyon rövid, tökéletes útminőség, alacsony forgalom. Egyre népszerűbb motoros útvonal, azonban az átmenő forgalom átlagos így ha kevésbé forgalmas időszakoban alkalmas egy tempósabb autózásra. Kiemelten jó (és ezáltal népszerű) a Bajna és Héreg közötti szakasz. Könnyen meg lehet fordulni a Héregi Sportpályánál és Bajnán az első mellékutcában.
 
 [Bemutató videó Draskovics Andristól](https://youtu.be/xDhJktK-ca4)
 
