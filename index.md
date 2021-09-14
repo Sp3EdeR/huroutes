@@ -120,9 +120,10 @@ A legjobb magyar szerpentin mind közül. Jó útminőség, alacsony-közepes fo
 
 <iframe src="https://www.google.com/maps/embed?pb=!1m24!1m12!1m3!1d100168.46582498758!2d20.550642403296674!3d48.04802562070628!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!4m9!3e0!4m3!3m2!1d47.9823534!2d20.433000699999997!4m3!3m2!1d48.104963999999995!2d20.622595!5e0!3m2!1shu!2shu!4v1589886977909!5m2!1shu!2shu" width="100%" height="450" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0" loading="lazy"></iframe>
 
-### Bükk / Lillafüred-Mályinka
+### Bükk / Lillafüred-Mályinka (utolsó frissítés: 2021 június, Google Street View: 2021 július)
+4 pont
 
-Rossz útminőségre lehet számítani.
+Lillafüredtől az Ómassai elágazásig az út szűk, de hangulatos és elfogadható minőségű. Ezután a Bánkúti elágazásig közepes útminőség várható, kellemes vonalvezetés mellett. Azonban az elágazás utáni harmadik szakasz sokszor nagyon szűk, förtelmes állapotú, és csak lecsorogni lehet rajta.
 
 <iframe src="https://www.google.com/maps/embed?pb=!1m24!1m12!1m3!1d42611.9198519277!2d20.555377375210885!3d48.1247986208386!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!4m9!3e0!4m3!3m2!1d48.104963999999995!2d20.622595!4m3!3m2!1d48.152504699999994!2d20.498784399999998!5e0!3m2!1shu!2shu!4v1589887345567!5m2!1shu!2shu" width="100%" height="450" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0" loading="lazy"></iframe>
 
