@@ -111,7 +111,7 @@ Ezen a rövid útszakaszon igazán kellemes kilátásban gyönyörködhetünk, a
 
 ## Bükk
 
-### Bükk / 2505 (utolsó frissítés: 2021 június)
+### 2505 (utolsó frissítés: 2021 június)
 8 pont
 
 A legjobb magyar szerpentin mind közül. Jó útminőség, alacsony-közepes forgalom, időnként rendőrök találhatóak erre. Ezen a szerpentinen szinte megszakítás nélkül, folyamatosan kanyarogni lehet, szép erdei környezetben. A kanyarok viszonylag szűkek, bár hagynak tempós közlekedést. Az úton hirtelen váltakozó fényviszonyok nehezítik helyenként az út beláthatóságát, ezért érdemes vigyázni ilyen helyeken. Néhány helyen a padka kevésbé ápolt, illetve vannak kanyarok ahol a "szakadék"-ot nem védi korlát, itt érdemes visszavenni a tempóból.
@@ -120,35 +120,44 @@ A legjobb magyar szerpentin mind közül. Jó útminőség, alacsony-közepes fo
 
 <iframe src="https://www.google.com/maps/embed?pb=!1m24!1m12!1m3!1d100168.46582498758!2d20.550642403296674!3d48.04802562070628!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!4m9!3e0!4m3!3m2!1d47.9823534!2d20.433000699999997!4m3!3m2!1d48.104963999999995!2d20.622595!5e0!3m2!1shu!2shu!4v1589886977909!5m2!1shu!2shu" width="100%" height="450" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0" loading="lazy"></iframe>
 
-### Bükk / Lillafüred-Mályinka (utolsó frissítés: 2021 június, Google Street View: 2021 július)
+### Lillafüred-Mályinka (utolsó frissítés: 2021 június, Google Street View: 2021 július)
 4 pont
 
 Lillafüredtől az Ómassai elágazásig az út szűk, de hangulatos és elfogadható minőségű. Ezután a Bánkúti elágazásig közepes útminőség várható, kellemes vonalvezetés mellett. Azonban az elágazás utáni harmadik szakasz sokszor nagyon szűk, förtelmes állapotú, és csak lecsorogni lehet rajta.
 
 <iframe src="https://www.google.com/maps/embed?pb=!1m24!1m12!1m3!1d42611.9198519277!2d20.555377375210885!3d48.1247986208386!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!4m9!3e0!4m3!3m2!1d48.104963999999995!2d20.622595!4m3!3m2!1d48.152504699999994!2d20.498784399999998!5e0!3m2!1shu!2shu!4v1589887345567!5m2!1shu!2shu" width="100%" height="450" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0" loading="lazy"></iframe>
 
-### Bükk / Mexikóvölgy
+### Mexikóvölgy
 5 pont
 
 Ez egy rally útvonal, így érdemes felkészülni a kissé nehézkesebb közlekedésre. Nagyon keskeny, csak felfelé lehet haladósabban közlekedni, nagyon rossz útminőség. Néha szembeforgalom jön, amikor általában valakinek állóra kell fékezni. Nagyon élvezhető, de nagyon észnél kell lenni, vagy biztosított úton kell menni.
 
 <iframe src="https://www.google.com/maps/embed?pb=!1m24!1m12!1m3!1d30160.11801631419!2d20.681408026723144!3d48.07544540802806!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!4m9!3e0!4m3!3m2!1d48.0868922!2d20.7149269!4m3!3m2!1d48.0679441!2d20.633659299999998!5e0!3m2!1shu!2shu!4v1589887152544!5m2!1shu!2shu" width="100%" height="450" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0" loading="lazy"></iframe>
 
+### Balaton (utolsó frissítés: 2021 szeptember)
+6 pont
+
+Egy rövid, szépen felújított, rövid útvonal köti össze a bükki Balaton települést Borsodnádasddal. Az utat nemrég újították fel, így a felülete nagyon jó állapotú, sima. Az útvonal keleti szakaszán, Balatontól a hegytetőig veszettül csúszós fehér aszfalt van, amelyen még egy meleg nyári napon is bőven korcsolyázni lehet. Emiatt érdemes inkább Balaton irányából megcsinálni ezt a szakaszt. A hegytetőtől lefelé megfelelő minőségű és normál tapadású aszfalttal folytatódik az útvonal, és a legvégén két nagyon szűk visszafordítóban végződik. A szakasznak közepes - alacsony forgalma van és egyben kitűnő átvezető szakasznak lehet használni a 2505-ös / 24-es utak és a Hagony-Zabari illetve Ceredi szerpentinek között.
+
+Délről a Balaton felé vezető útvonal is kifejezetten kellemesen kanyarog, de ott sokkal nagyobb a forgalom is.
+
+<iframe src="https://www.google.com/maps/embed?pb=!1m24!1m12!1m3!1d10656.546836651556!2d20.274454039703873!3d48.10759846590404!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!4m9!3e0!4m3!3m2!1d48.10715!2d20.30142!4m3!3m2!1d48.1058497!2d20.2649856!5e0!3m2!1shu!2shu!4v1631629380828!5m2!1shu!2shu" width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+
 ## Mátra
 
-### Mátra / 24 (utolsó frissítés: 2021 június)
+### 24 (utolsó frissítés: 2021 szeptember)
 8 pont
 
-Magyarország egyik legjobb szerpentinje, amit sajnos az átutazó forgalom nehezen élvezhetővé tesz gyakran. Érdemes nagyon korai, vagy esetleg délutáni órákban próbálkozni. Izgalmas vonalvezetés, nagyon jó útminőség jellemzi a Mátrafüred és Parádsasvár közti szakaszt. Épp ezért ez a szakasz a legforgalmasabb. Nagy forgalom, rendőrök szinte mindig vannak itt. A Sirok és Eger közti szakaszon is találhatunk érdekesebb kanyarokat, ez is jó szakasz alacsonyabb forgalommal. Ezen a szerpentinünkön van az egyik legszélesebb út.
+Magyarország egyik legjobb szerpentinje, amit sajnos az átutazó forgalom nehezen élvezhetővé tesz gyakran. Érdemes nagyon korai, vagy esetleg délutáni órákban próbálkozni. Izgalmas vonalvezetés, nagyon jó útminőség jellemzi a Mátrafüred és Parádsasvár közti szakaszt. Épp ezért ez a szakasz a legforgalmasabb. Kiemelten nagy forgalom van ezen a részen majdnem mindig. A 2021-es sebességmérés csökkentés előtt nagyon sokszor voltak itt rendőrök is, de ez újabban nagymértékben csökkent. A Sirok és Eger közti szakaszon is találhatunk érdekesebb kanyarokat, ez is jó szakasz alacsonyabb forgalommal. Ezen a szerpentinünkön van az egyik legszélesebb út.
 
 [Bemutató videó Draskovics Andristól](https://youtu.be/EZHj94m7IBw?t=334)
 
 <iframe src="https://www.google.com/maps/embed?pb=!1m24!1m12!1m3!1d42822.10503534959!2d19.970889648711044!3d47.87383605723462!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!4m9!3e0!4m3!3m2!1d47.8340767!2d19.967095699999998!4m3!3m2!1d47.9131741!2d19.987891299999998!5e0!3m2!1shu!2shu!4v1589886403641!5m2!1shu!2shu" width="100%" height="450" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0" loading="lazy"></iframe>
 
-### Mátra / 2408 (utolsó frissítés: 2021 június)
+### 2408 (utolsó frissítés: 2021 szeptember)
 6 pont
 
-Jó vonalvezetésű, keskeny útszakasz át az erdőkön. Az útminőség eléggé vegyes, időnként töredezett az aszfalt a kanyarban is, máshol meg teljesen felújított állapotban található. Párszor megszakítják lakott szakaszok a ritmust. A forgalma alacsony, főleg a 24-eshez képest. A szakasz nagyrészt kellemes erdei kilátást nyújt.
+Jó vonalvezetésű, keskeny útszakasz át az erdőkön. Csak párszor szakítják meg lakott szakaszok a ritmust.  Az aszfalt frissen fel lett újítva a nyugati felén az útvonalnak, így ez a része az útnak kifejezetten jó minőségű és igencsak élvezhető. Sajnos a Galyatetőtől keletre húzódó szakasz teljesen tönkrement és a kátyúk miatt szinte használtatlan már. Mivel ez az utóbbi - nagyon rossz rész - köti össze a 24-essel amerre a túrázást jellemzően folytatni lehet, csak 6 pontot kap a szakasz, pedig a nyugati fele 7-et is érne. A forgalma az útfelújítás óta erősen nőtt, bár a 24-eshez képest még mindig alacsonyabb. Érdemes hétköznap, vagy korai, illetve késői órákban jönni erre. A szakasz nagyrészt kellemes erdei kilátást nyújt.
 
 Budapest felől érkezve, csak Pest megyei matricával, elég gyorsan megközelíthető a 21-esen keresztül. A tömött, forgalmas nyári napokon gyakran érdemes lehet inkább ezen az úton közelíteni Parádsasvár felé mint Gyöngyös felől.
 
@@ -158,23 +167,21 @@ Budapest felől érkezve, csak Pest megyei matricával, elég gyorsan megközel�
 
 ## Egyéb
 
-### Ceredi Szerpentin (utolsó frissítés: 2021 június)
+### Ceredi Szerpentin (utolsó frissítés: 2021 szeptember)
 8 pont
 
-Az egyik legjobb magyar szerpentin. Nagyon jó vonalvezetés, vannak szűk és kevésbé szűk kanyarok, jó a ritmusuk. Sok az emelkedő, lejtő és döntött kanyar is, így nagy a dinamikája. Jó útminőség Cered irányából, közepes útminőség Zagyvaróna irányából. Valamivel keskenyebb, mint a 24-es. Alacsony a forgalom az úton, jó eséllyel lehet haladni rendesen. Rónabányához közel van 1-2 pár nagyon éles visszafordító ahol nagyon le kell lassítani, erre fontos koncentrálni.
+Az egyik legjobb magyar szerpentin. Nagyon jó vonalvezetés, vannak szűk és kevésbé szűk kanyarok, jó a ritmusuk. Sok az emelkedő, lejtő és döntött kanyar is, így nagy a dinamikája. Még sikán is akad pár. Jó útminőség Cered irányából, közepes útminőség Zagyvaróna irányából. Valamivel keskenyebb, mint a 24-es. Alacsony a forgalom az úton, jó eséllyel lehet zavartalanul haladni. Rónabányához közel van pár nagyon éles, szűkülő visszafordító ahol igencsak le kell lassítani, erre fontos koncentrálni.
 
 <iframe src="https://www.google.com/maps/embed?pb=!1m24!1m12!1m3!1d3487.6403431963345!2d19.877696856291614!3d48.11955682276526!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!4m9!3e0!4m3!3m2!1d48.142944299999996!2d19.960096099999998!4m3!3m2!1d48.116059799999995!2d19.864380399999998!5e0!3m2!1shu!2shu!4v1593378242234!5m2!1shu!2shu" width="100%" height="450" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0" loading="lazy"></iframe>
 
-### Hangony - Zabar (utolsó frissítés: 2021 június)
+### Hangony - Zabar (utolsó frissítés: 2021 szeptember)
 7 pont
 
-Keletről nyugatra haladva ez az útvonal egy igazán hangulatos szakasz. Hangony után egy enyhén kanyargó, tempós útvonallal kezdődik, mely körül változatos és szép kilátásban gyönyörködhetünk. A Megyehatárhoz közeledve hegyessé válik a környezet és egy szűk, izgalmas szerpentin dobja fel az adrenalint. Amennyiben nyugat felé haladunk, nagyon vigyázzunk az [utolsó, lejtmeneti hajtűkanyarnál](https://goo.gl/maps/nQ2WiaupZrbcq7Rh6), ugyanis itt könnyen el lehet szállni nagy tempónál. Ez az útvonal egy tökéletes bevezető a Ceredi szerpentinhez. Az útminőség nagyon jó.
+Keletről nyugatra haladva ez az útvonal egy igazán hangulatos szakasz. Hangony után egy enyhén kanyargó, tempós útvonallal kezdődik, mely körül változatos és szép kilátásban gyönyörködhetünk. A Megyehatárhoz közeledve hegyessé válik a környezet és egy szűk, rövid, izgalmas szerpentin dobja fel az adrenalint. Amennyiben nyugat felé haladunk, nagyon vigyázzunk az [utolsó, lejtmeneti hajtűkanyarnál](https://goo.gl/maps/nQ2WiaupZrbcq7Rh6), ugyanis itt könnyen el lehet szállni nagy tempónál. Ez az útvonal egy tökéletes bevezető a Ceredi szerpentinhez. Az útminőség nagyon jó.
+
+Eger felől a Balaton településen keresztül érdemes megközelíteni.
 
 <iframe src="https://www.google.com/maps/embed?pb=!1m24!1m12!1m3!1d42565.14252409505!2d20.101087828672902!3d48.18115852244082!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!4m9!3e0!4m3!3m2!1d48.2235623!2d20.191308499999998!4m3!3m2!1d48.142228499999995!2d20.0533947!5e0!3m2!1shu!2shu!4v1597068491624!5m2!1shu!2shu" width="100%" height="450" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0" loading="lazy"></iframe>
-
-### Balaton - Borsodnádasd
-
-<iframe src="https://www.google.com/maps/embed?pb=!1m24!1m12!1m3!1d17921.193568134328!2d20.28344279654065!3d48.11017440144467!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!4m9!3e0!4m3!3m2!1d48.1054363!2d20.3048941!4m3!3m2!1d48.1121858!2d20.2583485!5e0!3m2!1shu!2shu!4v1589887504826!5m2!1shu!2shu" width="100%" height="450" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0" loading="lazy"></iframe>
 
 <h1>Balaton környéke</h1>
 
@@ -230,4 +237,4 @@ Az alábbi egy lehetőség a kelet-mecseki utak teljes körtúrájára. Az egyes
 <iframe src="https://www.google.com/maps/embed?pb=!1m38!1m8!1m3!1d44221.58431986787!2d18.253648!3d46.1537525!3m2!1i1024!2i768!4f13.1!4m27!3e0!4m5!1s0x4742bacbb0452627%3A0xf5dcfc427cbc6ec!2zTcOhbmZhLCA3MzA0!3m2!1d46.1620219!2d18.2424376!4m5!1s0x4742bd8f7ad27907%3A0x400c4290c1e2b00!2zU3rDoXN6dsOhcg!3m2!1d46.2739639!2d18.377478099999998!4m3!3m2!1d46.2560837!2d18.499167099999998!4m3!3m2!1d46.1704307!2d18.3318212!4m5!1s0x4742bacbb0452627%3A0xf5dcfc427cbc6ec!2zTcOhbmZh!3m2!1d46.1620219!2d18.2424376!5e0!3m2!1shu!2shu!4v1589917703050!5m2!1shu!2shu" width="100%" height="450" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0" loading="lazy"></iframe>
 
 <link rel="stylesheet" href="huroutes.css">
-<script src="toc.js"></script>
+<script src="huroutes.js"></script>

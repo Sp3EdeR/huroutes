@@ -1,4 +1,8 @@
 $(document).ready(function() {
+    // Header content adjustment
+    $('#title .credits.left').first().html('Készítette a HU csapat. Ha segítenél a lap szerkesztésében, <a href="https://github.com/Sp3EdeR/huroutes" target="_blank">itt</a> tudod megtenni.')
+
+    // TOC
     $('<div id="toc"><h1>Tartalomjegyzék</h1><ul id="tocList"></ul><hr/></div>').insertAfter('div#title')
     
     var ulStack = [ $(tocList) ];
