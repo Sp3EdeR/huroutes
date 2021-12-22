@@ -1,0 +1,1 @@
+A 10-es útról felkanyarodva egy új burkolattal ellátott, de keskeny út vezet a Hilltop borászathoz ahol egy kiváló panorámájú étterem is van. Az út tovább vezet a szőlősök között Tata irányába, de ott az út minősége már nem túl jó.

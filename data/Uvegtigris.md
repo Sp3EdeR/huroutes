@@ -1,0 +1,1 @@
+A Pilisjászfaluról Tinnye felé vezető úton megy az M1 felé a kamion és az autós forgalom nagy része és sajnos ez meg is viseli az utat. Tinnye és Piliscsaba között is ráférne már egy felújítás, valamint az Üvegtigris miatt nagy forgalomra lehet számítani a Garancsi tónál, ahol a legendás Üvegtigris büfé is van.
