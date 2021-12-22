@@ -96,6 +96,13 @@
 				"ttl":"Egyéb",
 				"cnt":[
 					{
+						"ttl":"Szépjuhászné út",
+						"md":"data/Szepjuhaszne.md",
+						"kml":"data/Szepjuhaszne.kml",
+						"rat":4,
+						"upd":"2021 október"
+					},
+{
 						"ttl":"Etyek - Alcsútdoboz",
 						"md":"data/EtyekAlcsutdoboz.md",
 						"kml":"data/EtyekAlcsutdoboz.kml",
