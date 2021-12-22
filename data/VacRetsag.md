@@ -1,0 +1,1 @@
+A 2-es út egy elég forgalmas útszakasz, de a kanyargós részeknél a nagy kamionforgalom miatt kapaszkodósávok is vannak. Az út minősége jó, azonban elég gyakran trafipaxoznak a települések és a - jól belátható - kereszteződéseknél található sebességkorlátozások környékén.

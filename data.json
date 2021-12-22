@@ -1,0 +1,253 @@
+[
+	{
+		"ttl":"Budapest környéke",
+		"cnt":[
+			{
+				"ttl":"Pilis",
+				"cnt":[
+					{
+						"ttl":"Lepence / Pilisszentlászló",
+						"md":"data/Lepence.md",
+						"kml":"data/Lepence.kml",
+						"rat":7,
+						"upd":"2021 március"
+					},
+					{
+						"ttl":"Dobogókő",
+						"md":"data/Dobogoko.md",
+						"kml":"data/Dobogoko.kml",
+						"rat":6,
+						"upd":"2021 augusztus"
+					},
+					{
+						"ttl":"Fellegvár",
+						"md":"data/Fellegvar.md",
+						"kml":"data/Fellegvar.kml",
+						"rat":5,
+						"upd":"2021 július"
+					},
+					{
+						"ttl":"Szob - Letkés - Esztergom",
+						"md":"data/SzobLetkesEsztergom.md",
+						"kml":"data/SzobLetkesEsztergom.kml",
+						"rat":6,
+						"upd":"2021 augusztus"
+					},
+					{
+						"ttl":"Vác - Rétság",
+						"md":"data/VacRetsag.md",
+						"kml":"data/VacRetsag.kml",
+						"rat":5
+					},
+					{
+						"ttl":"Bánk - Aszód",
+						"md":"data/BankAszod.md",
+						"kml":"data/BankAszod.kml",
+						"rat":6,
+						"upd":"2021 április"
+					},
+					{
+						"ttl":"Üvegtigris",
+						"md":"data/Uvegtigris.md",
+						"kml":"data/Uvegtigris.kml",
+						"rat":5
+					}
+				]
+			},
+			{
+				"ttl":"Gerecse Környéke",
+				"cnt":[
+					{
+						"ttl":"Hilltop Borászat",
+						"md":"data/Hilltop.md",
+						"kml":"data/Hilltop.kml",
+						"rat":4
+					},
+					{
+						"ttl":"Héreg",
+						"md":"data/Hereg.md",
+						"kml":"data/Hereg.kml",
+						"rat":7,
+						"upd":"2021 március"
+					},
+					{
+						"ttl":"Gerecsei Bejáróút: Tát - Tatabánya",
+						"md":"data/GerecseTatTatabanya.md",
+						"kml":"data/GerecseTatTatabanya.kml",
+						"upd":"2021 március",
+						"bkg":true
+					},
+					{
+						"ttl":"Gerecsei Bejáróút: Esztergom - Tata",
+						"md":"data/GerecseEsztergomTata.md",
+						"kml":"data/GerecseEsztergomTata.kml",
+						"bkg":true
+					}
+				]
+			},
+			{
+				"ttl":"Egyéb",
+				"cnt":[
+					{
+						"ttl":"Etyek - Alcsútdoboz",
+						"md":"data/EtyekAlcsutdoboz.md",
+						"kml":"data/EtyekAlcsutdoboz.kml",
+						"rat":5,
+						"upd":"2021 július"
+					},
+					{
+						"ttl":"Söréd - Gánt",
+						"md":"data/SoredGant.md",
+						"kml":"data/SoredGant.kml",
+						"rat":5,
+						"upd":"2021 július"
+					}
+				]
+			}
+		]
+	},
+	{
+		"ttl":"Északkeleti országrész",
+		"cnt":[
+			{
+				"ttl":"Bükk",
+				"cnt":[
+					{
+						"ttl":"2505",
+						"md":"data/2505.md",
+						"kml":"data/2505.kml",
+						"rat":8,
+						"upd":"2021 június"
+					},
+					{
+						"ttl":"Lillafüred - Mályinka",
+						"md":"data/LillafuredMalyinka.md",
+						"kml":"data/LillafuredMalyinka.kml",
+						"rat":4,
+						"upd":"2021 június"
+					},
+					{
+						"ttl":"Mexikóvölgy",
+						"md":"data/Mexikovolgy.md",
+						"kml":"data/Mexikovolgy.kml",
+						"rat":5
+					},
+					{
+						"ttl":"Balaton",
+						"md":"data/Balaton.md",
+						"kml":"data/Balaton.kml",
+						"rat":6,
+						"upd":"2021 szeptember"
+					}
+				]
+			},
+			{
+				"ttl":"Mátra",
+				"cnt":[
+					{
+						"ttl":"24",
+						"md":"data/24.md",
+						"kml":"data/24.kml",
+						"rat":8,
+						"upd":"2021 szeptember"
+					},
+					{
+						"ttl":"2408",
+						"md":"data/2408.md",
+						"kml":"data/2408.kml",
+						"rat":6,
+						"upd":"2021 szeptember"
+					}
+				]
+			},
+			{
+				"ttl":"Egyéb",
+				"cnt":[
+					{
+						"ttl":"Ceredi Szerpentin",
+						"md":"data/Cered.md",
+						"kml":"data/Cered.kml",
+						"rat":8,
+						"upd":"2021 szeptember"
+					},
+					{
+						"ttl":"Hagony - Zabar",
+						"md":"data/HagonyZabar.md",
+						"kml":"data/HagonyZabar.kml",
+						"rat":7,
+						"upd":"2021 szeptember"
+					}
+				]
+			}
+		]
+	},
+	{
+		"ttl":"Balaton Környéke",
+		"cnt":[
+			{
+				"ttl":"Kőröshegyi Szerpentin",
+				"md":"data/Koroshegy.md",
+				"kml":"data/Koroshegy.kml"
+			},
+			{
+				"ttl":"Balaton-felvidéki Bejáróút",
+				"kml":"data/BalatonFelvidek.kml",
+				"bkg":true
+			},
+			{
+				"ttl":"Bakony",
+				"md":"data/Bakony.md",
+				"kml":"data/Bakony.kml",
+				"bkg":true
+			}
+		]
+	},
+	{
+		"ttl":"Déli Országrész",
+		"cnt":[
+			{
+				"ttl":"Nyugat-Mecsek",
+				"cnt":[
+					{
+						"ttl":"Pécs - Orfű",
+						"md":"data/PecsOrfu.md",
+						"kml":"data/PecsOrfu.kml",
+						"rat":8,
+						"upd":"2021 május"
+					},
+					{
+						"ttl":"Melegmányi út",
+						"md":"data/Melegmanyi.md",
+						"kml":"data/Melegmanyi.kml",
+						"rat":6,
+						"upd":"2021 május"
+					},
+					{
+						"ttl":"Nyugat-Mecseki Bejáróút",
+						"md":"data/NyugatMecsek.md",
+						"kml":"data/NyugatMecsek.kml",
+						"bkg":true
+					}
+				]
+			},
+			{
+				"ttl":"Kelet-Mecsek",
+				"cnt":[
+					{
+						"ttl":"6-os út",
+						"md":"data/6.md",
+						"kml":"data/6.kml",
+						"rat":5,
+						"upd":"2021 május"
+					},
+					{
+						"ttl":"Kelet-Mecseki Bejáróút",
+						"md":"data/KeletMecsek.md",
+						"kml":"data/KeletMecsek.kml",
+						"bkg":true
+					}
+				]
+			}
+		]
+	}
+]

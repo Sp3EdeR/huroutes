@@ -1,0 +1,1 @@
+Lillafüredtől az Ómassai elágazásig az út szűk, de hangulatos és elfogadható minőségű. Ezután a Bánkúti elágazásig közepes útminőség várható, kellemes vonalvezetés mellett. Azonban az elágazás utáni harmadik szakasz sokszor nagyon szűk, förtelmes állapotú, és csak lecsorogni lehet rajta.

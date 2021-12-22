@@ -1,0 +1,174 @@
+/*
+ * Page layout
+ */
+
+body {
+  padding-top: 0px;
+  overflow: hidden;
+}
+
+/*
+ * Sidebar
+ */
+
+@media (min-width: 768px) {
+  #sidebar {
+    position: fixed;
+    top: 0px;
+    bottom: 0px;
+    left: 0px;
+    z-index: 1000;
+    display: block;
+    padding: 0;
+    overflow-x: hidden;
+    overflow-y: auto;
+    border-right: 1px solid #eee;
+  }
+}
+
+.sidebar-header {
+  padding: 10px;
+}
+
+.title {
+  font-family: 'OpenSansLight', "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-weight: normal;
+  text-align: center;
+}
+
+.sub-title {
+  font-family: 'OpenSansLight', "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-weight: bold;
+  text-align: center;
+}
+
+.contrib {
+  color: #999;
+  font-size: 0.8em;
+  text-align: right;
+}
+
+a[data-toggle="collapse"] {
+  position: relative;
+}
+
+.dropdown-toggle::after {
+  display: block;
+  position: absolute;
+  top: 50%;
+  right: 20px;
+  transform: translateY(-50%);
+}
+
+#sidebar {
+  /* don't forget to add all the previously mentioned styles here too */
+  background: #13192e;
+  color: #fff;
+  transition: all 0.3s;
+}
+
+#sidebar .sidebar-header {
+  background: #13192e;
+}
+
+#menubox > ul {
+  border-bottom: 1px solid #eee;
+  border-top: 1px solid #eee;
+}
+
+#menubox > ul li a.dropdown-toggle {
+  color: #ccc;
+  padding: 10px;
+  font-size: 1.1em;
+  display: block;
+}
+#menubox > ul li a.dropdown-toggle:hover {
+  color: #919fd8;
+  background: #1b2342;
+}
+
+#menubox > ul ul a.dropdown-toggle {
+  color: #ccc;
+  padding-left: 20px !important;
+}
+
+#menubox > ul ul ul a.dropdown-toggle {
+  color: #ccc;
+  padding-left: 40px !important;
+}
+
+#sidebar .panel {
+  background: #1e3450 !important;
+  margin-top: 10px;
+  padding: 10px;
+  text-align: justify;
+}
+
+.header-container {
+  padding: 3px;
+}
+
+.header-container::after {
+  content: "";
+  clear: both;
+  display: table;
+}
+
+.header-update {
+  float: left;
+  margin-top: 0.1em;
+}
+
+.stars-outer {
+  padding-bottom: 0.5em;
+  position: relative;
+  font-family: FontAwesome;
+  font-size: 1.2em;
+  float: right;
+}
+ 
+.stars-outer::before {
+  content: "\f006 \f006 \f006 \f006 \f006";
+}
+ 
+.stars-inner {
+  position: absolute;
+  top: 0;
+  left: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  width: 0;
+}
+ 
+.stars-inner::before {
+  content: "\f005 \f005 \f005 \f005 \f005";
+  color: #f8ce0b;
+}
+
+/*
+ * Map view
+ */
+
+.main {
+  padding: 0px;
+  height: 100vh;
+}
+@media (min-width: 768px) {
+  .main {
+    padding-right: 0px;
+    padding-left: 0px;
+  }
+}
+.main .page-header {
+  margin-top: 0;
+}
+
+#map {
+  /*position: relative;*/
+  top: 0px;
+  bottom: 0px;
+  height: 100%;
+  width: 100%;
+  border-left: 1px solid #aaa;
+  padding: 0;
+}
