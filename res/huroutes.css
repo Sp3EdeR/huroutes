@@ -3,8 +3,8 @@
  */
 
 body {
-  padding-top: 0px;
-  overflow: hidden;
+  overflow-x: hidden;
+  padding: 0;
 }
 
 /*
@@ -12,17 +12,21 @@ body {
  */
 
 @media (min-width: 768px) {
+  body {
+    overflow: hidden;
+  }
+
   #sidebar {
-    position: fixed;
-    top: 0px;
-    bottom: 0px;
-    left: 0px;
-    z-index: 1000;
+    border-right: 1px solid #eee;
+    bottom: 0;
     display: block;
-    padding: 0;
+    left: 0;
     overflow-x: hidden;
     overflow-y: auto;
-    border-right: 1px solid #eee;
+    padding: 0;
+    position: fixed;
+    top: 0;
+    z-index: 1000;
   }
 }
 
@@ -45,6 +49,7 @@ body {
 .contrib {
   color: #999;
   font-size: 0.8em;
+  padding: 10px;
   text-align: right;
 }
 
@@ -55,13 +60,12 @@ a[data-toggle="collapse"] {
 .dropdown-toggle::after {
   display: block;
   position: absolute;
-  top: 50%;
   right: 20px;
+  top: 50%;
   transform: translateY(-50%);
 }
 
 #sidebar {
-  /* don't forget to add all the previously mentioned styles here too */
   background: #13192e;
   color: #fff;
   transition: all 0.3s;
@@ -76,23 +80,23 @@ a[data-toggle="collapse"] {
   border-top: 1px solid #eee;
 }
 
-#menubox > ul li a.dropdown-toggle {
+#menubox ul li a.dropdown-toggle {
   color: #ccc;
-  padding: 10px;
-  font-size: 1.1em;
   display: block;
+  font-size: 1.1em;
+  padding: 10px;
 }
-#menubox > ul li a.dropdown-toggle:hover {
-  color: #919fd8;
+#menubox ul li a.dropdown-toggle:hover {
   background: #1b2342;
+  color: #919fd8;
 }
 
-#menubox > ul ul a.dropdown-toggle {
+#menubox ul ul a.dropdown-toggle {
   color: #ccc;
   padding-left: 20px !important;
 }
 
-#menubox > ul ul ul a.dropdown-toggle {
+#menubox ul ul ul a.dropdown-toggle {
   color: #ccc;
   padding-left: 40px !important;
 }
@@ -104,27 +108,57 @@ a[data-toggle="collapse"] {
   text-align: justify;
 }
 
-.header-container {
+.route-header {
   padding: 3px;
 }
 
-.header-container::after {
-  content: "";
+.route-header::after {
   clear: both;
+  content: "";
   display: table;
 }
 
-.header-update {
+.route-header-update {
   float: left;
   margin-top: 0.1em;
 }
 
-.stars-outer {
-  padding-bottom: 0.5em;
-  position: relative;
+/*
+ * Map view
+ */
+
+#main {
+  padding: 0;
+  height: 50vh;
+  margin-top: 0;
+}
+
+#map {
+  /*position: relative;*/
+  top: 0;
+  bottom: 0;
+  height: 100%;
+  width: 100%;
+  border-left: 1px solid #aaa;
+  padding: 0;
+}
+
+@media (min-width: 768px) {
+  #main {
+    height: 100vh;
+  }
+}
+
+/*
+ * Misc
+ */
+
+ .stars-outer {
+  float: right;
   font-family: FontAwesome;
   font-size: 1.2em;
-  float: right;
+  padding-bottom: 0.5em;
+  position: relative;
 }
  
 .stars-outer::before {
@@ -132,43 +166,15 @@ a[data-toggle="collapse"] {
 }
  
 .stars-inner {
+  left: 0;
+  overflow: hidden;
   position: absolute;
   top: 0;
-  left: 0;
-  white-space: nowrap;
-  overflow: hidden;
   width: 0;
+  white-space: nowrap;
 }
  
 .stars-inner::before {
-  content: "\f005 \f005 \f005 \f005 \f005";
   color: #f8ce0b;
-}
-
-/*
- * Map view
- */
-
-.main {
-  padding: 0px;
-  height: 100vh;
-}
-@media (min-width: 768px) {
-  .main {
-    padding-right: 0px;
-    padding-left: 0px;
-  }
-}
-.main .page-header {
-  margin-top: 0;
-}
-
-#map {
-  /*position: relative;*/
-  top: 0px;
-  bottom: 0px;
-  height: 100%;
-  width: 100%;
-  border-left: 1px solid #aaa;
-  padding: 0;
+  content: "\f005 \f005 \f005 \f005 \f005";
 }
