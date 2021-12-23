@@ -15,4 +15,4 @@ jobs:
       - name: Ensure the jsonschema lib
         run: pip install jsonschema
       - name: Run the check
-        run: python ".github/scripts/validate-json-schema.py" data.json data.schema.json
+        run: python ".github/scripts/validate-database.py" data.json data.schema.json
