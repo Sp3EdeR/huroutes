@@ -1,0 +1,60 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "/data.schema.json",
+  "title": "huroutes db",
+  "description": "huroutes adatbázis validáció",
+  "type": "array",
+  "items": {
+    "description": "egy menü vagy egy útvonal definíciója",
+    "type": "object",
+    "oneOf": [
+      {
+        "properties": {
+          "ttl": { "$ref": "#/definitions/ttl" },
+          "cnt": { "$ref": "#" }
+        },
+        "additionalProperties": false,
+        "required": ["ttl", "cnt"]
+      },
+      {
+        "properties": {
+          "ttl": { "$ref": "#/definitions/ttl" },
+          "md": {
+            "description": "egy Markdown file helye, vagy escapelt markdown szöveg",
+            "type": "string",
+            "pattern": "^(data/[\\w-]+.md)|(.+(?<![.]md))$"
+          },
+          "kml": {
+            "description": "egy KML file helye",
+            "type": "string",
+            "pattern": "^data/[\\w-]+.kml$"
+          },
+          "rat": {
+            "description": "az út értékelése 1-10 között",
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 10
+          },
+          "upd": {
+            "description": "a legutóbbi frissítés dátuma, \"év hónap\" vagy \"év hónap nap\" formában",
+            "type": "string",
+            "pattern": "^\\d{4} (január|február|március|április|május|június|július|augusztus|szeptember|október|november|december)( [1-9][0-9]?)?$"
+          },
+          "bkg": {
+            "description": "ha igaz, az útvonal a háttérben jelenik meg, halvány színnel",
+            "type": "boolean"
+          }
+        },
+        "additionalProperties": false,
+        "required": ["ttl", "kml"]
+      }
+    ]
+  },
+  "definitions": {
+    "ttl": {
+      "description": "a menu vagy útvonal neve",
+      "type": "string",
+      "pattern": "^[^<>]*\\w[^<>]*$"
+    }
+  }
+}
