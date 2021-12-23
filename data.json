@@ -34,6 +34,13 @@
 						"upd":"2021 augusztus"
 					},
 					{
+						"ttl":"Kismaros - Márianosztra - Szob",
+						"md":"data/KismarosMarianosztraSzob.md",
+						"kml":"data/KismarosMarianosztraSzob.kml",
+						"rat":6,
+						"upd":"2021 november"
+					},
+					{
 						"ttl":"Vác - Rétság",
 						"md":"data/VacRetsag.md",
 						"kml":"data/VacRetsag.kml",
