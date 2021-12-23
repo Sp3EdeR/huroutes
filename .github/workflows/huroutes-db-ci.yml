@@ -1,0 +1,18 @@
+name: huroutes CI
+on:
+  # Triggers the workflow on push or pull request events but only for the $default-branch branch
+  push:
+    branches: [ $default-branch ]
+  pull_request:
+    branches: [ $default-branch ]
+  workflow_dispatch:
+
+jobs:
+  test-db:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Ensure the jsonschema lib
+        run: pip install jsonschema
+      - name: Run the check
+        run: python ".github/scripts/validate-json-schema.py" data.json data.schema.json
