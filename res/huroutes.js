@@ -1,3 +1,8 @@
+String.prototype.format = function () {
+    var args = arguments;
+    return this.replace(/\{(\d+)\}/g, function (m, n) { return args[n]; });
+};
+
 (function() {
 
 var markdown = new showdown.Converter();
@@ -67,22 +72,17 @@ function addDataItem(parentElem, item)
 function createMenuItem(elem, data)
 {
     var dropId = 'menu' + nextDropId++;
-    elem.append($('<a href="#' + dropId + '" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle"/>').html(data.ttl));
+    elem.append($('<a href="#{0}" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle"/>'.format(dropId)).html(data.ttl));
     if (data.md || data.kml || data.pnt)
-        console.error('Menu ' + data.ttl + ' contains route data that it should not.');
+        console.error('Menu {0} contains route data that it should not.'.format(data.ttl));
     return dropId;
 }
 
 function createMenuRouteItem(elem, data)
 {
-    if (!data.md)
-        console.warn('No description given for ' + data.ttl);
-    if (!data.rat && !data.bkg)
-        console.warn('No rating given for ' + data.ttl);
-
     elem.addClass('menuitem');
     var dropId = 'menu' + nextDropId++;
-    elem.append($('<a href="#' + dropId + '" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle"/>').html(data.ttl).click(onMenuClicked));
+    elem.append($('<a href="#{0}" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle"/>'.format(dropId)).html(data.ttl).click(onMenuClicked));
     var elemDiv = $('<div class="menu list-unstyled collapse panel"/>').prop('id', dropId);
     createInfoPanel(elemDiv, data);
     elem.append(elemDiv);
@@ -92,23 +92,26 @@ function createMenuRouteItem(elem, data)
 
 function createInfoPanel(elem, data)
 {
+    if (!data.rat && !data.bkg)
+        console.warn('No rating given for ' + data.ttl);
     if (data.rat || data.upd)
     {
-        var elemHeader = $('<div class="header-container"/>');
+        var elemHeader = $('<div class="route-header"/>');
         if (data.upd)
         {
-            elemHeader.append($('<p class="header-update"><i class="fa fa-clock-o"></i> ' + data.upd + '</p>'));
+            elemHeader.append($('<p class="route-header-update"><i class="fa fa-clock-o"></i> {0}</p>'.format(data.upd)));
         }
         if (data.rat)
         {
             var rating = normRating(data.rat);
-            elemHeader.append($('<div class="stars-outer"/>').append($('<div class="stars-inner"/>').css('width', rating * 10 + '%')));
+            elemHeader.append($('<div class="stars-outer"><div class="stars-inner" style="width:{0};"/></div>'.format(rating * 10 + '%')));
         }
         elem.append(elemHeader);
     }
     if (data.md)
     {
-        var addMarkdown = text => elem.append($(markdown.makeHtml(text)));
+        var descCont = $('<div class="route-desc"/>');
+        const addMarkdown = text => descCont.append($(markdown.makeHtml(text)));
         if (data.md.substr(-3) === '.md')
             $.ajax(data.md)
                 .then(addMarkdown, function () {
@@ -116,41 +119,78 @@ function createInfoPanel(elem, data)
                 });
         else
             addMarkdown(data.md);
+        elem.append(descCont);
     }
+    else
+        console.warn('No description given for ' + data.ttl);
+    elem.append($('<div class="route-links"/>'));
 }
 
 function addRoute(data)
 {
     const colors = [ '#833', '#944', '#a5423f', '#b04039', '#bc3d34', '#c7392e', '#d23427', '#dd2e20', '#e92618', '#f4190e', '#f00' ];
+    var routeId = 'route' + nextRouteId++;
     var rating = normRating(data.rat);
+    var pathWeight = 3 + (!data.bkg && rating / 2);
     var layer = L.geoJson(null, {
         filter: function(feature) {
-            return feature.geometry.type == "LineString";
+            if (feature.geometry.type == "LineString")
+            {
+                const makeLink = coord => {
+                    const link = 'https://www.google.com/maps/dir/?api=1&travelmode=driving&destination={0},{1}';
+                    return link.format(coord[1], coord[0]);
+                }
+                var coords = feature.geometry.coordinates;
+                var elem = $('li[data-routeid={0}] .route-links'.format(routeId));
+                elem.append($('<p>Navigálás a <a href="{0}">kezdő</a> vagy <a href="{1}">vég</a> pontra.</p>'
+                    .format(makeLink(coords[0]), makeLink(coords[coords.length - 1]))));
+                return true;
+            }
+            return false;
         },
         pane: data.bkg ? 'bkgRoutes' : 'shadowPane',
         style: {
             color: data.bkg ? colors[0] : colors[rating],
-            weight: 3 + (!data.bkg && rating / 2)
+            weight: pathWeight
+        },
+        focusedStyle: {
+            color: '#00f',
+            weight: pathWeight + 2
         }
     });
     layer.on('click', event => onRouteClicked(event.target));
-    layer._leaflet_id = 'route' + nextRouteId++;
+    layer.on('mouseover', event => event.target.focused || event.target.setStyle(event.target.options.focusedStyle));
+    layer.on('mouseout', event => event.target.focused || event.target.setStyle(event.target.options.style));
+    layer.routeId = routeId;
     omnivore.kml(data.kml, null, layer).addTo(map);
-    return layer._leaflet_id;
+    return routeId;
 }
 
 function onMenuClicked()
 {
     var routeId = $(this).parents('li').first().attr('data-routeid');
-    map._layers[routeId].fire('click');
+    map.eachLayer(layer => {
+        if (layer.routeId == routeId)
+            onRouteClicked(layer);
+    })
 }
 
 function onRouteClicked(layer)
 {
+    map.eachLayer(layer => {
+        if (layer.focused)
+        {
+            layer.setStyle(layer.options.style);
+            layer.focused = false;
+        }
+    });
+    layer.setStyle(layer.options.focusedStyle);
+    layer.focused = true;
+
     var bounds = layer.getBounds();
     map.flyToBounds(bounds);
 
-    var menuItem = $('li[data-routeid=' + layer._leaflet_id + ']');
+    var menuItem = $('li[data-routeid=' + layer.routeId + ']');
     var related = menuItem.parents('.collapse').add(menuItem.children('.collapse'));
     var unrelated = $('.collapse').not(related);
     unrelated.collapse('hide');
