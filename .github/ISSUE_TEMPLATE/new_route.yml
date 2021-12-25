@@ -1,0 +1,77 @@
+name: New Route / Új Útvonal
+description: |
+  Suggest a new route to the developers.
+  Új útvonal javaslása a fejlesztőknek.
+title: "[ROUTE]: "
+labels: ["enhancement"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Please fill this form out.
+        Kérlek töltsd ki az alábbi kérdőívet.
+  - type: input
+    id: route-name
+    attributes:
+      label: The route's name / Az út neve
+      description: |
+        The text of the menu item.
+        A menü benegyzés szövege.
+    validations:
+      required: true
+  - type: input
+    id: route-path
+    attributes:
+      label: The route / Az út
+      description: |
+        A link to a route plan that shows the route's path. If you attached a `kml` file instead, please enter "attached".
+        Egy link egy út tervre ami mutatja az útvonalat. Ha csatoltál egy `kml` filet, akkor kérlek írd azt, hogy "csatolva".
+    validations:
+      required: true
+  - type: textarea
+    id: route-description
+    attributes:
+      label: The route's description / Az útvonal leírása
+      description: |
+        How would you describe this route? (Markdown)
+        Hogy írnád le ezt az útvonalat? (Markdown)
+      placeholder: |
+        Útminőség
+        Forgalom
+        Veszélyek
+        Kilátás és látnivalók
+    validations:
+      required: true
+  - type: dropdown
+    id: route-rating
+    attributes:
+      label: Rating / Értékelés
+      description: |
+        The route's rating from 1 (worst) to 10 (best).
+        Az útvonal értékelése 1-től (legrosszabb) 10-ig (legjobb).
+      options:
+        - 1
+        - 2
+        - 3
+        - 4
+        - 5
+        - 6 
+        - 7
+        - 8
+        - 9
+        - 10
+  - type: input
+    id: route-date
+    attributes:
+      label: Last driven / Legutóbbi vezetés
+      description: |
+        When did you drive this route most recently?
+        Mikor vezettél ezen az úton legutóbb?
+    validations:
+      required: true
+  - type: checkboxes
+    id: route-background
+    attributes:
+      label: The route's type / Az útvonal típusa
+      options:
+        - label: Route is shown in the background / Háttérben mutatott útvonal

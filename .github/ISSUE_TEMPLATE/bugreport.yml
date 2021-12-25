@@ -1,0 +1,42 @@
+name: Bug Report / Hiba Bejelentés
+description: |
+  Report a bug with the functionality of the application.
+  Új hiba bejelentése a program funkcionalitásával kapcsolatban.
+title: "[BUG]: "
+labels: ["bug", "triage"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Please fill this form out.
+        Kérlek töltsd ki az alábbi kérdőívet.
+  - type: textarea
+    id: bug-description
+    attributes:
+      label: The bug's description / A hiba leírása
+      description: |
+        A clear and concise description of the bug.
+        Egy egyértelmű és tömör leírása a hibának.
+    validations:
+      required: true
+  - type: textarea
+    id: bug-expected
+    attributes:
+      label: The expected, correct behavior / A várt, helyes működés
+      description: |
+        What would you expect to happen instead of what you experienced?
+        Mit várnál, hogy történjen a tapasztaltak helyett?
+  - type: input
+    id: browser
+    attributes:
+      label: Your browser / A böngésződ
+      description: |
+        What is your web browser's name and version?
+        Mi a web böngésződ neve és verziója?
+  - type: textarea
+    id: bug-other
+    attributes:
+      label: Other info / Egyéb információ
+      description: |
+        Would you like to tell us anything else related to this bug?
+        Szeretnél még bármi mást mondani ezzel a buggal kapcsolatban?
