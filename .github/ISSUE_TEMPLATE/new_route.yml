@@ -67,8 +67,6 @@ body:
       description: |
         When did you drive this route most recently?
         Mikor vezettél ezen az úton legutóbb?
-    validations:
-      required: true
   - type: checkboxes
     id: route-background
     attributes:
