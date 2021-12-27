@@ -29,6 +29,10 @@ $(document).ready(function() {
         .fail(function () {
             console.error('Failed loading the route database.');
         });
+
+    // Init the nav selector
+    $('#options-dialog').on('hidden.bs.modal', updateOptions);
+    initNavSelector();
 });
 
 function initializeContent(data)
@@ -170,18 +174,56 @@ function addRoute(data)
             for (var i = 1; i < coords.length; ++i)
                 length += coords[i - 1].distanceTo(coords[i]);
             elem.append($('<p>Hossza: {0}km.</p>'.format((length / 1000).toFixed(1))));
-
-            const makeLink = coord => {
-                const link = 'https://www.google.com/maps/dir/?api=1&travelmode=driving&destination={0},{1}';
-                return link.format(coord.lat, coord.lng);
-            }
-            elem.append($('<p>Navigálás a <a href="{0}">kezdő</a> vagy <a href="{1}">vég</a> pontra.</p>'
-                .format(makeLink(coords[0]), makeLink(coords[coords.length - 1]))));
+            addNavigationLinks(elem, coords[0], coords[coords.length - 1]);
         }
     });
     layer.routeId = routeId;
     omnivore.kml(data.kml, null, layer).addTo(map);
     return routeId;
+}
+
+const navigationProviders = {
+    'Google': coord => {
+        const link = 'https://www.google.com/maps/dir/?api=1&travelmode=driving&destination={0},{1}';
+        return link.format(coord.lat, coord.lng);
+    },
+    'Waze': coord => {
+        const link = 'https://www.waze.com/ul?ll={0}%2C{1}&navigate=yes';
+        return link.format(coord.lat, coord.lng);
+    }
+}
+var selectedProvider = $.cookie('navProvider') || 'Google';
+
+function initNavSelector()
+{
+    var elem = $('#nav-options');
+    $.each(navigationProviders, (key, value) => {
+        elem.append(
+            $('<div><input type="radio" name="navProv" value="{0}" {1}> <label for="google">{0}</label></div>'
+                .format(key, key == selectedProvider ? 'checked' : '')));
+    });
+}
+
+function addNavigationLinks(elem, start, end)
+{
+    const planTo = coord => window.open(navigationProviders[selectedProvider](coord), '_blank');
+    elem.append($('<p />').append([
+        $('<a href="#" data-toggle="modal" data-target="#options-dialog">Navigáció <sup class="fas fa-cog"></sup></a>'),
+        ' ',
+        $('<a href="#">az elejére</a>').click(() => planTo(start)),
+        ' vagy ',
+        $('<a href="#">a végére</a>').click(() => planTo(end)),
+        '.'
+    ]));
+}
+
+function updateOptions()
+{
+    var selection = $('input[name=navProv]:checked').val();
+    if (!selection)
+        return;
+    selectedProvider = selection;
+    $.cookie('navProvider', selection);
 }
 
 function onMenuClicked()

@@ -175,3 +175,12 @@ ul ul ul ul ul a.dropdown-toggle {
   border-left: 1px solid #aaa;
   padding: 0;
 }
+
+/*
+ * Dialog
+ */
+
+.modal-content {
+  background: #13192e;
+  color: #fff;
+}
