@@ -12,14 +12,16 @@ var nextRouteId = 0;
 
 $(document).ready(function() {
     // Init the map
-    map = L.map('map').fitBounds([[48.509, 15.659], [45.742, 23.193]]);
+    map = L.map('map', { zoomControl: false }).fitBounds([[48.509, 15.659], [45.742, 23.193]]);
     var tileProvs = {
         'Térkép': L.tileLayer.provider('OpenStreetMap'),
         'Domborzat': L.tileLayer.provider('OpenTopoMap'),
         'Műhold': L.tileLayer.provider('Esri.WorldImagery')
     }
     tileProvs['Térkép'].addTo(map);
-    L.control.layers(tileProvs).addTo(map);
+    L.control.scale({ position: 'bottomright', imperial: false }).addTo(map);
+    L.control.zoom({ position: 'bottomright' }).addTo(map);
+    L.control.layers(tileProvs, null, { position: 'bottomleft' }).addTo(map);
 
     map.createPane('bkgRoutes');
     map.getPane('bkgRoutes').style.zIndex = 450;

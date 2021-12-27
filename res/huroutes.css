@@ -167,11 +167,16 @@ ul ul ul ul ul a.dropdown-toggle {
 }
 
 .map {
-  /*position: relative;*/
   top: 0;
   bottom: 0;
   height: 100%;
   width: 100%;
   border-left: 1px solid #aaa;
   padding: 0;
+}
+
+.leaflet-bottom.leaflet-right .leaflet-control-scale {
+  bottom: 22px;
+  position: absolute;
+  right: 44px;
 }
