@@ -49,6 +49,10 @@ p {
   text-align: center;
 }
 
+.title a {
+  color: #fff;
+}
+
 .sub-title {
   font-weight: bold;
   text-align: center;

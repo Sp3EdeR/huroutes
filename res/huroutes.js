@@ -13,10 +13,16 @@ var nextRouteId = 0;
 $(document).ready(function() {
     // Init the map
     map = L.map('map').fitBounds([[48.509, 15.659], [45.742, 23.193]]);
-    L.tileLayer.provider('OpenStreetMap').addTo(map);
+    var tileProvs = {
+        'Térkép': L.tileLayer.provider('OpenStreetMap'),
+        'Domborzat': L.tileLayer.provider('OpenTopoMap'),
+        'Műhold': L.tileLayer.provider('Esri.WorldImagery')
+    }
+    tileProvs['Térkép'].addTo(map);
+    L.control.layers(tileProvs).addTo(map);
+
     map.createPane('bkgRoutes');
     map.getPane('bkgRoutes').style.zIndex = 450;
-    map.attributionControl.addAttribution('<a href="https://github.com/Sp3EdeR/huroutes">huroutes</a>')
 
     // Load and init the routes
     $.getJSON('data.json', initializeContent)
