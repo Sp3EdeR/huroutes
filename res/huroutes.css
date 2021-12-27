@@ -3,50 +3,59 @@
  */
 
 body {
+  font-size: 14px;
   overflow-x: hidden;
   padding: 0;
+}
+
+p {
+  margin: 0 0 10px;
 }
 
 /*
  * Sidebar
  */
 
+ #sidebar {
+  background: #13192e;
+  color: #fff;
+  padding: 0;
+  transition: all 0.3s;
+}
+
 @media (min-width: 768px) {
   body {
-    overflow: hidden;
+    overflow-y: hidden;
   }
 
   #sidebar {
-    border-right: 1px solid #eee;
     bottom: 0;
     display: block;
-    left: 0;
     overflow-x: hidden;
     overflow-y: auto;
-    padding: 0;
     position: fixed;
     top: 0;
-    z-index: 1000;
   }
 }
 
 .sidebar-header {
+  border-bottom: 1px solid #eee;
   padding: 10px;
+  padding-top: 25px;
 }
 
 .title {
-  font-family: 'OpenSansLight', "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-weight: normal;
   text-align: center;
 }
 
 .sub-title {
-  font-family: 'OpenSansLight', "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-weight: bold;
   text-align: center;
 }
 
 .contrib {
+  border-top: 1px solid #eee;
   color: #999;
   font-size: 0.8em;
   padding: 10px;
@@ -59,57 +68,57 @@ a[data-toggle="collapse"] {
 
 .dropdown-toggle::after {
   display: block;
+  float: right;
   position: absolute;
-  right: 20px;
+  right: 10px;
   top: 50%;
   transform: translateY(-50%);
 }
 
-#sidebar {
-  background: #13192e;
-  color: #fff;
-  transition: all 0.3s;
+ul.menu {
+  margin-block-end: 0;
+  margin-block-start: 0;
 }
 
-#sidebar .sidebar-header {
-  background: #13192e;
-}
-
-#menubox > ul {
-  border-bottom: 1px solid #eee;
-  border-top: 1px solid #eee;
-}
-
-#menubox ul li a.dropdown-toggle {
+ul a.dropdown-toggle {
   color: #ccc;
   display: block;
   font-size: 1.1em;
+  overflow: hidden;
   padding: 10px;
 }
-#menubox ul li a.dropdown-toggle:hover {
+ul a.dropdown-toggle:hover {
   background: #1b2342;
   color: #919fd8;
 }
 
-#menubox ul ul a.dropdown-toggle {
-  color: #ccc;
+ul ul a.dropdown-toggle {
   padding-left: 20px !important;
 }
 
-#menubox ul ul ul a.dropdown-toggle {
-  color: #ccc;
+ul ul ul a.dropdown-toggle {
   padding-left: 40px !important;
 }
 
-#sidebar .panel {
+ul ul ul ul a.dropdown-toggle {
+  padding-left: 60px !important;
+}
+
+ul ul ul ul ul a.dropdown-toggle {
+  padding-left: 80px !important;
+}
+
+.sidebar .panel {
   background: #1e3450 !important;
-  margin-top: 10px;
+  border-radius: 8px;
+  margin: 10px 0 10px 0;
   padding: 10px;
   text-align: justify;
 }
 
 .route-header {
-  padding: 3px;
+  font-size: 1.1em;
+  padding: 0 3px 0 3px;
 }
 
 .route-header::after {
@@ -118,9 +127,23 @@ a[data-toggle="collapse"] {
   display: table;
 }
 
-.route-header-update {
+.update-date {
   float: left;
-  margin-top: 0.1em;
+}
+
+.stars-outer {
+  float: right;
+  position: relative;
+}
+
+.stars-inner {
+  color: #f8ce0b;
+  left: 0;
+  overflow: hidden;
+  position: absolute;
+  top: 0;
+  width: 0;
+  white-space: nowrap;
 }
 
 /*
@@ -128,18 +151,8 @@ a[data-toggle="collapse"] {
  */
 
 #main {
-  padding: 0;
   height: 50vh;
   margin-top: 0;
-}
-
-#map {
-  /*position: relative;*/
-  top: 0;
-  bottom: 0;
-  height: 100%;
-  width: 100%;
-  border-left: 1px solid #aaa;
   padding: 0;
 }
 
@@ -149,32 +162,12 @@ a[data-toggle="collapse"] {
   }
 }
 
-/*
- * Misc
- */
-
- .stars-outer {
-  float: right;
-  font-family: FontAwesome;
-  font-size: 1.2em;
-  padding-bottom: 0.5em;
-  position: relative;
-}
- 
-.stars-outer::before {
-  content: "\f006 \f006 \f006 \f006 \f006";
-}
- 
-.stars-inner {
-  left: 0;
-  overflow: hidden;
-  position: absolute;
+.map {
+  /*position: relative;*/
   top: 0;
-  width: 0;
-  white-space: nowrap;
-}
- 
-.stars-inner::before {
-  color: #f8ce0b;
-  content: "\f005 \f005 \f005 \f005 \f005";
+  bottom: 0;
+  height: 100%;
+  width: 100%;
+  border-left: 1px solid #aaa;
+  padding: 0;
 }
