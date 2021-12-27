@@ -179,4 +179,12 @@ ul ul ul ul ul a.dropdown-toggle {
   bottom: 22px;
   position: absolute;
   right: 44px;
+
+/*
+ * Dialog
+ */
+
+.modal-content {
+  background: #13192e;
+  color: #fff;
 }
