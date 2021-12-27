@@ -140,21 +140,7 @@ function addRoute(data)
     var rating = normRating(data.rat);
     var pathWeight = 3 + (!data.bkg && rating / 2);
     var layer = L.geoJson(null, {
-        filter: function(feature) {
-            if (feature.geometry.type == "LineString")
-            {
-                const makeLink = coord => {
-                    const link = 'https://www.google.com/maps/dir/?api=1&travelmode=driving&destination={0},{1}';
-                    return link.format(coord[1], coord[0]);
-                }
-                var coords = feature.geometry.coordinates;
-                var elem = $('li[data-routeid={0}] .route-links'.format(routeId));
-                elem.append($('<p>Navigálás a <a href="{0}">kezdő</a> vagy <a href="{1}">vég</a> pontra.</p>'
-                    .format(makeLink(coords[0]), makeLink(coords[coords.length - 1]))));
-                return true;
-            }
-            return false;
-        },
+        filter: feature => feature.geometry.type == "LineString",
         pane: data.bkg ? 'bkgRoutes' : 'shadowPane',
         style: {
             color: data.bkg ? colors[0] : colors[rating],
@@ -168,6 +154,25 @@ function addRoute(data)
     layer.on('click', event => onRouteClicked(event.target));
     layer.on('mouseover', event => event.target.focused || event.target.setStyle(event.target.options.focusedStyle));
     layer.on('mouseout', event => event.target.focused || event.target.setStyle(event.target.options.style));
+    layer.on('layeradd', event => {
+        var elem = $('li[data-routeid={0}] .route-links'.format(routeId));
+
+        var coords = event.layer.getLatLngs();
+        if (Array.isArray(coords) && 2 <= coords.length)
+        {
+            var length = 0.0;
+            for (var i = 1; i < coords.length; ++i)
+                length += coords[i - 1].distanceTo(coords[i]);
+            elem.append($('<p>Hossza: {0}km.</p>'.format((length / 1000).toFixed(1))));
+
+            const makeLink = coord => {
+                const link = 'https://www.google.com/maps/dir/?api=1&travelmode=driving&destination={0},{1}';
+                return link.format(coord.lat, coord.lng);
+            }
+            elem.append($('<p>Navigálás a <a href="{0}">kezdő</a> vagy <a href="{1}">vég</a> pontra.</p>'
+                .format(makeLink(coords[0]), makeLink(coords[coords.length - 1]))));
+        }
+    });
     layer.routeId = routeId;
     omnivore.kml(data.kml, null, layer).addTo(map);
     return routeId;
