@@ -96,15 +96,22 @@ function createInfoPanel(elem, data)
         console.warn('No rating given for ' + data.ttl);
     if (data.rat || data.upd)
     {
-        var elemHeader = $('<div class="route-header"/>');
+        var elemHeader = $('<p class="route-header"/>');
         if (data.upd)
         {
-            elemHeader.append($('<p class="route-header-update"><i class="fa fa-clock-o"></i> {0}</p>'.format(data.upd)));
+            elemHeader.append($('<span class="update-date"><i class="far fa-clock"></i> {0}</span>'.format(data.upd)));
         }
         if (data.rat)
         {
             var rating = normRating(data.rat);
-            elemHeader.append($('<div class="stars-outer"><div class="stars-inner" style="width:{0};"/></div>'.format(rating * 10 + '%')));
+            var starsInner = $('<span class="stars-inner" style="width:{0};" />'.format(rating * 10 + '%'));
+            for (var i = 0; i < 5; ++i)
+                starsInner.append($('<i class="fas fa-star"></i>'));
+            var starsOutter = $('<span class="stars-outer" />');
+            for (var i = 0; i < 5; ++i)
+                starsOutter.append($('<i class="far fa-star"></i>'));
+            starsOutter.append(starsInner);
+            elemHeader.append(starsOutter);
         }
         elem.append(elemHeader);
     }
