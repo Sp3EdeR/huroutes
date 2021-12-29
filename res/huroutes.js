@@ -13,16 +13,19 @@ var nextRouteId = 0;
 $(document).ready(function() {
     // Init the map
     map = L.map('map', { zoomControl: false }).fitBounds([[48.509, 15.659], [45.742, 23.193]]);
-    var tileProvs = {
+    const tileProvs = {
         'Térkép': L.tileLayer.provider('OpenStreetMap'),
         'Domborzat': L.tileLayer.provider('OpenTopoMap'),
         'Műhold': L.tileLayer.provider('Esri.WorldImagery')
-    }
-    tileProvs['Térkép'].addTo(map);
+    };
+    (tileProvs[$.cookie('huroutes-mapstyle')] || tileProvs[Object.keys(tileProvs)[0]]).addTo(map);
     L.control.scale({ position: 'bottomright', imperial: false }).addTo(map);
     L.control.zoom({ position: 'bottomright' }).addTo(map);
     L.control.layers(tileProvs, null, { position: 'bottomleft' }).addTo(map);
 
+    map.on('baselayerchange', (layer) => {
+        $.cookie('huroutes-mapstyle', layer.name, { expires: 1825 });
+    });
     map.createPane('bkgRoutes');
     map.getPane('bkgRoutes').style.zIndex = 450;
 
@@ -192,9 +195,16 @@ const navigationProviders = {
     'Waze': coord => {
         const link = 'https://www.waze.com/ul?ll={0}%2C{1}&navigate=yes';
         return link.format(coord.lat, coord.lng);
+    },
+    'Apple': coord => {
+        const link = 'http://maps.apple.com/?daddr={0},{1}&dirflg=d';
+        return link.format(coord.lat, coord.lng);
     }
 }
-var selectedProvider = $.cookie('navProvider') || 'Google';
+var navigationProviderId = function() {
+    var savedProviderId = $.cookie('huroutes-navprovider');
+    return navigationProviders[savedProviderId] !== undefined ? savedProviderId : Object.keys(navigationProviders)[0];
+}();
 
 function initNavSelector()
 {
@@ -202,13 +212,13 @@ function initNavSelector()
     $.each(navigationProviders, (key, value) => {
         elem.append(
             $('<div><input type="radio" name="navProv" value="{0}" {1}> <label for="google">{0}</label></div>'
-                .format(key, key == selectedProvider ? 'checked' : '')));
+                .format(key, key == navigationProviderId ? 'checked' : '')));
     });
 }
 
 function addNavigationLinks(elem, start, end)
 {
-    const planTo = coord => window.open(navigationProviders[selectedProvider](coord), '_blank');
+    const planTo = coord => window.open(navigationProviders[navigationProviderId](coord), '_blank');
     elem.append($('<p />').append([
         $('<a href="#" data-toggle="modal" data-target="#options-dialog">Navigáció <sup class="fas fa-cog"></sup></a>'),
         ' ',
@@ -224,8 +234,8 @@ function updateOptions()
     var selection = $('input[name=navProv]:checked').val();
     if (!selection)
         return;
-    selectedProvider = selection;
-    $.cookie('navProvider', selection);
+    navigationProviderId = selection;
+    $.cookie('huroutes-navprovider', selection, { expires: 1825 });
 }
 
 function onMenuClicked()
