@@ -3,6 +3,32 @@
 		"ttl":"Budapest környéke",
 		"cnt":[
 			{
+				"ttl":"Budapest Területe",
+				"cnt":[
+					{
+						"ttl":"Szépjuhászné út",
+						"md":"data/Szepjuhaszne.md",
+						"kml":"data/Szepjuhaszne.kml",
+						"rat":4,
+						"upd":"2021 október"
+					},
+					{
+						"ttl":"Egér út",
+						"md":"data/Egerut.md",
+						"kml":"data/Egerut.kml",
+						"rat":3,
+						"upd":"2022 január"
+					},
+					{
+						"ttl":"Budatétény",
+						"md":"data/Budateteny.md",
+						"kml":"data/Budateteny.kml",
+						"rat":2,
+						"upd":"2022 január"
+					}
+				]
+			},
+			{
 				"ttl":"Pilis",
 				"cnt":[
 					{
@@ -103,13 +129,6 @@
 				"ttl":"Egyéb",
 				"cnt":[
 					{
-						"ttl":"Szépjuhászné út",
-						"md":"data/Szepjuhaszne.md",
-						"kml":"data/Szepjuhaszne.kml",
-						"rat":4,
-						"upd":"2021 október"
-					},
-{
 						"ttl":"Etyek - Alcsútdoboz",
 						"md":"data/EtyekAlcsutdoboz.md",
 						"kml":"data/EtyekAlcsutdoboz.kml",
