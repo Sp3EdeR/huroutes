@@ -1,15 +1,17 @@
 # huroutes
-Magyar utak vezetésre
+<center>Magyar utak vezetésre</center>
 
 Ez a repo tartalmazza a [huroutes](https://sp3eder.github.io/huroutes) weblap forrását, mely weblap elérhető a https://sp3eder.github.io/huroutes címen.
 
-## Hibák
+## Hibák és Javaslatok Bejelentése
 
-Amennyiben hibákat vagy javaslatokat szeretnél jelezni a tartalommal kapcsolatban, kérlek az ["Issues" tabon](https://github.com/Sp3EdeR/huroutes/issues) nyiss egy [új issuet](https://github.com/Sp3EdeR/huroutes/issues/new) amiben leírod a problémát. A szerkesztők kezelni fogják.
+Amennyiben hibákat vagy javaslatokat szeretnél jelezni a tartalommal kapcsolatban, kérlek az ["Issues" tabon](https://github.com/Sp3EdeR/huroutes/issues) nyiss egy [új issuet](https://github.com/Sp3EdeR/huroutes/issues/new/choose) amiben leírod a problémát. A szerkesztők kezelni fogják.
+
+Ha általad ismert útvonalat javasolnál, akkor kérlek töltsd ki minél alaposabban az [Új útvonal](https://github.com/Sp3EdeR/huroutes/issues/new?assignees=&labels=enhancement&template=new_route.yml&title=%5BROUTE%5D%3A+) kérdőívet, hogy a szerkesztők könnyen hozzá tudják adni a javaslatot a weblaphoz. Az útvonal értékelése a dinamikus vezetés élményét próbálja jelképezni. Próbálj megnézni a térképről pár ismert útvonalat, és azokhoz hasonlítva találj egy megfelelő értékelést az útvonalnak.
 
 ## Szerkesztés
 
-A weblap tartalmát közösségileg szerkesztheti bárki. Ehhez először is szükséges egy GitHub regisztráció. Ezek után vázlatosan:
+A weblap tartalma közösségi és szerkesztheti bárki és meg is köszönünk minden közreműködést a szerkesztőknek! A szerkesztéshez először is szükséges egy GitHub regisztráció. Ezek után vázlatosan:
 
 1. Forkoljuk le [ezt a repót](https://github.com/Sp3EdeR/huroutes), a jobb-felső sarokban lévő Fork gomb/menü alatt. Ezzel egy saját másolathoz jutunk amiben kedvünkre garázdálkodhatunk.
 2. A saját forkunkban szerkesszük meg a `data.json` filet. A file formátuma a [JSON](https://hu.wikipedia.org/wiki/JSON). Nagyon fontos, hogy ne vétsünk hibát a formátumában, mert az a teljes oldalt elronthatja.
@@ -34,7 +36,7 @@ A weblap tartalmát közösségileg szerkesztheti bárki. Ehhez először is sz�
 	3. Ellenőrizzük módosításainkat és töltsük ki az információs űrlapot.
 	4. Küldjük el a pull requestet.
 	
-Minden pull requestet megkapnak az oldal szerkesztői. Miután ellenőrzik a módosításokat (és esetlegesen javításokat kérnek hozzá), sikeres esetben elfogadják és beengedik a pull requestet melynek eredményeként rögtön láthatjuk majd a fő weblapon munkánk gyümölcsét.
+Bárki szabadon nyithat pull requestet. Ezt megkapják az oldal szerkesztői és miután ellenőrzik a módosításokat (és esetlegesen javításokat kérnek hozzá), feltehetőleg elfogadják és beengedik a pull requestet. Ennek eredményeként rögtön láthatjuk majd a fő weblapon munkánk gyümölcsét.
 
 ## Licensz
 
