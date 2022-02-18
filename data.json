@@ -185,14 +185,14 @@
 				"ttl":"Mátra",
 				"cnt":[
 					{
-						"ttl":"24 - Parádsasvár",
+						"ttl":"24 (Parádsasvár)",
 						"md":"data/24Paradsasvar.md",
 						"kml":"data/24Paradsasvar.kml",
 						"rat":8,
 						"upd":"2021 szeptember"
 					},
 					{
-						"ttl":"24 - Sirok",
+						"ttl":"24 (Sirok)",
 						"md":"data/24Sirok.md",
 						"kml":"data/24Sirok.kml",
 						"rat":6,
@@ -232,6 +232,13 @@
 		"ttl":"Balaton Környéke",
 		"cnt":[
 			{
+				"ttl":"73 (Csopak - Veszprém)",
+				"md":"data/73.md",
+				"kml":"data/73.kml",
+				"rat":5,
+				"upd":"2022 február"
+			},
+			{
 				"ttl":"Kőröshegyi Szerpentin",
 				"md":"data/Koroshegy.md",
 				"kml":"data/Koroshegy.kml"
@@ -242,7 +249,7 @@
 				"bkg":true
 			},
 			{
-				"ttl":"Bakony",
+				"ttl":"Bakonyi Bejáróút",
 				"md":"data/Bakony.md",
 				"kml":"data/Bakony.kml",
 				"bkg":true
