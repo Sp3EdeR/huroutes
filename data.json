@@ -129,6 +129,13 @@
 				"ttl":"Egyéb",
 				"cnt":[
 					{
+						"ttl":"3102 (Nagytarcsa - Isaszeg)",
+						"md":"data/3102.md",
+						"kml":"data/3102.kml",
+						"rat":5,
+						"upd":"2022 február"
+					},
+					{
 						"ttl":"Etyek - Alcsútdoboz",
 						"md":"data/EtyekAlcsutdoboz.md",
 						"kml":"data/EtyekAlcsutdoboz.kml",
