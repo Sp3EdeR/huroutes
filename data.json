@@ -230,6 +230,13 @@
 						"kml":"data/HagonyZabar.kml",
 						"rat":7,
 						"upd":"2021 szeptember"
+					},
+					{
+						"ttl":"Rudabánya",
+						"md":"data/Rudabanya.md",
+						"kml":"data/Rudabanya.kml",
+						"rat":6,
+						"upd":"2022 március"
 					}
 				]
 			}
