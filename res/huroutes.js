@@ -8,7 +8,6 @@ String.prototype.format = function () {
 var markdown = new showdown.Converter();
 var map;
 var nextDropId = 0;
-var nextRouteId = 0;
 
 $(document).ready(function() {
     // Init the map
@@ -151,7 +150,8 @@ function createInfoPanel(elem, data)
 function addRoute(data)
 {
     const colors = [ '#833', '#944', '#a5423f', '#b04039', '#bc3d34', '#c7392e', '#d23427', '#dd2e20', '#e92618', '#f4190e', '#f00' ];
-    var routeId = 'route' + nextRouteId++;
+
+    var routeId = data.kml.match(/data\/([\w-]+).kml/)[1];
     var rating = normRating(data.rat);
     var pathWeight = 3 + (!data.bkg && rating / 2);
     var layer = L.geoJson(null, {
@@ -180,6 +180,12 @@ function addRoute(data)
                 length += coords[i - 1].distanceTo(coords[i]);
             elem.append($('<p>Hossza: {0}km.</p>'.format((length / 1000).toFixed(1))));
             addNavigationLinks(elem, coords[0], coords[coords.length - 1]);
+        }
+
+        if (window.location.hash == '#' + routeId)
+        {
+            event.layer.routeId = routeId;
+            onRouteClicked(event.layer);
         }
     });
     layer.routeId = routeId;
@@ -267,7 +273,18 @@ function onRouteClicked(layer)
     var unrelated = $('.collapse').not(related);
     unrelated.collapse('hide');
     related.collapse('show');
+
+    var routeFragment = '#' + layer.routeId;
+    if (window.location.hash != routeFragment)
+        window.history.pushState(layer.routeId, '', routeFragment);
 }
+
+window.addEventListener('popstate', event => {
+    map.eachLayer(layer => {
+        if (layer.routeId === event.state)
+            onRouteClicked(layer);
+    })
+});
 
 function normRating(rat)
 {
