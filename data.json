@@ -1,6 +1,6 @@
 [
 	{
-		"ttl":"Budapest környéke",
+		"ttl":"Középső Országrész",
 		"cnt":[
 			{
 				"ttl":"Budapest Területe",
@@ -140,21 +140,27 @@
 						"md":"data/EtyekAlcsutdoboz.md",
 						"kml":"data/EtyekAlcsutdoboz.kml",
 						"rat":5,
-						"upd":"2021 július"
+						"upd":"2022 március"
 					},
 					{
 						"ttl":"Söréd - Gánt",
 						"md":"data/SoredGant.md",
 						"kml":"data/SoredGant.kml",
 						"rat":5,
-						"upd":"2021 július"
+						"upd":"2022 március"
+					},
+					{
+						"ttl":"Vértesi Bejáróút",
+						"md":"data/Vertes.md",
+						"kml":"data/Vertes.kml",
+						"bkg":true
 					}
 				]
 			}
 		]
 	},
 	{
-		"ttl":"Északkeleti országrész",
+		"ttl":"Északkeleti Országrész",
 		"cnt":[
 			{
 				"ttl":"Bükk",
@@ -202,7 +208,7 @@
 						"ttl":"24 (Sirok)",
 						"md":"data/24Sirok.md",
 						"kml":"data/24Sirok.kml",
-						"rat":6,
+						"rat":7,
 						"upd":"2021 szeptember"
 					},
 					{
@@ -211,6 +217,12 @@
 						"kml":"data/2408.kml",
 						"rat":6,
 						"upd":"2021 szeptember"
+					},
+					{
+						"ttl":"Mátrai Bejáróút",
+						"md":"data/24.md",
+						"kml":"data/24.kml",
+						"bkg":true
 					}
 				]
 			},
@@ -243,30 +255,56 @@
 		]
 	},
 	{
-		"ttl":"Balaton Környéke",
+		"ttl":"Nyugati Országrész",
 		"cnt":[
 			{
-				"ttl":"73 (Csopak - Veszprém)",
-				"md":"data/73.md",
-				"kml":"data/73.kml",
-				"rat":5,
-				"upd":"2022 február"
+				"ttl":"Bakony",
+				"cnt":[
+					{
+						"ttl":"8301 (Zirc - Bakonykoppány)",
+						"md":"data/8301.md",
+						"kml":"data/8301.kml",
+						"rat":7,
+						"upd":"2022 március"
+					},
+					{
+						"ttl":"Bakonyi Bejáróút",
+						"md":"data/Bakony.md",
+						"kml":"data/Bakony.kml",
+						"bkg":true
+					}
+				]
 			},
 			{
-				"ttl":"Kőröshegyi Szerpentin",
-				"md":"data/Koroshegy.md",
-				"kml":"data/Koroshegy.kml"
-			},
-			{
-				"ttl":"Balaton-felvidéki Bejáróút",
-				"kml":"data/BalatonFelvidek.kml",
-				"bkg":true
-			},
-			{
-				"ttl":"Bakonyi Bejáróút",
-				"md":"data/Bakony.md",
-				"kml":"data/Bakony.kml",
-				"bkg":true
+				"ttl":"Balaton Környéke",
+				"cnt":[
+					{
+						"ttl":"73 (Csopak - Veszprém)",
+						"md":"data/73.md",
+						"kml":"data/73.kml",
+						"rat":5,
+						"upd":"2022 március"
+					},
+					{
+						"ttl":"77 (Veszprém - Tapolca)",
+						"md":"data/77.md",
+						"kml":"data/77.kml",
+						"rat":4,
+						"upd":"2022 március"
+					},
+					{
+						"ttl":"Kőröshegyi Szerpentin",
+						"md":"data/Koroshegy.md",
+						"kml":"data/Koroshegy.kml",
+						"rat":4
+					},
+					{
+						"ttl":"Balaton-felvidéki Bejáróút",
+						"kml":"data/BalatonFelvidek.kml",
+						"md":"data/BalatonFelvidek.md",
+						"bkg":true
+					}
+				]
 			}
 		]
 	},

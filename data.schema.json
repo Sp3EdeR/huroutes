@@ -46,7 +46,15 @@
           }
         },
         "additionalProperties": false,
-        "required": ["ttl", "kml"]
+        "required": ["ttl", "kml", "md"],
+        "if": {
+          "properties": {
+            "bkg": { "const": false }
+          }
+        },
+        "then": {
+          "required": ["rat"]
+        }
       }
     ]
   },

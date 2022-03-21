@@ -1,3 +1,3 @@
 Jó minőségű, kétsávos úton található utat találunk, ha Egérutat veszünk az 1-es és 6-os utak között. Sajnos több lámpás kereszteződés tarkítja, és nagyon nagy a forgalma. Így általában csak kivételes esetekben használható rendesen az út. Érdemes számolni rendőrökkel is. Ha itt elszabjuk, akkor szinte garantált a hírekbe kerülés, így semmiképpen se tegyünk ilyet...
 
-Ez az útvonal jó párja a Budatétényi utacskának, mivel könnyen összeköthetőek a Balatoni úttal és a 6-ossal.
+Ez az útvonal jó párja a [Budatétényi utacskának](#Budateteny), mivel könnyen összeköthetőek a Balatoni úttal és a 6-ossal.

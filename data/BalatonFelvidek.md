@@ -1,0 +1,1 @@
+Ez egy lehetőség a Balaton-felvidéki utak alaposabb bejárására. Az egyes szakaszokról a későbbiekben tervezünk bővebben írni.
