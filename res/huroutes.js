@@ -5,13 +5,15 @@ String.prototype.format = function () {
 
 (function() {
 
+const defaultMapBounds = [[48.509, 15.659], [45.742, 23.193]];
+
 var markdown = new showdown.Converter();
 var map;
 var nextDropId = 0;
 
 $(document).ready(function() {
     // Init the map
-    map = L.map('map', { zoomControl: false }).fitBounds([[48.509, 15.659], [45.742, 23.193]]);
+    map = L.map('map', { zoomControl: false }).fitBounds(defaultMapBounds);
     const tileProvs = {
         'Térkép': L.tileLayer.provider('OpenStreetMap'),
         'Domborzat': L.tileLayer.provider('OpenTopoMap'),
@@ -96,7 +98,9 @@ function createMenuRouteItem(elem, data)
 {
     elem.addClass('menuitem');
     var dropId = 'menu' + nextDropId++;
-    elem.append($('<a href="#{0}" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle"/>'.format(dropId)).html(data.ttl).click(onMenuClicked));
+    elem.append($('<a href="#{0}" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle"/>'.format(dropId)).html(data.ttl).click(function() {
+        activateRoute($(this).parents('li').first().attr('data-routeid'));
+    }));
     var elemDiv = $('<div class="menu list-unstyled collapse panel"/>').prop('id', dropId);
     createInfoPanel(elemDiv, data);
     elem.append(elemDiv);
@@ -132,7 +136,13 @@ function createInfoPanel(elem, data)
     if (data.md)
     {
         var descCont = $('<div class="route-desc"/>');
-        const addMarkdown = text => descCont.append($(markdown.makeHtml(text)));
+        const addMarkdown = text => {
+            descCont.append($(markdown.makeHtml(text)));
+            descCont.find('a[href^="#"]').click(function() {
+                var routeId = this.href.split('#')[1];
+                return !activateRoute(routeId);
+            });
+        }
         if (data.md.substr(-3) === '.md')
             $.ajax(data.md)
                 .then(addMarkdown, function () {
@@ -166,7 +176,7 @@ function addRoute(data)
             weight: pathWeight + 2
         }
     });
-    layer.on('click', event => onRouteClicked(event.target));
+    layer.on('click', event => !activateRoute(event.target));
     layer.on('mouseover', event => event.target.focused || event.target.setStyle(event.target.options.focusedStyle));
     layer.on('mouseout', event => event.target.focused || event.target.setStyle(event.target.options.style));
     layer.on('layeradd', event => {
@@ -180,12 +190,14 @@ function addRoute(data)
                 length += coords[i - 1].distanceTo(coords[i]);
             elem.append($('<p>Hossza: {0}km.</p>'.format((length / 1000).toFixed(1))));
             addNavigationLinks(elem, coords[0], coords[coords.length - 1]);
+            var mididx = Math.floor(coords.length / 2);
+            addStreetViewLink(elem, coords[mididx], coords[mididx + 1]);
         }
 
         if (window.location.hash == '#' + routeId)
         {
             event.layer.routeId = routeId;
-            onRouteClicked(event.layer);
+            activateRoute(event.layer);
         }
     });
     layer.routeId = routeId;
@@ -224,7 +236,10 @@ function initNavSelector()
 
 function addNavigationLinks(elem, start, end)
 {
-    const planTo = coord => window.open(navigationProviders[navigationProviderId](coord), '_blank');
+    const planTo = coord => {
+        window.open(navigationProviders[navigationProviderId](coord), '_blank');
+        return false;
+    };
     elem.append($('<p />').append([
         $('<a href="#" data-toggle="modal" data-target="#options-dialog">Navigáció <sup class="fas fa-cog"></sup></a>'),
         ' ',
@@ -233,6 +248,22 @@ function addNavigationLinks(elem, start, end)
         $('<a href="#">a végére</a>').click(() => planTo(end)),
         '.'
     ]));
+}
+
+function addStreetViewLink(elem, coord, coordNext)
+{
+    const streetViewAt = (coord, coordNext) => {
+        var angle = [ coordNext.lat - coord.lat, coordNext.lng - coord.lng ];
+        angle = 90 - Math.atan2(angle[0], angle[1]) * (180/Math.PI);
+        if (angle < -180)
+            angle += 360;
+        const streetViewLinkTemplate = 'https://www.google.com/maps/@?api=1&map_action=pano&viewpoint={0},{1}&heading={2}';
+        window.open(streetViewLinkTemplate.format(coord.lat, coord.lng, angle), '_blank');
+        return false;
+    }
+    elem.append($('<p />').append(
+        $('<a href="#">Street view megnyitása.</a>').click(() => streetViewAt(coord, coordNext)),
+    ));
 }
 
 function updateOptions()
@@ -244,17 +275,21 @@ function updateOptions()
     $.cookie('huroutes-navprovider', selection, { expires: 1825 });
 }
 
-function onMenuClicked()
+function activateRoute(layerOrRouteId)
 {
-    var routeId = $(this).parents('li').first().attr('data-routeid');
-    map.eachLayer(layer => {
-        if (layer.routeId == routeId)
-            onRouteClicked(layer);
-    })
-}
+    var layer = null
+    if (typeof layerOrRouteId === 'string' || layerOrRouteId instanceof String)
+    {
+        map.eachLayer(i => {
+            if (i.routeId == layerOrRouteId)
+                layer = i;
+        })
+        if (layer === null)
+            return false;
+    }
+    else
+        layer = layerOrRouteId;
 
-function onRouteClicked(layer)
-{
     map.eachLayer(layer => {
         if (layer.focused)
         {
@@ -273,17 +308,27 @@ function onRouteClicked(layer)
     var unrelated = $('.collapse').not(related);
     unrelated.collapse('hide');
     related.collapse('show');
+    var scrollWait = setInterval(function() {
+        var sidebar = $('#sidebar');
+        if (0 < sidebar.find('.collapsing').length)
+            return;
+        var ctrl = $([sidebar[0], $('body')[0], $('html')[0]]).filter((i, e) => e.clientHeight < e.scrollHeight).first();
+        ctrl.animate({ scrollTop: menuItem.offset().top + sidebar.scrollTop() });
+        clearInterval(scrollWait);
+    }, 100);
 
     var routeFragment = '#' + layer.routeId;
     if (window.location.hash != routeFragment)
         window.history.pushState(layer.routeId, '', routeFragment);
+
+    return true;
 }
 
 window.addEventListener('popstate', event => {
-    map.eachLayer(layer => {
-        if (layer.routeId === event.state)
-            onRouteClicked(layer);
-    })
+    if (event.state)
+        activateRoute(event.state)
+    else
+        map.flyToBounds(defaultMapBounds);
 });
 
 function normRating(rat)

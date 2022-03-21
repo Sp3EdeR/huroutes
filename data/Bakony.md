@@ -1,3 +1,3 @@
-Bakonybél-Bakonykoppány szakasz tök új itt.
+Ez egy lehetőség a Bakony környéki utak alaposabb bejárására. Jól kapcsolható ez az út a [Söréd és Gánt közti szerpentinhez](#SoredGant).
 
-[Bemutató videó Draskovics Andristól](https://youtu.be/3fbTc9KFvPw)
+Az útvonal nagy attrakciója a [Zirc utáni szakasz](#8301), ami egy kiváló szerpentin.
