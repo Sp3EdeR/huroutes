@@ -1,0 +1,3 @@
+Egy kellemes vonalvezetésű út vezet le Csesznekre. Ez a rövid szakasz enyhe-közepes kanyarokkal és tökéletes aszfalttal szórakoztat. Az út valamivel keskenyebb a [82-esnél](#82), de nagyon jól autózható és a forgalma sokkal alacsonyabb.
+
+Az útszakasz a [Cseszneki vár parkolójánál](https://hu.wikipedia.org/wiki/Cseszneki_vár) ér véget, ahonnan könnyen fel lehet sétálni megtekinteni a nevezetességet.
