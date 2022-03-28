@@ -268,9 +268,36 @@
 						"upd":"2022 március"
 					},
 					{
+						"ttl":"82 (Csesznek)",
+						"md":"data/82.md",
+						"kml":"data/82.kml",
+						"rat":7,
+						"upd":"2022 március"
+					},
+					{
+						"ttl":"Cseszneki Mellékút",
+						"md":"data/CsesznekMellekut.md",
+						"kml":"data/CsesznekMellekut.kml",
+						"rat":6,
+						"upd":"2022 március"
+					},
+					{
+						"ttl":"Csetény - Dudar",
+						"md":"data/CsetenyDudar.md",
+						"kml":"data/CsetenyDudar.kml",
+						"rat":4,
+						"upd":"2022 március"
+					},
+					{
 						"ttl":"Bakonyi Bejáróút",
 						"md":"data/Bakony.md",
 						"kml":"data/Bakony.kml",
+						"bkg":true
+					},
+					{
+						"ttl":"Pannonhalmi-bakonyi Bejáróút",
+						"md":"data/PannonBakony.md",
+						"kml":"data/PannonBakony.kml",
 						"bkg":true
 					}
 				]
@@ -303,6 +330,18 @@
 						"kml":"data/BalatonFelvidek.kml",
 						"md":"data/BalatonFelvidek.md",
 						"bkg":true
+					}
+				]
+			},
+			{
+				"ttl":"Egyéb",
+				"cnt":[
+					{
+						"ttl":"Balinka",
+						"md":"data/Balinka.md",
+						"kml":"data/Balinka.kml",
+						"rat":4,
+						"upd":"2022 március"
 					}
 				]
 			}
