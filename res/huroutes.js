@@ -1,3 +1,43 @@
+const huroutes = {
+    'opt': {
+        'route': {
+            'colors': [ '#744', '#944', '#a5423f', '#b04039', '#bc3d34', '#c7392e', '#d23427', '#dd2e20', '#e92618', '#f4190e', '#f00' ],
+            'focusColor': '#00f'
+        },
+        'map': {
+            'bounds': [[48.509, 15.659], [45.742, 23.193]],
+            'tiles': {
+                'Térkép': L.tileLayer.provider('OpenStreetMap'),
+                'Domborzat': L.tileLayer.provider('OpenTopoMap'),
+                'Műhold': L.tileLayer.provider('Esri.WorldImagery')
+            }
+        },
+        'navLinkProviders': {
+            'Google': coord => {
+                const link = 'https://www.google.com/maps/dir/?api=1&travelmode=driving&destination={0},{1}';
+                return link.format(coord.lat, coord.lng);
+            },
+            'Waze': coord => {
+                const link = 'https://www.waze.com/ul?ll={0}%2C{1}&navigate=yes';
+                return link.format(coord.lat, coord.lng);
+            },
+            'Apple': coord => {
+                const link = 'http://maps.apple.com/?daddr={0},{1}&dirflg=d';
+                return link.format(coord.lat, coord.lng);
+            }
+        },
+        'streetView': 'https://www.google.com/maps/@?api=1&map_action=pano&viewpoint={0},{1}&heading={2}'
+    },
+    'lang': {
+        'default': 'hu-HU',
+        'hu-HU': {
+            'navigation': '<span class="nav-opt">Navigáció <sup class="fas fa-cog"></sup></span> <span class="nav-start">az elejére</span> vagy <span class="nav-end">a végére</span>.',
+            'openStreetView': 'Street view megnyitása.',
+            'routeLength': 'Hossza: {0}km.'
+        }
+    }
+};
+
 String.prototype.format = function () {
     var args = arguments;
     return this.replace(/\{(\d+)\}/g, function (m, n) { return args[n]; });
@@ -5,24 +45,18 @@ String.prototype.format = function () {
 
 (function() {
 
-const defaultMapBounds = [[48.509, 15.659], [45.742, 23.193]];
-
+var langDict = selectLanguage();
 var markdown = new showdown.Converter();
 var map;
 var nextDropId = 0;
 
 $(document).ready(function() {
-    // Init the map
-    map = L.map('map', { zoomControl: false }).fitBounds(defaultMapBounds);
-    const tileProvs = {
-        'Térkép': L.tileLayer.provider('OpenStreetMap'),
-        'Domborzat': L.tileLayer.provider('OpenTopoMap'),
-        'Műhold': L.tileLayer.provider('Esri.WorldImagery')
-    };
-    (tileProvs[$.cookie('huroutes-mapstyle')] || tileProvs[Object.keys(tileProvs)[0]]).addTo(map);
+    map = L.map('map', { zoomControl: false }).fitBounds(huroutes.opt.map.bounds);
+    const tiles = huroutes.opt.map.tiles;
+    (tiles[$.cookie('huroutes-mapstyle')] || tiles[Object.keys(tiles)[0]]).addTo(map);
     L.control.scale({ position: 'bottomright', imperial: false }).addTo(map);
     L.control.zoom({ position: 'bottomright' }).addTo(map);
-    L.control.layers(tileProvs, null, { position: 'bottomleft' }).addTo(map);
+    L.control.layers(tiles, null, { position: 'bottomleft' }).addTo(map);
 
     map.on('baselayerchange', (layer) => {
         $.cookie('huroutes-mapstyle', layer.name, { expires: 1825 });
@@ -30,13 +64,11 @@ $(document).ready(function() {
     map.createPane('bkgRoutes');
     map.getPane('bkgRoutes').style.zIndex = 450;
 
-    // Load and init the routes
     $.getJSON('data.json', initializeContent)
         .fail(function () {
             console.error('Failed loading the route database.');
         });
 
-    // Init the nav selector
     $('#options-dialog').on('hidden.bs.modal', updateOptions);
     initNavSelector();
 });
@@ -159,7 +191,7 @@ function createInfoPanel(elem, data)
 
 function addRoute(data)
 {
-    const colors = [ '#833', '#944', '#a5423f', '#b04039', '#bc3d34', '#c7392e', '#d23427', '#dd2e20', '#e92618', '#f4190e', '#f00' ];
+    const colors = huroutes.opt.route.colors;
 
     var routeId = data.kml.match(/data\/([\w-]+).kml/)[1];
     var rating = normRating(data.rat);
@@ -172,7 +204,7 @@ function addRoute(data)
             weight: pathWeight
         },
         focusedStyle: {
-            color: '#00f',
+            color: huroutes.opt.route.focusColor,
             weight: pathWeight + 2
         }
     });
@@ -188,7 +220,7 @@ function addRoute(data)
             var length = 0.0;
             for (var i = 1; i < coords.length; ++i)
                 length += coords[i - 1].distanceTo(coords[i]);
-            elem.append($('<p>Hossza: {0}km.</p>'.format((length / 1000).toFixed(1))));
+            elem.append($(('<p>' + langDict.routeLength + '</p>').format((length / 1000).toFixed(1))));
             addNavigationLinks(elem, coords[0], coords[coords.length - 1]);
             var mididx = Math.floor(coords.length / 2);
             addStreetViewLink(elem, coords[mididx], coords[mididx + 1]);
@@ -205,49 +237,38 @@ function addRoute(data)
     return routeId;
 }
 
-const navigationProviders = {
-    'Google': coord => {
-        const link = 'https://www.google.com/maps/dir/?api=1&travelmode=driving&destination={0},{1}';
-        return link.format(coord.lat, coord.lng);
-    },
-    'Waze': coord => {
-        const link = 'https://www.waze.com/ul?ll={0}%2C{1}&navigate=yes';
-        return link.format(coord.lat, coord.lng);
-    },
-    'Apple': coord => {
-        const link = 'http://maps.apple.com/?daddr={0},{1}&dirflg=d';
-        return link.format(coord.lat, coord.lng);
-    }
-}
+const navProviders = huroutes.opt.navLinkProviders;
 var navigationProviderId = function() {
     var savedProviderId = $.cookie('huroutes-navprovider');
-    return navigationProviders[savedProviderId] !== undefined ? savedProviderId : Object.keys(navigationProviders)[0];
+    return navProviders[savedProviderId] !== undefined ? savedProviderId : Object.keys(navProviders)[0];
 }();
 
 function initNavSelector()
 {
     var elem = $('#nav-options');
-    $.each(navigationProviders, (key, value) => {
+    $.each(navProviders, (key, value) => {
+        const id = key.toLowerCase().replace(/ /g, '');
         elem.append(
-            $('<div><input type="radio" name="navProv" value="{0}" {1}> <label for="google">{0}</label></div>'
-                .format(key, key == navigationProviderId ? 'checked' : '')));
+            $('<div><input type="radio" name="navProv" id="{0}" value="{1}" {2}> <label for="{0}">{1}</label></div>'
+                .format(id, key, key == navigationProviderId ? 'checked' : '')));
     });
 }
 
 function addNavigationLinks(elem, start, end)
 {
     const planTo = coord => {
-        window.open(navigationProviders[navigationProviderId](coord), '_blank');
+        window.open(navProviders[navigationProviderId](coord), '_blank');
         return false;
     };
-    elem.append($('<p />').append([
-        $('<a href="#" data-toggle="modal" data-target="#options-dialog">Navigáció <sup class="fas fa-cog"></sup></a>'),
-        ' ',
-        $('<a href="#">az elejére</a>').click(() => planTo(start)),
-        ' vagy ',
-        $('<a href="#">a végére</a>').click(() => planTo(end)),
-        '.'
-    ]));
+
+    var eNav = $('<p />').append($(langDict.navigation));
+    var eOpt = eNav.find('span.nav-opt');
+    eOpt.replaceWith($('<a href="#" data-toggle="modal" data-target="#options-dialog" />').append(eOpt.html()));
+    var eStart = eNav.find('span.nav-start');
+    eStart.replaceWith($('<a href="#" />').append(eStart.html()).click(() => planTo(start)));
+    var eEnd = eNav.find('span.nav-end');
+    eEnd.replaceWith($('<a href="#" />').append(eEnd.html()).click(() => planTo(end)));
+    elem.append(eNav);
 }
 
 function addStreetViewLink(elem, coord, coordNext)
@@ -257,12 +278,11 @@ function addStreetViewLink(elem, coord, coordNext)
         angle = 90 - Math.atan2(angle[0], angle[1]) * (180/Math.PI);
         if (angle < -180)
             angle += 360;
-        const streetViewLinkTemplate = 'https://www.google.com/maps/@?api=1&map_action=pano&viewpoint={0},{1}&heading={2}';
-        window.open(streetViewLinkTemplate.format(coord.lat, coord.lng, angle), '_blank');
+        window.open(huroutes.opt.streetView.format(coord.lat, coord.lng, angle), '_blank');
         return false;
     }
     elem.append($('<p />').append(
-        $('<a href="#">Street view megnyitása.</a>').click(() => streetViewAt(coord, coordNext)),
+        $('<a href="#">{0}</a>'.format(langDict.openStreetView)).click(() => streetViewAt(coord, coordNext)),
     ));
 }
 
@@ -328,7 +348,7 @@ window.addEventListener('popstate', event => {
     if (event.state)
         activateRoute(event.state)
     else
-        map.flyToBounds(defaultMapBounds);
+        map.flyToBounds(huroutes.opt.map.bounds);
 });
 
 function normRating(rat)
@@ -339,6 +359,20 @@ function normRating(rat)
     else if (10 < i)
         i = 10;
     return i;
+}
+
+function selectLanguage()
+{
+    const defaultLang = huroutes.lang[huroutes.lang.default];
+    if (typeof(language) === 'undefined')
+        return defaultLang;
+    const lang = huroutes.lang[language];
+    if (lang === undefined)
+    {
+        console.error('Cannot find the requested language.');
+        return defaultLang;
+    }
+    return lang;
 }
 
 })();
