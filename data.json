@@ -227,6 +227,18 @@
 				]
 			},
 			{
+				"ttl":"Zemplén",
+				"cnt":[
+					{
+						"ttl":"3708 (Hidasnémeti - Pálháza)",
+						"md":"data/3708.md",
+						"kml":"data/3708.kml",
+						"rat":6,
+						"upd":"2021 október"
+					}
+				]
+			},
+			{
 				"ttl":"Egyéb",
 				"cnt":[
 					{
