@@ -53,34 +53,6 @@
 						"upd":"2021 július"
 					},
 					{
-						"ttl":"Szob - Letkés - Esztergom",
-						"md":"data/SzobLetkesEsztergom.md",
-						"kml":"data/SzobLetkesEsztergom.kml",
-						"rat":6,
-						"upd":"2022 április"
-					},
-					{
-						"ttl":"Kismaros - Márianosztra - Szob",
-						"md":"data/KismarosMarianosztraSzob.md",
-						"kml":"data/KismarosMarianosztraSzob.kml",
-						"rat":6,
-						"upd":"2022 április"
-					},
-					{
-						"ttl":"Vác - Rétság",
-						"md":"data/VacRetsag.md",
-						"kml":"data/VacRetsag.kml",
-						"rat":5,
-						"upd":"2022 április"
-					},
-					{
-						"ttl":"Bánk - Aszód",
-						"md":"data/BankAszod.md",
-						"kml":"data/BankAszod.kml",
-						"rat":6,
-						"upd":"2021 április"
-					},
-					{
 						"ttl":"Üvegtigris",
 						"md":"data/Uvegtigris.md",
 						"kml":"data/Uvegtigris.kml",
@@ -127,15 +99,34 @@
 				]
 			},
 			{
-				"ttl":"Egyéb",
+				"ttl":"Börzsöny Környéke",
 				"cnt":[
 					{
-						"ttl":"3102 (Nagytarcsa - Isaszeg)",
-						"md":"data/3102.md",
-						"kml":"data/3102.kml",
-						"rat":5,
-						"upd":"2022 február"
+						"ttl":"Kismaros - Márianosztra - Szob",
+						"md":"data/KismarosMarianosztraSzob.md",
+						"kml":"data/KismarosMarianosztraSzob.kml",
+						"rat":6,
+						"upd":"2022 április"
 					},
+					{
+						"ttl":"Szob - Letkés - Esztergom",
+						"md":"data/SzobLetkesEsztergom.md",
+						"kml":"data/SzobLetkesEsztergom.kml",
+						"rat":6,
+						"upd":"2022 április"
+					},
+					{
+						"ttl":"Vác - Rétság",
+						"md":"data/VacRetsag.md",
+						"kml":"data/VacRetsag.kml",
+						"rat":5,
+						"upd":"2022 április"
+					}
+				]
+			},
+			{
+				"ttl":"Vértes Környéke",
+				"cnt":[
 					{
 						"ttl":"Etyek - Alcsútdoboz",
 						"md":"data/EtyekAlcsutdoboz.md",
@@ -155,6 +146,39 @@
 						"md":"data/Vertes.md",
 						"kml":"data/Vertes.kml",
 						"bkg":true
+					}
+				]
+			},
+			{
+				"ttl":"Egyéb",
+				"cnt":[
+					{
+						"ttl":"3102 (Nagytarcsa - Isaszeg)",
+						"md":"data/3102.md",
+						"kml":"data/3102.kml",
+						"rat":5,
+						"upd":"2022 február"
+					},
+					{
+						"ttl":"Bánk - Aszód",
+						"md":"data/BankAszod.md",
+						"kml":"data/BankAszod.kml",
+						"rat":5,
+						"upd":"2021 április"
+					},
+					{
+						"ttl":"Bánk - Romhány",
+						"md":"data/BankRomhany.md",
+						"kml":"data/BankRomhany.kml",
+						"rat":4,
+						"upd":"2022 április"
+					},
+					{
+						"ttl":"Legénd",
+						"md":"data/Legend.md",
+						"kml":"data/Legend.kml",
+						"rat":3,
+						"upd":"2022 április"
 					}
 				]
 			}
