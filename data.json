@@ -43,7 +43,7 @@
 						"md":"data/Dobogoko.md",
 						"kml":"data/Dobogoko.kml",
 						"rat":6,
-						"upd":"2021 augusztus"
+						"upd":"2022 április"
 					},
 					{
 						"ttl":"Fellegvár",
@@ -57,20 +57,21 @@
 						"md":"data/SzobLetkesEsztergom.md",
 						"kml":"data/SzobLetkesEsztergom.kml",
 						"rat":6,
-						"upd":"2021 augusztus"
+						"upd":"2022 április"
 					},
 					{
 						"ttl":"Kismaros - Márianosztra - Szob",
 						"md":"data/KismarosMarianosztraSzob.md",
 						"kml":"data/KismarosMarianosztraSzob.kml",
 						"rat":6,
-						"upd":"2021 november"
+						"upd":"2022 április"
 					},
 					{
 						"ttl":"Vác - Rétság",
 						"md":"data/VacRetsag.md",
 						"kml":"data/VacRetsag.kml",
-						"rat":5
+						"rat":5,
+						"upd":"2022 április"
 					},
 					{
 						"ttl":"Bánk - Aszód",
