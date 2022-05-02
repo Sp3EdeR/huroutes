@@ -395,14 +395,42 @@
 						"md":"data/PecsOrfu.md",
 						"kml":"data/PecsOrfu.kml",
 						"rat":8,
-						"upd":"2021 május"
+						"upd":"2022 május"
+					},
+					{
+						"ttl":"Magyarterhelend - Orfű",
+						"md":"data/MagyarhertelendOrfu.md",
+						"kml":"data/MagyarhertelendOrfu.kml",
+						"rat":6,
+						"upd":"2022 április"
+					},
+					{
+						"ttl":"6605",
+						"md":"data/6605.md",
+						"kml":"data/6605.kml",
+						"rat":7,
+						"upd":"2022 április"
+					},
+					{
+						"ttl":"Abaliget - Hetvehely",
+						"md":"data/AbaligetHetvehely.md",
+						"kml":"data/AbaligetHetvehely.kml",
+						"rat":5,
+						"upd":"2022 április"
+					},
+					{
+						"ttl":"Mánfa",
+						"md":"data/Manfa.md",
+						"kml":"data/Manfa.kml",
+						"rat":5,
+						"upd":"2022 április"
 					},
 					{
 						"ttl":"Melegmányi út",
 						"md":"data/Melegmanyi.md",
 						"kml":"data/Melegmanyi.kml",
-						"rat":6,
-						"upd":"2021 május"
+						"rat":5,
+						"upd":"2022 április"
 					},
 					{
 						"ttl":"Nyugat-Mecseki Bejáróút",
@@ -427,6 +455,32 @@
 						"md":"data/KeletMecsek.md",
 						"kml":"data/KeletMecsek.kml",
 						"bkg":true
+					}
+				]
+			},
+			{
+				"ttl":"Egyéb",
+				"cnt":[
+					{
+						"ttl":"Kurd",
+						"md":"data/Kurd.md",
+						"kml":"data/Kurd.kml",
+						"rat":7,
+						"upd":"2022 május"
+					},
+					{
+						"ttl":"Döbrököz - Kurd",
+						"md":"data/DobrokozKurd.md",
+						"kml":"data/DobrokozKurd.kml",
+						"rat":4,
+						"upd":"2022 május"
+					},
+					{
+						"ttl":"6315 (Diósberény)",
+						"md":"data/6315.md",
+						"kml":"data/6315.kml",
+						"rat":5,
+						"upd":"2022 május"
 					}
 				]
 			}
