@@ -2,7 +2,9 @@ const huroutes = {
     'opt': {
         'route': {
             'colors': [ '#744', '#944', '#a5423f', '#b04039', '#bc3d34', '#c7392e', '#d23427', '#dd2e20', '#e92618', '#f4190e', '#f00' ],
-            'focusColor': '#00f'
+            'opacities': [   1,   0.66,      0.70,      0.75,       0.8,      0.85,       0.9,      0.95,         1,         1,      1 ],
+            'focusColor': '#00f',
+            'focusOpacity': 1
         },
         'map': {
             'bounds': [[48.509, 15.659], [45.742, 23.193]],
@@ -192,6 +194,7 @@ function createInfoPanel(elem, data)
 function addRoute(data)
 {
     const colors = huroutes.opt.route.colors;
+    const opacities = huroutes.opt.route.opacities;
 
     var routeId = data.kml.match(/data\/([\w-]+).kml/)[1];
     var rating = normRating(data.rat);
@@ -201,10 +204,12 @@ function addRoute(data)
         pane: data.bkg ? 'bkgRoutes' : 'shadowPane',
         style: {
             color: data.bkg ? colors[0] : colors[rating],
+            opacity: data.bkg ? opacities[0] : opacities[rating],
             weight: pathWeight
         },
         focusedStyle: {
             color: huroutes.opt.route.focusColor,
+            opacity: huroutes.opt.route.focusOpacity,
             weight: pathWeight + 2
         }
     });
