@@ -232,10 +232,7 @@ function addRoute(data)
         }
 
         if (window.location.hash == '#' + routeId)
-        {
-            event.layer.routeId = routeId;
-            activateRoute(event.layer);
-        }
+            activateRoute(layer); // event.layer is a different instance; must use layer from closure
     });
     layer.routeId = routeId;
     omnivore.kml(data.kml, null, layer).addTo(map);
