@@ -70,6 +70,13 @@
 						"rat":4
 					},
 					{
+						"ttl":"Bajna - Bajót",
+						"md":"data/Bajna_elag_Bajot.md",
+						"kml":"data/Bajna_elag_Bajot.kml",
+						"rat":7,
+						"upd":"2022 május"
+					},
+					{
 						"ttl":"Héreg",
 						"md":"data/Hereg.md",
 						"kml":"data/Hereg.kml",
