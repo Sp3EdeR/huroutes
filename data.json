@@ -77,6 +77,13 @@
 						"upd":"2021 március"
 					},
 					{
+						"ttl":"Bajna - Bajót",
+						"md":"data/BajnaBajot.md",
+						"kml":"data/BajnaBajot.kml",
+						"rat":7,
+						"upd":"2022 május"
+					},
+					{
 						"ttl":"Szomor - Bajna",
 						"md":"data/SzomorBajna.md",
 						"kml":"data/SzomorBajna.kml",
