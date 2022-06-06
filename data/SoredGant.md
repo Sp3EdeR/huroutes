@@ -1,6 +1,6 @@
 Ezen a rövid útszakaszon igazán kellemes kilátásban gyönyörködhetünk, amint jó minőségű úton suhanunk tova. Általában viszonylag kevés forgalommal kell közösködnünk. Az úton  nagyon enyhe kanyarok vannak csak, amik nagyobb sebességet tennének lehetővé, viszont szinte lépten-nyomon 60-as táblák próbálják lassítani a forgalmat (teljesen alaptalanul). Az idelátogatóknak érdemes inkább a kényelmes "krúzolást" keresni az útvonalban, mint csapatni. Ezt tükrözi a pontszáma is.
 
-Érdemes összevonni ezt az útszakaszt az [Etyek - Alcsútdoboz közti szakasszal](#EtyekAlcsutdoboz) egy kirándulásba. Ezen kívül kiváló kiindulópont a [Bakonyi bejáróút](#Bakony) felé, melyen keresztül kellemesen elérhetőek a Zirc környéki szerpentinek, mint például a kiváló [8301-es](#8301).
+Az útvonal a [vértesi bejáróút](#Vertes) egy szakasza. Ezen kívül kiváló kiindulópont a [bakonyi bejáróút](#Bakony) felé, melyen keresztül kellemesen elérhetőek a Zirc környéki szerpentinek, mint például a kiváló [8301-es](#8301).
 
 [Bemutató videó Draskovics Andristól](https://youtu.be/mRzK1IuPpSU)
 

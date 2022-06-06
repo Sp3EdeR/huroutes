@@ -149,6 +149,13 @@
 						"upd":"2022 március"
 					},
 					{
+						"ttl":"Gánt - Csákvár",
+						"md":"data/GantCsakvar.md",
+						"kml":"data/GantCsakvar.kml",
+						"rat":5,
+						"upd":"2022 június"
+					},
+					{
 						"ttl":"Vértesi Bejáróút",
 						"md":"data/Vertes.md",
 						"kml":"data/Vertes.kml",
