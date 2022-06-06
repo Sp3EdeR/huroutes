@@ -53,7 +53,7 @@
           }
         },
         "then": {
-          "required": ["rat"]
+          "required": ["rat", "upd"]
         }
       }
     ]

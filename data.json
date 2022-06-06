@@ -56,7 +56,8 @@
 						"ttl":"Üvegtigris",
 						"md":"data/Uvegtigris.md",
 						"kml":"data/Uvegtigris.kml",
-						"rat":5
+						"rat":5,
+						"upd":"2022 április"
 					}
 				]
 			},
@@ -67,7 +68,8 @@
 						"ttl":"Hilltop Borászat",
 						"md":"data/Hilltop.md",
 						"kml":"data/Hilltop.kml",
-						"rat":4
+						"rat":4,
+						"upd":"2022 április"
 					},
 					{
 						"ttl":"Héreg",
@@ -222,7 +224,8 @@
 						"ttl":"Mexikóvölgy",
 						"md":"data/Mexikovolgy.md",
 						"kml":"data/Mexikovolgy.kml",
-						"rat":5
+						"rat":5,
+						"upd":"2018 június"
 					},
 					{
 						"ttl":"Balaton",
