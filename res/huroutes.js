@@ -28,13 +28,51 @@ const huroutes = {
                 return link.format(coord.lat, coord.lng);
             }
         },
+        'downloads': {
+            'GPS Exchange Format (gpx)': {
+                'ext': 'gpx',
+                'mimeType': 'application/gpx+xml',
+                'fileTemplate':
+'<?xml version="1.0" standalone="yes"?>\
+<gpx xmlns="http://www.topografix.com/GPX/1/1" creator="huroutes" version="1.1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.topografix.com/GPX/1/1 http://www.topografix.com/GPX/1/1/gpx.xsd">\
+<metadata>\
+  <name>{0}</name>\
+  <desc>Driving route downloaded from huroutes.</desc>\
+  <author>huroutes</author>\
+  <link>https://sp3eder.github.io/huroutes/#{0}</link>\
+</metadata>\
+<trk><trkseg>{1}</trkseg></trk>\
+</gpx>',
+                'pointTemplate': '<trkpt lat="{0}" lon="{1}"/>'
+            },
+            'Keyhole Markup Language (kml)': {
+                'ext': 'kml',
+                'mimeType': 'application/vnd.google-earth.kml+xml',
+                'fileTemplate':
+'<?xml version="1.0" encoding="UTF-8"?>\
+<kml xmlns="http://www.opengis.net/kml/2.2"><Document>\
+  <name>{0}</name>\
+  <description>Driving route downloaded from <a href="https://sp3eder.github.io/huroutes/#{0}">huroutes</a>.</description>\
+  <Style id="linestyle"><LineStyle><color>ffff0000</color><width>6</width></LineStyle></Style>\
+  <Placemark>\
+    <styleUrl>#linestyle</styleUrl>\
+    <LineString>\
+      <tessellate>1</tessellate>\
+      <coordinates>{1}</coordinates>\
+    </LineString>\
+  </Placemark>\
+</Document></kml>',
+                'pointTemplate': '{1},{0},0 '
+            }
+        },
         'streetView': 'https://www.google.com/maps/@?api=1&map_action=pano&viewpoint={0},{1}&heading={2}'
     },
     'lang': {
         'default': 'hu-HU',
         'hu-HU': {
-            'navigation': '<span class="nav-opt">Navigáció <sup class="fas fa-cog"></sup></span> <span class="nav-start">az elejére</span> vagy <span class="nav-end">a végére</span>.',
-            'openStreetView': 'Street view megnyitása.',
+            'navigation': ' <span class="nav-opt">Navigáció<sup class="fas fa-cog"></sup></span> <span class="nav-start">az elejére</span> vagy <span class="nav-end">a végére</span>.',
+            'downloadRoute': '<span class="download">Útvonal letöltése</span> (<span class="fmt-opt">formátum<sup class="fas fa-cog"></sup></span>).',
+            'openStreetView': '<span class="strt-vw">Street view megnyitása</span>.',
             'routeLength': 'Hossza: {0}km.'
         }
     }
@@ -73,6 +111,7 @@ $(document).ready(function() {
 
     $('#options-dialog').on('hidden.bs.modal', updateOptions);
     initNavSelector();
+    initDownloadTypeSelector();
 });
 
 function initializeContent(data)
@@ -226,9 +265,14 @@ function addRoute(data)
             for (var i = 1; i < coords.length; ++i)
                 length += coords[i - 1].distanceTo(coords[i]);
             elem.append($(('<p>' + langDict.routeLength + '</p>').format((length / 1000).toFixed(1))));
-            addNavigationLinks(elem, coords[0], coords[coords.length - 1]);
+            var elemLinks = $('<p/>');
+            addNavigationLinks(elemLinks, coords[0], coords[coords.length - 1]);
+            elemLinks.append($('<br/>'));
+            addDownloadLink(elemLinks, coords, routeId);
+            elemLinks.append($('<br/>'));
             var mididx = Math.floor(coords.length / 2);
-            addStreetViewLink(elem, coords[mididx], coords[mididx + 1]);
+            addStreetViewLink(elemLinks, coords[mididx], coords[mididx + 1]);
+            elem.append(elemLinks);
         }
 
         if (window.location.hash == '#' + routeId)
@@ -256,6 +300,11 @@ function initNavSelector()
     });
 }
 
+function makeSectionElement(html)
+{
+    return $('<span> {0}</span>'.format(html));
+}
+
 function addNavigationLinks(elem, start, end)
 {
     const planTo = coord => {
@@ -263,7 +312,7 @@ function addNavigationLinks(elem, start, end)
         return false;
     };
 
-    var eNav = $('<p />').append($(langDict.navigation));
+    var eNav = makeSectionElement(langDict.navigation);
     var eOpt = eNav.find('span.nav-opt');
     eOpt.replaceWith($('<a href="#" data-toggle="modal" data-target="#options-dialog" />').append(eOpt.html()));
     var eStart = eNav.find('span.nav-start');
@@ -271,6 +320,41 @@ function addNavigationLinks(elem, start, end)
     var eEnd = eNav.find('span.nav-end');
     eEnd.replaceWith($('<a href="#" />').append(eEnd.html()).click(() => planTo(end)));
     elem.append(eNav);
+}
+
+const downloadTypes = huroutes.opt.downloads;
+var downloadTypeId = function() {
+    var savedDownloadTypeId = $.cookie('huroutes-dltype');
+    return downloadTypes[savedDownloadTypeId] !== undefined ? savedDownloadTypeId : Object.keys(downloadTypes)[0];
+}();
+
+function initDownloadTypeSelector()
+{
+    var elem = $('#download-types');
+    $.each(downloadTypes, (key, value) => {
+        const id = key.toLowerCase().replace(/ /g, '');
+        elem.append(
+            $('<div><input type="radio" name="dlType" id="{0}" value="{1}" {2}> <label for="{0}">{1}</label></div>'
+                .format(id, key, key == downloadTypeId ? 'checked' : '')));
+    });
+}
+
+function addDownloadLink(elem, coords, routeId)
+{
+    const download = (coords, routeId) => {
+        var fmt = downloadTypes[downloadTypeId];
+        var file = fmt.fileTemplate.format(
+            routeId,
+            coords.map(coord => fmt.pointTemplate.format(coord.lat, coord.lng)).join(''));
+        downloadString(routeId + '.' + fmt.ext, fmt.mimeType, file);
+        return false;
+    }
+    var eDownload = makeSectionElement(langDict.downloadRoute);
+    var eLink = eDownload.find('span.download');
+    eLink.replaceWith($('<a href="#"/>').append(eLink.html()).click(() => download(coords, routeId)));
+    var eOpt = eDownload.find('span.fmt-opt');
+    eOpt.replaceWith($('<a href="#" data-toggle="modal" data-target="#options-dialog" />').append(eOpt.html()));
+    elem.append(eDownload);
 }
 
 function addStreetViewLink(elem, coord, coordNext)
@@ -283,18 +367,26 @@ function addStreetViewLink(elem, coord, coordNext)
         window.open(huroutes.opt.streetView.format(coord.lat, coord.lng, angle), '_blank');
         return false;
     }
-    elem.append($('<p />').append(
-        $('<a href="#">{0}</a>'.format(langDict.openStreetView)).click(() => streetViewAt(coord, coordNext)),
-    ));
+    var eNav = makeSectionElement(langDict.openStreetView);
+    var eLink = eNav.find('span.strt-vw');
+    eLink.replaceWith($('<a href="#"/>').append(eLink.html()).click(() => streetViewAt(coord, coordNext)));
+    elem.append(eNav);
 }
 
 function updateOptions()
 {
     var selection = $('input[name=navProv]:checked').val();
-    if (!selection)
-        return;
-    navigationProviderId = selection;
-    $.cookie('huroutes-navprovider', selection, { expires: 1825 });
+    if (selection)
+    {
+        navigationProviderId = selection;
+        $.cookie('huroutes-navprovider', selection, { expires: 1825 });
+    }
+    selection = $('input[name=dlType]:checked').val();
+    if (selection)
+    {
+        downloadTypeId = selection;
+        $.cookie('huroutes-dltype', selection, { expires: 1825 });
+    }
 }
 
 function activateRoute(layerOrRouteId)
@@ -375,6 +467,15 @@ function selectLanguage()
         return defaultLang;
     }
     return lang;
+}
+
+function downloadString(fileName, mimeType, data, charset = 'utf-8')
+{
+    var anchor = $('<a id="download" style="display:none" download="{0}"/>'.format(fileName));
+    anchor.attr('href', 'data:{0};charset={1},{2}'.format(mimeType, charset, encodeURIComponent(data)));
+    $('body').append(anchor);
+    anchor[0].click();
+    anchor.remove();
 }
 
 })();
