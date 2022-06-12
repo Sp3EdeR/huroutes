@@ -11,7 +11,17 @@ const huroutes = {
             'tiles': {
                 'Térkép': L.tileLayer.provider('OpenStreetMap'),
                 'Domborzat': L.tileLayer.provider('OpenTopoMap'),
-                'Műhold': L.tileLayer.provider('Esri.WorldImagery')
+                'Műhold': L.tileLayer.provider('Esri.WorldImagery'),
+                'Google Térkép': L.tileLayer('https://{s}.google.com/vt/lyrs=m&x={x}&y={y}&z={z}',{attribution:'&copy; Google Maps',minZoom:5,maxZoom:18,subdomains:['mt0', 'mt1', 'mt2', 'mt3']}),
+                'Google Domborzat': L.tileLayer('https://{s}.google.com/vt/lyrs=p&x={x}&y={y}&z={z}',{attribution:'&copy; Google Maps',minZoom:5,maxZoom:18,subdomains:['mt0', 'mt1', 'mt2', 'mt3']}),
+                'Google Műhold': L.tileLayer('https://{s}.google.com/vt/lyrs=s,h&x={x}&y={y}&z={z}',{attribution:'&copy; Google Maps',minZoom:5,maxZoom:18,subdomains:['mt0', 'mt1', 'mt2', 'mt3']})
+            },
+            'overlays': {
+                'Domborzat Kiemelés': L.tileLayer('https://map.turistautak.hu/tiles/shading/{z}/{x}/{y}.png', {attribution:'&copy; turistautak.hu',minZoom:5,maxZoom: 18,zIndex:5}),
+                'Turistautak': L.tileLayer('https://{s}.tile.openstreetmap.hu/tt/{z}/{x}/{y}.png', {attribution:'&copy; turistautak.hu',minZoom:5,maxZoom: 18,zIndex:100})
+            },
+            'tileOverlays': {
+                'Műhold': L.tileLayer('https://map.turistautak.hu/tiles/lines/{z}/{x}/{y}.png', {attribution:'&copy; turistautak.hu',minZoom:5,maxZoom: 18,zIndex:10})
             }
         },
         'navLinkProviders': {
@@ -94,12 +104,43 @@ $(document).ready(function() {
     map = L.map('map', { zoomControl: false }).fitBounds(huroutes.opt.map.bounds);
     const tiles = huroutes.opt.map.tiles;
     (tiles[$.cookie('huroutes-mapstyle')] || tiles[Object.keys(tiles)[0]]).addTo(map);
+    const overlays = huroutes.opt.map.overlays;
+    ($.cookie('huroutes-overlays') || '').split(',').forEach(item => {
+        const overlay = overlays[item];
+        if (overlay)
+            overlay.addTo(map);
+    });
+    const tileOverlay = huroutes.opt.map.tileOverlays[$.cookie('huroutes-mapstyle')];
+    if (tileOverlay)
+        tileOverlay.addTo(map);
     L.control.scale({ position: 'bottomright', imperial: false }).addTo(map);
     L.control.zoom({ position: 'bottomright' }).addTo(map);
-    L.control.layers(tiles, null, { position: 'bottomleft' }).addTo(map);
+    L.control.layers(tiles, overlays, { position: 'bottomleft' }).addTo(map);
 
     map.on('baselayerchange', (layer) => {
         $.cookie('huroutes-mapstyle', layer.name, { expires: 1825 });
+        Object.entries(huroutes.opt.map.tileOverlays).forEach(([name, overlay]) => {
+            if (name == layer.name)
+                overlay.addTo(map);
+            else if (map.hasLayer(overlay))
+                overlay.remove();
+        });
+        const tileOverlay = huroutes.opt.map.tileOverlays[layer.name];
+        if (tileOverlay)
+            tileOverlay.addTo(map);
+    });
+    map.on('overlayadd', (overlay) => {
+        var overlays = $.cookie('huroutes-overlays');
+        overlays = overlays ? overlays.split(',') : [];
+        overlays.push(overlay.name);
+        $.cookie('huroutes-overlays', overlays.join(','), { expires: 1825 });
+    });
+    map.on('overlayremove', (overlay) => {
+        var overlays = ($.cookie('huroutes-overlays') || '').split(',');
+        const idx = overlays.indexOf(overlay.name);
+        if (idx != -1)
+        overlays.splice(idx, 1);
+        $.cookie('huroutes-overlays', overlays.join(','), { expires: 1825 });
     });
     map.createPane('bkgRoutes');
     map.getPane('bkgRoutes').style.zIndex = 450;
