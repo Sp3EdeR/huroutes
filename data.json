@@ -244,7 +244,7 @@
 						"md":"data/24Paradsasvar.md",
 						"kml":"data/24Paradsasvar.kml",
 						"rat":8,
-						"upd":"2021 szeptember"
+						"upd":"2022 június"
 					},
 					{
 						"ttl":"24 (Sirok)",
@@ -254,11 +254,18 @@
 						"upd":"2021 szeptember"
 					},
 					{
+						"ttl":"Kékestető",
+						"md":"data/Kekesteto.md",
+						"kml":"data/Kekesteto.kml",
+						"rat":7,
+						"upd":"2022 június"
+					},
+					{
 						"ttl":"2408",
 						"md":"data/2408.md",
 						"kml":"data/2408.kml",
 						"rat":6,
-						"upd":"2021 szeptember"
+						"upd":"2022 június"
 					},
 					{
 						"ttl":"Mátrai Bejáróút",
