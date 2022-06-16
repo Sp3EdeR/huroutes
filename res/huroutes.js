@@ -95,6 +95,8 @@ String.prototype.format = function () {
 
 (function() {
 
+migrateCookieSettings();
+
 var langDict = selectLanguage();
 var markdown = new showdown.Converter();
 var map;
@@ -103,14 +105,14 @@ var nextDropId = 0;
 $(document).ready(function() {
     map = L.map('map', { zoomControl: false }).fitBounds(huroutes.opt.map.bounds);
     const tiles = huroutes.opt.map.tiles;
-    (tiles[$.cookie('huroutes-mapstyle')] || tiles[Object.keys(tiles)[0]]).addTo(map);
+    (tiles[localStorage.mapstyle] || tiles[Object.keys(tiles)[0]]).addTo(map);
     const overlays = huroutes.opt.map.overlays;
-    ($.cookie('huroutes-overlays') || '').split(',').forEach(item => {
+    (localStorage.overlays || '').split('|').forEach(item => {
         const overlay = overlays[item];
         if (overlay)
             overlay.addTo(map);
     });
-    const tileOverlay = huroutes.opt.map.tileOverlays[$.cookie('huroutes-mapstyle')];
+    const tileOverlay = huroutes.opt.map.tileOverlays[localStorage.mapstyle];
     if (tileOverlay)
         tileOverlay.addTo(map);
     L.control.scale({ position: 'bottomright', imperial: false }).addTo(map);
@@ -118,7 +120,7 @@ $(document).ready(function() {
     L.control.layers(tiles, overlays, { position: 'bottomleft' }).addTo(map);
 
     map.on('baselayerchange', (layer) => {
-        $.cookie('huroutes-mapstyle', layer.name, { expires: 1825 });
+        localStorage.setItem('mapstyle', layer.name);
         Object.entries(huroutes.opt.map.tileOverlays).forEach(([name, overlay]) => {
             if (name == layer.name)
                 overlay.addTo(map);
@@ -130,17 +132,17 @@ $(document).ready(function() {
             tileOverlay.addTo(map);
     });
     map.on('overlayadd', (overlay) => {
-        var overlays = $.cookie('huroutes-overlays');
-        overlays = overlays ? overlays.split(',') : [];
+        var overlays = localStorage.overlays;
+        overlays = overlays ? overlays.split('|') : [];
         overlays.push(overlay.name);
-        $.cookie('huroutes-overlays', overlays.join(','), { expires: 1825 });
+        localStorage.setItem('overlays', overlays.join('|'));
     });
     map.on('overlayremove', (overlay) => {
-        var overlays = ($.cookie('huroutes-overlays') || '').split(',');
+        var overlays = (localStorage.overlays || '').split('|');
         const idx = overlays.indexOf(overlay.name);
         if (idx != -1)
         overlays.splice(idx, 1);
-        $.cookie('huroutes-overlays', overlays.join(','), { expires: 1825 });
+        localStorage.setItem('overlays', overlays.join('|'));
     });
     map.createPane('bkgRoutes');
     map.getPane('bkgRoutes').style.zIndex = 450;
@@ -326,7 +328,7 @@ function addRoute(data)
 
 const navProviders = huroutes.opt.navLinkProviders;
 var navigationProviderId = function() {
-    var savedProviderId = $.cookie('huroutes-navprovider');
+    var savedProviderId = localStorage.navprovider;
     return navProviders[savedProviderId] !== undefined ? savedProviderId : Object.keys(navProviders)[0];
 }();
 
@@ -365,7 +367,7 @@ function addNavigationLinks(elem, start, end)
 
 const downloadTypes = huroutes.opt.downloads;
 var downloadTypeId = function() {
-    var savedDownloadTypeId = $.cookie('huroutes-dltype');
+    var savedDownloadTypeId = localStorage.dltype;
     return downloadTypes[savedDownloadTypeId] !== undefined ? savedDownloadTypeId : Object.keys(downloadTypes)[0];
 }();
 
@@ -420,13 +422,13 @@ function updateOptions()
     if (selection)
     {
         navigationProviderId = selection;
-        $.cookie('huroutes-navprovider', selection, { expires: 1825 });
+        localStorage.setItem('navprovider', selection);
     }
     selection = $('input[name=dlType]:checked').val();
     if (selection)
     {
         downloadTypeId = selection;
-        $.cookie('huroutes-dltype', selection, { expires: 1825 });
+        localStorage.setItem('dltype', selection);
     }
 }
 
@@ -517,6 +519,21 @@ function downloadString(fileName, mimeType, data, charset = 'utf-8')
     $('body').append(anchor);
     anchor[0].click();
     anchor.remove();
+}
+
+// TODO: Remove this
+function migrateCookieSettings()
+{
+    document.cookie.split(";").forEach(c => {
+        const opts = ['dltype', 'mapstyle', 'navprovider', 'overlays'];
+        var [key, value] = c.trim().split('=');
+        const opt = key.replace('huroutes-', '');
+        if (opts.includes(opt))
+        {
+            localStorage.setItem(opt, decodeURIComponent(value));
+            document.cookie = 'huroutes-{0}=;expires={1};path=/'.format(opt, new Date().toUTCString());
+        }
+    });
 }
 
 })();
