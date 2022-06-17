@@ -224,8 +224,13 @@ function createMenuRouteItem(elem, data)
 
 function createInfoPanel(elem, data)
 {
-    if (!data.rat && !data.bkg)
-        console.warn('No rating given for ' + data.ttl);
+    if (!data.bkg)
+    {
+        if (!data.rat)
+            console.warn('No rating given for ' + data.ttl);
+        if (!data.upd)
+            console.warn('No last update date given for ' + data.ttl);
+    }
     if (data.rat || data.upd)
     {
         var elemHeader = $('<p class="route-header"/>');
