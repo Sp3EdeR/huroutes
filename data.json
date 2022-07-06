@@ -36,7 +36,7 @@
 						"md":"data/Lepence.md",
 						"kml":"data/Lepence.kml",
 						"rat":7,
-						"upd":"2021 március"
+						"upd":"2022 július"
 					},
 					{
 						"ttl":"Dobogókő",
@@ -76,20 +76,20 @@
 						"md":"data/Hereg.md",
 						"kml":"data/Hereg.kml",
 						"rat":7,
-						"upd":"2021 március"
+						"upd":"2022 július"
 					},
 					{
 						"ttl":"Bajna - Bajót",
 						"md":"data/BajnaBajot.md",
 						"kml":"data/BajnaBajot.kml",
-						"rat":7,
-						"upd":"2022 május"
+						"rat":6,
+						"upd":"2022 július"
 					},
 					{
 						"ttl":"Szomor - Bajna",
 						"md":"data/SzomorBajna.md",
 						"kml":"data/SzomorBajna.kml",
-						"upd":"2021 március",
+						"upd":"2022 július",
 						"rat": 4
 					},
 					{
