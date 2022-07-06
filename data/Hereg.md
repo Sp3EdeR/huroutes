@@ -1,7 +1,5 @@
-Kissé keskeny és nagyon rövid, tökéletes útminőség, alacsony forgalom. Egyre népszerűbb motoros útvonal, azonban az átmenő forgalom átlagos, így a kevésbé forgalmas időszakokban alkalmas egy tempósabb autózásra. A Gerecse környéke akár [hosszabban is bejárható](#GerecseTatTatabanya), de a Bajna és Héreg közötti szakasz kiemelten jó és ezáltal igencsak népszerű.
+Az éles visszafordítóktól az enyhe kanyarokig minden megtalálható itt, így változatos szerpentin élményben lehet részünk. Kissé keskeny és nagyon rövid ez a szakasz, de kárpótol minket a tökéletes útminőséggel, gyönyörű kilátással és a már említett kanyarokkal. Egyre népszerűbb motoros útvonal, azonban az átmenő forgalom alacsony-közepes általában, így a kevésbé forgalmas időszakokban alkalmas az igencsak tempós autózásra. Biztonságos előzésre viszont nincs túl sok lehetőség a visszafordítók környékén. Ha Héreg felé megyünk, akkor az első balos visszafordító utáni jobbkanyar enyhe ívről nagyon élessé szűkül be. A trükkös vonalvezetést motorosok számára készített optimális ívjelző karikák is jelzik. Itt fontos figyelni, nehogy baj legyen. Könnyen meg lehet állni vagy fordulni a [Héregi sportpálya](https://goo.gl/maps/ijjcSq5xvMZnowZR6) parkolójánál és Bajnán az első mellékutcában.
 
-Könnyen meg lehet fordulni a Héregi Sportpályánál és Bajnán az első mellékutcában.
-
-Budapest irányából érdemes a [Szomor-Bajnai útvonalon](#SzomorBajna) közelíteni, ami jó alternatívája a nagyon forgalmas 1-es útnak.
+A Gerecse környéke akár [hosszabban is bejárható](#GerecseTatTatabanya), de a Bajna és Héreg közötti szakasz kiemelten jó és ezáltal igencsak népszerű. Budapest irányából érdemes a [Szomor-Bajnai útvonalon](#SzomorBajna) közelíteni, ami jó alternatívája a nagyon forgalmas 1-es útnak.
 
 [Bemutató videó Draskovics Andristól](https://youtu.be/xDhJktK-ca4)
