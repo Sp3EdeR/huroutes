@@ -1,3 +1,5 @@
 Erre az útvonalra a Lábatlan felé vezető úttal összekötve gyakran szerveznek rally szakaszt, de a frissen felújított szűk kanyarokkal rendelkező erdős rész most igazán élvezetes kanyargást nyújt. A nem igazán forgalmas útszakaszon a hosszú egyeneseket az első 5 km után trükkös és szűk kanyarok követik, amik kisebb szintkülönbségekkel szelik át az erdőt. Bajóthoz közel van egy [közepes-éles kanyar egy bukkanó tetején](https://goo.gl/maps/cvdt8pdepi5LAfTL7), ahol könnyen el lehet repülni. Erre vigyázzunk kiemelten.
 
 Bajót faluban el lehet kanyarodni Péliföldszentkereszt irányába is, de ott csak a szentkereszt település részig kapott új aszfaltot az út és tovább gurulva a 1119-es útra eléggé rossz minőségű út vezet, ezért érdemesebb inkább a bajóti buszfordulóban megfordulni és visszafele is befűzni a kanyarokat.
+
+Budapest irányából érdemes a [Szomor-Bajnai útvonalon](#SzomorBajna) közelíteni, ami jó alternatívája a nagyon forgalmas 1-es útnak. Ezen kívül direkt összeköttetése van az útnak a nagyszerű [héregi szerpentinnel](#Hereg), amerre érdemes lehet folytatni utunkat.
