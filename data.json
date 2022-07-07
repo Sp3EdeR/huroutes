@@ -43,14 +43,14 @@
 						"md":"data/Dobogoko.md",
 						"kml":"data/Dobogoko.kml",
 						"rat":6,
-						"upd":"2022 június"
+						"upd":"2022 július"
 					},
 					{
 						"ttl":"Fellegvár",
 						"md":"data/Fellegvar.md",
 						"kml":"data/Fellegvar.kml",
 						"rat":7,
-						"upd":"2022 május"
+						"upd":"2022 július"
 					},
 					{
 						"ttl":"Üvegtigris",
@@ -69,7 +69,7 @@
 						"md":"data/Hilltop.md",
 						"kml":"data/Hilltop.kml",
 						"rat":4,
-						"upd":"2022 április"
+						"upd":"2022 július"
 					},
 					{
 						"ttl":"Héreg",
@@ -93,16 +93,9 @@
 						"rat": 4
 					},
 					{
-						"ttl":"Gerecsei Bejáróút: Tát - Tatabánya",
-						"md":"data/GerecseTatTatabanya.md",
-						"kml":"data/GerecseTatTatabanya.kml",
-						"upd":"2021 március",
-						"bkg":true
-					},
-					{
-						"ttl":"Gerecsei Bejáróút: Esztergom - Tata",
-						"md":"data/GerecseEsztergomTata.md",
-						"kml":"data/GerecseEsztergomTata.kml",
+						"ttl":"Gerecsei Bejáróút",
+						"md":"data/Gerecse.md",
+						"kml":"data/Gerecse.kml",
 						"bkg":true
 					}
 				]
