@@ -23,8 +23,9 @@ class Checker:
             if not path.exists(path.join(self.rootDir, value)):
                 raise ValueError(value + " does not exist.")
         if key == "md" and value.endswith(".md"):
-            if not path.exists(path.join(self.rootDir, value)):
-                raise ValueError(value + " does not exist.")
+            file = path.join(self.rootDir, value)
+            if not path.exists(file) or path.getsize(file) <= 16:
+                raise ValueError(value + " does not exist or is too small.")
 
 def main():
     parser = argparse.ArgumentParser()
