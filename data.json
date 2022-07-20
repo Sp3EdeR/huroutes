@@ -367,6 +367,27 @@
 						"upd":"2022 március"
 					},
 					{
+						"ttl":"Balatonfüred - Tótvázsony",
+						"md":"data/BalatonfuredTotvazsony.md",
+						"kml":"data/BalatonfuredTotvazsony.kml",
+						"rat":5,
+						"upd":"2022 július"
+					},
+					{
+						"ttl":"Tótvázsony - Dörgicse",
+						"md":"data/TotvazsonyDorgicse.md",
+						"kml":"data/TotvazsonyDorgicse.kml",
+						"rat":6,
+						"upd":"2022 július"
+					},
+					{
+						"ttl":"Köveskál - Gyulakeszi",
+						"md":"data/KoveskalGyulakeszi.md",
+						"kml":"data/KoveskalGyulakeszi.kml",
+						"rat":5,
+						"upd":"2022 július"
+					},
+					{
 						"ttl":"77 (Veszprém - Tapolca)",
 						"md":"data/77.md",
 						"kml":"data/77.kml",
