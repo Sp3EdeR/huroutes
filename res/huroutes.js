@@ -438,6 +438,17 @@ function updateOptions()
     }
 }
 
+function removeFocus()
+{
+    map.eachLayer(layer => {
+        if (layer.focused)
+        {
+            layer.setStyle(layer.options.style);
+            layer.focused = false;
+        }
+    });
+}
+
 function activateRoute(layerOrRouteId)
 {
     var layer = null
@@ -453,13 +464,7 @@ function activateRoute(layerOrRouteId)
     else
         layer = layerOrRouteId;
 
-    map.eachLayer(layer => {
-        if (layer.focused)
-        {
-            layer.setStyle(layer.options.style);
-            layer.focused = false;
-        }
-    });
+    removeFocus()
     layer.setStyle(layer.options.focusedStyle);
     layer.focused = true;
 
@@ -491,7 +496,11 @@ window.addEventListener('popstate', event => {
     if (event.state)
         activateRoute(event.state)
     else
+    {
+        $('.collapse').collapse('hide')
+        removeFocus()
         map.flyToBounds(huroutes.opt.map.bounds);
+    }
 });
 
 function normRating(rat)
