@@ -155,6 +155,7 @@ $(document).ready(function() {
     $('#options-dialog').on('hidden.bs.modal', updateOptions);
     initNavSelector();
     initDownloadTypeSelector();
+    initAdToast();
 });
 
 function initializeContent(data)
@@ -524,6 +525,25 @@ function downloadString(fileName, mimeType, data, charset = 'utf-8')
     $('body').append(anchor);
     anchor[0].click();
     anchor.remove();
+}
+
+function initAdToast()
+{
+    // Wait a bit before doing toasts
+    setTimeout(function() {
+        androidApToast()
+    }, 5000);
+
+    function androidApToast() {
+        if (localStorage.shownAndroidAd || !navigator.userAgent.includes("Android") ||
+            navigator.userAgent.includes("huroutes"))
+            return;
+
+        var androidToast = $('#toast-android-app')
+        androidToast.toast('show')
+        androidToast.on('hide.bs.toast', () => localStorage.shownAndroidAd = true)
+        androidToast.find('a[href]').on('click', () => androidToast.toast('hide'))
+    }
 }
 
 // TODO: Remove this
