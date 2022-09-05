@@ -95,8 +95,6 @@ String.prototype.format = function () {
 
 (function() {
 
-migrateCookieSettings();
-
 var langDict = selectLanguage();
 var markdown = new showdown.Converter();
 var map;
@@ -553,21 +551,6 @@ function initAdToast()
         androidToast.on('hide.bs.toast', () => localStorage.shownAndroidAd = true)
         androidToast.find('a[href]').on('click', () => androidToast.toast('hide'))
     }
-}
-
-// TODO: Remove this
-function migrateCookieSettings()
-{
-    document.cookie.split(";").forEach(c => {
-        const opts = ['dltype', 'mapstyle', 'navprovider', 'overlays'];
-        var [key, value] = c.trim().split('=');
-        const opt = key.replace('huroutes-', '');
-        if (opts.includes(opt))
-        {
-            localStorage.setItem(opt, decodeURIComponent(value));
-            document.cookie = 'huroutes-{0}=;expires={1};path=/'.format(opt, new Date().toUTCString());
-        }
-    });
 }
 
 })();
