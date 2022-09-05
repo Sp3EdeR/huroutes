@@ -19,10 +19,7 @@ a {
   color: #8ccbff;
 }
 a:hover {
-  color: #eee !important;
-}
-a:visited {
-  color: #8ccbff;
+  color: #eee;
 }
 
 ::-webkit-scrollbar {
@@ -208,6 +205,10 @@ ul ul ul ul ul a.dropdown-toggle {
   bottom: 22px;
   position: absolute;
   right: 44px;
+}
+
+.leaflet-bar a:hover {
+  color: black;
 }
 
 /*
