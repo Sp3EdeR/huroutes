@@ -1,5 +1,5 @@
 /*
- * Page and layout
+ * Page generics
  */
 
 body {
@@ -38,30 +38,84 @@ a:hover {
 }
 
 /*
- * Sidebar
+ * Layout
  */
 
- #sidebar {
-  background: #13192e;
-  color: #fff;
+#main {
+  height: 100vh;
+  margin-top: 0;
   padding: 0;
-  transition: all 0.3s;
+  position: fixed;
+  left: 10vw; top: 0; right: 0; bottom: 0;
+  width: 90vw;
 }
 
 @media (min-width: 768px) {
-  body {
-    overflow-y: hidden;
-  }
-
-  #sidebar {
-    bottom: 0;
-    display: block;
-    overflow-x: hidden;
-    overflow-y: auto;
-    position: fixed;
-    top: 0;
+  #main {
+    position: static;
   }
 }
+
+#sidebar {
+  background: #13192e;
+  color: #fff;
+  display: block;
+  left: 0; top: 0; right: 10vw; bottom: 0;
+  padding: 0;
+  position: fixed;
+  overflow-x: hidden;
+  overflow-y: scroll;
+  width: 90vw; height: 100vh;
+  transition: left 0.25s ease;
+  z-index: 1032;
+}
+#sidebar.closed {
+  left: -80vw;
+  overflow-y: hidden;
+}
+
+@media (min-width: 768px) {
+  #sidebar {
+    left: 0; right: 0;
+    transition: none;
+  }
+  #sidebar.closed {
+    left: 0;
+    overflow-y: scroll;
+  }
+}
+
+.panel-void {
+  background: #0000007c;
+  display: none;
+  position: fixed;
+}
+#void-close-sidebar {
+  left: 0; right: 0; top: 0; bottom: 0;
+  z-index: 1031;
+}
+#void-close-sidebar.show {
+  display: block;
+}
+#void-open-sidebar {
+  left: 0; right: -12px; top: 0; bottom: 0;
+  position: absolute;
+  z-index: 1033;
+}
+#void-open-sidebar.show {
+  display: block;
+}
+
+@media (min-width: 768px) {
+  #void-close-sidebar, #void-close-sidebar.show,
+  #void-open-sidebar, #void-open-sidebar.show {
+    display: none;
+  }
+}
+
+/*
+ * Sidebar
+ */
 
 .sidebar-header {
   border-bottom: 1px solid #eee;
@@ -179,18 +233,6 @@ ul ul ul ul ul a.dropdown-toggle {
 /*
  * Map view
  */
-
-#main {
-  height: 50vh;
-  margin-top: 0;
-  padding: 0;
-}
-
-@media (min-width: 768px) {
-  #main {
-    height: 100vh;
-  }
-}
 
 .map {
   top: 0;
