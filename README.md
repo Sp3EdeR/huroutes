@@ -45,7 +45,3 @@ Bárki szabadon nyithat pull requestet. Ezt megkapják az oldal szerkesztői és
 A repóban található információk és tartalom "közkincs"-ként használhatóak. Tetszőlegesen másolhatóak, szerkeszthetőek a forrás megjelölése nélkül. A tartalomra, annak felhasználhatóságára, helyességére, bármiféle egyéb követelményeire a szerzők NEM vállalnak felelősséget. Mindenki saját felelősségére használja ezeket.
 
 Ezzel együtt a szerkesztők által kért felhasználási mód az lenne - a közösség megtartása érdekében - hogy igyekezzünk visszajuttatni minden hasznos információt a [huroutes oldalra](https://sp3eder.github.io/huroutes) és osszuk tovább ezt, ahol csak lehetséges. Így lesz mindenkinek jó.
-
-## Felhasznált szoftverek
-
-A huroutes a [leaflet-map-template-with-sidebar](https://github.com/vannizhang/leaflet-map-template-with-sidebar) alapján készült, köszönet [vannizhang](https://github.com/vannizhang)-nak.
