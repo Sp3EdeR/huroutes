@@ -151,6 +151,7 @@ $(document).ready(function() {
         });
 
     $('#options-dialog').on('hidden.bs.modal', updateOptions);
+    initSidebarEvents();
     initNavSelector();
     initDownloadTypeSelector();
     initAdToast();
@@ -483,6 +484,8 @@ function activateRoute(layerOrRouteId)
         clearInterval(scrollWait);
     }, 100);
 
+    openSidebar()
+
     var routeFragment = '#' + layer.routeId;
     if (window.location.hash != routeFragment)
         window.history.pushState(layer.routeId, '', routeFragment);
@@ -552,5 +555,51 @@ function initAdToast()
         androidToast.find('a[href]').on('click', () => androidToast.toast('hide'))
     }
 }
+
+var openSidebar
+function initSidebarEvents() {
+    // This class prevents mouseover reopening after a swipe-close
+    class SidebarChange {
+        constructor() { this.enabled = true; }
+        tempDisable() {
+            this.enabled = false;
+            setTimeout(() => this.enabled = true, 200);
+        }
+    }
+    var change = new SidebarChange;
+    var isOpen = true;
+    function open() {
+        if (!change.enabled)
+            return;
+        isOpen = true;
+        $('#sidebar').removeClass('closed');
+        $('#void-close-sidebar').addClass('show');
+        $('#void-open-sidebar').removeClass('show');
+        change.tempDisable()
+    }
+    openSidebar = open
+    function close() {
+        if (!change.enabled)
+            return;
+        isOpen = false;
+        $('#sidebar').addClass('closed');
+        $('#void-close-sidebar').removeClass('show');
+        $('#void-open-sidebar').addClass('show');
+        change.tempDisable()
+    }
+
+    $('#void-open-sidebar').on('click mouseover', open);
+    $('#void-close-sidebar').on('click mouseover', close);
+    $('#void-close-sidebar').swipe({ swipeLeft: close });
+    $('#void-open-sidebar').swipe({ swipeRight: open });
+    if (navigator.userAgent.includes('Mobile'))
+        $('#sidebar').swipe({ swipeLeft: close });
+    // Reopen when switching to side-by-side
+    $(window).resize(function() {
+        if (!isOpen && 768 < $(window).innerWidth())
+            open()
+    })
+}
+
 
 })();
