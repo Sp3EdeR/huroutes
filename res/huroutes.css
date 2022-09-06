@@ -64,7 +64,7 @@ a:hover {
   padding: 0;
   position: fixed;
   overflow-x: hidden;
-  overflow-y: scroll;
+  overflow-y: auto;
   width: 90vw; height: 100vh;
   transition: left 0.25s ease;
   z-index: 1032;
@@ -81,7 +81,7 @@ a:hover {
   }
   #sidebar.closed {
     left: 0;
-    overflow-y: scroll;
+    overflow-y: auto;
   }
 }
 
