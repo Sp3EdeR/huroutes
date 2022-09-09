@@ -40,6 +40,10 @@ A weblap tartalma közösségi és szerkesztheti bárki és meg is köszönünk 
 	
 Bárki szabadon nyithat pull requestet. Ezt megkapják az oldal szerkesztői és miután ellenőrzik a módosításokat (és esetlegesen javításokat kérnek hozzá), feltehetőleg elfogadják és beengedik a pull requestet. Ennek eredményeként rögtön láthatjuk majd a fő weblapon munkánk gyümölcsét.
 
+### Helyjelölők
+
+Használhatunk helyjelölő linkeket az útvonalak leírásai (`.md` fileok) alatt. Ezekkel a leírásokat sokkal szemléletesebbé tehetjük az olvasó számára. A https://sp3eder.github.io/huroutes/linkmaker.html címen érhető el egy helyjelölő szerkesztő, ami segít ilyen linkeket előállítani. [Például ilyen helyjelölőket](https://sp3eder.github.io/huroutes/#geo:P%C3%A9lda@47.498345,19.040458/?b=%C3%8Dgy%20n%C3%A9z%20ki%20egy%20helyjel%C3%B6l%C5%91%20link.) lehet ennek segítségével létrehozni.
+
 ## Licensz
 
 A repóban található információk és tartalom "közkincs"-ként használhatóak. Tetszőlegesen másolhatóak, szerkeszthetőek a forrás megjelölése nélkül. A tartalomra, annak felhasználhatóságára, helyességére, bármiféle egyéb követelményeire a szerzők NEM vállalnak felelősséget. Mindenki saját felelősségére használja ezeket.
