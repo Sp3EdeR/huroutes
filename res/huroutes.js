@@ -81,6 +81,7 @@ const huroutes = {
         'default': 'hu-HU',
         'hu-HU': {
             'navigation': ' <span class="nav-opt">Navigáció<sup class="fas fa-cog"></sup></span> <span class="nav-start">az elejére</span> vagy <span class="nav-end">a végére</span>.',
+            'navToPoi': ' <span class="nav-opt">Navigáció<sup class="fas fa-cog"></sup></span> <span class="nav-start">ehhez a helyhez</span>.',
             'downloadRoute': '<span class="download">Útvonal letöltése</span> (<span class="fmt-opt">formátum<sup class="fas fa-cog"></sup></span>).',
             'openStreetView': '<span class="strt-vw">Street view megnyitása</span>.',
             'routeLength': 'Hossza: {0}km.'
@@ -88,7 +89,7 @@ const huroutes = {
     }
 };
 
-String.prototype.format = function () {
+String.prototype.format = function() {
     var args = arguments;
     return this.replace(/\{(\d+)\}/g, function (m, n) { return args[n]; });
 };
@@ -96,7 +97,6 @@ String.prototype.format = function () {
 (function() {
 
 var langDict = selectLanguage();
-var markdown = new showdown.Converter();
 var map;
 var nextDropId = 0;
 
@@ -146,7 +146,7 @@ $(document).ready(function() {
     map.getPane('bkgRoutes').style.zIndex = 450;
 
     $.getJSON('data.json', initializeContent)
-        .fail(function () {
+        .fail(function() {
             console.error('Failed loading the route database.');
         });
 
@@ -155,6 +155,8 @@ $(document).ready(function() {
     initNavSelector();
     initDownloadTypeSelector();
     initAdToast();
+
+    navigateTo(fragment.get())
 });
 
 function initializeContent(data)
@@ -215,7 +217,7 @@ function createMenuRouteItem(elem, data)
     elem.addClass('menuitem');
     var dropId = 'menu' + nextDropId++;
     elem.append($('<a href="#{0}" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle"/>'.format(dropId)).html(data.ttl).click(function() {
-        activateRoute($(this).parents('li').first().attr('data-routeid'));
+        navigateTo('#' + $(this).parents('li').first().attr('data-routeid'));
     }));
     var elemDiv = $('<div class="menu list-unstyled collapse panel"/>').prop('id', dropId);
     createInfoPanel(elemDiv, data);
@@ -257,16 +259,10 @@ function createInfoPanel(elem, data)
     if (data.md)
     {
         var descCont = $('<div class="route-desc"/>');
-        const addMarkdown = text => {
-            descCont.append($(markdown.makeHtml(text)));
-            descCont.find('a[href^="#"]').click(function() {
-                var routeId = this.href.split('#')[1];
-                return !activateRoute(routeId);
-            });
-        }
+        const addMarkdown = text => descCont.append($(markdown.makeHtml(text)));
         if (data.md.substr(-3) === '.md')
             $.ajax(data.md)
-                .then(addMarkdown, function () {
+                .then(addMarkdown, function() {
                     console.log('Error loading details for ' + data.ttl);
                 });
         else
@@ -300,7 +296,7 @@ function addRoute(data)
             weight: pathWeight + 2
         }
     });
-    layer.on('click', event => !activateRoute(event.target));
+    layer.on('click', event => !navigateTo(event.target));
     layer.on('mouseover', event => event.target.focused || event.target.setStyle(event.target.options.focusedStyle));
     layer.on('mouseout', event => event.target.focused || event.target.setStyle(event.target.options.style));
     layer.on('layeradd', event => {
@@ -323,8 +319,8 @@ function addRoute(data)
             elem.append(elemLinks);
         }
 
-        if (window.location.hash == '#' + routeId)
-            activateRoute(layer); // event.layer is a different instance; must use layer from closure
+        if (fragment.isIt(routeId))
+            navigateTo(layer); // event.layer is a different instance; must use layer from closure
     });
     layer.routeId = routeId;
     omnivore.kml(data.kml, null, layer).addTo(map);
@@ -353,13 +349,14 @@ function makeSectionElement(html)
     return $('<span> {0}</span>'.format(html));
 }
 
+function planTo(coord)
+{
+    window.open(navProviders[navigationProviderId](coord), '_blank');
+    return false;
+}
+
 function addNavigationLinks(elem, start, end)
 {
-    const planTo = coord => {
-        window.open(navProviders[navigationProviderId](coord), '_blank');
-        return false;
-    };
-
     var eNav = makeSectionElement(langDict.navigation);
     var eOpt = eNav.find('span.nav-opt');
     eOpt.replaceWith($('<a href="#" data-toggle="modal" data-target="#options-dialog" />').append(eOpt.html()));
@@ -367,6 +364,16 @@ function addNavigationLinks(elem, start, end)
     eStart.replaceWith($('<a href="#" />').append(eStart.html()).click(() => planTo(start)));
     var eEnd = eNav.find('span.nav-end');
     eEnd.replaceWith($('<a href="#" />').append(eEnd.html()).click(() => planTo(end)));
+    elem.append(eNav);
+}
+
+function addPoiNavigationLinks(elem, coord)
+{
+    var eNav = $('<p> {0}</p>'.format(langDict.navToPoi));
+    var eOpt = eNav.find('span.nav-opt');
+    eOpt.replaceWith($('<a href="#" data-toggle="modal" data-target="#options-dialog" />').append(eOpt.html()));
+    var eStart = eNav.find('span.nav-start');
+    eStart.replaceWith($('<a href="#" />').append(eStart.html()).click(() => planTo(coord)));
     elem.append(eNav);
 }
 
@@ -437,6 +444,64 @@ function updateOptions()
     }
 }
 
+const fragment = {
+    isIt: str => window.location.hash == '#' + str,
+
+    isGeoData: (hash = null) => (hash ?? window.location.hash).includes('#geo:'),
+    asGeoData: (hash = null) => {
+        const re = /#geo:([^@]+)@(-?[0-9\\.]+),(-?[0-9\\.]+)(?:\/(?:[?&](?:b=([^&]+)))*)?/;
+        m = re.exec(hash ?? window.location.hash);
+        return m ? {
+            title: decodeURIComponent(m[1]),
+            geo: L.latLng(Number(m[2]), Number(m[3])),
+            desc: markdown.makeHtml(decodeURIComponent(m[4] ?? ""))
+        } : null;
+    },
+    get: () => window.location.hash,
+    set: (hash, state) => fragment.get() != hash && window.history.pushState(state, '', hash)
+};
+
+function navigateTo(target, routeId) // target accepts fragment string and layer
+{
+    var success = false;
+    if (typeof target === 'string' || target instanceof String)
+    {
+        if (fragment.isGeoData(target))
+        {
+            routeId = routeId ?? navigateTo.lastRouteId
+            let data = fragment.asGeoData(target);
+            success = data ? activateMarker(data, routeId) : false;
+        }
+        else if (target.startsWith('#'))
+        {
+            routeId = target.split('#')[1];
+            let layer = null;
+            map.eachLayer(i => i.routeId == routeId && (layer = i));
+            success = layer !== null && activateRoute(layer)
+        }
+    }
+    else if (target.hasOwnProperty('routeId'))
+    {
+        success = activateRoute(target)
+        routeId = target.routeId;
+        target = '#' + routeId;
+    }
+    if (success)
+        fragment.set(target, navigateTo.lastRouteId = routeId);
+    return success;
+}
+
+window.addEventListener('popstate', event => {
+    if (fragment.get())
+        navigateTo(fragment.get(), event.state);
+    else
+    {
+        $('.collapse').collapse('hide');
+        removeFocus();
+        map.flyToBounds(huroutes.opt.map.bounds);
+    }
+});
+
 function removeFocus()
 {
     map.eachLayer(layer => {
@@ -446,31 +511,12 @@ function removeFocus()
             layer.focused = false;
         }
     });
+    marker.remove()
 }
 
-function activateRoute(layerOrRouteId)
+function openRouteDesc(routeId)
 {
-    var layer = null
-    if (typeof layerOrRouteId === 'string' || layerOrRouteId instanceof String)
-    {
-        map.eachLayer(i => {
-            if (i.routeId == layerOrRouteId)
-                layer = i;
-        })
-        if (layer === null)
-            return false;
-    }
-    else
-        layer = layerOrRouteId;
-
-    removeFocus()
-    layer.setStyle(layer.options.focusedStyle);
-    layer.focused = true;
-
-    var bounds = layer.getBounds();
-    map.flyToBounds(bounds);
-
-    var menuItem = $('li[data-routeid=' + layer.routeId + ']');
+    var menuItem = routeId ? $('li[data-routeid=' + routeId + ']') : $();
     var related = menuItem.parents('.collapse').add(menuItem.children('.collapse'));
     var unrelated = $('.collapse').not(related);
     unrelated.collapse('hide');
@@ -479,30 +525,64 @@ function activateRoute(layerOrRouteId)
         var sidebar = $('#sidebar');
         if (0 < sidebar.find('.collapsing').length)
             return;
-        var ctrl = $([sidebar[0], $('body')[0], $('html')[0]]).filter((i, e) => e.clientHeight < e.scrollHeight).first();
-        ctrl.animate({ scrollTop: menuItem.offset().top + sidebar.scrollTop() });
+        if (menuItem.length)
+        {
+            var ctrl = $([sidebar[0], $('body')[0], $('html')[0]]).filter((i, e) => e.clientHeight < e.scrollHeight).first();
+            ctrl.animate({ scrollTop: menuItem.offset().top + sidebar.scrollTop() });
+        }
         clearInterval(scrollWait);
     }, 100);
+}
 
-    openSidebar()
+function activateRoute(layer)
+{
+    removeFocus();
+    layer.setStyle(layer.options.focusedStyle);
+    layer.focused = true;
 
-    var routeFragment = '#' + layer.routeId;
-    if (window.location.hash != routeFragment)
-        window.history.pushState(layer.routeId, '', routeFragment);
+    var bounds = layer.getBounds();
+    map.flyToBounds(bounds);
+
+    openRouteDesc(layer.routeId);
+    openSidebar();
 
     return true;
 }
 
-window.addEventListener('popstate', event => {
-    if (event.state)
-        activateRoute(event.state)
-    else
+var marker = {remove:()=>{}};
+function activateMarker(data, routeId)
+{
+    removeFocus();
+
+    marker = L.marker(data.geo, {autoPanOnFocus: false});
+    marker.addTo(map);
+    body = $('<div><p><b>{0}</b></p></div>'.format(data.title));
+    if (data.desc)
+        body.append($(data.desc));
+    addPoiNavigationLinks(body, data.geo);
+    marker.bindPopup(body[0], {
+        autoPan: false, closeButton: false, autoClose: false, closeOnEscapeKey: false,
+        closeOnClick: false
+    }).openPopup();
+    const areaAround = 0.005;
+    map.flyTo(data.geo, 16, {animate:true});
+
+    openRouteDesc(routeId);
+    closeSidebar();
+
+    return true;
+}
+
+var markdown = {
+    engine: new showdown.Converter(),
+    makeHtml(text)
     {
-        $('.collapse').collapse('hide')
-        removeFocus()
-        map.flyToBounds(huroutes.opt.map.bounds);
+        var ret = $(this.engine.makeHtml(text));
+        ret.find('a[href^="#"]').click(function() { return !navigateTo(this.href); });
+        ret.find('a:not([href^="#"])').attr('target', '_blank');
+        return ret;
     }
-});
+}
 
 function normRating(rat)
 {
@@ -556,50 +636,51 @@ function initAdToast()
     }
 }
 
-var openSidebar
+var openSidebar, closeSidebar;
 function initSidebarEvents() {
     // This class prevents mouseover reopening after a swipe-close
     class SidebarChange {
         constructor() { this.enabled = true; }
-        tempDisable() {
+        tempDisable()
+        {
             this.enabled = false;
             setTimeout(() => this.enabled = true, 200);
         }
     }
     var change = new SidebarChange;
     var isOpen = true;
-    function open() {
+    openSidebar = function()
+    {
         if (!change.enabled)
             return;
         isOpen = true;
         $('#sidebar').removeClass('closed');
         $('#void-close-sidebar').addClass('show');
         $('#void-open-sidebar').removeClass('show');
-        change.tempDisable()
-    }
-    openSidebar = open
-    function close() {
+        change.tempDisable();
+    };
+    closeSidebar = function()
+    {
         if (!change.enabled)
             return;
         isOpen = false;
         $('#sidebar').addClass('closed');
         $('#void-close-sidebar').removeClass('show');
         $('#void-open-sidebar').addClass('show');
-        change.tempDisable()
-    }
+        change.tempDisable();
+    };
 
-    $('#void-open-sidebar').on('click mouseover', open);
-    $('#void-close-sidebar').on('click mouseover', close);
-    $('#void-close-sidebar').swipe({ swipeLeft: close });
-    $('#void-open-sidebar').swipe({ swipeRight: open });
+    $('#void-open-sidebar').on('click mouseover', openSidebar);
+    $('#void-close-sidebar').on('click mouseover', closeSidebar);
+    $('#void-close-sidebar').swipe({ swipeLeft: closeSidebar });
+    $('#void-open-sidebar').swipe({ swipeRight: openSidebar });
     if (navigator.userAgent.includes('Mobile'))
-        $('#sidebar').swipe({ swipeLeft: close });
+        $('#sidebar').swipe({ swipeLeft: closeSidebar });
     // Reopen when switching to side-by-side
     $(window).resize(function() {
         if (!isOpen && 768 < $(window).innerWidth())
-            open()
+        openSidebar()
     })
 }
-
 
 })();
