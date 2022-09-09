@@ -1,4 +1,4 @@
 A 10-es útról felkanyarodva a Melegesi útra egy tökéletes, fehéraszfaltos burkolattal ellátott, de túlzottan keskeny út vezet a Hilltop borászathoz. Az út annyira keskeny, hogy nem igazán lehet rajta haladni a szembeforgalom lehetősége miatt. Az út a borászattól délre a szőlősök között halad Tata irányába, de ott az út minősége közepes és a kanyarok kevésbé érdekesek.
 
- Egy [kiváló panorámájú éttermet](http://hilltopborbirtok.hu/etterem/) látogathatunk meg a dombtetőn.
+ Egy [kiváló panorámájú éttermet](#geo:Hilltop%20%C3%89tterem@47.725442,18.377724/?b=Ez%20egy%20kiv%C3%A1l%C3%B3%20panor%C3%A1m%C3%A1j%C3%BA%20%C3%A9tterem%20%C3%A9s%20sz%C3%A1ll%C3%A1s%20a%20sz%C5%91l%C5%91k%20k%C3%B6z%C3%B6tt,%20a%20hegy%20tetej%C3%A9n.%0A%0AAz%20%C3%A9tterem%20honlapja:%20%3Chttp://hilltopborbirtok.hu/etterem/%3E) látogathatunk meg a dombtetőn.
  
