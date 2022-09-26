@@ -133,6 +133,7 @@ $(document).ready(function() {
     navigateTo(fragment.get())
 });
 
+var locationCtrl;
 function initCtrls(tiles, overlays)
 {
     L.control.scale({ position: 'bottomright', imperial: false }).addTo(map);
@@ -165,32 +166,29 @@ function initCtrls(tiles, overlays)
         localStorage.setItem('overlays', overlays.join('|'));
     });
 
-    const locView = 'untilPan';
-    var locCtrl = L.control.locate({
+    locationCtrl = L.control.locate({
         cacheLocation: false,
         clickBehavior: { inView: 'stop', outOfView: 'setView', inViewNotFollowing: 'setView' },
         position: 'bottomright',
         flyTo: true,
         locateOptions: { enableHighAccuracy: true },
-        onLocationError: function() {
-            this.setView = locView;
+        onLocationError: () => {
             $('#toast-location-error').toast('show');
             localStorage.removeItem('showLocation');
         },
-        setView: locView,
+        setView: 'untilPan',
         showPopup: false,
         strings: { title: langDict.locatePopup }
     }).addTo(map);
     map.on('locateactivate', () => localStorage.showLocation = true);
     map.on('locatedeactivate', () => localStorage.removeItem('showLocation'));
-    map.on('locationfound', () => timeout = setTimeout(() => {
-        locCtrl.options.setView = locView;
-        clearTimeout(timeout);
-    }, 100));
     if (localStorage.showLocation)
     {
-        locCtrl.options.setView = false;
-        locCtrl.start();
+        var oldView = locationCtrl.options.setView;
+        locationCtrl.options.setView = false;
+        locationCtrl.start();
+        locationCtrl.options.setView = oldView;
+        try { locationCtrl.stopFollowing(); } catch { }
     }
 }
 
@@ -539,6 +537,7 @@ window.addEventListener('popstate', event => {
 
 function removeFocus()
 {
+    try { locationCtrl.stopFollowing(); } catch { }
     map.eachLayer(layer => {
         if (layer.focused)
         {
