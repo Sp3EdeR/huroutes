@@ -84,7 +84,8 @@ const huroutes = {
             'navToPoi': ' <span class="nav-opt">Navigáció<sup class="fas fa-cog"></sup></span> <span class="nav-start">ehhez a helyhez</span>.',
             'downloadRoute': '<span class="download">Útvonal letöltése</span> (<span class="fmt-opt">formátum<sup class="fas fa-cog"></sup></span>).',
             'openStreetView': '<span class="strt-vw">Street view megnyitása</span>.',
-            'routeLength': 'Hossza: {0}km.'
+            'routeLength': 'Hossza: {0}km.',
+            'locatePopup': 'Az aktuális pozícióm mutatása.'
         }
     }
 };
@@ -113,10 +114,31 @@ $(document).ready(function() {
     const tileOverlay = huroutes.opt.map.tileOverlays[localStorage.mapstyle];
     if (tileOverlay)
         tileOverlay.addTo(map);
+
+    map.createPane('bkgRoutes');
+    map.getPane('bkgRoutes').style.zIndex = 450;
+
+    $.getJSON('data.json', initializeContent)
+        .fail(function() {
+            console.error('Failed loading the route database.');
+        });
+
+    initCtrls(tiles, overlays);
+    $('#options-dialog').on('hidden.bs.modal', updateOptions);
+    initSidebarEvents();
+    initNavSelector();
+    initDownloadTypeSelector();
+    initAdToast();
+
+    navigateTo(fragment.get())
+});
+
+function initCtrls(tiles, overlays)
+{
     L.control.scale({ position: 'bottomright', imperial: false }).addTo(map);
     L.control.zoom({ position: 'bottomright' }).addTo(map);
-    L.control.layers(tiles, overlays, { position: 'bottomleft' }).addTo(map);
 
+    L.control.layers(tiles, overlays, { position: 'bottomleft' }).addTo(map);
     map.on('baselayerchange', (layer) => {
         localStorage.setItem('mapstyle', layer.name);
         Object.entries(huroutes.opt.map.tileOverlays).forEach(([name, overlay]) => {
@@ -142,22 +164,35 @@ $(document).ready(function() {
         overlays.splice(idx, 1);
         localStorage.setItem('overlays', overlays.join('|'));
     });
-    map.createPane('bkgRoutes');
-    map.getPane('bkgRoutes').style.zIndex = 450;
 
-    $.getJSON('data.json', initializeContent)
-        .fail(function() {
-            console.error('Failed loading the route database.');
-        });
-
-    $('#options-dialog').on('hidden.bs.modal', updateOptions);
-    initSidebarEvents();
-    initNavSelector();
-    initDownloadTypeSelector();
-    initAdToast();
-
-    navigateTo(fragment.get())
-});
+    const locView = 'untilPan';
+    var locCtrl = L.control.locate({
+        cacheLocation: false,
+        clickBehavior: { inView: 'stop', outOfView: 'setView', inViewNotFollowing: 'setView' },
+        position: 'bottomright',
+        flyTo: true,
+        locateOptions: { enableHighAccuracy: true },
+        onLocationError: function() {
+            this.setView = locView;
+            $('#toast-location-error').toast('show');
+            localStorage.removeItem('showLocation');
+        },
+        setView: locView,
+        showPopup: false,
+        strings: { title: langDict.locatePopup }
+    }).addTo(map);
+    map.on('locateactivate', () => localStorage.showLocation = true);
+    map.on('locatedeactivate', () => localStorage.removeItem('showLocation'));
+    map.on('locationfound', () => timeout = setTimeout(() => {
+        locCtrl.options.setView = locView;
+        clearTimeout(timeout);
+    }, 100));
+    if (localStorage.showLocation)
+    {
+        locCtrl.options.setView = false;
+        locCtrl.start();
+    }
+}
 
 function initializeContent(data)
 {
