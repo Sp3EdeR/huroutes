@@ -79,6 +79,13 @@
 						"upd":"2022 július"
 					},
 					{
+						"ttl":"Tarján - Agostyán",
+						"md":"data/TarjanAgostyan.md",
+						"kml":"data/TarjanAgostyan.kml",
+						"rat":6,
+						"upd":"2022 szeptember"
+					},
+					{
 						"ttl":"Bajna - Bajót",
 						"md":"data/BajnaBajot.md",
 						"kml":"data/BajnaBajot.kml",
