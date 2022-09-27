@@ -9,19 +9,19 @@ const huroutes = {
         'map': {
             'bounds': [[48.509, 15.659], [45.742, 23.193]],
             'tiles': {
-                'Térkép': L.tileLayer.provider('OpenStreetMap'),
-                'Domborzat': L.tileLayer.provider('OpenTopoMap'),
-                'Műhold': L.tileLayer.provider('Esri.WorldImagery'),
-                'Google Térkép': L.tileLayer('https://{s}.google.com/vt/lyrs=m&x={x}&y={y}&z={z}',{attribution:'&copy; Google Maps',minZoom:5,maxZoom:18,subdomains:['mt0', 'mt1', 'mt2', 'mt3']}),
-                'Google Domborzat': L.tileLayer('https://{s}.google.com/vt/lyrs=p&x={x}&y={y}&z={z}',{attribution:'&copy; Google Maps',minZoom:5,maxZoom:18,subdomains:['mt0', 'mt1', 'mt2', 'mt3']}),
-                'Google Műhold': L.tileLayer('https://{s}.google.com/vt/lyrs=s,h&x={x}&y={y}&z={z}',{attribution:'&copy; Google Maps',minZoom:5,maxZoom:18,subdomains:['mt0', 'mt1', 'mt2', 'mt3']})
+                'Térkép': L.tileLayer.provider('OpenStreetMap',{className: 'tile-openstreetmap'}),
+                'Domborzat': L.tileLayer.provider('OpenTopoMap',{className: 'tile-opentopomap'}),
+                'Műhold': L.tileLayer.provider('Esri.WorldImagery',{className: 'tile-sattelite'}),
+                'Google Térkép': L.tileLayer('https://{s}.google.com/vt/lyrs=m&x={x}&y={y}&z={z}',{attribution:'&copy; Google Maps',minZoom:5,maxZoom:18,subdomains:['mt0', 'mt1', 'mt2', 'mt3'],className: 'tile-googlemap'}),
+                'Google Domborzat': L.tileLayer('https://{s}.google.com/vt/lyrs=p&x={x}&y={y}&z={z}',{attribution:'&copy; Google Maps',minZoom:5,maxZoom:18,subdomains:['mt0', 'mt1', 'mt2', 'mt3'],className: 'tile-googleterrain'}),
+                'Google Műhold': L.tileLayer('https://{s}.google.com/vt/lyrs=s,h&x={x}&y={y}&z={z}',{attribution:'&copy; Google Maps',minZoom:5,maxZoom:18,subdomains:['mt0', 'mt1', 'mt2', 'mt3'],className: 'tile-googlesattelite'})
             },
             'overlays': {
-                'Domborzat Kiemelés': L.tileLayer('https://map.turistautak.hu/tiles/shading/{z}/{x}/{y}.png', {attribution:'&copy; turistautak.hu',minZoom:5,maxZoom: 18,zIndex:5}),
-                'Turistautak': L.tileLayer('https://{s}.tile.openstreetmap.hu/tt/{z}/{x}/{y}.png', {attribution:'&copy; turistautak.hu',minZoom:5,maxZoom: 18,zIndex:100})
+                'Domborzat Kiemelés': L.tileLayer('https://map.turistautak.hu/tiles/shading/{z}/{x}/{y}.png', {attribution:'&copy; turistautak.hu',minZoom:5,maxZoom: 18,zIndex:5,className: 'overlay-dem'}),
+                'Turistautak': L.tileLayer('https://{s}.tile.openstreetmap.hu/tt/{z}/{x}/{y}.png', {attribution:'&copy; turistautak.hu',minZoom:5,maxZoom: 18,zIndex:100,className: 'overlay-turistautak'})
             },
             'tileOverlays': {
-                'Műhold': L.tileLayer('https://map.turistautak.hu/tiles/lines/{z}/{x}/{y}.png', {attribution:'&copy; turistautak.hu',minZoom:5,maxZoom: 18,zIndex:10})
+                'Műhold': L.tileLayer('https://map.turistautak.hu/tiles/lines/{z}/{x}/{y}.png', {attribution:'&copy; turistautak.hu',minZoom:5,maxZoom: 18,zIndex:10,className: 'overlay-satteliteroads'})
             }
         },
         'navLinkProviders': {
@@ -77,7 +77,17 @@ const huroutes = {
         },
         'streetView': 'https://www.google.com/maps/@?api=1&map_action=pano&viewpoint={0},{1}&heading={2}',
         'markers': {
-            zoomTo: 16
+            'zoomTo': 16
+        },
+        'themes': {
+            'Rendszer színmód használata': {
+                'media': 'prefers-color-scheme',
+                'default': 'Világos',
+                'mapping': {'dark': 'Sötét'}
+            },
+            'Világos': { 'classes': ['bootstrap', 'maps-light', 'huroutes-light'] },
+            'Sötét': { 'classes': ['bootstrap-dark', 'maps-dark', 'huroutes-dark'] },
+            'Sötét világos térképpel': { 'classes': ['bootstrap-dark', 'maps-light', 'huroutes-dark'] }
         }
     },
     'lang': {
@@ -126,6 +136,7 @@ $(document).ready(function() {
             console.error('Failed loading the route database.');
         });
 
+    initColorSelector();
     initCtrls(tiles, overlays);
     $('#options-dialog').on('hidden.bs.modal', updateOptions);
     initSidebarEvents();
@@ -361,6 +372,53 @@ function addRoute(data)
     layer.routeId = routeId;
     omnivore.kml(data.kml, null, layer).addTo(map);
     return routeId;
+}
+
+function initColorSelector()
+{
+    const themes = huroutes.opt.themes;
+    const uniqueArray = arr => $.grep(arr, (item, idx) => idx === $.inArray(item, arr));
+    const allThemeClasses = uniqueArray($.map(
+        Object.values(themes).filter(i => i.classes != undefined), i => i.classes
+    ));
+    const currentColorTheme = () => themes[localStorage.theme] ? localStorage.theme : Object.keys(themes)[0];
+    const isSystemColorTheme = themeName => !themes[themeName].classes;
+    const getMediaQuery = color => '(prefers-color-scheme: {0})'.format(color);
+    function applyTheme(themeName)
+    {
+        let data = themes[themeName];
+        if (isSystemColorTheme(themeName))
+        {
+            let selected = data.default;
+            $.each(data.mapping, (color, themeName) => {
+                if (matchMedia(getMediaQuery(color)).matches)
+                    selected = themeName;
+            });
+            applyTheme(selected);
+        }
+        else
+            $('body').removeClass(allThemeClasses).addClass(data.classes);
+    }
+
+    applyTheme(currentColorTheme());
+    
+    const handleMediaChanged =
+        e => isSystemColorTheme(currentColorTheme()) && applyTheme(currentColorTheme());
+    let media = matchMedia(getMediaQuery('dark'))
+    if (media.addEventListener)
+        media.addEventListener('change', handleMediaChanged);
+    else
+        media.addListener(handleMediaChanged);
+
+    var elem = $('#color-themes');
+    $.each(themes, (theme, data) => {
+        const id = theme.toLowerCase().replace(/ /g, '');
+        let elemOpt = $('<div><input type="radio" name="theme" id="{0}" value="{1}" {2}> <label for="{0}">{1}</label></div>'
+            .format(id, theme, theme == currentColorTheme() ? 'checked' : ''));
+        elemOpt.children('input').click(() => applyTheme(localStorage.theme = theme));
+        elem.append(elemOpt);
+    });
+
 }
 
 const navProviders = huroutes.opt.navLinkProviders;
