@@ -75,7 +75,10 @@ const huroutes = {
                 'pointTemplate': '{1},{0},0 '
             }
         },
-        'streetView': 'https://www.google.com/maps/@?api=1&map_action=pano&viewpoint={0},{1}&heading={2}'
+        'streetView': 'https://www.google.com/maps/@?api=1&map_action=pano&viewpoint={0},{1}&heading={2}',
+        'markers': {
+            zoomTo: 16
+        }
     },
     'lang': {
         'default': 'hu-HU',
@@ -169,6 +172,7 @@ function initCtrls(tiles, overlays)
     locationCtrl = L.control.locate({
         cacheLocation: false,
         clickBehavior: { inView: 'stop', outOfView: 'setView', inViewNotFollowing: 'setView' },
+        initialZoomLevel: huroutes.opt.markers.zoomTo,
         position: 'bottomright',
         flyTo: true,
         locateOptions: { enableHighAccuracy: true },
@@ -176,7 +180,6 @@ function initCtrls(tiles, overlays)
             $('#toast-location-error').toast('show');
             localStorage.removeItem('showLocation');
         },
-        setView: 'untilPan',
         showPopup: false,
         strings: { title: langDict.locatePopup }
     }).addTo(map);
@@ -599,7 +602,7 @@ function activateMarker(data, routeId)
         closeOnClick: false
     }).openPopup();
     const areaAround = 0.005;
-    map.flyTo(data.geo, 16, {animate:true});
+    map.flyTo(data.geo, huroutes.opt.markers.zoomTo, {animate:true});
 
     openRouteDesc(routeId);
     closeSidebar();
