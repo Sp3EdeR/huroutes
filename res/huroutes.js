@@ -83,9 +83,9 @@ const huroutes = {
     'lang': {
         'default': 'hu-HU',
         'hu-HU': {
-            'navigation': ' <span class="nav-opt">Navigáció<sup class="fas fa-cog"></sup></span> <span class="nav-start">az elejére</span> vagy <span class="nav-end">a végére</span>.',
-            'navToPoi': ' <span class="nav-opt">Navigáció<sup class="fas fa-cog"></sup></span> <span class="nav-start">ehhez a helyhez</span>.',
-            'downloadRoute': '<span class="download">Útvonal letöltése</span> (<span class="fmt-opt">formátum<sup class="fas fa-cog"></sup></span>).',
+            'navigation': ' Navigáció <span class="nav-start">az elejére</span> vagy <span class="nav-end">a végére</span>.',
+            'navToPoi': ' Navigáció <span class="nav-start">ehhez a helyhez</span>.',
+            'downloadRoute': '<span class="download">Útvonal letöltése</span>.',
             'openStreetView': '<span class="strt-vw">Street view megnyitása</span>.',
             'routeLength': 'Hossza: {0}km.',
             'locatePopup': 'Az aktuális pozícióm mutatása.'
@@ -394,8 +394,6 @@ function planTo(coord)
 function addNavigationLinks(elem, start, end)
 {
     var eNav = makeSectionElement(langDict.navigation);
-    var eOpt = eNav.find('span.nav-opt');
-    eOpt.replaceWith($('<a href="#" data-toggle="modal" data-target="#options-dialog" />').append(eOpt.html()));
     var eStart = eNav.find('span.nav-start');
     eStart.replaceWith($('<a href="#" />').append(eStart.html()).click(() => planTo(start)));
     var eEnd = eNav.find('span.nav-end');
@@ -406,8 +404,6 @@ function addNavigationLinks(elem, start, end)
 function addPoiNavigationLinks(elem, coord)
 {
     var eNav = $('<p> {0}</p>'.format(langDict.navToPoi));
-    var eOpt = eNav.find('span.nav-opt');
-    eOpt.replaceWith($('<a href="#" data-toggle="modal" data-target="#options-dialog" />').append(eOpt.html()));
     var eStart = eNav.find('span.nav-start');
     eStart.replaceWith($('<a href="#" />').append(eStart.html()).click(() => planTo(coord)));
     elem.append(eNav);
@@ -443,8 +439,6 @@ function addDownloadLink(elem, coords, routeId)
     var eDownload = makeSectionElement(langDict.downloadRoute);
     var eLink = eDownload.find('span.download');
     eLink.replaceWith($('<a href="#"/>').append(eLink.html()).click(() => download(coords, routeId)));
-    var eOpt = eDownload.find('span.fmt-opt');
-    eOpt.replaceWith($('<a href="#" data-toggle="modal" data-target="#options-dialog" />').append(eOpt.html()));
     elem.append(eDownload);
 }
 
