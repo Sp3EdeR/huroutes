@@ -184,6 +184,7 @@ function initCtrls(tiles, overlays)
         cacheLocation: false,
         clickBehavior: { inView: 'stop', outOfView: 'setView', inViewNotFollowing: 'setView' },
         initialZoomLevel: huroutes.opt.markers.zoomTo,
+        keepCurrentZoomLevel: true,
         position: 'bottomright',
         flyTo: true,
         locateOptions: { enableHighAccuracy: true },
@@ -191,6 +192,7 @@ function initCtrls(tiles, overlays)
             $('#toast-location-error').toast('show');
             localStorage.removeItem('showLocation');
         },
+        setView: 'untilPan',
         showPopup: false,
         strings: { title: langDict.locatePopup }
     }).addTo(map);
