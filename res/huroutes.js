@@ -155,7 +155,7 @@ function initCtrls(tiles, overlays)
 
     L.control.layers(tiles, overlays, { position: 'bottomleft' }).addTo(map);
     map.on('baselayerchange', (layer) => {
-        localStorage.setItem('mapstyle', layer.name);
+        localStorage.mapstyle = layer.name;
         Object.entries(huroutes.opt.map.tileOverlays).forEach(([name, overlay]) => {
             if (name == layer.name)
                 overlay.addTo(map);
@@ -170,14 +170,14 @@ function initCtrls(tiles, overlays)
         var overlays = localStorage.overlays;
         overlays = overlays ? overlays.split('|') : [];
         overlays.push(overlay.name);
-        localStorage.setItem('overlays', overlays.join('|'));
+        localStorage.overlays = overlays.join('|');
     });
     map.on('overlayremove', (overlay) => {
         var overlays = (localStorage.overlays || '').split('|');
         const idx = overlays.indexOf(overlay.name);
         if (idx != -1)
         overlays.splice(idx, 1);
-        localStorage.setItem('overlays', overlays.join('|'));
+        localStorage.overlays = overlays.join('|');
     });
 
     locationCtrl = L.control.locate({
@@ -424,10 +424,8 @@ function initColorSelector()
 }
 
 const navProviders = huroutes.opt.navLinkProviders;
-var navigationProviderId = function() {
-    var savedProviderId = localStorage.navprovider;
-    return navProviders[savedProviderId] !== undefined ? savedProviderId : Object.keys(navProviders)[0];
-}();
+var navigationProviderId =
+    navProviders[localStorage.navprovider] ? localStorage.navprovider : Object.keys(navProviders)[0];
 
 function initNavSelector()
 {
@@ -470,10 +468,8 @@ function addPoiNavigationLinks(elem, coord)
 }
 
 const downloadTypes = huroutes.opt.downloads;
-var downloadTypeId = function() {
-    var savedDownloadTypeId = localStorage.dltype;
-    return downloadTypes[savedDownloadTypeId] !== undefined ? savedDownloadTypeId : Object.keys(downloadTypes)[0];
-}();
+var downloadTypeId =
+    downloadTypes[localStorage.dltype] ? localStorage.dltype : Object.keys(downloadTypes)[0];
 
 function initDownloadTypeSelector()
 {
@@ -522,16 +518,10 @@ function updateOptions()
 {
     var selection = $('input[name=navProv]:checked').val();
     if (selection)
-    {
-        navigationProviderId = selection;
-        localStorage.setItem('navprovider', selection);
-    }
+        localStorage.navprovider = navigationProviderId = selection;
     selection = $('input[name=dlType]:checked').val();
     if (selection)
-    {
-        downloadTypeId = selection;
-        localStorage.setItem('dltype', selection);
-    }
+        localStorage.dltype = downloadTypeId = selection;
 }
 
 const fragment = {
