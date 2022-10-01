@@ -136,7 +136,7 @@
 						"md":"data/VacRetsag.md",
 						"kml":"data/VacRetsag.kml",
 						"rat":5,
-						"upd":"2022 április"
+						"upd":"2022 október"
 					}
 				]
 			},
@@ -183,11 +183,11 @@
 						"upd":"2022 február"
 					},
 					{
-						"ttl":"Bánk - Aszód",
-						"md":"data/BankAszod.md",
-						"kml":"data/BankAszod.kml",
-						"rat":5,
-						"upd":"2021 április"
+						"ttl":"Penci Parádé",
+						"md":"data/PenciParade.md",
+						"kml":"data/PenciParade.kml",
+						"rat":6,
+						"upd":"2022 október"
 					},
 					{
 						"ttl":"Bánk - Romhány",
