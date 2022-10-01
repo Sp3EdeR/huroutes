@@ -25,6 +25,13 @@
 						"kml":"data/Budateteny.kml",
 						"rat":4,
 						"upd":"2022 április"
+					},
+					{
+						"ttl":"Kávai kerülő út",
+						"md":"data/KavaiKerulo.md",
+						"kml":"data/KavaiKerulo.kml",
+						"rat":3,
+						"upd":"2022 augusztus"
 					}
 				]
 			},
