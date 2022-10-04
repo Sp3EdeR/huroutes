@@ -1,7 +1,0 @@
-Magyarország egyik legjobb szerpentinje, amit sajnos az átutazó forgalom nehezen élvezhetővé tesz gyakran. Érdemes hétköznap, nagyon korai, vagy esetleg késő délutáni órákban menni erre. Izgalmas vonalvezetés, nagyon jó útminőség jellemzi a Mátrafüred és Parádsasvár közti széles aszfaltkígyót. Épp ezért ez a szakasz a legforgalmasabb. Kiemelten nagy forgalom van ezen a részen majdnem mindig. A 2021-es sebességmérés csökkentés előtt nagyon sokszor voltak itt rendőrök is, de ez azóta nagymértékben csökkent.
-
-A [Sirok és Eger közti szakaszon](#24Sirok) is találhatunk érdekesebb kanyarokat, ami szintén jó szakasz, alacsonyabb forgalommal.
-
-[Bemutató videó Draskovics Andristól](https://youtu.be/EZHj94m7IBw?t=334)
-
-A Parádsasvári visszafordító kanyar külső felén egy felkapott parkoló található, aminél a szerpentinezők többsége megáll, gyakran visszafordul egy újabb körre. A parkoló mellett található a festői szépségű [kastélyszálló](#geo:Kast%C3%A9lyhotel%20Sasv%C3%A1r@47.912035,19.984995/?b=A%20kast%C3%A9lysz%C3%A1ll%C3%B3%20honlapja:%20%3Chttp://www.khs.hu/%3E.), mely érdekes látványosság. A [Parádi kisvendéglő](#geo:Par%C3%A1di%20kisvend%C3%A9gl%C5%91@47.923028,20.037496/?b=Sz%C3%A9p%20kis%20vend%C3%A9gl%C5%91%20finom%20%C3%A9telekkel,%20kiad%C3%B3s%20%C3%A9teladagokkal.%20Az%20%C3%A1raz%C3%A1sa%20sajnos%20nem%20a%20legolcs%C3%B3bb,%20de%20nem%20is%20tragikus.%0A%0AAz%20%C3%A9tterem%20honlapja:%20%3Chttps://paradikisvendeglo.hu/%3E) egy nagyon jó, közeli étterem.
