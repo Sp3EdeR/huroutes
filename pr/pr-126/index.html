@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Magyar utak vezetésre" />
+  <meta name="author" content="HU" />
+  <meta name="keywords" content="Magyarország, Magyar, autó, motor, sportautó, sportmotor, motorsport, vezetés, hooning, szerpentin, szerpentinek, út, utak, utazás, tanácsok, tippek" />
+  <meta name="google-site-verification" content="ZaAI89wa8lPL6RRVBxjEfkEtVIkRtuu-j_zRYWJzTSM" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+
+  <meta property="og:title" content="huroutes" />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://sp3eder.github.io/huroutes/" />
+  <meta property="og:description" content="Magyar utak vezetésre" />
+  <meta property="og:image" content="https://sp3eder.github.io/huroutes/res/banner.jpg" />
+  <meta property="og:image:secure_url" content="https://sp3eder.github.io/huroutes/res/banner.jpg" />
+  <meta property="og:image:alt" content="huroutes" />
+  <meta property="og:image:type" content="image/jpeg" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+
+  <title>huroutes | Magyar utak vezetésre</title>
+  
+  <link rel="icon" href="res/favicon.ico" />
+  <link rel="icon" href="res/favicon.png" sizes="32x32" type="image/png" />
+  <link rel="icon" href="res/favicon-sm.png" sizes="16x16" type="image/png" />
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha256-+IZRbz1B6ee9mUx/ejmonK+ulIP5A5bLDd6v6NHqXnI=" crossorigin="anonymous" referrerpolicy="no-referrer">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@forevolve/bootstrap-dark@2.1.1/dist/css/toggle-bootstrap.min.css" integrity="sha256-FrYhUW1FIy6GrbYaAdOOeWzysJaYHvXRTvC5JkpI2Io=" crossorigin="anonymous" referrerpolicy="no-referrer">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@forevolve/bootstrap-dark@2.1.1/dist/css/toggle-bootstrap-dark.min.css" integrity="sha256-hWYw+cCWpNThkcILHcXs4XtjvGXBUCaPN0hG3q9S13o=" crossorigin="anonymous" referrerpolicy="no-referrer">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.4/css/all.min.css" integrity="sha256-mUZM63G8m73Mcidfrv5E+Y61y7a12O5mW4ezU3bxqW4=" crossorigin="anonymous" referrerpolicy="no-referrer">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.8.0/dist/leaflet.css" integrity="sha256-O4WK/g+HUIRMtgNwSRMA+lTFXVCZOSNwqMt2jboE8gg=" crossorigin="anonymous" referrerpolicy="no-referrer">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet.locatecontrol@0.76.1/dist/L.Control.Locate.min.css" integrity="sha256-9ouZwdHZxE1t+iXfxZD90z8xHQrynHnPJk1UgEPXolI=" crossorigin="anonymous" referrerpolicy="no-referrer">
+
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.1/dist/jquery.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <script src="https://cdn.jsdelivr.net/npm/jquery-touchswipe@1.6.19/jquery.touchSwipe.min.js" integrity="sha256-ns1OeEP3SedE9Theqmu444I44sikbp1O+bF/6BNUUy0=" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.min.js" integrity="sha256-QjIXq/h3XOotww+h/j4cXiTcNZqA8cN60pqGCUv+gdE=" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <script src="https://cdn.jsdelivr.net/npm/showdown@2.1.0/dist/showdown.min.js" integrity="sha256-iOtvu+DCcN3zOEruDJYg0HDgkKJuB8Z0Ia42yQO11kk=" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <script src="https://cdn.jsdelivr.net/npm/leaflet@1.8.0/dist/leaflet.js" integrity="sha256-OnFzHtqrwoenz6OjU3Z4SPDkER5Ih/vqRUvS5doFcZo=" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <script src="https://cdn.jsdelivr.net/npm/leaflet-providers@1.13.0/leaflet-providers.min.js" integrity="sha256-Cp+vwVbE0bvxsfrkvWI1phWPy4sPIUGuf9h1oIKx0VY=" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <script src="https://cdn.jsdelivr.net/npm/leaflet-omnivore@0.3.4/leaflet-omnivore.min.js" integrity="sha256-k1l+ouvMXT+0iRA8pc8e0dge4ZeGjXG6imrvWboFTRE=" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <script src="https://cdn.jsdelivr.net/npm/leaflet.locatecontrol@0.76.1/dist/L.Control.Locate.min.js" integrity="sha256-PJ29AcM0ZkANjcOdpF1jAwZ/eq324NP2cQ05f2wABE0=" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+  <link rel="stylesheet" href="res/huroutes.css" />
+  <script src="res/huroutes.js"></script>
+</head>
+
+<body>
+  <!-- Hidden comment for PR preview testing. -->
+  <div class="container-fluid">
+    <div class="row">
+      <nav id="sidebar" class="sidebar col-md-4 col-xl-3">
+        <div class="sidebar-header">
+          <h2 class="title"><a href="https://github.com/Sp3EdeR/huroutes">huroutes</a></h2>
+          <div class="options-button"><a href="#" data-toggle="modal" data-target="#options-dialog"><span class="fas fa-cog" title="Beállítások"></span></a></div>
+          <p class="sub-title">Magyar utak vezetésre</p>
+        </div>
+        <div id="menubox" class="menubox"></div>
+        <div class="contrib"><a href="https://github.com/Sp3EdeR/huroutes/commits/master">módosítástörténet</a> | <a href="https://github.com/Sp3EdeR/huroutes">közreműködés a fejlesztésben</a></div>
+        <div id="void-open-sidebar" class="panel-void"></div>
+      </nav>
+      <div id="main" class="col-md-8 offset-md-4 col-xl-9 offset-xl-3">
+        <div id="map" class="map"></div>
+      </div>
+      <div id="void-close-sidebar" class="panel-void show"></div>
+    </div>
+  </div>
+
+  <div class="modal fade" id="options-dialog" tabindex="-1">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h3>Beállítások</h3>
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+        </div>
+        <div class="modal-body">
+          <p>Színtéma kiválasztása</p>
+          <form action="#" class="customRadio customCheckbox m-0 p-0">
+            <p id="color-themes"></p>
+          </form>
+          <p>Navigációs szolgáltató választása</p>
+          <form action="#" class="customRadio customCheckbox m-0 p-0">
+            <p id="nav-options"></p>
+          </form>
+          <p>Letöltési formátum választása</p>
+          <form action="#" class="customRadio customCheckbox m-0 p-0">
+            <p id="download-types"></p>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" id="options-dialog-ok" class="btn btn-primary" data-dismiss="modal">OK</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div aria-live="polite" aria-atomic="true" style="position: fixed; right: 10px; top:10px; min-height: 200px; z-index: 1049;">
+    <div id="toast-android-app" role="alert" aria-live="assertive" aria-atomic="true" class="toast hide" data-autohide="false">
+      <div class="toast-header">
+        <strong class="mr-auto">Android Alkalmazás</strong>
+        <button type="button" class="ml-2 mb-1 close" data-dismiss="toast" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="toast-body">
+        Elérhető a huroutes alkalmazás a telefonodra! Ha ki szeretnéd próbálni,
+        <a href="https://github.com/Sp3EdeR/huroutes-android/releases" target="_blank">innen töltheted le</a>.
+      </div>
+    </div>
+    <div id="toast-location-error" role="alert" aria-live="assertive" aria-atomic="true" class="toast hide" data-autohide="true" data-delay="5000">
+      <div class="toast-header">
+        <strong class="mr-auto">Helymeghatározási Hiba</strong>
+        <button type="button" class="ml-2 mb-1 close" data-dismiss="toast" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="toast-body">Nem sikerült lekérni a tartózkodási helyet. Talán hiányzik a helymeghatározási engedély?</div>
+    </div>
+  </div>
+</body>
+</html>
