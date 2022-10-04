@@ -1,4 +1,8 @@
+# This action builds and deploys website updates to the release branch.
+# 
+
 name: Website build
+concurrency: build-${{ github.ref }}
 on:
   push:
     branches:
@@ -6,16 +10,14 @@ on:
 permissions:
   contents: write
 jobs:
-  build-and-deploy:
-    concurrency: build-${{ github.ref }}
+  deploy-website:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout 🛎️
+      - name: Checkout
         uses: actions/checkout@v3
-
-      # additional build steps may be added here
-
-      - name: Deploy 🚀
+      - name: Build the website
+        uses: ./.github/actions/build-website
+      - name: Deploy
         uses: JamesIves/github-pages-deploy-action@v4
         with:
           clean-exclude: pr/

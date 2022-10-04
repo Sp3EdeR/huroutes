@@ -1,3 +1,6 @@
+# This action builds and deploys PR-versions of the website.
+# This aids in testing PR contents.
+
 name: PR preview build
 concurrency: preview-${{ github.ref }}
 on:
@@ -8,13 +11,14 @@ on:
       - synchronize
       - closed
 jobs:
-  deploy-preview:
+  deploy-pr-preview:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v2
-
-      - name: Deploy preview
+        uses: actions/checkout@v3
+      - name: Build the website
+        uses: ./.github/actions/build-website
+      - name: Deploy
         uses: rossjrw/pr-preview-action@v1
         with:
           source-dir: .
