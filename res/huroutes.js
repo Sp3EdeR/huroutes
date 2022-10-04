@@ -1,13 +1,22 @@
+/** Configuration and language string data. */
 const huroutes = {
     'opt': {
+        // Route drawing configuration
         'route': {
+            // Route path colors; first index is for background routes, the rest are from rating 1 to 10.
             'colors': [ '#744', '#944', '#a5423f', '#b04039', '#bc3d34', '#c7392e', '#d23427', '#dd2e20', '#e92618', '#f4190e', '#f00' ],
+            // Opacity values for route paths; same order as colours.
             'opacities': [   1,   0.66,      0.70,      0.75,       0.8,      0.85,       0.9,      0.95,         1,         1,      1 ],
+            // The color of clicked/focused routes
             'focusColor': '#00f',
+            // The opacity of clicked/focused routes
             'focusOpacity': 1
         },
+        // Map display configuration
         'map': {
+            // The starting view bounds for the map
             'bounds': [[48.509, 15.659], [45.742, 23.193]],
+            // The map tile sources supported in the layer selector. The first one is the default map.
             'tiles': {
                 'Térkép': L.tileLayer.provider('OpenStreetMap',{className: 'tile-openstreetmap'}),
                 'Domborzat': L.tileLayer.provider('OpenTopoMap',{className: 'tile-opentopomap'}),
@@ -16,14 +25,19 @@ const huroutes = {
                 'Google Domborzat': L.tileLayer('https://{s}.google.com/vt/lyrs=p&x={x}&y={y}&z={z}',{attribution:'&copy; Google Maps',minZoom:5,maxZoom:18,subdomains:['mt0', 'mt1', 'mt2', 'mt3'],className: 'tile-googleterrain'}),
                 'Google Műhold': L.tileLayer('https://{s}.google.com/vt/lyrs=s,h&x={x}&y={y}&z={z}',{attribution:'&copy; Google Maps',minZoom:5,maxZoom:18,subdomains:['mt0', 'mt1', 'mt2', 'mt3'],className: 'tile-googlesattelite'})
             },
+            // Choosable overlay sources supported in the layer selector. All are off by default.
             'overlays': {
                 'Domborzat Kiemelés': L.tileLayer('https://map.turistautak.hu/tiles/shading/{z}/{x}/{y}.png', {attribution:'&copy; turistautak.hu',minZoom:5,maxZoom: 18,zIndex:5,className: 'overlay-dem'}),
                 'Turistautak': L.tileLayer('https://{s}.tile.openstreetmap.hu/tt/{z}/{x}/{y}.png', {attribution:'&copy; turistautak.hu',minZoom:5,maxZoom: 18,zIndex:100,className: 'overlay-turistautak'})
             },
+            // Overlay sources that are always shown and hidden along with specific map tile sources.
+            // The name of the overlay must be the same as the tile layer to which it is bound.
             'tileOverlays': {
                 'Műhold': L.tileLayer('https://map.turistautak.hu/tiles/lines/{z}/{x}/{y}.png', {attribution:'&copy; turistautak.hu',minZoom:5,maxZoom: 18,zIndex:10,className: 'overlay-satteliteroads'})
             }
         },
+        // A list of navigation service providers that can be chosen for the "navigate to" links'.
+        // The default provider used is the first one.
         'navLinkProviders': {
             'Google': coord => {
                 const link = 'https://www.google.com/maps/dir/?api=1&travelmode=driving&destination={0},{1}';
@@ -38,6 +52,9 @@ const huroutes = {
                 return link.format(coord.lat, coord.lng);
             }
         },
+        // Route path data download formats.
+        // Each config contains the file extension, mime type and format-string templates that help generate the file contents.
+        // The default download format is the first one.
         'downloads': {
             'GPS Exchange Format (gpx)': {
                 'ext': 'gpx',
@@ -75,23 +92,29 @@ const huroutes = {
                 'pointTemplate': '{1},{0},0 '
             }
         },
+        // The street view link format-string template
         'streetView': 'https://www.google.com/maps/@?api=1&map_action=pano&viewpoint={0},{1}&heading={2}',
+        // Configuration for the current location or placemarkers
         'markers': {
-            'zoomTo': 16
+            'zoomTo': 16 // The zoom level for the camera upon jumping to a marker
         },
+        // The color themes supported by huroutes
+        // The classes property specifies the CSS classes to apply to the <body> to apply the theme
+        // The default theme is the first one
         'themes': {
             'Rendszer színmód használata': {
-                'media': 'prefers-color-scheme',
-                'default': 'Világos',
-                'mapping': {'dark': 'Sötét'}
+                // A special color theme - this adapts to the system or browser native color theme
+                'default': 'Világos', // The default theme to use
+                'mapping': {'dark': 'Sötét'} // A mapping from media query color themes to huroutes color theme
             },
             'Világos': { 'classes': ['bootstrap', 'maps-light', 'huroutes-light'] },
             'Sötét': { 'classes': ['bootstrap-dark', 'maps-dark', 'huroutes-dark'] },
             'Sötét világos térképpel': { 'classes': ['bootstrap-dark', 'maps-light', 'huroutes-dark'] }
         }
     },
+    // Language configuration strings for the JS-generated content
     'lang': {
-        'default': 'hu-HU',
+        'default': 'hu-HU', // The default language to be used in huroutes
         'hu-HU': {
             'navigation': ' Navigáció <span class="nav-start">az elejére</span> vagy <span class="nav-end">a végére</span>.',
             'navToPoi': ' Navigáció <span class="nav-start">ehhez a helyhez</span>.',
@@ -103,18 +126,24 @@ const huroutes = {
     }
 };
 
+/** A simple string formatting extension function.
+  * Avoiding string templates due to their relatively late browser adoption.
+  */
 String.prototype.format = function() {
     var args = arguments;
     return this.replace(/\{(\d+)\}/g, function (m, n) { return args[n]; });
 };
 
+// The main code is encapsulated within this closure
 (function() {
 
-var langDict = selectLanguage();
-var map;
-var nextDropId = 0;
+var langDict = selectLanguage();    // The current language translation dictionary
+var map;                            // The global map object
+var nextDropId = 0;                 // Unique ID generation counter
 
+// This is the initialization function
 $(document).ready(function() {
+    // Initializing the map and its contents
     map = L.map('map', { zoomControl: false }).fitBounds(huroutes.opt.map.bounds);
     const tiles = huroutes.opt.map.tiles;
     (tiles[localStorage.mapstyle] || tiles[Object.keys(tiles)[0]]).addTo(map);
@@ -128,14 +157,17 @@ $(document).ready(function() {
     if (tileOverlay)
         tileOverlay.addTo(map);
 
+    // Creating a separate pane for background routes to ensure that they are behind normal routes
     map.createPane('bkgRoutes');
     map.getPane('bkgRoutes').style.zIndex = 450;
 
+    // Asynchronously loads the huroutes database
     $.getJSON('data.json', initializeContent)
         .fail(function() {
             console.error('Failed loading the route database.');
         });
 
+    // Initializing misc. huroutes app components
     initColorSelector();
     initCtrls(tiles, overlays);
     $('#options-dialog').on('hidden.bs.modal', updateOptions);
@@ -144,15 +176,24 @@ $(document).ready(function() {
     initDownloadTypeSelector();
     initAdToast();
 
+    // Navigates to the page-location specified by the fragment, if any was given
     navigateTo(fragment.get())
 });
 
+/** The current location control instance (for programmatically stopping following) */
 var locationCtrl;
+/**
+ * Initializes the display and behavior of map controllers.
+ * @param {object} tiles A dictionary of map tile provider objects.
+ * @param {object} overlays A dictionary of overlay tile provider objects.
+ */
 function initCtrls(tiles, overlays)
 {
+    // Zoom and scale display controls at the bottom-right
     L.control.scale({ position: 'bottomright', imperial: false }).addTo(map);
     L.control.zoom({ position: 'bottomright' }).addTo(map);
 
+    // The map tile and overlay display control at the bottom-left
     L.control.layers(tiles, overlays, { position: 'bottomleft' }).addTo(map);
     map.on('baselayerchange', (layer) => {
         localStorage.mapstyle = layer.name;
@@ -180,6 +221,7 @@ function initCtrls(tiles, overlays)
         localStorage.overlays = overlays.join('|');
     });
 
+    // The location arrow control that allows showing the user's location, bottom-right
     locationCtrl = L.control.locate({
         cacheLocation: false,
         clickBehavior: { inView: 'stop', outOfView: 'setView', inViewNotFollowing: 'setView' },
@@ -208,6 +250,10 @@ function initCtrls(tiles, overlays)
     }
 }
 
+/**
+ * Loads route data into the web application.
+ * @param {object} data The huroutes database.
+ */
 function initializeContent(data)
 {
     if (!Array.isArray(data) || !data.length)
@@ -218,6 +264,12 @@ function initializeContent(data)
     addDataGroup($('#menubox'), null, data);
 }
 
+/**
+ * Adds the contents of a data group (menu) to the main menu.
+ * @param {jquery} parentElem The menu element that receives generated content.
+ * @param {string} id The ID string assigned to the menu item.
+ * @param {object} content The huroutes database fragment contained by this group.
+ */
 function addDataGroup(parentElem, id, content)
 {
     var elem = $('<ul class="menu list-unstyled components"/>');
@@ -232,6 +284,11 @@ function addDataGroup(parentElem, id, content)
     parentElem.append(elem);
 }
 
+/**
+ * Adds the contents of the data item to the main menu.
+ * @param {jquery} parentElem The menu element that receives generated content.
+ * @param {object} item The huroutes database fragment that describes this item.
+ */
 function addDataItem(parentElem, item)
 {
     if (!item.ttl)
@@ -252,6 +309,12 @@ function addDataItem(parentElem, item)
     parentElem.append(elem);
 }
 
+/**
+ * Creates a DOM menu item.
+ * @param {jquery} elem The element that will contain the generated DOM.
+ * @param {object} data The huroutes database fragment that describes the menu item.
+ * @returns 
+ */
 function createMenuItem(elem, data)
 {
     var dropId = 'menu' + nextDropId++;
@@ -261,6 +324,11 @@ function createMenuItem(elem, data)
     return dropId;
 }
 
+/**
+ * Creates a DOM menu item that represents a route.
+ * @param {jquery} elem The element that will contain the generated DOM.
+ * @param {object} data The huroutes database fragment that describes the route.
+ */
 function createMenuRouteItem(elem, data)
 {
     elem.addClass('menuitem');
@@ -275,8 +343,14 @@ function createMenuRouteItem(elem, data)
     elem.attr('data-routeid', routeId);
 }
 
+/**
+ * Creates an info panel in the menu that describes the route.
+ * @param {jquery} elem The element that will contain the generated DOM.
+ * @param {object} data The huroutes database fragment that describes the route.
+ */
 function createInfoPanel(elem, data)
 {
+    // Checking for database issues
     if (!data.bkg)
     {
         if (!data.rat)
@@ -284,6 +358,7 @@ function createInfoPanel(elem, data)
         if (!data.upd)
             console.warn('No last update date given for ' + data.ttl);
     }
+    // Creating the route heading with rating and date
     if (data.rat || data.upd)
     {
         var elemHeader = $('<p class="route-header"/>');
@@ -305,6 +380,7 @@ function createInfoPanel(elem, data)
         }
         elem.append(elemHeader);
     }
+    // Creating the route description panel with markdown contents
     if (data.md)
     {
         var descCont = $('<div class="route-desc"/>');
@@ -323,6 +399,11 @@ function createInfoPanel(elem, data)
     elem.append($('<div class="route-links"/>'));
 }
 
+/**
+ * Adds a route to the map and adds some stats on it into the menu.
+ * @param {object} data The huroutes database fragment that describes the route.
+ * @returns {string} The added route's unique ID.
+ */
 function addRoute(data)
 {
     const colors = huroutes.opt.route.colors;
@@ -354,6 +435,7 @@ function addRoute(data)
         var coords = event.layer.getLatLngs();
         if (Array.isArray(coords) && 2 <= coords.length)
         {
+            // Add statistics and links for this route to the menu.
             var length = 0.0;
             for (var i = 1; i < coords.length; ++i)
                 length += coords[i - 1].distanceTo(coords[i]);
@@ -372,20 +454,34 @@ function addRoute(data)
             navigateTo(layer); // event.layer is a different instance; must use layer from closure
     });
     layer.routeId = routeId;
+    // Load the KML file data into the Leaflet layer
     omnivore.kml(data.kml, null, layer).addTo(map);
     return routeId;
 }
 
+/**
+ * Initializes the color theme selector configuration
+ */
 function initColorSelector()
 {
     const themes = huroutes.opt.themes;
+    // Returns an array with duplicate elements filtered
     const uniqueArray = arr => $.grep(arr, (item, idx) => idx === $.inArray(item, arr));
+    // A variable that holds all theme CSS classes (for cleanup)
     const allThemeClasses = uniqueArray($.map(
         Object.values(themes).filter(i => i.classes != undefined), i => i.classes
     ));
+    // Gets the current theme - the default if localStorage is unset
     const currentColorTheme = () => themes[localStorage.theme] ? localStorage.theme : Object.keys(themes)[0];
+    // Returns whether the given theme is the system color theme
     const isSystemColorTheme = themeName => !themes[themeName].classes;
+    // Returns a media query string to test for the given color theme
     const getMediaQuery = color => '(prefers-color-scheme: {0})'.format(color);
+
+    /**
+     * Applies the given theme to the DOM by settings its classes for the body tag.
+     * @param {string} themeName The name of the theme to apply.
+     */
     function applyTheme(themeName)
     {
         let data = themes[themeName];
@@ -404,6 +500,7 @@ function initColorSelector()
 
     applyTheme(currentColorTheme());
     
+    // Install a media changed event listener to change themes on system color theme change
     const handleMediaChanged =
         e => isSystemColorTheme(currentColorTheme()) && applyTheme(currentColorTheme());
     let media = matchMedia(getMediaQuery('dark'))
@@ -412,6 +509,7 @@ function initColorSelector()
     else
         media.addListener(handleMediaChanged);
 
+    // Generate the config dialog DOM
     var elem = $('#color-themes');
     $.each(themes, (theme, data) => {
         const id = theme.toLowerCase().replace(/ /g, '');
@@ -423,10 +521,13 @@ function initColorSelector()
 
 }
 
+/** Short name for the navigation link providers db. */
 const navProviders = huroutes.opt.navLinkProviders;
+/** The index of the currently selected navigation link provider. */
 var navigationProviderId =
     navProviders[localStorage.navprovider] ? localStorage.navprovider : Object.keys(navProviders)[0];
 
+/** Initializes the navigation link configuration. */
 function initNavSelector()
 {
     var elem = $('#nav-options');
@@ -438,17 +539,33 @@ function initNavSelector()
     });
 }
 
+/**
+ * Wraps the given HTML into a single element for easier manipulation.
+ * @param {jquery} html The HTML to wrap.
+ * @returns {jquery} The wrapped HTML code.
+ */
 function makeSectionElement(html)
 {
     return $('<span> {0}</span>'.format(html));
 }
 
+/**
+ * Initiates planning to the selected coordinate with the configured provider.
+ * @param {object} coord A WGS84 coordinate object with lat and lng properties.
+ * @returns false.
+ */
 function planTo(coord)
 {
     window.open(navProviders[navigationProviderId](coord), '_blank');
     return false;
 }
 
+/**
+ * Creates navigation links for routes.
+ * @param {jquery} elem The element that will contain the navigation link DOM.
+ * @param {object} start The coordinate where the "start" link navigates to.
+ * @param {object} end The coordinate where the "end" link navigates to.
+ */
 function addNavigationLinks(elem, start, end)
 {
     var eNav = makeSectionElement(langDict.navigation);
@@ -459,6 +576,11 @@ function addNavigationLinks(elem, start, end)
     elem.append(eNav);
 }
 
+/**
+ * Creates a navigation link for a place marker.
+ * @param {jquery} elem The element that will contain the navigation link DOM.
+ * @param {*} coord The coordinate where the link navigates to.
+ */
 function addPoiNavigationLinks(elem, coord)
 {
     var eNav = $('<p> {0}</p>'.format(langDict.navToPoi));
@@ -467,10 +589,13 @@ function addPoiNavigationLinks(elem, coord)
     elem.append(eNav);
 }
 
+/** Short name for the download formats db. */
 const downloadTypes = huroutes.opt.downloads;
+/** The index of the currently selected download format. */
 var downloadTypeId =
     downloadTypes[localStorage.dltype] ? localStorage.dltype : Object.keys(downloadTypes)[0];
 
+/** Initializes the download format configuration. */
 function initDownloadTypeSelector()
 {
     var elem = $('#download-types');
@@ -482,6 +607,12 @@ function initDownloadTypeSelector()
     });
 }
 
+/**
+ * Creates a download link for routes.
+ * @param {jquery} elem The element that will contain the download link DOM.
+ * @param {object} coords The array of coordinates that make the route path up.
+ * @param {string} routeId The route's unique ID.
+ */
 function addDownloadLink(elem, coords, routeId)
 {
     const download = (coords, routeId) => {
@@ -498,7 +629,13 @@ function addDownloadLink(elem, coords, routeId)
     elem.append(eDownload);
 }
 
-function addStreetViewLink(elem, coord, coordNext)
+/**
+ * Creates a street view link for routes.
+ * @param {jquery} elem The element that will contain the street view link DOM.
+ * @param {object} coord The coordinate where street view is to be opened.
+ * @param {object} coordNext The coordinate toward which the street view camera is to be aimed.
+ */
+ function addStreetViewLink(elem, coord, coordNext)
 {
     const streetViewAt = (coord, coordNext) => {
         var angle = [ coordNext.lat - coord.lat, coordNext.lng - coord.lng ];
@@ -514,6 +651,7 @@ function addStreetViewLink(elem, coord, coordNext)
     elem.append(eNav);
 }
 
+/** Stores the app options according to the user's selection. */
 function updateOptions()
 {
     var selection = $('input[name=navProv]:checked').val();
@@ -524,10 +662,25 @@ function updateOptions()
         localStorage.dltype = downloadTypeId = selection;
 }
 
+/** A singleton that helps with (de)coding the URL fragment. */
 const fragment = {
+    /**
+     * Tests whether the given string is the current fragment.
+     * @param {string} str The string tested.
+     * @returns true if this is the current fragment, false otherwise.
+     */
     isIt: str => window.location.hash == '#' + str,
 
+    /**
+     * Returns whether the given string or the current fragment is a geo: link.
+     * @param {string} hash Optional. If given, tests whether the string starts with #geo.
+     */
     isGeoData: (hash = null) => (hash ?? window.location.hash).includes('#geo:'),
+    /**
+     * Decodes the given string or the current fragment as a geo: link.
+     * @param {string} hash Optional. If given, decodes the string's contents.
+     * @returns {object} The geo: link data.
+     */
     asGeoData: (hash = null) => {
         const re = /#geo:([^@]+)@(-?[0-9\\.]+),(-?[0-9\\.]+)(?:\/(?:[?&](?:b=([^&]+)))*)?/;
         m = re.exec(hash ?? window.location.hash);
@@ -537,10 +690,18 @@ const fragment = {
             desc: markdown.makeHtml(decodeURIComponent(m[4] ?? ""))
         } : null;
     },
+    /** Returns the current fragment. */
     get: () => window.location.hash,
+    /** Changes the current fragment by pushing a history state. */
     set: (hash, state) => fragment.get() != hash && window.history.pushState(state, '', hash)
 };
 
+/**
+ * Displays the specified route on screen in the menu and map.
+ * @param {string|object} target A fragment representing a route ID or a route layer to view.
+ * @param {string} routeId The route's unique ID.
+ * @returns true if the route was found, false otherwise.
+ */
 function navigateTo(target, routeId) // target accepts fragment string and layer
 {
     var success = false;
@@ -571,6 +732,7 @@ function navigateTo(target, routeId) // target accepts fragment string and layer
     return success;
 }
 
+// Handles browser back/forward navigation.
 window.addEventListener('popstate', event => {
     if (fragment.get())
         navigateTo(fragment.get(), event.state);
@@ -582,6 +744,12 @@ window.addEventListener('popstate', event => {
     }
 });
 
+/**
+ * Removes map focus from everything:
+ * - The current location is no longer followed.
+ * - The current route no longer has the focused style.
+ * - The active placemarker is hidden.
+ */
 function removeFocus()
 {
     try { locationCtrl.stopFollowing(); } catch { }
@@ -595,6 +763,7 @@ function removeFocus()
     marker.remove()
 }
 
+/** Opens the specified route's menu while closing all other menus. */
 function openRouteDesc(routeId)
 {
     var menuItem = routeId ? $('li[data-routeid=' + routeId + ']') : $();
@@ -615,6 +784,7 @@ function openRouteDesc(routeId)
     }, 100);
 }
 
+/** Does the complete process to set the given route as the active one. */
 function activateRoute(layer)
 {
     removeFocus();
@@ -630,7 +800,14 @@ function activateRoute(layer)
     return true;
 }
 
+/** A marker object that can be used to manipulate the active placemarker. no-op by default. */
 var marker = {remove:()=>{}};
+/**
+ * Displays and views the given place marker.
+ * When a valid route ID is given, the route's description is opened. Otherwise the menu is closed.
+ * @param {object} data The placemarker's data to show.
+ * @param {string} routeId The ID of the route associated with this placemarker.
+ */
 function activateMarker(data, routeId)
 {
     removeFocus();
@@ -654,8 +831,11 @@ function activateMarker(data, routeId)
     return true;
 }
 
+/** A singleton that helps with Markdown processing. */
 var markdown = {
+    /** The markdown processor engine instance. */
     engine: new showdown.Converter(),
+    /** Returns HTML from the given Markdown text. */
     makeHtml(text)
     {
         var ret = $(this.engine.makeHtml(text));
@@ -665,6 +845,7 @@ var markdown = {
     }
 }
 
+/** Normalizes potentially bogus ratings to valid values. */
 function normRating(rat)
 {
     var i = rat ? Math.round(rat) : 5;
@@ -675,6 +856,7 @@ function normRating(rat)
     return i;
 }
 
+/** Returns the currently selected language translation data. */
 function selectLanguage()
 {
     const defaultLang = huroutes.lang[huroutes.lang.default];
@@ -689,6 +871,13 @@ function selectLanguage()
     return lang;
 }
 
+/**
+ * Initiates the download of the given string as a file.
+ * @param {string} fileName The name of the file to download the string as.
+ * @param {string} mimeType The MIME type of the file to be downloaded.
+ * @param {string} data The string that is to be the content of the file.
+ * @param {string} charset The encoding of the downloaded file.
+ */
 function downloadString(fileName, mimeType, data, charset = 'utf-8')
 {
     var anchor = $('<a id="download" style="display:none" download="{0}"/>'.format(fileName));
@@ -698,6 +887,7 @@ function downloadString(fileName, mimeType, data, charset = 'utf-8')
     anchor.remove();
 }
 
+/** Initializes toast messages to be displayed to the user */
 function initAdToast()
 {
     // Wait a bit before doing toasts
@@ -705,6 +895,7 @@ function initAdToast()
         androidApToast()
     }, 5000);
 
+    /** Shows a toast to Android users that don't use the app that it is available. */
     function androidApToast() {
         if (localStorage.shownAndroidAd || !navigator.userAgent.includes("Android") ||
             navigator.userAgent.includes("huroutes"))
@@ -712,12 +903,17 @@ function initAdToast()
 
         var androidToast = $('#toast-android-app')
         androidToast.toast('show')
+        // The toast is not shown again once closed.
         androidToast.on('hide.bs.toast', () => localStorage.shownAndroidAd = true)
         androidToast.find('a[href]').on('click', () => androidToast.toast('hide'))
     }
 }
 
+/** Sidebar opening/closing functions. */
 var openSidebar, closeSidebar;
+/**
+ * Initializes sidebar opening and closing events for mobile portrait view.
+ */
 function initSidebarEvents() {
     // This class prevents mouseover reopening after a swipe-close
     class SidebarChange {
@@ -730,6 +926,7 @@ function initSidebarEvents() {
     }
     var change = new SidebarChange;
     var isOpen = true;
+    // Exported function to open the sidebar
     openSidebar = function()
     {
         if (!change.enabled)
@@ -740,6 +937,7 @@ function initSidebarEvents() {
         $('#void-open-sidebar').removeClass('show');
         change.tempDisable();
     };
+    // Exported function to close the sidebar
     closeSidebar = function()
     {
         if (!change.enabled)
@@ -751,6 +949,7 @@ function initSidebarEvents() {
         change.tempDisable();
     };
 
+    // Clicking, tapping, hovering and swiping events on "void" panels
     $('#void-open-sidebar').on('click mouseover', openSidebar);
     $('#void-close-sidebar').on('click mouseover', closeSidebar);
     $('#void-close-sidebar').swipe({ swipeLeft: closeSidebar });
