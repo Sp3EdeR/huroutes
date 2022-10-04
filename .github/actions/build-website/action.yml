@@ -1,0 +1,13 @@
+name: 'Build huroutes'
+description: 'Builds the huroutes website from source'
+runs:
+  using: 'composite'
+  steps:
+    - name: Minify the website code
+      shell: bash
+      run: |
+          sudo pip install --upgrade pip
+          sudo pip install minify-html==0.10.2
+          sudo pip install rjsmin==1.2.1
+          sudo pip install rcssmin==1.1.1
+          python ".github/scripts/minify-site.py" .

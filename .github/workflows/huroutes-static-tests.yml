@@ -1,0 +1,43 @@
+# This action runs static code analysis checks on the huroutes source code
+
+name: huroutes static tests
+on:
+  push:
+    branches:
+      - master
+  pull_request:
+  workflow_dispatch:
+jobs:
+  test-db:
+    # Validates the huroutes route database
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+      - name: Ensure the jsonschema lib
+        run: sudo pip install jsonschema
+      - name: Run the check
+        run: python ".github/scripts/validate-database.py" data.json data.schema.json
+  codeql:
+    # Runs CodeQL checks on javascript source code
+    name: Analyze
+    runs-on: ubuntu-latest
+    permissions:
+      actions: read
+      contents: read
+      security-events: write
+    strategy:
+      fail-fast: false
+      matrix:
+        language: [ 'javascript' ]
+    steps:
+    - name: Initialize CodeQL
+      uses: github/codeql-action/init@v2
+      with:
+        languages: ${{ matrix.language }}
+    - name: Checkout
+      uses: actions/checkout@v3
+    - name: Autobuild
+      uses: github/codeql-action/autobuild@v2
+    - name: Perform CodeQL Analysis
+      uses: github/codeql-action/analyze@v2
