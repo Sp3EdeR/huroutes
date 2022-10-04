@@ -1,3 +1,0 @@
-Ez a bukkanókkal és kanyarokkal dús szakasz keresztülszeli a balatonfelvidéki dombságot a völgyein át. Bár a kanyarok nagyrészt enyhék, a bukkanók mégis változatossá és érdekessé teszik a szakaszt. Azonban pont emiatt, fokozott figyelmet igényel, hogy a nehezen belátható részeken ne érjen minket meglepetés. Pécsely előtt egy rövid szakasz kivételével Tótvázsony és Pécsely között az útminőség nagyrészt jó-közepes. Pécselyt követően viszont tökéletes útminőséget élvezhetünk Dörgicséig. Az út mentén nagyrészt szép mezőkhöz, földekhez és domboldalakhoz lesz szerencsénk.
-
-Ez az útvonal része a [Balaton-felvidéki bejáróútnak](#BalatonFelvidek).
