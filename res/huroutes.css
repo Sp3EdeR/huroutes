@@ -33,6 +33,7 @@ p {
   color: #eee;
 }
 
+/* Webkit advanced scrollbar design. */
 ::-webkit-scrollbar {
   width: 12px;
 }
@@ -65,6 +66,7 @@ p {
  * Layout
  */
 
+/* Map panel layout */
 #main {
   margin-top: 0;
   padding: 0;
@@ -73,6 +75,7 @@ p {
   width: 90vw; height: 100%;
 }
 
+/* Menu panel layout */
 #sidebar {
   display: block;
   left: 0; top: 0;
@@ -89,6 +92,7 @@ p {
   overflow-y: hidden;
 }
 
+/* Side-by-side menu styles */
 @media (min-width: 768px) {
   #sidebar {
     left: 0;
@@ -100,6 +104,7 @@ p {
   }
 }
 
+/* Void panel styles for portrait design */
 .panel-void {
   background: #0000007c;
   display: none;
@@ -122,6 +127,7 @@ p {
   display: block;
 }
 
+/* Void panels are fully hidden in side-by-side view */
 @media (min-width: 768px) {
   #void-close-sidebar, #void-close-sidebar.show,
   #void-open-sidebar, #void-open-sidebar.show {
@@ -133,11 +139,13 @@ p {
  * Sidebar
  */
 
+/* Contains the title, subtitle and options buttons */
 .sidebar-header {
   padding: 10px;
   padding-top: 25px;
 }
 
+/* The title is a "hidden" link to github */
 .title {
   font-weight: normal;
   text-align: center;
@@ -166,12 +174,14 @@ p {
   filter: drop-shadow(3px 3px 2px #000);
 }
 
+/* The contribution box is at the bottom of the menu bar */
 .contrib {
   font-size: 0.8em;
   padding: 10px;
   text-align: right;
 }
 
+/* Section separators in the sidebar are added to the menu content */
 .huroutes-light .menubox {
   border: 1px solid #2c2c2c;
   border-left: none;
@@ -183,6 +193,7 @@ p {
   border-right: none;
 }
 
+/* Menu look & feel */
 a[data-toggle="collapse"] {
   position: relative;
 }
@@ -236,6 +247,7 @@ ul a.dropdown-toggle:hover {
   color: #bbbfcf;
 }
 
+/* A route's description panel */
 .sidebar .panel {
   border-radius: 8px;
   margin: 10px 0 10px 0;
@@ -249,6 +261,7 @@ ul a.dropdown-toggle:hover {
   background: #1e3450;
 }
 
+/* Header containing the route's date and rating */
 .route-header {
   font-size: 1.1em;
   padding: 0 3px 0 3px;
@@ -281,26 +294,36 @@ ul a.dropdown-toggle:hover {
  * Map view
  */
 
+ /* noop currently */
 .map {
   width: 100%; height: 100%;
 }
 
+/* Overrides Bootstrap link decoration for leaflet controls. */
 .leaflet-bar a:hover {
   text-decoration: none;
 }
 
+/* Googleesque scale control positioning compared to the zoom controls */
 .leaflet-bottom.leaflet-right .leaflet-control-scale {
   bottom: 22px;
   position: absolute;
   right: 44px;
 }
 
+/*
+ * Map view / Controls themes
+ */
+
+/* Dark-theme borders for leaflet buttons */
 .maps-dark .leaflet-touch .leaflet-control-layers, .maps-dark .leaflet-touch .leaflet-bar {
 	border: 2px solid #9c9c9c33;
 }
+/* Overrides the default blue link colour for controls */
 .maps-light .leaflet-bar a {
   color: #000;
 }
+/* Overrides the default light leaflet theme for controls */
 .maps-dark .leaflet-bar a, .maps-dark .leaflet-control-layers {
   background-color: #13192e;
   color: #fff;
@@ -310,47 +333,59 @@ ul a.dropdown-toggle:hover {
 .maps-light .leaflet-container .leaflet-control-attribution a:hover {
   color: #0078A8;
 }
+/* Overrides the default light leaflet theme for popup bubbles */
 .maps-dark .leaflet-popup-content-wrapper, .maps-dark .leaflet-popup-tip {
   background-color: #13192e;
   color: #fff;
   box-shadow: 0 3px 14px #000b;
 }
+/* Overrides the default light leaflet theme for control backgrounds upon hovering */
 .maps-dark .leaflet-bar a:hover {
   background-color: #1e2644;
 }
+/* Overrides the default light leaflet theme for the attribution control */
 .maps-dark .leaflet-container .leaflet-control-attribution {
   background-color: #13192eaf;
   color: #fff;
 }
-
 .maps-dark .leaflet-control-scale-line {
   background-color: #13192e80;
   border: 2px solid #9c9c9c;
   border-top: none;
   color: #ccc;
 }
+/* Inverts the default black location control icons in dark mode */
 .maps-dark .leaflet-control-locate:not([class~=active]) .leaflet-control-locate-location-arrow,
 .maps-dark .leaflet-control-locate-spinner {
   filter: invert(1);
 }
 
+/*
+ * Map view / map themes
+ */
+
+/* Makes the sattelite view's roads translucent */
 .overlay-satteliteroads {
   filter: opacity(0.6);
   -webkit-filter: opacity(0.6);
 }
 
+/* A dark filter set for "normal" map styles */
 .maps-dark .tile-openstreetmap, .maps-dark .tile-googlemap, .maps-dark .tile-googleterrain {
   filter: brightness(0.6) invert(1) contrast(3) hue-rotate(200deg) saturate(0.3) brightness(0.7);
   -webkit-filter: brightness(0.6) invert(1) contrast(3) hue-rotate(200deg) saturate(0.3) brightness(0.7);
 }
+/* A dark filter set for OpenTopoMap */
 .maps-dark .tile-opentopomap {
   filter: brightness(0.65) invert(0.8) contrast(2.5) hue-rotate(200deg) saturate(0.6) brightness(0.8);
   -webkit-filter: brightness(0.65) invert(0.8) contrast(2.5) hue-rotate(200deg) saturate(0.6) brightness(0.8);
 }
+/* A slight darkening for sattelite maps in dark mode */
 .maps-dark .tile-sattelite, .maps-dark .tile-googlesattelite, .maps-dark .overlay-turistautak {
   filter: brightness(0.8);
   -webkit-filter: brightness(0.8);
 }
+/* Colour inversion for the DEM in dark mode */
 .maps-dark .overlay-dem {
   filter: invert(1);
   -webkit-filter: invert(1);
@@ -360,6 +395,7 @@ ul a.dropdown-toggle:hover {
  * Toasts
 */
 
+/* Toast minimum width for optimum width-height ratio */
 .toast {
   min-width: 350px;
 }
