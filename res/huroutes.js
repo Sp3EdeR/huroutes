@@ -180,8 +180,8 @@ $(document).ready(function() {
     navigateTo(fragment.get())
 });
 
-/** The current location control instance (for programmatically stopping following) */
-var locationCtrl;
+/** Stops following the current location with the camera. */
+var stopFollowingLocation = ()=>{};
 /**
  * Initializes the display and behavior of map controllers.
  * @param {object} tiles A dictionary of map tile provider objects.
@@ -222,7 +222,7 @@ function initCtrls(tiles, overlays)
     });
 
     // The location arrow control that allows showing the user's location, bottom-right
-    locationCtrl = L.control.locate({
+    var locationCtrl = L.control.locate({
         cacheLocation: false,
         clickBehavior: { inView: 'stop', outOfView: 'setView', inViewNotFollowing: 'setView' },
         initialZoomLevel: huroutes.opt.markers.zoomTo,
@@ -248,6 +248,7 @@ function initCtrls(tiles, overlays)
         locationCtrl.options.setView = oldView;
         try { locationCtrl.stopFollowing(); } catch { }
     }
+    stopFollowingLocation = () => locationCtrl.stopFollowing();
 }
 
 /**
@@ -521,21 +522,27 @@ function initColorSelector()
 
 }
 
-/** Short name for the navigation link providers db. */
-const navProviders = huroutes.opt.navLinkProviders;
-/** The index of the currently selected navigation link provider. */
-var navigationProviderId =
-    navProviders[localStorage.navprovider] ? localStorage.navprovider : Object.keys(navProviders)[0];
+/** Singleton for managing the navigation link provider configuration. */
+var navigation = {
+    /** Shorthand for the navigation link providers data. */
+    provs: huroutes.opt.navLinkProviders,
+    /** Returns the currently selected navigation provider ID. */
+    getId: function() {
+        return this.provs[localStorage.navprovider] ? localStorage.navprovider : Object.keys(this.provs)[0];
+    },
+    /** Returns a navigation link. */
+    getLink: function(coord) { return this.provs[this.getId()](coord); }
+}
 
 /** Initializes the navigation link configuration. */
 function initNavSelector()
 {
     var elem = $('#nav-options');
-    $.each(navProviders, (key, value) => {
+    $.each(navigation.provs, (key, value) => {
         const id = key.toLowerCase().replace(/ /g, '');
         elem.append(
             $('<div><input type="radio" name="navProv" id="{0}" value="{1}" {2}> <label for="{0}">{1}</label></div>'
-                .format(id, key, key == navigationProviderId ? 'checked' : '')));
+                .format(id, key, key == navigation.getId() ? 'checked' : '')));
     });
 }
 
@@ -556,7 +563,7 @@ function makeSectionElement(html)
  */
 function planTo(coord)
 {
-    window.open(navProviders[navigationProviderId](coord), '_blank');
+    open(navigation.getLink(coord), '_blank');
     return false;
 }
 
@@ -589,21 +596,33 @@ function addPoiNavigationLinks(elem, coord)
     elem.append(eNav);
 }
 
-/** Short name for the download formats db. */
-const downloadTypes = huroutes.opt.downloads;
-/** The index of the currently selected download format. */
-var downloadTypeId =
-    downloadTypes[localStorage.dltype] ? localStorage.dltype : Object.keys(downloadTypes)[0];
+/** Singleton for managing route downloading format configuration. */
+var dlRoute = {
+    /** Shorthand for the route download format data. */
+    fmts: huroutes.opt.downloads,
+    /** Returns the currently selected route format ID. */
+    getId: function() {
+        return this.fmts[localStorage.dltype] ? localStorage.dltype : Object.keys(this.fmts)[0];
+    },
+    /** Initiates the download of the route in the selected format. */
+    download: function(coords, routeId) {
+        var fmt = this.fmts[this.getId()];
+        var file = fmt.fileTemplate.format(
+            routeId,
+            coords.map(coord => fmt.pointTemplate.format(coord.lat, coord.lng)).join(''));
+        downloadString(routeId + '.' + fmt.ext, fmt.mimeType, file);
+    }
+}
 
 /** Initializes the download format configuration. */
 function initDownloadTypeSelector()
 {
     var elem = $('#download-types');
-    $.each(downloadTypes, (key, value) => {
+    $.each(dlRoute.fmts, (key, value) => {
         const id = key.toLowerCase().replace(/ /g, '');
         elem.append(
             $('<div><input type="radio" name="dlType" id="{0}" value="{1}" {2}> <label for="{0}">{1}</label></div>'
-                .format(id, key, key == downloadTypeId ? 'checked' : '')));
+                .format(id, key, key == dlRoute.getId() ? 'checked' : '')));
     });
 }
 
@@ -615,17 +634,9 @@ function initDownloadTypeSelector()
  */
 function addDownloadLink(elem, coords, routeId)
 {
-    const download = (coords, routeId) => {
-        var fmt = downloadTypes[downloadTypeId];
-        var file = fmt.fileTemplate.format(
-            routeId,
-            coords.map(coord => fmt.pointTemplate.format(coord.lat, coord.lng)).join(''));
-        downloadString(routeId + '.' + fmt.ext, fmt.mimeType, file);
-        return false;
-    }
     var eDownload = makeSectionElement(langDict.downloadRoute);
     var eLink = eDownload.find('span.download');
-    eLink.replaceWith($('<a href="#"/>').append(eLink.html()).click(() => download(coords, routeId)));
+    eLink.replaceWith($('<a href="#"/>').append(eLink.html()).click(() => dlRoute.download(coords, routeId) ?? false));
     elem.append(eDownload);
 }
 
@@ -642,7 +653,7 @@ function addDownloadLink(elem, coords, routeId)
         angle = 90 - Math.atan2(angle[0], angle[1]) * (180/Math.PI);
         if (angle < -180)
             angle += 360;
-        window.open(huroutes.opt.streetView.format(coord.lat, coord.lng, angle), '_blank');
+        open(huroutes.opt.streetView.format(coord.lat, coord.lng, angle), '_blank');
         return false;
     }
     var eNav = makeSectionElement(langDict.openStreetView);
@@ -656,10 +667,10 @@ function updateOptions()
 {
     var selection = $('input[name=navProv]:checked').val();
     if (selection)
-        localStorage.navprovider = navigationProviderId = selection;
+        localStorage.navprovider = selection;
     selection = $('input[name=dlType]:checked').val();
     if (selection)
-        localStorage.dltype = downloadTypeId = selection;
+        localStorage.dltype = selection;
 }
 
 /** A singleton that helps with (de)coding the URL fragment. */
@@ -669,13 +680,13 @@ const fragment = {
      * @param {string} str The string tested.
      * @returns true if this is the current fragment, false otherwise.
      */
-    isIt: str => window.location.hash == '#' + str,
+    isIt: str => location.hash == '#' + str,
 
     /**
      * Returns whether the given string or the current fragment is a geo: link.
      * @param {string} hash Optional. If given, tests whether the string starts with #geo.
      */
-    isGeoData: (hash = null) => (hash ?? window.location.hash).includes('#geo:'),
+    isGeoData: (hash = null) => (hash ?? location.hash).includes('#geo:'),
     /**
      * Decodes the given string or the current fragment as a geo: link.
      * @param {string} hash Optional. If given, decodes the string's contents.
@@ -683,7 +694,7 @@ const fragment = {
      */
     asGeoData: (hash = null) => {
         const re = /#geo:([^@]+)@(-?[0-9\\.]+),(-?[0-9\\.]+)(?:\/(?:[?&](?:b=([^&]+)))*)?/;
-        m = re.exec(hash ?? window.location.hash);
+        m = re.exec(hash ?? location.hash);
         return m ? {
             title: decodeURIComponent(m[1]),
             geo: L.latLng(Number(m[2]), Number(m[3])),
@@ -691,9 +702,9 @@ const fragment = {
         } : null;
     },
     /** Returns the current fragment. */
-    get: () => window.location.hash,
+    get: () => location.hash,
     /** Changes the current fragment by pushing a history state. */
-    set: (hash, state) => fragment.get() != hash && window.history.pushState(state, '', hash)
+    set: (hash, state) => fragment.get() != hash && history.pushState(state, '', hash)
 };
 
 /**
@@ -711,19 +722,20 @@ function navigateTo(target, routeId) // target accepts fragment string and layer
         {
             routeId = routeId ?? navigateTo.lastRouteId
             let data = fragment.asGeoData(target);
-            success = data ? activateMarker(data, routeId) : false;
+            success = data && (activateMarker(data, routeId) ?? true)
         }
         else if (target.startsWith('#'))
         {
             routeId = target.split('#')[1];
             let layer = null;
             map.eachLayer(i => i.routeId == routeId && (layer = i));
-            success = layer !== null && activateRoute(layer)
+            success = layer && (activateRoute(layer) ?? true)
         }
     }
     else if (target.hasOwnProperty('routeId'))
     {
-        success = activateRoute(target)
+        activateRoute(target)
+        success = true
         routeId = target.routeId;
         target = '#' + routeId;
     }
@@ -733,7 +745,7 @@ function navigateTo(target, routeId) // target accepts fragment string and layer
 }
 
 // Handles browser back/forward navigation.
-window.addEventListener('popstate', event => {
+addEventListener('popstate', event => {
     if (fragment.get())
         navigateTo(fragment.get(), event.state);
     else
@@ -752,7 +764,7 @@ window.addEventListener('popstate', event => {
  */
 function removeFocus()
 {
-    try { locationCtrl.stopFollowing(); } catch { }
+    try { stopFollowingLocation(); } catch { }
     map.eachLayer(layer => {
         if (layer.focused)
         {
@@ -795,9 +807,7 @@ function activateRoute(layer)
     map.flyToBounds(bounds);
 
     openRouteDesc(layer.routeId);
-    openSidebar();
-
-    return true;
+    sidebar.open();
 }
 
 /** A marker object that can be used to manipulate the active placemarker. no-op by default. */
@@ -826,9 +836,7 @@ function activateMarker(data, routeId)
     map.flyTo(data.geo, huroutes.opt.markers.zoomTo, {animate:true});
 
     openRouteDesc(routeId);
-    closeSidebar();
-
-    return true;
+    sidebar.close();
 }
 
 /** A singleton that helps with Markdown processing. */
@@ -909,8 +917,13 @@ function initAdToast()
     }
 }
 
-/** Sidebar opening/closing functions. */
-var openSidebar, closeSidebar;
+/** A singleton that contains sidebar manipulation functions. */
+var sidebar = {
+    /** Opens the sidebar when in mobile portrait view */
+    open: ()=>{},
+    /** Closes the sidebar when in mobile portrait view */
+    close: ()=>{}
+}
 /**
  * Initializes sidebar opening and closing events for mobile portrait view.
  */
@@ -927,7 +940,7 @@ function initSidebarEvents() {
     var change = new SidebarChange;
     var isOpen = true;
     // Exported function to open the sidebar
-    openSidebar = function()
+    sidebar.open = function()
     {
         if (!change.enabled)
             return;
@@ -938,7 +951,7 @@ function initSidebarEvents() {
         change.tempDisable();
     };
     // Exported function to close the sidebar
-    closeSidebar = function()
+    sidebar.close = function()
     {
         if (!change.enabled)
             return;
@@ -950,16 +963,16 @@ function initSidebarEvents() {
     };
 
     // Clicking, tapping, hovering and swiping events on "void" panels
-    $('#void-open-sidebar').on('click mouseover', openSidebar);
-    $('#void-close-sidebar').on('click mouseover', closeSidebar);
-    $('#void-close-sidebar').swipe({ swipeLeft: closeSidebar });
-    $('#void-open-sidebar').swipe({ swipeRight: openSidebar });
+    $('#void-open-sidebar').on('click mouseover', sidebar.open);
+    $('#void-close-sidebar').on('click mouseover', sidebar.close);
+    $('#void-close-sidebar').swipe({ swipeLeft: sidebar.close });
+    $('#void-open-sidebar').swipe({ swipeRight: sidebar.open });
     if (navigator.userAgent.includes('Mobile'))
-        $('#sidebar').swipe({ swipeLeft: closeSidebar });
+        $('#sidebar').swipe({ swipeLeft: sidebar.close });
     // Reopen when switching to side-by-side
     $(window).resize(function() {
         if (!isOpen && 768 < $(window).innerWidth())
-        openSidebar()
+        sidebar.open()
     })
 }
 
