@@ -5,11 +5,14 @@ on:
   push:
     branches:
       - master
-  pull_request:
-  workflow_dispatch:
+  pull_request:           # PRs to any branch
+  workflow_dispatch:      # Manual execution
+  schedule:
+    - cron: '35 10 * * 3' # Every once in a while (for CodeQL security checks mainly)
 jobs:
   test-db:
     # Validates the huroutes route database
+    if: ${{ github.event_name != 'schedule' }}
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
