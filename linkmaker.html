@@ -18,7 +18,7 @@
       let match = geoParse.exec(str);
       if (match === null)
       {
-        window.alert('Hibás geokoordináta formátum!\nA Google Maps által adott tizedes számos formátummal kell megadni\nPéldául: "47.654321,19.123456".');
+        alert('Hibás geokoordináta formátum!\nA Google Maps által adott tizedes számos formátummal kell megadni\nPéldául: "47.654321,19.123456".');
         throw 'parse error';
       }
       return [round6(match[1]), round6(match[2])];
@@ -44,7 +44,7 @@
       with (document.getElementById('link'))
         innerText = href = webRoot + result;
       document.execCommand('copy');
-      window.history.pushState(null, '', result);
+      history.pushState(null, '', result);
       return false;
     }
     /** Parses a geo fragment and inserts its data into the form. */
@@ -53,7 +53,7 @@
       m = re.exec(link);
       if (m === null)
       {
-        window.alert('Hibás link formátum!');
+        alert('Hibás link formátum!');
         throw 'parse error';
       }
       document.getElementById('title').value = decodeURI(m[1]);
@@ -72,7 +72,7 @@
       }
     }
     // Handles browser back/forward navigation to update the form
-    window.addEventListener('popstate', () => {
+    addEventListener('popstate', () => {
       if (!location.hash)
       {
         document.getElementById('title').value = '';

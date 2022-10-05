@@ -328,11 +328,6 @@ ul a.dropdown-toggle:hover {
   background-color: #13192e;
   color: #fff;
 }
-.maps-light .leaflet-popup-content-wrapper a, .maps-light .leaflet-popup-content-wrapper a:hover,
-.maps-light .leaflet-container .leaflet-control-attribution a,
-.maps-light .leaflet-container .leaflet-control-attribution a:hover {
-  color: #0078A8;
-}
 /* Overrides the default light leaflet theme for popup bubbles */
 .maps-dark .leaflet-popup-content-wrapper, .maps-dark .leaflet-popup-tip {
   background-color: #13192e;
