@@ -1,15 +1,17 @@
 <!doctype html><html lang=en><meta charset=utf-8><title>huroutes | Helyjelölő link készítése</title><link href=res/favicon.ico rel=icon><link href=res/favicon.png rel=icon sizes=32x32 type=image/png><link href=res/favicon-sm.png rel=icon sizes=16x16 type=image/png><script>webRoot = 'https://sp3eder.github.io/huroutes/';
+    /** Parses a WGS84 coordinate given as a string (decimal lat,lng). */
     function parseGeo(str) {
       const round6 = n => Number(Number(n).toFixed(6))
       const geoParse = /\s*(-?[0-9\.]+)\s*,\s*(-?[0-9\.]+)\s*/;
       let match = geoParse.exec(str);
       if (match === null)
       {
-        window.alert('Hibás geokoordináta formátum!\nA Google Maps által adott tizedes számos formátummal kell megadni\nPéldául: "47.654321,19.123456".');
+        alert('Hibás geokoordináta formátum!\nA Google Maps által adott tizedes számos formátummal kell megadni\nPéldául: "47.654321,19.123456".');
         throw 'parse error';
       }
       return [round6(match[1]), round6(match[2])];
     }
+    /** Generates a fragment link from the form data. */
     function makeLink() {
       function encode(str) {
         return encodeURI(str).replace(/\)/g, '%29').replace(/&/g, '%26');
@@ -30,15 +32,16 @@
       with (document.getElementById('link'))
         innerText = href = webRoot + result;
       document.execCommand('copy');
-      window.history.pushState(null, '', result);
+      history.pushState(null, '', result);
       return false;
     }
+    /** Parses a geo fragment and inserts its data into the form. */
     function parseLink(link = document.getElementById('linkEdit').value) {
       const re = /#geo:([^@]+)@(-?[0-9\\.]+),(-?[0-9\\.]+)(?:\/(?:[?&](?:b=([^&]+)))*)?/;
       m = re.exec(link);
       if (m === null)
       {
-        window.alert('Hibás link formátum!');
+        alert('Hibás link formátum!');
         throw 'parse error';
       }
       document.getElementById('title').value = decodeURI(m[1]);
@@ -47,6 +50,7 @@
       with (document.getElementById('link'))
         innerText = href = webRoot + m[0];
     }
+    /** Initializes the form from the current fragment. */
     function init()
     {
       if (location.hash)
@@ -55,7 +59,8 @@
         document.getElementById('linkEdit').value = location.hash;
       }
     }
-    window.addEventListener('popstate', () => {
+    // Handles browser back/forward navigation to update the form
+    addEventListener('popstate', () => {
       if (!location.hash)
       {
         document.getElementById('title').value = '';

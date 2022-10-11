@@ -19,15 +19,16 @@ const huroutes={'opt':{'route':{'colors':['#744','#944','#a5423f','#b04039','#bc
       <coordinates>{1}</coordinates>\
     </LineString>\
   </Placemark>\
-</Document></kml>','pointTemplate':'{1},{0},0 '}},'streetView':'https://www.google.com/maps/@?api=1&map_action=pano&viewpoint={0},{1}&heading={2}','markers':{'zoomTo':16},'themes':{'Rendszer színmód használata':{'media':'prefers-color-scheme','default':'Világos','mapping':{'dark':'Sötét'}},'Világos':{'classes':['bootstrap','maps-light','huroutes-light']},'Sötét':{'classes':['bootstrap-dark','maps-dark','huroutes-dark']},'Sötét világos térképpel':{'classes':['bootstrap-dark','maps-light','huroutes-dark']}}},'lang':{'default':'hu-HU','hu-HU':{'navigation':' Navigáció <span class="nav-start">az elejére</span> vagy <span class="nav-end">a végére</span>.','navToPoi':' Navigáció <span class="nav-start">ehhez a helyhez</span>.','downloadRoute':'<span class="download">Útvonal letöltése</span>.','openStreetView':'<span class="strt-vw">Street view megnyitása</span>.','routeLength':'Hossza: {0}km.','locatePopup':'Az aktuális pozícióm mutatása.'}}};String.prototype.format=function(){var args=arguments;return this.replace(/\{(\d+)\}/g,function(m,n){return args[n];});};(function(){var langDict=selectLanguage();var map;var nextDropId=0;$(document).ready(function(){map=L.map('map',{zoomControl:false}).fitBounds(huroutes.opt.map.bounds);const tiles=huroutes.opt.map.tiles;(tiles[localStorage.mapstyle]||tiles[Object.keys(tiles)[0]]).addTo(map);const overlays=huroutes.opt.map.overlays;(localStorage.overlays||'').split('|').forEach(item=>{const overlay=overlays[item];if(overlay)
+</Document></kml>','pointTemplate':'{1},{0},0 '}},'streetView':'https://www.google.com/maps/@?api=1&map_action=pano&viewpoint={0},{1}&heading={2}','markers':{'zoomTo':16},'themes':{'Rendszer színmód használata':{'default':'Világos','mapping':{'dark':'Sötét'}},'Világos':{'classes':['bootstrap','maps-light','huroutes-light']},'Sötét':{'classes':['bootstrap-dark','maps-dark','huroutes-dark']},'Sötét világos térképpel':{'classes':['bootstrap-dark','maps-light','huroutes-dark']}}},'lang':{'default':'hu-HU','hu-HU':{'navigation':' Navigáció <span class="nav-start">az elejére</span> vagy <span class="nav-end">a végére</span>.','navToPoi':' Navigáció <span class="nav-start">ehhez a helyhez</span>.','downloadRoute':'<span class="download">Útvonal letöltése</span>.','openStreetView':'<span class="strt-vw">Street view megnyitása</span>.','routeLength':'Hossza: {0}km.','locatePopup':'Az aktuális pozícióm mutatása.'}}};String.prototype.format=function(){var args=arguments;return this.replace(/\{(\d+)\}/g,function(m,n){return args[n];});};(function(){var langDict=selectLanguage();var map;var nextDropId=0;$(document).ready(function(){map=L.map('map',{zoomControl:false}).fitBounds(huroutes.opt.map.bounds);const tiles=huroutes.opt.map.tiles;(tiles[localStorage.mapstyle]||tiles[Object.keys(tiles)[0]]).addTo(map);const overlays=huroutes.opt.map.overlays;(localStorage.overlays||'').split('|').forEach(item=>{const overlay=overlays[item];if(overlay)
 overlay.addTo(map);});const tileOverlay=huroutes.opt.map.tileOverlays[localStorage.mapstyle];if(tileOverlay)
-tileOverlay.addTo(map);map.createPane('bkgRoutes');map.getPane('bkgRoutes').style.zIndex=450;$.getJSON('data.json',initializeContent).fail(function(){console.error('Failed loading the route database.');});initColorSelector();initCtrls(tiles,overlays);$('#options-dialog').on('hidden.bs.modal',updateOptions);initSidebarEvents();initNavSelector();initDownloadTypeSelector();initAdToast();navigateTo(fragment.get())});var locationCtrl;function initCtrls(tiles,overlays)
+tileOverlay.addTo(map);map.createPane('bkgRoutes');map.getPane('bkgRoutes').style.zIndex=450;$.getJSON('data.json',initializeContent).fail(function(){console.error('Failed loading the route database.');});initColorSelector();initCtrls(tiles,overlays);$('#options-dialog').on('hidden.bs.modal',updateOptions);initSidebarEvents();initNavSelector();initDownloadTypeSelector();initAdToast();navigateTo(fragment.get())});var stopFollowingLocation=()=>{};function initCtrls(tiles,overlays)
 {L.control.scale({position:'bottomright',imperial:false}).addTo(map);L.control.zoom({position:'bottomright'}).addTo(map);L.control.layers(tiles,overlays,{position:'bottomleft'}).addTo(map);map.on('baselayerchange',(layer)=>{localStorage.mapstyle=layer.name;Object.entries(huroutes.opt.map.tileOverlays).forEach(([name,overlay])=>{if(name==layer.name)
 overlay.addTo(map);else if(map.hasLayer(overlay))
 overlay.remove();});const tileOverlay=huroutes.opt.map.tileOverlays[layer.name];if(tileOverlay)
 tileOverlay.addTo(map);});map.on('overlayadd',(overlay)=>{var overlays=localStorage.overlays;overlays=overlays?overlays.split('|'):[];overlays.push(overlay.name);localStorage.overlays=overlays.join('|');});map.on('overlayremove',(overlay)=>{var overlays=(localStorage.overlays||'').split('|');const idx=overlays.indexOf(overlay.name);if(idx!=-1)
-overlays.splice(idx,1);localStorage.overlays=overlays.join('|');});locationCtrl=L.control.locate({cacheLocation:false,clickBehavior:{inView:'stop',outOfView:'setView',inViewNotFollowing:'setView'},initialZoomLevel:huroutes.opt.markers.zoomTo,keepCurrentZoomLevel:true,position:'bottomright',flyTo:true,locateOptions:{enableHighAccuracy:true},onLocationError:()=>{$('#toast-location-error').toast('show');localStorage.removeItem('showLocation');},setView:'untilPan',showPopup:false,strings:{title:langDict.locatePopup}}).addTo(map);map.on('locateactivate',()=>localStorage.showLocation=true);map.on('locatedeactivate',()=>localStorage.removeItem('showLocation'));if(localStorage.showLocation)
-{var oldView=locationCtrl.options.setView;locationCtrl.options.setView=false;locationCtrl.start();locationCtrl.options.setView=oldView;try{locationCtrl.stopFollowing();}catch{}}}
+overlays.splice(idx,1);localStorage.overlays=overlays.join('|');});var locationCtrl=L.control.locate({cacheLocation:false,clickBehavior:{inView:'stop',outOfView:'setView',inViewNotFollowing:'setView'},initialZoomLevel:huroutes.opt.markers.zoomTo,keepCurrentZoomLevel:true,position:'bottomright',flyTo:true,locateOptions:{enableHighAccuracy:true},onLocationError:()=>{$('#toast-location-error').toast('show');localStorage.removeItem('showLocation');},setView:'untilPan',showPopup:false,strings:{title:langDict.locatePopup}}).addTo(map);map.on('locateactivate',()=>localStorage.showLocation=true);map.on('locatedeactivate',()=>localStorage.removeItem('showLocation'));if(localStorage.showLocation)
+{var oldView=locationCtrl.options.setView;locationCtrl.options.setView=false;locationCtrl.start();locationCtrl.options.setView=oldView;try{locationCtrl.stopFollowing();}catch{}}
+stopFollowingLocation=()=>locationCtrl.stopFollowing();}
 function initializeContent(data)
 {if(!Array.isArray(data)||!data.length)
 {console.error('The map data is empty.');return;}
@@ -86,45 +87,47 @@ applyTheme(currentColorTheme());const handleMediaChanged=e=>isSystemColorTheme(c
 if(media.addEventListener)
 media.addEventListener('change',handleMediaChanged);else
 media.addListener(handleMediaChanged);var elem=$('#color-themes');$.each(themes,(theme,data)=>{const id=theme.toLowerCase().replace(/ /g,'');let elemOpt=$('<div><input type="radio" name="theme" id="{0}" value="{1}" {2}> <label for="{0}">{1}</label></div>'.format(id,theme,theme==currentColorTheme()?'checked':''));elemOpt.children('input').click(()=>applyTheme(localStorage.theme=theme));elem.append(elemOpt);});}
-const navProviders=huroutes.opt.navLinkProviders;var navigationProviderId=navProviders[localStorage.navprovider]?localStorage.navprovider:Object.keys(navProviders)[0];function initNavSelector()
-{var elem=$('#nav-options');$.each(navProviders,(key,value)=>{const id=key.toLowerCase().replace(/ /g,'');elem.append($('<div><input type="radio" name="navProv" id="{0}" value="{1}" {2}> <label for="{0}">{1}</label></div>'.format(id,key,key==navigationProviderId?'checked':'')));});}
+var navigation={provs:huroutes.opt.navLinkProviders,getId:function(){return this.provs[localStorage.navprovider]?localStorage.navprovider:Object.keys(this.provs)[0];},getLink:function(coord){return this.provs[this.getId()](coord);}}
+function initNavSelector()
+{var elem=$('#nav-options');$.each(navigation.provs,(key,value)=>{const id=key.toLowerCase().replace(/ /g,'');elem.append($('<div><input type="radio" name="navProv" id="{0}" value="{1}" {2}> <label for="{0}">{1}</label></div>'.format(id,key,key==navigation.getId()?'checked':'')));});}
 function makeSectionElement(html)
 {return $('<span> {0}</span>'.format(html));}
 function planTo(coord)
-{window.open(navProviders[navigationProviderId](coord),'_blank');return false;}
+{open(navigation.getLink(coord),'_blank');return false;}
 function addNavigationLinks(elem,start,end)
 {var eNav=makeSectionElement(langDict.navigation);var eStart=eNav.find('span.nav-start');eStart.replaceWith($('<a href="#" />').append(eStart.html()).click(()=>planTo(start)));var eEnd=eNav.find('span.nav-end');eEnd.replaceWith($('<a href="#" />').append(eEnd.html()).click(()=>planTo(end)));elem.append(eNav);}
 function addPoiNavigationLinks(elem,coord)
 {var eNav=$('<p> {0}</p>'.format(langDict.navToPoi));var eStart=eNav.find('span.nav-start');eStart.replaceWith($('<a href="#" />').append(eStart.html()).click(()=>planTo(coord)));elem.append(eNav);}
-const downloadTypes=huroutes.opt.downloads;var downloadTypeId=downloadTypes[localStorage.dltype]?localStorage.dltype:Object.keys(downloadTypes)[0];function initDownloadTypeSelector()
-{var elem=$('#download-types');$.each(downloadTypes,(key,value)=>{const id=key.toLowerCase().replace(/ /g,'');elem.append($('<div><input type="radio" name="dlType" id="{0}" value="{1}" {2}> <label for="{0}">{1}</label></div>'.format(id,key,key==downloadTypeId?'checked':'')));});}
+var dlRoute={fmts:huroutes.opt.downloads,getId:function(){return this.fmts[localStorage.dltype]?localStorage.dltype:Object.keys(this.fmts)[0];},download:function(coords,routeId){var fmt=this.fmts[this.getId()];var file=fmt.fileTemplate.format(routeId,coords.map(coord=>fmt.pointTemplate.format(coord.lat,coord.lng)).join(''));downloadString(routeId+'.'+fmt.ext,fmt.mimeType,file);}}
+function initDownloadTypeSelector()
+{var elem=$('#download-types');$.each(dlRoute.fmts,(key,value)=>{const id=key.toLowerCase().replace(/ /g,'');elem.append($('<div><input type="radio" name="dlType" id="{0}" value="{1}" {2}> <label for="{0}">{1}</label></div>'.format(id,key,key==dlRoute.getId()?'checked':'')));});}
 function addDownloadLink(elem,coords,routeId)
-{const download=(coords,routeId)=>{var fmt=downloadTypes[downloadTypeId];var file=fmt.fileTemplate.format(routeId,coords.map(coord=>fmt.pointTemplate.format(coord.lat,coord.lng)).join(''));downloadString(routeId+'.'+fmt.ext,fmt.mimeType,file);return false;}
-var eDownload=makeSectionElement(langDict.downloadRoute);var eLink=eDownload.find('span.download');eLink.replaceWith($('<a href="#"/>').append(eLink.html()).click(()=>download(coords,routeId)));elem.append(eDownload);}
+{var eDownload=makeSectionElement(langDict.downloadRoute);var eLink=eDownload.find('span.download');eLink.replaceWith($('<a href="#"/>').append(eLink.html()).click(()=>dlRoute.download(coords,routeId)??false));elem.append(eDownload);}
 function addStreetViewLink(elem,coord,coordNext)
 {const streetViewAt=(coord,coordNext)=>{var angle=[coordNext.lat-coord.lat,coordNext.lng-coord.lng];angle=90-Math.atan2(angle[0],angle[1])*(180/Math.PI);if(angle<-180)
-angle+=360;window.open(huroutes.opt.streetView.format(coord.lat,coord.lng,angle),'_blank');return false;}
+angle+=360;open(huroutes.opt.streetView.format(coord.lat,coord.lng,angle),'_blank');return false;}
 var eNav=makeSectionElement(langDict.openStreetView);var eLink=eNav.find('span.strt-vw');eLink.replaceWith($('<a href="#"/>').append(eLink.html()).click(()=>streetViewAt(coord,coordNext)));elem.append(eNav);}
 function updateOptions()
 {var selection=$('input[name=navProv]:checked').val();if(selection)
-localStorage.navprovider=navigationProviderId=selection;selection=$('input[name=dlType]:checked').val();if(selection)
-localStorage.dltype=downloadTypeId=selection;}
-const fragment={isIt:str=>window.location.hash=='#'+str,isGeoData:(hash=null)=>(hash??window.location.hash).includes('#geo:'),asGeoData:(hash=null)=>{const re=/#geo:([^@]+)@(-?[0-9\\.]+),(-?[0-9\\.]+)(?:\/(?:[?&](?:b=([^&]+)))*)?/;m=re.exec(hash??window.location.hash);return m?{title:decodeURIComponent(m[1]),geo:L.latLng(Number(m[2]),Number(m[3])),desc:markdown.makeHtml(decodeURIComponent(m[4]??""))}:null;},get:()=>window.location.hash,set:(hash,state)=>fragment.get()!=hash&&window.history.pushState(state,'',hash)};function navigateTo(target,routeId)
+localStorage.navprovider=selection;selection=$('input[name=dlType]:checked').val();if(selection)
+localStorage.dltype=selection;}
+const fragment={isIt:str=>location.hash=='#'+str,isGeoData:(hash=null)=>(hash??location.hash).includes('#geo:'),asGeoData:(hash=null)=>{const re=/#geo:([^@]+)@(-?[0-9\\.]+),(-?[0-9\\.]+)(?:\/(?:[?&](?:b=([^&]+)))*)?/;m=re.exec(hash??location.hash);return m?{title:decodeURIComponent(m[1]),geo:L.latLng(Number(m[2]),Number(m[3])),desc:markdown.makeHtml(decodeURIComponent(m[4]??""))}:null;},get:()=>location.hash,set:(hash,state)=>fragment.get()!=hash&&history.pushState(state,'',hash)};function navigateTo(target,routeId)
 {var success=false;if(typeof target==='string'||target instanceof String)
 {if(fragment.isGeoData(target))
 {routeId=routeId??navigateTo.lastRouteId
-let data=fragment.asGeoData(target);success=data?activateMarker(data,routeId):false;}
+let data=fragment.asGeoData(target);success=data&&(activateMarker(data,routeId)??true)}
 else if(target.startsWith('#'))
-{routeId=target.split('#')[1];let layer=null;map.eachLayer(i=>i.routeId==routeId&&(layer=i));success=layer!==null&&activateRoute(layer)}}
+{routeId=target.split('#')[1];let layer=null;map.eachLayer(i=>i.routeId==routeId&&(layer=i));success=layer&&(activateRoute(layer)??true)}}
 else if(target.hasOwnProperty('routeId'))
-{success=activateRoute(target)
+{activateRoute(target)
+success=true
 routeId=target.routeId;target='#'+routeId;}
 if(success)
 fragment.set(target,navigateTo.lastRouteId=routeId);return success;}
-window.addEventListener('popstate',event=>{if(fragment.get())
+addEventListener('popstate',event=>{if(fragment.get())
 navigateTo(fragment.get(),event.state);else
 {$('.collapse').collapse('hide');removeFocus();map.flyToBounds(huroutes.opt.map.bounds);}});function removeFocus()
-{try{locationCtrl.stopFollowing();}catch{}
+{try{stopFollowingLocation();}catch{}
 map.eachLayer(layer=>{if(layer.focused)
 {layer.setStyle(layer.options.style);layer.focused=false;}});marker.remove()}
 function openRouteDesc(routeId)
@@ -133,10 +136,10 @@ return;if(menuItem.length)
 {var ctrl=$([sidebar[0],$('body')[0],$('html')[0]]).filter((i,e)=>e.clientHeight<e.scrollHeight).first();ctrl.animate({scrollTop:menuItem.offset().top+sidebar.scrollTop()});}
 clearInterval(scrollWait);},100);}
 function activateRoute(layer)
-{removeFocus();layer.setStyle(layer.options.focusedStyle);layer.focused=true;var bounds=layer.getBounds();map.flyToBounds(bounds);openRouteDesc(layer.routeId);openSidebar();return true;}
+{removeFocus();layer.setStyle(layer.options.focusedStyle);layer.focused=true;var bounds=layer.getBounds();map.flyToBounds(bounds);openRouteDesc(layer.routeId);sidebar.open();}
 var marker={remove:()=>{}};function activateMarker(data,routeId)
 {removeFocus();marker=L.marker(data.geo,{autoPanOnFocus:false});marker.addTo(map);body=$('<div><p><b>{0}</b></p></div>'.format(data.title));if(data.desc)
-body.append($(data.desc));addPoiNavigationLinks(body,data.geo);marker.bindPopup(body[0],{autoPan:false,closeButton:false,autoClose:false,closeOnEscapeKey:false,closeOnClick:false}).openPopup();const areaAround=0.005;map.flyTo(data.geo,huroutes.opt.markers.zoomTo,{animate:true});openRouteDesc(routeId);closeSidebar();return true;}
+body.append($(data.desc));addPoiNavigationLinks(body,data.geo);marker.bindPopup(body[0],{autoPan:false,closeButton:false,autoClose:false,closeOnEscapeKey:false,closeOnClick:false}).openPopup();const areaAround=0.005;map.flyTo(data.geo,huroutes.opt.markers.zoomTo,{animate:true});openRouteDesc(routeId);sidebar.close();}
 var markdown={engine:new showdown.Converter(),makeHtml(text)
 {var ret=$(this.engine.makeHtml(text));ret.find('a[href^="#"]').click(function(){return!navigateTo(this.href);});ret.find('a:not([href^="#"])').attr('target','_blank');return ret;}}
 function normRating(rat)
@@ -156,13 +159,14 @@ return;var androidToast=$('#toast-android-app')
 androidToast.toast('show')
 androidToast.on('hide.bs.toast',()=>localStorage.shownAndroidAd=true)
 androidToast.find('a[href]').on('click',()=>androidToast.toast('hide'))}}
-var openSidebar,closeSidebar;function initSidebarEvents(){class SidebarChange{constructor(){this.enabled=true;}
+var sidebar={open:()=>{},close:()=>{}}
+function initSidebarEvents(){class SidebarChange{constructor(){this.enabled=true;}
 tempDisable()
 {this.enabled=false;setTimeout(()=>this.enabled=true,200);}}
-var change=new SidebarChange;var isOpen=true;openSidebar=function()
+var change=new SidebarChange;var isOpen=true;sidebar.open=function()
 {if(!change.enabled)
-return;isOpen=true;$('#sidebar').removeClass('closed');$('#void-close-sidebar').addClass('show');$('#void-open-sidebar').removeClass('show');change.tempDisable();};closeSidebar=function()
+return;isOpen=true;$('#sidebar').removeClass('closed');$('#void-close-sidebar').addClass('show');$('#void-open-sidebar').removeClass('show');change.tempDisable();};sidebar.close=function()
 {if(!change.enabled)
-return;isOpen=false;$('#sidebar').addClass('closed');$('#void-close-sidebar').removeClass('show');$('#void-open-sidebar').addClass('show');change.tempDisable();};$('#void-open-sidebar').on('click mouseover',openSidebar);$('#void-close-sidebar').on('click mouseover',closeSidebar);$('#void-close-sidebar').swipe({swipeLeft:closeSidebar});$('#void-open-sidebar').swipe({swipeRight:openSidebar});if(navigator.userAgent.includes('Mobile'))
-$('#sidebar').swipe({swipeLeft:closeSidebar});$(window).resize(function(){if(!isOpen&&768<$(window).innerWidth())
-openSidebar()})}})();
+return;isOpen=false;$('#sidebar').addClass('closed');$('#void-close-sidebar').removeClass('show');$('#void-open-sidebar').addClass('show');change.tempDisable();};$('#void-open-sidebar').on('click mouseover',sidebar.open);$('#void-close-sidebar').on('click mouseover',sidebar.close);$('#void-close-sidebar').swipe({swipeLeft:sidebar.close});$('#void-open-sidebar').swipe({swipeRight:sidebar.open});if(navigator.userAgent.includes('Mobile'))
+$('#sidebar').swipe({swipeLeft:sidebar.close});$(window).resize(function(){if(!isOpen&&768<$(window).innerWidth())
+sidebar.open()})}})();
