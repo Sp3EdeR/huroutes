@@ -53,6 +53,13 @@
 						"upd":"2022 július"
 					},
 					{
+						"ttl":"Pilisvörösvár - Csobánka",
+						"md":"data/PilisvorosvarCsobanka.md",
+						"kml":"data/PilisvorosvarCsobanka.kml",
+						"rat":5,
+						"upd":"2022 október"
+					},
+					{
 						"ttl":"Fellegvár",
 						"md":"data/Fellegvar.md",
 						"kml":"data/Fellegvar.kml",
