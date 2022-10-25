@@ -4,4 +4,5 @@ Csákvár területén sajnos igazán rossz, sóderes, kátyús utak vezetnek ker
 
 Volán busz járat halad át időnként ezen az útszakaszon. A sűrű erdő miatt itt kiemelt vadveszély van, ezért nem javasolt késői órákban csapatni itt.
 
+
 Ez a kis út része a [vértesi bejáróútnak](#Vertes).
