@@ -3,3 +3,5 @@ Erre az útvonalra a Lábatlan felé vezető úttal összekötve gyakran szervez
 Bajót faluban el lehet kanyarodni Péliföldszentkereszt irányába is, de ott csak a szentkereszt település részig kapott új aszfaltot az út és tovább gurulva a 1119-es útra eléggé rossz minőségű út vezet, ezért érdemesebb inkább a bajóti buszfordulóban megfordulni és visszafele is befűzni a kanyarokat.
 
 Budapest irányából érdemes a [Szomor-Bajnai útvonalon](#SzomorBajna) közelíteni, ami jó alternatívája a nagyon forgalmas 1-es útnak. Ezen kívül direkt összeköttetése van az útnak a nagyszerű [héregi szerpentinnel](#Hereg), amerre érdemes lehet folytatni utunkat.
+
+Az [egyik Bajót-közeli kanyarban](#geo:Kanyarfot%C3%B3s%20Pont@47.701302,18.556537/?b=Ide%20id%C5%91nk%C3%A9nt%20kitelep%C3%BCl%20a%20%5BKanyarfot%C3%B3%5D%28https://kanyarfoto.com/hu%29,%20akik%20k%C3%A9pet%20k%C3%A9sz%C3%ADthetnek%20a%20kanyarg%C3%A1sodr%C3%B3l.) találkozhatunk a kanyarfotósokkal időnként. Ilyenkor megnövekedik errefelé a forgalom.
