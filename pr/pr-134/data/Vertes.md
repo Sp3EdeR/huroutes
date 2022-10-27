@@ -1,4 +1,4 @@
-Ez egy lehetőség a Vértes környékén autózni egyet, nagyon közel Budapesthez. Felcsút és Vértesboglár között teljes szélességben felújított útburkolaton gurulhatunk.
+Ez egy lehetőség a Vértes környékén autózni egyet, nagyon közel Budapesthez. [Felcsút](#geo:Fel%C3%BAj%C3%ADtott%20%C3%BAt%20Felcs%C3%BAti%20v%C3%A9ge@47.469297,18.579497/?b=Az%20utat%20innen%20délnyugatra%20teljesen%20fel%C3%BAj%C3%ADtott%C3%A1k%202022%20%C5%91sz%C3%A9n.) és [Vértesboglár](#geo:Fel%C3%BAj%C3%ADtott%20%C3%BAt%20V%C3%A9rtesbogl%C3%A1r@47.428572,18.528176/?b=Az%20utat%20innen%20északkeletre%20teljesen%20fel%C3%BAj%C3%ADtott%C3%A1k%202022%20%C5%91sz%C3%A9n.) között teljes szélességben felújított útburkolaton gurulhatunk.
 
 Az [Etyek - Alcsútdoboz közötti szerpentin](#EtyekAlcsutdoboz), a [Csákvár és Gánt közti szakasz](#GantCsakvar) és a [Söréd - Gánt közötti szerpentin](#SoredGant) kellemes kanyargást tesznek lehetővé.
 
