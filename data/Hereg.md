@@ -6,4 +6,6 @@ A Gerecse környéke akár [hosszabban is bejárható](#Gerecse), de a Bajna és
 
 A [héregi GP Büfénél](#geo:GP%20B%C3%BCf%C3%A9@47.642989,18.520073/?b=Piciny,%20olcs%C3%B3%20b%C3%BCf%C3%A9%20r%C3%B6gt%C3%B6n%20a%20szerpentin%20ment%C3%A9n.) általában könnyen elérhető egy gyors falat.
 
+Az [alsó visszafordítóban](#geo:Kanyarfot%C3%B3s%20Pont@47.637571,18.559798/?b=Ide%20id%C5%91nk%C3%A9nt%20kitelep%C3%BCl%20a%20%5BKanyarfot%C3%B3%5D%28https://kanyarfoto.com/hu%29,%20akik%20k%C3%A9pet%20k%C3%A9sz%C3%ADthetnek%20a%20kanyarg%C3%A1sodr%C3%B3l.) találkozhatunk a kanyarfotósokkal időnként. Ilyenkor megnövekedik errefelé a forgalom.
+
 [Bemutató videó Draskovics Andristól](https://youtu.be/xDhJktK-ca4)
