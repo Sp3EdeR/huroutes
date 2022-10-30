@@ -1,5 +1,0 @@
-Az egyik legjobb magyar szerpentin. Nagyon jó vonalvezetés, vannak szűk és kevésbé szűk kanyarok, jó a ritmusuk. Sok az emelkedő, lejtő és döntött kanyar is, így nagy a dinamikája. Még sikán is akad pár. Jó útminőség Cered irányából, közepes útminőség Zagyvaróna irányából. Valamivel keskenyebb, mint a [24-es](#24Paradsasvar). Alacsony a forgalom az úton, jó eséllyel lehet zavartalanul haladni. Rónabányához közel van pár nagyon éles, szűkülő visszafordító ahol igencsak le kell lassítani, erre fontos koncentrálni.
-
-Az útvonal könnyen összeköthető a [Hagony-Zabar közti szerpentinnel](#HagonyZabar).
-
-Az [egyik Cered-közeli kanyarkombinációban](#geo:Kanyarfot%C3%B3s%20Pont@48.137889,19.952361/?b=Ide%20id%C5%91nk%C3%A9nt%20kitelep%C3%BCl%20a%20%5BKanyarfot%C3%B3%5D%28https://kanyarfoto.com/hu%29,%20akik%20k%C3%A9pet%20k%C3%A9sz%C3%ADthetnek%20a%20kanyarg%C3%A1sodr%C3%B3l.) találkozhatunk a kanyarfotósokkal időnként. Ilyenkor megnövekedik errefelé a forgalom.
