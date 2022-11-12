@@ -1,0 +1,1 @@
+Alsó-közepes útminőség és igencsak keskeny az út. Meredek erdős oldalfalak között kanyarog le az út. Közepesen haladós, rövid, de azért élvezhető utacska nagyobb kanyarokkal és visszafordítókkal, amik viszonylag beláthatóak is. Ősszel eszméletlen mennyiségű falevélre lehet számítani, ami eléggé tud csúszni.

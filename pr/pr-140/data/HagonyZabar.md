@@ -1,0 +1,5 @@
+Keletről nyugatra haladva ez az útvonal egy igazán hangulatos szakasz. Hangony után egy enyhén kanyargó, tempós útvonallal kezdődik, mely körül változatos és szép kilátásban gyönyörködhetünk. A Megyehatárhoz közeledve hegyessé válik a környezet és egy szűk, rövid, izgalmas szerpentin dobja fel az adrenalint. Amennyiben nyugat felé haladunk, nagyon vigyázzunk az [utolsó, lejtmeneti hajtűkanyarnál](#geo:%C3%89les%20hajt%C5%B1kanyar@48.151346,20.072554/?b=Ez%20egy%20nagyon%20%C3%A9les%20hajt%C5%B1kanyar.%20F%C5%91leg%20nyugatra,%20Zabar%20ir%C3%A1ny%C3%A1ba%20haladva%20igen%20vesz%C3%A9lyes%20lehet,%20ha%20nem%20figyel%C3%BCnk.), ugyanis itt könnyen el lehet szállni nagy tempónál. Ez az útvonal egy tökéletes bevezető a [ceredi szerpentinhez](#Cered). Az útminőség nagyon jó.
+
+Eger felől a [Balaton településen keresztül](#Balaton) érdemes megközelíteni.
+
+Az útvonal hangulata hasonló az [Aggteleki szerpentinéhez](#Aggtelek).

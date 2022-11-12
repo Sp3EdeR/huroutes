@@ -1,0 +1,1 @@
+Az útminőség erősen változó, Lyukóbányától keletre közepes, nyugatra viszont kifejezetten jó minőségű. Miskolc felől az először meredeken kanyarog az út felfelé, majd tempósan élvezhető, közepes kanyarokba csap át. Az autós forgalom elenyésző, gyalogosok viszont sűrűn előfordulhatnak az út mellett.
