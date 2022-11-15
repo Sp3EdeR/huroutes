@@ -225,7 +225,14 @@
 						"md":"data/2505.md",
 						"kml":"data/2505.kml",
 						"rat":8,
-						"upd":"2022 június"
+						"upd":"2022 november"
+					},
+					{
+						"ttl":"Lyukóbánya",
+						"md":"data/Lyukobanya.md",
+						"kml":"data/Lyukobanya.kml",
+						"rat":6,
+						"upd":"2022 november"
 					},
 					{
 						"ttl":"Lillafüred - Mályinka",
@@ -258,21 +265,21 @@
 						"md":"data/24Paradsasvar.md",
 						"kml":"data/24Paradsasvar.kml",
 						"rat":8,
-						"upd":"2022 június"
+						"upd":"2022 november"
 					},
 					{
 						"ttl":"24 (Sirok)",
 						"md":"data/24Sirok.md",
 						"kml":"data/24Sirok.kml",
 						"rat":7,
-						"upd":"2022 június"
+						"upd":"2022 november"
 					},
 					{
 						"ttl":"Kékestető",
 						"md":"data/Kekesteto.md",
 						"kml":"data/Kekesteto.kml",
 						"rat":7,
-						"upd":"2022 június"
+						"upd":"2022 november"
 					},
 					{
 						"ttl":"2408",
@@ -293,11 +300,32 @@
 				"ttl":"Zemplén",
 				"cnt":[
 					{
-						"ttl":"3708 (Hidasnémeti - Pálháza)",
-						"md":"data/3708.md",
-						"kml":"data/3708.kml",
-						"rat":6,
-						"upd":"2021 október"
+						"ttl":"Telkibánya",
+						"md":"data/Telkibanya.md",
+						"kml":"data/Telkibanya.kml",
+						"rat":7,
+						"upd":"2022 november"
+					},
+					{
+						"ttl":"Hollóháza",
+						"md":"data/Hollohaza.md",
+						"kml":"data/Hollohaza.kml",
+						"rat":5,
+						"upd":"2022 november"
+					},
+					{
+						"ttl":"Erdőbénye",
+						"md":"data/Erdobenye.md",
+						"kml":"data/Erdobenye.kml",
+						"rat":5,
+						"upd":"2022 november"
+					},
+					{
+						"ttl":"Regéc",
+						"md":"data/Regec.md",
+						"kml":"data/Regec.kml",
+						"rat":4,
+						"upd":"2022 november"
 					}
 				]
 			},
@@ -309,21 +337,42 @@
 						"md":"data/Cered.md",
 						"kml":"data/Cered.kml",
 						"rat":8,
-						"upd":"2021 szeptember"
+						"upd":"2022 november"
 					},
 					{
 						"ttl":"Hagony - Zabar",
 						"md":"data/HagonyZabar.md",
 						"kml":"data/HagonyZabar.kml",
 						"rat":7,
-						"upd":"2021 szeptember"
+						"upd":"2022 november"
+					},
+					{
+						"ttl":"Aggtelek",
+						"md":"data/Aggtelek.md",
+						"kml":"data/Aggtelek.kml",
+						"rat":6,
+						"upd":"2022 november"
 					},
 					{
 						"ttl":"Rudabánya",
 						"md":"data/Rudabanya.md",
 						"kml":"data/Rudabanya.kml",
 						"rat":6,
-						"upd":"2022 március"
+						"upd":"2022 november"
+					},
+					{
+						"ttl":"Borsodbóta",
+						"md":"data/Borsodbota.md",
+						"kml":"data/Borsodbota.kml",
+						"rat":5,
+						"upd":"2022 november"
+					},
+					{
+						"ttl":"Északi Határvonal",
+						"md":"data/EszakiHatarvonal.md",
+						"kml":"data/EszakiHatarvonal.kml",
+						"upd":"2022 november",
+						"bkg":true
 					}
 				]
 			}
