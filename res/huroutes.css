@@ -290,6 +290,21 @@ ul a.dropdown-toggle:hover {
   white-space: nowrap;
 }
 
+/* Route controls toolbar */
+
+.route-ctrls .btn {
+  font-size: 1.3rem;
+}
+.route-ctrls .btn:focus {
+    box-shadow: none;
+    outline: none;
+}
+
+.btn.btn-wide {
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+}
+
 /*
  * Map view
  */

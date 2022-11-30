@@ -116,10 +116,13 @@ const huroutes = {
     'lang': {
         'default': 'hu-HU', // The default language to be used in huroutes
         'hu-HU': {
-            'navigation': ' Navigáció <span class="nav-start">az elejére</span> vagy <span class="nav-end">a végére</span>.',
+            'updateDate': 'Az útvonal legutóbbi felderítésének ideje.',
+            'rating': 'Az útvonal értékelése vezethetőség, változatosság, izgalom szempontjaiból.',
             'navToPoi': ' Navigáció <span class="nav-start">ehhez a helyhez</span>.',
-            'downloadRoute': '<span class="download">Útvonal letöltése</span>.',
-            'openStreetView': '<span class="strt-vw">Street view megnyitása</span>.',
+            'navStartTooltip': 'Navigálás az útvonal elejére.',
+            'navEndTooltip': 'Navigálás az útvonal végére.',
+            'dlRouteTooltip': 'Az útvonal letöltése.',
+            'streetViewTooltip': 'Street view megnyitása.',
             'routeLength': 'Hossza: {0}km.',
             'locatePopup': 'Az aktuális pozícióm mutatása.'
         }
@@ -249,6 +252,10 @@ function initCtrls(tiles, overlays)
         try { locationCtrl.stopFollowing(); } catch { }
     }
     stopFollowingLocation = () => locationCtrl.stopFollowing();
+
+    $(document).on('contextmenu', e =>
+        $(e.target).attr('data-toggle') != 'tooltip' &&
+        !$(e.target).parents('[data-toggle="tooltip"]').length);
 }
 
 /**
@@ -365,17 +372,23 @@ function createInfoPanel(elem, data)
         var elemHeader = $('<p class="route-header"/>');
         if (data.upd)
         {
-            elemHeader.append($('<span class="update-date"><i class="far fa-clock"></i> {0}</span>'.format(data.upd)));
+            var eUpd = $('\
+<span class="update-date" title="{0}" data-toggle="tooltip" data-placement="bottom">\
+  <i class="far fa-clock"></i> {1}\
+</span>'.format(langDict.updateDate, data.upd)).tooltip();
+            elemHeader.append(eUpd);
         }
         if (data.rat)
         {
+            var starsOutter = $('<span class="stars-outer" title="{0}" data-toggle="tooltip" data-placement="bottom"/>'.format(
+                langDict.rating
+            )).tooltip();
+            for (var i = 0; i < 5; ++i)
+                starsOutter.append($('<i class="far fa-star"></i>'));
             var rating = normRating(data.rat);
             var starsInner = $('<span class="stars-inner" style="width:{0};" />'.format(rating * 10 + '%'));
             for (var i = 0; i < 5; ++i)
                 starsInner.append($('<i class="fas fa-star"></i>'));
-            var starsOutter = $('<span class="stars-outer" />');
-            for (var i = 0; i < 5; ++i)
-                starsOutter.append($('<i class="far fa-star"></i>'));
             starsOutter.append(starsInner);
             elemHeader.append(starsOutter);
         }
@@ -441,14 +454,12 @@ function addRoute(data)
             for (var i = 1; i < coords.length; ++i)
                 length += coords[i - 1].distanceTo(coords[i]);
             elem.append($(('<p>' + langDict.routeLength + '</p>').format((length / 1000).toFixed(1))));
-            var elemLinks = $('<p/>');
+            var elemLinks = $('<div class="route-ctrls btn-toolbar" role="toolbar"/>');
             addNavigationLinks(elemLinks, coords[0], coords[coords.length - 1]);
-            elemLinks.append($('<br/>'));
-            addDownloadLink(elemLinks, coords, routeId);
-            elemLinks.append($('<br/>'));
             var mididx = Math.floor(coords.length / 2);
             addStreetViewLink(elemLinks, coords[mididx], coords[mididx + 1]);
             elem.append(elemLinks);
+            addDownloadLink(elemLinks, coords, routeId);
         }
 
         if (fragment.isIt(routeId))
@@ -547,16 +558,6 @@ function initNavSelector()
 }
 
 /**
- * Wraps the given HTML into a single element for easier manipulation.
- * @param {jquery} html The HTML to wrap.
- * @returns {jquery} The wrapped HTML code.
- */
-function makeSectionElement(html)
-{
-    return $('<span> {0}</span>'.format(html));
-}
-
-/**
  * Initiates planning to the selected coordinate with the configured provider.
  * @param {object} coord A WGS84 coordinate object with lat and lng properties.
  * @returns false.
@@ -575,11 +576,15 @@ function planTo(coord)
  */
 function addNavigationLinks(elem, start, end)
 {
-    var eNav = makeSectionElement(langDict.navigation);
-    var eStart = eNav.find('span.nav-start');
-    eStart.replaceWith($('<a href="#" />').append(eStart.html()).click(() => planTo(start)));
-    var eEnd = eNav.find('span.nav-end');
-    eEnd.replaceWith($('<a href="#" />').append(eEnd.html()).click(() => planTo(end)));
+    var eNav = $('\
+<div class="btn-group mr-2" role="group">\
+  <a href="#" class="nav-start btn btn-primary" title="{0}" data-toggle="tooltip" data-placement="bottom"><i class="fas fa-step-backward"></i></a>\
+  <a href="#" class="btn btn-primary btn-wide disabled"><i class="fas fa-route"></i></a>\
+  <a href="#" class="nav-end btn btn-primary" title="{1}" data-toggle="tooltip" data-placement="bottom"><i class="fas fa-step-forward"></i></a>\
+</div>'.format(langDict.navStartTooltip, langDict.navEndTooltip));
+    eNav.find('.nav-start').click(() => planTo(start)).tooltip();
+    eNav.find('.nav-end').click(() => planTo(end)).tooltip();
+    eNav.tooltip();
     elem.append(eNav);
 }
 
@@ -591,7 +596,7 @@ function addNavigationLinks(elem, start, end)
 function addPoiNavigationLinks(elem, coord)
 {
     var eNav = $('<p> {0}</p>'.format(langDict.navToPoi));
-    var eStart = eNav.find('span.nav-start');
+    var eStart = eNav.find('.nav-start');
     eStart.replaceWith($('<a href="#" />').append(eStart.html()).click(() => planTo(coord)));
     elem.append(eNav);
 }
@@ -634,9 +639,12 @@ function initDownloadTypeSelector()
  */
 function addDownloadLink(elem, coords, routeId)
 {
-    var eDownload = makeSectionElement(langDict.downloadRoute);
-    var eLink = eDownload.find('span.download');
-    eLink.replaceWith($('<a href="#"/>').append(eLink.html()).click(() => dlRoute.download(coords, routeId) ?? false));
+    var eDownload = $('\
+<div class="btn-group mr-2" role="group" title="{0}" data-toggle="tooltip" data-placement="bottom">\
+  <a href="#" class="download btn btn-primary"><i class="fas fa-download"></i></a>\
+</div>'.format(langDict.dlRouteTooltip));
+    eDownload.find('.download').click(() => dlRoute.download(coords, routeId) ?? false);
+    eDownload.tooltip();
     elem.append(eDownload);
 }
 
@@ -656,9 +664,12 @@ function addDownloadLink(elem, coords, routeId)
         open(huroutes.opt.streetView.format(coord.lat, coord.lng, angle), '_blank');
         return false;
     }
-    var eNav = makeSectionElement(langDict.openStreetView);
-    var eLink = eNav.find('span.strt-vw');
-    eLink.replaceWith($('<a href="#"/>').append(eLink.html()).click(() => streetViewAt(coord, coordNext)));
+    var eNav = $('\
+<div class="btn-group mr-2" role="group" title="{0}" data-toggle="tooltip" data-placement="bottom">\
+  <a href="#" class="strt-vw btn btn-primary"><i class="fas fa-street-view"></i></a>\
+</div>'.format(langDict.streetViewTooltip));
+    eNav.find('.strt-vw').click(() => streetViewAt(coord, coordNext));
+    eNav.tooltip();
     elem.append(eNav);
 }
 
