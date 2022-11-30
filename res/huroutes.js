@@ -116,6 +116,8 @@ const huroutes = {
     'lang': {
         'default': 'hu-HU', // The default language to be used in huroutes
         'hu-HU': {
+            'updateDate': '<span class="update-date" title="Az útvonal legutóbbi felderítésének ideje."><i class="far fa-clock"></i> {0}</span>',
+            'rating': '<span class="stars-outer" title="Az útvonal értékelése vezethetőség, változatosság, izgalom szempontjaiból." />',
             'navigation': ' Navigáció <span class="nav-start">az elejére</span> vagy <span class="nav-end">a végére</span>.',
             'navToPoi': ' Navigáció <span class="nav-start">ehhez a helyhez</span>.',
             'downloadRoute': '<span class="download">Útvonal letöltése</span>.',
@@ -365,7 +367,7 @@ function createInfoPanel(elem, data)
         var elemHeader = $('<p class="route-header"/>');
         if (data.upd)
         {
-            elemHeader.append($('<span class="update-date"><i class="far fa-clock"></i> {0}</span>'.format(data.upd)));
+            elemHeader.append($(langDict.updateDate.format(data.upd)));
         }
         if (data.rat)
         {
@@ -373,7 +375,7 @@ function createInfoPanel(elem, data)
             var starsInner = $('<span class="stars-inner" style="width:{0};" />'.format(rating * 10 + '%'));
             for (var i = 0; i < 5; ++i)
                 starsInner.append($('<i class="fas fa-star"></i>'));
-            var starsOutter = $('<span class="stars-outer" />');
+            var starsOutter = $(langDict.rating);
             for (var i = 0; i < 5; ++i)
                 starsOutter.append($('<i class="far fa-star"></i>'));
             starsOutter.append(starsInner);
