@@ -119,9 +119,11 @@ const huroutes = {
             'updateDate': 'Az útvonal legutóbbi felderítésének ideje.',
             'rating': 'Az útvonal értékelése vezethetőség, változatosság, izgalom szempontjaiból.',
             'navToPoi': ' Navigáció <span class="nav-start">ehhez a helyhez</span>.',
+            'sharePoi': 'Hely <span class="share">megosztása</span>.',
             'navStartTooltip': 'Navigálás az útvonal elejére.',
             'navEndTooltip': 'Navigálás az útvonal végére.',
             'dlRouteTooltip': 'Az útvonal letöltése.',
+            'shareTooltip': 'Az útvonal megosztása.',
             'streetViewTooltip': 'Street view megnyitása.',
             'routeLength': 'Hossza: {0}km.',
             'locatePopup': 'Az aktuális pozícióm mutatása.'
@@ -459,7 +461,7 @@ function addRoute(data)
             var mididx = Math.floor(coords.length / 2);
             addStreetViewLink(elemLinks, coords[mididx], coords[mididx + 1]);
             elem.append(elemLinks);
-            addDownloadLink(elemLinks, coords, routeId);
+            addDlShareLinks(elemLinks, coords, routeId);
         }
 
         if (fragment.isIt(routeId))
@@ -589,16 +591,25 @@ function addNavigationLinks(elem, start, end)
 }
 
 /**
- * Creates a navigation link for a place marker.
- * @param {jquery} elem The element that will contain the navigation link DOM.
- * @param {*} coord The coordinate where the link navigates to.
+ * Creates links for a place marker.
+ * @param {jquery} elem The element that will contain the generated links.
+ * @param {string} title The POI's title.
+ * @param {*} coord The coordinate of the link.
  */
-function addPoiNavigationLinks(elem, coord)
+function addPoiLinks(elem, title, coord)
 {
-    var eNav = $('<p> {0}</p>'.format(langDict.navToPoi));
-    var eStart = eNav.find('.nav-start');
-    eStart.replaceWith($('<a href="#" />').append(eStart.html()).click(() => planTo(coord)));
-    elem.append(eNav);
+    var eLinks = $('<p> {0} {1}</p>'.format(langDict.navToPoi, langDict.sharePoi));
+    var eNav = eLinks.find('.nav-start');
+    eNav.replaceWith($('<a href="#" />').append(eNav.html()).click(() => planTo(coord)));
+    var eShare = eLinks.find('.share');
+    eShare.replaceWith($('<a href="#" />').append(eShare.html()).click(() => {
+        navigator.share({
+            title: title,
+            url: location.href // Only a single POI is shown at its specific URL currently.
+        });
+        return false;
+    }));
+    elem.append(eLinks);
 }
 
 /** Singleton for managing route downloading format configuration. */
@@ -637,14 +648,22 @@ function initDownloadTypeSelector()
  * @param {object} coords The array of coordinates that make the route path up.
  * @param {string} routeId The route's unique ID.
  */
-function addDownloadLink(elem, coords, routeId)
+function addDlShareLinks(elem, coords, routeId)
 {
     var eDownload = $('\
-<div class="btn-group mr-2" role="group" title="{0}" data-toggle="tooltip" data-placement="bottom">\
-  <a href="#" class="download btn btn-primary"><i class="fas fa-download"></i></a>\
-</div>'.format(langDict.dlRouteTooltip));
-    eDownload.find('.download').click(() => dlRoute.download(coords, routeId) ?? false);
-    eDownload.tooltip();
+<div class="btn-group mr-2" role="group">\
+  <a href="#" class="download btn btn-primary" title="{0}" data-toggle="tooltip" data-placement="bottom"><i class="fas fa-download"></i></a>\
+  <a href="#{2}" class="share btn btn-primary" title="{1}" data-toggle="tooltip" data-placement="bottom"><i class="fas fa-share-alt"></i></a>\
+</div>'.format(langDict.dlRouteTooltip, langDict.shareTooltip, routeId));
+    eDownload.find('.download').click(() => dlRoute.download(coords, routeId) ?? false).tooltip();
+    eDownload.find('.share').click(e => {
+        var routeId = $(e.currentTarget).attr('href');
+        navigator.share({
+            title: routeId.slice(1),
+            url: location.href.split("#")[0] + routeId
+        });
+        return false;
+    }).tooltip();
     elem.append(eDownload);
 }
 
@@ -838,7 +857,7 @@ function activateMarker(data, routeId)
     body = $('<div><p><b>{0}</b></p></div>'.format(data.title));
     if (data.desc)
         body.append($(data.desc));
-    addPoiNavigationLinks(body, data.geo);
+    addPoiLinks(body, data.title, data.geo);
     marker.bindPopup(body[0], {
         autoPan: false, closeButton: false, autoClose: false, closeOnEscapeKey: false,
         closeOnClick: false
