@@ -1,1 +1,0 @@
-Ez egy rally útvonal, így érdemes felkészülni a kissé nehézkesebb közlekedésre. Nagyon keskeny, csak felfelé lehet haladósabban közlekedni, nagyon rossz útminőség. Néha szembeforgalom jön, amikor általában valakinek állóra kell fékezni. Nagyon élvezhető, de nagyon észnél kell lenni, vagy biztosított úton kell menni.
