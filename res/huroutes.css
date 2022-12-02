@@ -295,14 +295,44 @@ ul a.dropdown-toggle:hover {
 .route-ctrls .btn {
   font-size: 1.3rem;
 }
-.route-ctrls .btn:focus {
-    box-shadow: none;
-    outline: none;
-}
 
-.btn.btn-wide {
-  padding-left: 1.5rem;
-  padding-right: 1.5rem;
+.huroutes-light .route-ctrls .btn {
+  color: #fff;
+  background-color: #007bff;
+  border-color: #007bff;
+  padding: .3rem .6rem;
+}
+.huroutes-light .route-ctrls a.btn:hover,
+.huroutes-light .route-ctrls a.btn:focus {
+  background-color: #0062ca;
+  border-color: #0058b6;
+}
+.huroutes-light .route-ctrls a.btn:active {
+  background-color: #0051a8;
+  border-color: #003e80;
+}
+.huroutes-light .route-ctrls span.btn {
+  padding-left: 0;
+  padding-right: 0;
+}
+.huroutes-dark .route-ctrls .btn {
+  background-color: #3363a1;
+  border-color: #3363a1;
+  color: #fff;
+  padding: .3rem .6rem;
+}
+.huroutes-dark .route-ctrls a.btn:hover,
+.huroutes-dark .route-ctrls a.btn:focus {
+  background-color: #2e578d;
+  border-color: #2a5081;
+}
+.huroutes-dark .route-ctrls a.btn:active {
+  background-color: #264670;
+  border-color: #182e4b;
+}
+.huroutes-dark .route-ctrls span.btn {
+  padding-left: 0;
+  padding-right: 0;
 }
 
 /*

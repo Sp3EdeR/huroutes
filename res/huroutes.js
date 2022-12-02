@@ -120,12 +120,13 @@ const huroutes = {
             'rating': 'Az útvonal értékelése vezethetőség, változatosság, izgalom szempontjaiból.',
             'navToPoi': ' Navigáció <span class="nav-start">ehhez a helyhez</span>.',
             'sharePoi': 'Hely <span class="share">megosztása</span>.',
+            'navLength': 'Az útvonal hossza.',
             'navStartTooltip': 'Navigálás az útvonal elejére.',
             'navEndTooltip': 'Navigálás az útvonal végére.',
             'dlRouteTooltip': 'Az útvonal letöltése.',
             'shareTooltip': 'Az útvonal megosztása.',
             'streetViewTooltip': 'Street view megnyitása.',
-            'routeLength': 'Hossza: {0}km.',
+            'routeLength': (len) => (len / 1000).toFixed(1) + 'km',
             'locatePopup': 'Az aktuális pozícióm mutatása.'
         }
     }
@@ -455,9 +456,8 @@ function addRoute(data)
             var length = 0.0;
             for (var i = 1; i < coords.length; ++i)
                 length += coords[i - 1].distanceTo(coords[i]);
-            elem.append($(('<p>' + langDict.routeLength + '</p>').format((length / 1000).toFixed(1))));
             var elemLinks = $('<div class="route-ctrls btn-toolbar" role="toolbar"/>');
-            addNavigationLinks(elemLinks, coords[0], coords[coords.length - 1]);
+            addNavigationLinks(elemLinks, coords[0], coords[coords.length - 1], length);
             var mididx = Math.floor(coords.length / 2);
             addStreetViewLink(elemLinks, coords[mididx], coords[mididx + 1]);
             elem.append(elemLinks);
@@ -575,18 +575,23 @@ function planTo(coord)
  * @param {jquery} elem The element that will contain the navigation link DOM.
  * @param {object} start The coordinate where the "start" link navigates to.
  * @param {object} end The coordinate where the "end" link navigates to.
+ * @param {number} length The length of the route in kms.
  */
-function addNavigationLinks(elem, start, end)
+function addNavigationLinks(elem, start, end, length)
 {
     var eNav = $('\
-<div class="btn-group mr-2" role="group">\
-  <a href="#" class="nav-start btn btn-primary" title="{0}" data-toggle="tooltip" data-placement="bottom"><i class="fas fa-step-backward"></i></a>\
-  <a href="#" class="btn btn-primary btn-wide disabled"><i class="fas fa-route"></i></a>\
-  <a href="#" class="nav-end btn btn-primary" title="{1}" data-toggle="tooltip" data-placement="bottom"><i class="fas fa-step-forward"></i></a>\
-</div>'.format(langDict.navStartTooltip, langDict.navEndTooltip));
-    eNav.find('.nav-start').click(() => planTo(start)).tooltip();
-    eNav.find('.nav-end').click(() => planTo(end)).tooltip();
-    eNav.tooltip();
+<div class="btn-group mr-2 mt-2" role="group">\
+  <a href="#" class="nav-start btn" title="{0}" data-toggle="tooltip" data-placement="bottom">\
+  <i class="fas fa-step-backward"></i></a>\
+  <span class="btn" title="{1}" data-toggle="tooltip" data-placement="bottom">\
+    <i class="fas fa-route"></i> <sub>{2}</sub>\
+  </span>\
+  <a href="#" class="nav-end btn" title="{3}" data-toggle="tooltip" data-placement="bottom">\
+  <i class="fas fa-step-forward"></i></a>\
+</div>'.format(langDict.navStartTooltip, langDict.navLength, langDict.routeLength(length), langDict.navEndTooltip));
+    eNav.find('.nav-start').click(() => planTo(start));
+    eNav.find('.nav-end').click(() => planTo(end));
+    eNav.find('[data-toggle="tooltip"]').tooltip();
     elem.append(eNav);
 }
 
@@ -651,9 +656,9 @@ function initDownloadTypeSelector()
 function addDlShareLinks(elem, coords, routeId)
 {
     var eDownload = $('\
-<div class="btn-group mr-2" role="group">\
-  <a href="#" class="download btn btn-primary" title="{0}" data-toggle="tooltip" data-placement="bottom"><i class="fas fa-download"></i></a>\
-  <a href="#{2}" class="share btn btn-primary" title="{1}" data-toggle="tooltip" data-placement="bottom"><i class="fas fa-share-alt"></i></a>\
+<div class="btn-group mt-2" role="group">\
+  <a href="#" class="download btn" title="{0}" data-toggle="tooltip" data-placement="bottom"><i class="fas fa-download"></i></a>\
+  <a href="#{2}" class="share btn" title="{1}" data-toggle="tooltip" data-placement="bottom"><i class="fas fa-share-alt"></i></a>\
 </div>'.format(langDict.dlRouteTooltip, langDict.shareTooltip, routeId));
     eDownload.find('.download').click(() => dlRoute.download(coords, routeId) ?? false).tooltip();
     eDownload.find('.share').click(e => {
@@ -684,8 +689,8 @@ function addDlShareLinks(elem, coords, routeId)
         return false;
     }
     var eNav = $('\
-<div class="btn-group mr-2" role="group" title="{0}" data-toggle="tooltip" data-placement="bottom">\
-  <a href="#" class="strt-vw btn btn-primary"><i class="fas fa-street-view"></i></a>\
+<div class="btn-group mr-2 mt-2" role="group" title="{0}" data-toggle="tooltip" data-placement="bottom">\
+  <a href="#" class="strt-vw btn"><i class="fas fa-street-view"></i></a>\
 </div>'.format(langDict.streetViewTooltip));
     eNav.find('.strt-vw').click(() => streetViewAt(coord, coordNext));
     eNav.tooltip();
