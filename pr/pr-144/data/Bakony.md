@@ -1,3 +1,0 @@
-Ez egy lehetőség a Bakony környéki utak alaposabb bejárására, illetve jó út Budapest és Székesfehérvár irányából a Bakony megközelítéséhez. Az út minősége helyenként rossz, de nagyrészt jó. Az útvonal nagy attrakciója a [Zirc utáni szakasz](#8301), ami egy kiváló szerpentin. Emellett az útvonal áthalad a [balinkai](#Balinka) és [Csetény és Dudar közti](#CsetenyDudar) szerpentineken is.
-
-Jól kapcsolható ez az út a [Söréd és Gánt közti szerpentinhez](#SoredGant), ha Budapest irányából közelítünk. A [Pannonhalma felé vezető bejáróutat](#PannonBakony) is keresztezi, azzal jól kombinálható. Ez utóbbin igen közel található a híres [cseszneki szerpentin](#82).
