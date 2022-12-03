@@ -97,7 +97,7 @@ function planTo(coord)
 {open(navigation.getLink(coord),'_blank');return false;}
 function addNavigationLinks(elem,start,end,length)
 {var eNav=$('\
-<div class="btn-group mr-2" role="group">\
+<div class="btn-group mr-2 mt-2" role="group">\
   <a href="#" class="nav-start btn" title="{0}" data-toggle="tooltip" data-placement="bottom">\
   <i class="fas fa-step-backward"></i></a>\
   <span class="btn" title="{1}" data-toggle="tooltip" data-placement="bottom">\
@@ -105,7 +105,7 @@ function addNavigationLinks(elem,start,end,length)
   </span>\
   <a href="#" class="nav-end btn" title="{3}" data-toggle="tooltip" data-placement="bottom">\
   <i class="fas fa-step-forward"></i></a>\
-</div>'.format(langDict.navStartTooltip,langDict.navLength,langDict.routeLength(length),langDict.navEndTooltip));eNav.find('.nav-start').click(()=>planTo(start));eNav.find('.nav-end').click(()=>planTo(end));eNav.find('[data-toggle="tooltip"]').tooltip();eNav.tooltip();elem.append(eNav);}
+</div>'.format(langDict.navStartTooltip,langDict.navLength,langDict.routeLength(length),langDict.navEndTooltip));eNav.find('.nav-start').click(()=>planTo(start));eNav.find('.nav-end').click(()=>planTo(end));eNav.find('[data-toggle="tooltip"]').tooltip();elem.append(eNav);}
 function addPoiLinks(elem,title,coord)
 {var eLinks=$('<p> {0} {1}</p>'.format(langDict.navToPoi,langDict.sharePoi));var eNav=eLinks.find('.nav-start');eNav.replaceWith($('<a href="#" />').append(eNav.html()).click(()=>planTo(coord)));var eShare=eLinks.find('.share');eShare.replaceWith($('<a href="#" />').append(eShare.html()).click(()=>{navigator.share({title:title,url:location.href});return false;}));elem.append(eLinks);}
 var dlRoute={fmts:huroutes.opt.downloads,getId:function(){return this.fmts[localStorage.dltype]?localStorage.dltype:Object.keys(this.fmts)[0];},download:function(coords,routeId){var fmt=this.fmts[this.getId()];var file=fmt.fileTemplate.format(routeId,coords.map(coord=>fmt.pointTemplate.format(coord.lat,coord.lng)).join(''));downloadString(routeId+'.'+fmt.ext,fmt.mimeType,file);}}
@@ -113,7 +113,7 @@ function initDownloadTypeSelector()
 {var elem=$('#download-types');$.each(dlRoute.fmts,(key,value)=>{const id=key.toLowerCase().replace(/ /g,'');elem.append($('<div><input type="radio" name="dlType" id="{0}" value="{1}" {2}> <label for="{0}">{1}</label></div>'.format(id,key,key==dlRoute.getId()?'checked':'')));});}
 function addDlShareLinks(elem,coords,routeId)
 {var eDownload=$('\
-<div class="btn-group" role="group">\
+<div class="btn-group mt-2" role="group">\
   <a href="#" class="download btn" title="{0}" data-toggle="tooltip" data-placement="bottom"><i class="fas fa-download"></i></a>\
   <a href="#{2}" class="share btn" title="{1}" data-toggle="tooltip" data-placement="bottom"><i class="fas fa-share-alt"></i></a>\
 </div>'.format(langDict.dlRouteTooltip,langDict.shareTooltip,routeId));eDownload.find('.download').click(()=>dlRoute.download(coords,routeId)??false).tooltip();eDownload.find('.share').click(e=>{var routeId=$(e.currentTarget).attr('href');navigator.share({title:routeId.slice(1),url:location.href.split("#")[0]+routeId});return false;}).tooltip();elem.append(eDownload);}
@@ -121,7 +121,7 @@ function addStreetViewLink(elem,coord,coordNext)
 {const streetViewAt=(coord,coordNext)=>{var angle=[coordNext.lat-coord.lat,coordNext.lng-coord.lng];angle=90-Math.atan2(angle[0],angle[1])*(180/Math.PI);if(angle<-180)
 angle+=360;open(huroutes.opt.streetView.format(coord.lat,coord.lng,angle),'_blank');return false;}
 var eNav=$('\
-<div class="btn-group mr-2" role="group" title="{0}" data-toggle="tooltip" data-placement="bottom">\
+<div class="btn-group mr-2 mt-2" role="group" title="{0}" data-toggle="tooltip" data-placement="bottom">\
   <a href="#" class="strt-vw btn"><i class="fas fa-street-view"></i></a>\
 </div>'.format(langDict.streetViewTooltip));eNav.find('.strt-vw').click(()=>streetViewAt(coord,coordNext));eNav.tooltip();elem.append(eNav);}
 function updateOptions()
