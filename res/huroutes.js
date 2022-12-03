@@ -19,7 +19,7 @@ const huroutes={'opt':{'route':{'colors':['#744','#944','#a5423f','#b04039','#bc
       <coordinates>{1}</coordinates>\
     </LineString>\
   </Placemark>\
-</Document></kml>','pointTemplate':'{1},{0},0 '}},'streetView':'https://www.google.com/maps/@?api=1&map_action=pano&viewpoint={0},{1}&heading={2}','markers':{'zoomTo':16},'themes':{'Rendszer színmód használata':{'default':'Világos','mapping':{'dark':'Sötét'}},'Világos':{'classes':['bootstrap','maps-light','huroutes-light']},'Sötét':{'classes':['bootstrap-dark','maps-dark','huroutes-dark']},'Sötét világos térképpel':{'classes':['bootstrap-dark','maps-light','huroutes-dark']}}},'lang':{'default':'hu-HU','hu-HU':{'updateDate':'Az útvonal legutóbbi felderítésének ideje.','rating':'Az útvonal értékelése vezethetőség, változatosság, izgalom szempontjaiból.','navToPoi':' Navigáció <span class="nav-start">ehhez a helyhez</span>.','sharePoi':'Hely <span class="share">megosztása</span>.','navStartTooltip':'Navigálás az útvonal elejére.','navEndTooltip':'Navigálás az útvonal végére.','dlRouteTooltip':'Az útvonal letöltése.','shareTooltip':'Az útvonal megosztása.','streetViewTooltip':'Street view megnyitása.','routeLength':'Hossza: {0}km.','locatePopup':'Az aktuális pozícióm mutatása.'}}};String.prototype.format=function(){var args=arguments;return this.replace(/\{(\d+)\}/g,function(m,n){return args[n];});};(function(){var langDict=selectLanguage();var map;var nextDropId=0;$(document).ready(function(){map=L.map('map',{zoomControl:false}).fitBounds(huroutes.opt.map.bounds);const tiles=huroutes.opt.map.tiles;(tiles[localStorage.mapstyle]||tiles[Object.keys(tiles)[0]]).addTo(map);const overlays=huroutes.opt.map.overlays;(localStorage.overlays||'').split('|').forEach(item=>{const overlay=overlays[item];if(overlay)
+</Document></kml>','pointTemplate':'{1},{0},0 '}},'streetView':'https://www.google.com/maps/@?api=1&map_action=pano&viewpoint={0},{1}&heading={2}','markers':{'zoomTo':16},'themes':{'Rendszer színmód használata':{'default':'Világos','mapping':{'dark':'Sötét'}},'Világos':{'classes':['bootstrap','maps-light','huroutes-light']},'Sötét':{'classes':['bootstrap-dark','maps-dark','huroutes-dark']},'Sötét világos térképpel':{'classes':['bootstrap-dark','maps-light','huroutes-dark']}}},'lang':{'default':'hu-HU','hu-HU':{'updateDate':'Az útvonal legutóbbi felderítésének ideje.','rating':'Az útvonal értékelése vezethetőség, változatosság, izgalom szempontjaiból.','navToPoi':' Navigáció <span class="nav-start">ehhez a helyhez</span>.','sharePoi':'Hely <span class="share">megosztása</span>.','navLength':'Az útvonal hossza.','navStartTooltip':'Navigálás az útvonal elejére.','navEndTooltip':'Navigálás az útvonal végére.','dlRouteTooltip':'Az útvonal letöltése.','shareTooltip':'Az útvonal megosztása.','streetViewTooltip':'Street view megnyitása.','routeLength':(len)=>(len/1000).toFixed(1)+'km','locatePopup':'Az aktuális pozícióm mutatása.'}}};String.prototype.format=function(){var args=arguments;return this.replace(/\{(\d+)\}/g,function(m,n){return args[n];});};(function(){var langDict=selectLanguage();var map;var nextDropId=0;$(document).ready(function(){map=L.map('map',{zoomControl:false}).fitBounds(huroutes.opt.map.bounds);const tiles=huroutes.opt.map.tiles;(tiles[localStorage.mapstyle]||tiles[Object.keys(tiles)[0]]).addTo(map);const overlays=huroutes.opt.map.overlays;(localStorage.overlays||'').split('|').forEach(item=>{const overlay=overlays[item];if(overlay)
 overlay.addTo(map);});const tileOverlay=huroutes.opt.map.tileOverlays[localStorage.mapstyle];if(tileOverlay)
 tileOverlay.addTo(map);map.createPane('bkgRoutes');map.getPane('bkgRoutes').style.zIndex=450;$.getJSON('data.json',initializeContent).fail(function(){console.error('Failed loading the route database.');});initColorSelector();initCtrls(tiles,overlays);$('#options-dialog').on('hidden.bs.modal',updateOptions);initSidebarEvents();initNavSelector();initDownloadTypeSelector();initAdToast();navigateTo(fragment.get())});var stopFollowingLocation=()=>{};function initCtrls(tiles,overlays)
 {L.control.scale({position:'bottomright',imperial:false}).addTo(map);L.control.zoom({position:'bottomright'}).addTo(map);L.control.layers(tiles,overlays,{position:'bottomleft'}).addTo(map);map.on('baselayerchange',(layer)=>{localStorage.mapstyle=layer.name;Object.entries(huroutes.opt.map.tileOverlays).forEach(([name,overlay])=>{if(name==layer.name)
@@ -76,7 +76,7 @@ console.warn('No description given for '+data.ttl);elem.append($('<div class="ro
 function addRoute(data)
 {const colors=huroutes.opt.route.colors;const opacities=huroutes.opt.route.opacities;var routeId=data.kml.match(/data\/([\w-]+).kml/)[1];var rating=normRating(data.rat);var pathWeight=3+(!data.bkg&&rating/2);var layer=L.geoJson(null,{filter:feature=>feature.geometry.type=="LineString",pane:data.bkg?'bkgRoutes':'shadowPane',style:{color:data.bkg?colors[0]:colors[rating],opacity:data.bkg?opacities[0]:opacities[rating],weight:pathWeight},focusedStyle:{color:huroutes.opt.route.focusColor,opacity:huroutes.opt.route.focusOpacity,weight:pathWeight+2}});layer.on('click',event=>!navigateTo(event.target));layer.on('mouseover',event=>event.target.focused||event.target.setStyle(event.target.options.focusedStyle));layer.on('mouseout',event=>event.target.focused||event.target.setStyle(event.target.options.style));layer.on('layeradd',event=>{var elem=$('li[data-routeid={0}] .route-links'.format(routeId));var coords=event.layer.getLatLngs();if(Array.isArray(coords)&&2<=coords.length)
 {var length=0.0;for(var i=1;i<coords.length;++i)
-length+=coords[i-1].distanceTo(coords[i]);elem.append($(('<p>'+langDict.routeLength+'</p>').format((length/1000).toFixed(1))));var elemLinks=$('<div class="route-ctrls btn-toolbar" role="toolbar"/>');addNavigationLinks(elemLinks,coords[0],coords[coords.length-1]);var mididx=Math.floor(coords.length/2);addStreetViewLink(elemLinks,coords[mididx],coords[mididx+1]);elem.append(elemLinks);addDlShareLinks(elemLinks,coords,routeId);}
+length+=coords[i-1].distanceTo(coords[i]);var elemLinks=$('<div class="route-ctrls btn-toolbar" role="toolbar"/>');addNavigationLinks(elemLinks,coords[0],coords[coords.length-1],length);var mididx=Math.floor(coords.length/2);addStreetViewLink(elemLinks,coords[mididx],coords[mididx+1]);elem.append(elemLinks);addDlShareLinks(elemLinks,coords,routeId);}
 if(fragment.isIt(routeId))
 navigateTo(layer);});layer.routeId=routeId;omnivore.kml(data.kml,null,layer).addTo(map);return routeId;}
 function initColorSelector()
@@ -95,13 +95,17 @@ function initNavSelector()
 {var elem=$('#nav-options');$.each(navigation.provs,(key,value)=>{const id=key.toLowerCase().replace(/ /g,'');elem.append($('<div><input type="radio" name="navProv" id="{0}" value="{1}" {2}> <label for="{0}">{1}</label></div>'.format(id,key,key==navigation.getId()?'checked':'')));});}
 function planTo(coord)
 {open(navigation.getLink(coord),'_blank');return false;}
-function addNavigationLinks(elem,start,end)
+function addNavigationLinks(elem,start,end,length)
 {var eNav=$('\
-<div class="btn-group mr-2" role="group">\
-  <a href="#" class="nav-start btn btn-primary" title="{0}" data-toggle="tooltip" data-placement="bottom"><i class="fas fa-step-backward"></i></a>\
-  <a href="#" class="btn btn-primary btn-wide disabled"><i class="fas fa-route"></i></a>\
-  <a href="#" class="nav-end btn btn-primary" title="{1}" data-toggle="tooltip" data-placement="bottom"><i class="fas fa-step-forward"></i></a>\
-</div>'.format(langDict.navStartTooltip,langDict.navEndTooltip));eNav.find('.nav-start').click(()=>planTo(start)).tooltip();eNav.find('.nav-end').click(()=>planTo(end)).tooltip();eNav.tooltip();elem.append(eNav);}
+<div class="btn-group mr-2 mt-2" role="group">\
+  <a href="#" class="nav-start btn" title="{0}" data-toggle="tooltip" data-placement="bottom">\
+  <i class="fas fa-step-backward"></i></a>\
+  <span class="btn" title="{1}" data-toggle="tooltip" data-placement="bottom">\
+    <i class="fas fa-route"></i> <sub>{2}</sub>\
+  </span>\
+  <a href="#" class="nav-end btn" title="{3}" data-toggle="tooltip" data-placement="bottom">\
+  <i class="fas fa-step-forward"></i></a>\
+</div>'.format(langDict.navStartTooltip,langDict.navLength,langDict.routeLength(length),langDict.navEndTooltip));eNav.find('.nav-start').click(()=>planTo(start));eNav.find('.nav-end').click(()=>planTo(end));eNav.find('[data-toggle="tooltip"]').tooltip();elem.append(eNav);}
 function addPoiLinks(elem,title,coord)
 {var eLinks=$('<p> {0} {1}</p>'.format(langDict.navToPoi,langDict.sharePoi));var eNav=eLinks.find('.nav-start');eNav.replaceWith($('<a href="#" />').append(eNav.html()).click(()=>planTo(coord)));var eShare=eLinks.find('.share');eShare.replaceWith($('<a href="#" />').append(eShare.html()).click(()=>{navigator.share({title:title,url:location.href});return false;}));elem.append(eLinks);}
 var dlRoute={fmts:huroutes.opt.downloads,getId:function(){return this.fmts[localStorage.dltype]?localStorage.dltype:Object.keys(this.fmts)[0];},download:function(coords,routeId){var fmt=this.fmts[this.getId()];var file=fmt.fileTemplate.format(routeId,coords.map(coord=>fmt.pointTemplate.format(coord.lat,coord.lng)).join(''));downloadString(routeId+'.'+fmt.ext,fmt.mimeType,file);}}
@@ -109,16 +113,16 @@ function initDownloadTypeSelector()
 {var elem=$('#download-types');$.each(dlRoute.fmts,(key,value)=>{const id=key.toLowerCase().replace(/ /g,'');elem.append($('<div><input type="radio" name="dlType" id="{0}" value="{1}" {2}> <label for="{0}">{1}</label></div>'.format(id,key,key==dlRoute.getId()?'checked':'')));});}
 function addDlShareLinks(elem,coords,routeId)
 {var eDownload=$('\
-<div class="btn-group mr-2" role="group">\
-  <a href="#" class="download btn btn-primary" title="{0}" data-toggle="tooltip" data-placement="bottom"><i class="fas fa-download"></i></a>\
-  <a href="#{2}" class="share btn btn-primary" title="{1}" data-toggle="tooltip" data-placement="bottom"><i class="fas fa-share-alt"></i></a>\
+<div class="btn-group mt-2" role="group">\
+  <a href="#" class="download btn" title="{0}" data-toggle="tooltip" data-placement="bottom"><i class="fas fa-download"></i></a>\
+  <a href="#{2}" class="share btn" title="{1}" data-toggle="tooltip" data-placement="bottom"><i class="fas fa-share-alt"></i></a>\
 </div>'.format(langDict.dlRouteTooltip,langDict.shareTooltip,routeId));eDownload.find('.download').click(()=>dlRoute.download(coords,routeId)??false).tooltip();eDownload.find('.share').click(e=>{var routeId=$(e.currentTarget).attr('href');navigator.share({title:routeId.slice(1),url:location.href.split("#")[0]+routeId});return false;}).tooltip();elem.append(eDownload);}
 function addStreetViewLink(elem,coord,coordNext)
 {const streetViewAt=(coord,coordNext)=>{var angle=[coordNext.lat-coord.lat,coordNext.lng-coord.lng];angle=90-Math.atan2(angle[0],angle[1])*(180/Math.PI);if(angle<-180)
 angle+=360;open(huroutes.opt.streetView.format(coord.lat,coord.lng,angle),'_blank');return false;}
 var eNav=$('\
-<div class="btn-group mr-2" role="group" title="{0}" data-toggle="tooltip" data-placement="bottom">\
-  <a href="#" class="strt-vw btn btn-primary"><i class="fas fa-street-view"></i></a>\
+<div class="btn-group mr-2 mt-2" role="group" title="{0}" data-toggle="tooltip" data-placement="bottom">\
+  <a href="#" class="strt-vw btn"><i class="fas fa-street-view"></i></a>\
 </div>'.format(langDict.streetViewTooltip));eNav.find('.strt-vw').click(()=>streetViewAt(coord,coordNext));eNav.tooltip();elem.append(eNav);}
 function updateOptions()
 {var selection=$('input[name=navProv]:checked').val();if(selection)
