@@ -935,20 +935,49 @@ function initAdToast()
 {
     // Wait a bit before doing toasts
     setTimeout(function() {
-        androidApToast()
+        androidAppToast();
+        androidAppUpdateToast();
     }, 5000);
 
     /** Shows a toast to Android users that don't use the app that it is available. */
-    function androidApToast() {
-        if (localStorage.shownAndroidAd || !navigator.userAgent.includes("Android") ||
-            navigator.userAgent.includes("huroutes"))
+    function androidAppToast()
+    {
+        if (localStorage.shownAndroidAd || !navigator.userAgent.includes('Android') ||
+            navigator.userAgent.includes('huroutes'))
             return;
 
-        var androidToast = $('#toast-android-app')
-        androidToast.toast('show')
+        var androidToast = $('#toast-android-app');
+        androidToast.toast('show');
         // The toast is not shown again once closed.
-        androidToast.on('hide.bs.toast', () => localStorage.shownAndroidAd = true)
-        androidToast.find('a[href]').on('click', () => androidToast.toast('hide'))
+        androidToast.on('hide.bs.toast', () => localStorage.shownAndroidAd = true);
+        androidToast.find('a[href]').on('click', () => androidToast.toast('hide'));
+    }
+
+    /** Shows a toast for Android app users when an updated version is available. */
+    function androidAppUpdateToast()
+    {
+        if (!navigator.userAgent.includes('huroutes'))
+            return;
+
+        const ghRelease = 'https://api.github.com/repos/Sp3EdeR/huroutes-android/releases/latest';
+        $.getJSON(ghRelease, data => {
+            try
+            {
+                const url = data.assets[0].browser_download_url;
+                const ver = data.tag_name.slice(1);
+                const appVer = navigator.userAgent.match(/\bhuroutes\/(\d+(?:\.\d+)*)\b/)[1];
+                if (ver.localeCompare(appVer, undefined, { numeric: true, sensitivity: 'base' }) == 1)
+                {
+                    var androidToast = $('#toast-app-update');
+                    androidToast.find('.download-app').attr('href', url);
+                    androidToast.toast('show');
+                }
+            }
+            catch
+            {
+                console.error('Invalid GitHub release JSON.');
+            }
+        });
     }
 }
 
@@ -962,7 +991,8 @@ var sidebar = {
 /**
  * Initializes sidebar opening and closing events for mobile portrait view.
  */
-function initSidebarEvents() {
+function initSidebarEvents()
+{
     // This class prevents mouseover reopening after a swipe-close
     class SidebarChange {
         constructor() { this.enabled = true; }
