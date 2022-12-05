@@ -3,7 +3,7 @@
 Ez a repo tartalmazza a [huroutes](https://sp3eder.github.io/huroutes) weblap forrását, mely weblap elérhető a https://sp3eder.github.io/huroutes címen.
 
 ## Telefonos Applikáció
-Elérhető telefonos applikáció **Android** operációs rendszerre a huroutes-hoz. Ehhez az apk filet (a telepítőt) [innen](https://github.com/Sp3EdeR/huroutes-android/releases) lehet letölteni. Mivel nem "hivatalos" boltból származik, a telefonon be kell kapcsolni az [ismeretlen forrásból történő telepítést](https://onlyhow.net/hu/ismeretlen-forrasbol-szarmazo-alkalmazasok-telepitese-androidon).
+Elérhető telefonos applikáció **Android** operációs rendszerre a huroutes-hoz. Ehhez az apk filet (a telepítőt) [innen](https://github.com/Sp3EdeR/huroutes-android/releases/latest) lehet letölteni. Mivel nem "hivatalos" boltból származik, a telefonon engedélyezni kell az ismeretlen forrásból történő telepítést. Ugyanemiatt a telefon figyelmeztethet arra, hogy potenciálisan kártékony a program, de persze nem az.
 
 ## Hibák és Javaslatok Bejelentése
 
