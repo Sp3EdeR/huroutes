@@ -110,6 +110,12 @@ const huroutes = {
             'Világos': { 'classes': ['bootstrap', 'maps-light', 'huroutes-light'] },
             'Sötét': { 'classes': ['bootstrap-dark', 'maps-dark', 'huroutes-dark'] },
             'Sötét világos térképpel': { 'classes': ['bootstrap-dark', 'maps-light', 'huroutes-dark'] }
+        },
+        // Options for the tooltip display:
+        // https://getbootstrap.com/docs/4.0/components/tooltips/#options
+        'tooltip': {
+            boundary: 'viewport',
+            placement: 'bottom'
         }
     },
     // Language configuration strings for the JS-generated content
@@ -127,7 +133,10 @@ const huroutes = {
             'shareTooltip': 'Az útvonal megosztása.',
             'streetViewTooltip': 'Street view megnyitása.',
             'routeLength': (len) => (len / 1000).toFixed(1) + 'km',
-            'locatePopup': 'Az aktuális pozícióm mutatása.'
+            'locateTooltip': 'Az aktuális pozícióm mutatása.',
+            'zoomInTooltip': 'Térkép nagyítása',
+            'zoomOutTooltip': 'Térkép kicsinyítése',
+
         }
     }
 };
@@ -138,6 +147,11 @@ const huroutes = {
 String.prototype.format = function() {
     var args = arguments;
     return this.replace(/\{(\d+)\}/g, function (m, n) { return args[n]; });
+};
+
+/** Creates a short tooltip initialization method with huroutes options. */
+$.fn.initTooltip = function() {
+    return this.each(function() { $(this).tooltip(huroutes.opt.tooltip); });
 };
 
 // The main code is encapsulated within this closure
@@ -177,6 +191,7 @@ $(document).ready(function() {
     initColorSelector();
     initCtrls(tiles, overlays);
     $('#options-dialog').on('hidden.bs.modal', updateOptions);
+    $('.options-button [title]').initTooltip();
     initSidebarEvents();
     initNavSelector();
     initDownloadTypeSelector();
@@ -197,7 +212,11 @@ function initCtrls(tiles, overlays)
 {
     // Zoom and scale display controls at the bottom-right
     L.control.scale({ position: 'bottomright', imperial: false }).addTo(map);
-    L.control.zoom({ position: 'bottomright' }).addTo(map);
+    L.control.zoom({
+        position: 'bottomright',
+        zoomInTitle: langDict.zoomInTooltip,
+        zoomOutTitle: langDict.zoomOutTooltip
+    }).addTo(map);
 
     // The map tile and overlay display control at the bottom-left
     L.control.layers(tiles, overlays, { position: 'bottomleft' }).addTo(map);
@@ -242,7 +261,7 @@ function initCtrls(tiles, overlays)
         },
         setView: 'untilPan',
         showPopup: false,
-        strings: { title: langDict.locatePopup }
+        strings: { title: langDict.locateTooltip }
     }).addTo(map);
     map.on('locateactivate', () => localStorage.showLocation = true);
     map.on('locatedeactivate', () => localStorage.removeItem('showLocation'));
@@ -256,9 +275,14 @@ function initCtrls(tiles, overlays)
     }
     stopFollowingLocation = () => locationCtrl.stopFollowing();
 
-    $(document).on('contextmenu', e =>
-        $(e.target).attr('data-toggle') != 'tooltip' &&
-        !$(e.target).parents('[data-toggle="tooltip"]').length);
+    $('.leaflet-control-zoom, .leaflet-control-locate').find('[title]').initTooltip();
+
+    // Prevent right click menu on tooltipped elements.
+    // This must be a capturing event to be before leaflet binds.
+    document.addEventListener('contextmenu', e => {
+        if ($(e.target).is('[title]') || $(e.target).parents('[title]').length)
+            e.preventDefault();
+    }, true);
 }
 
 /**
@@ -376,16 +400,16 @@ function createInfoPanel(elem, data)
         if (data.upd)
         {
             var eUpd = $('\
-<span class="update-date" title="{0}" data-toggle="tooltip" data-placement="bottom">\
+<span class="update-date" title="{0}">\
   <i class="far fa-clock"></i> {1}\
-</span>'.format(langDict.updateDate, data.upd)).tooltip();
+</span>'.format(langDict.updateDate, data.upd)).initTooltip();
             elemHeader.append(eUpd);
         }
         if (data.rat)
         {
-            var starsOutter = $('<span class="stars-outer" title="{0}" data-toggle="tooltip" data-placement="bottom"/>'.format(
+            var starsOutter = $('<span class="stars-outer" title="{0}"/>'.format(
                 langDict.rating
-            )).tooltip();
+            )).initTooltip();
             for (var i = 0; i < 5; ++i)
                 starsOutter.append($('<i class="far fa-star"></i>'));
             var rating = normRating(data.rat);
@@ -581,17 +605,13 @@ function addNavigationLinks(elem, start, end, length)
 {
     var eNav = $('\
 <div class="btn-group mr-2 mt-2" role="group">\
-  <a href="#" class="nav-start btn" title="{0}" data-toggle="tooltip" data-placement="bottom">\
-  <i class="fas fa-step-backward"></i></a>\
-  <span class="btn" title="{1}" data-toggle="tooltip" data-placement="bottom">\
-    <i class="fas fa-route"></i> <sub>{2}</sub>\
-  </span>\
-  <a href="#" class="nav-end btn" title="{3}" data-toggle="tooltip" data-placement="bottom">\
-  <i class="fas fa-step-forward"></i></a>\
+  <a href="#" class="nav-start btn" title="{0}"><i class="fas fa-step-backward"></i></a>\
+  <span class="btn" title="{1}"><i class="fas fa-route"></i> <sub>{2}</sub></span>\
+  <a href="#" class="nav-end btn" title="{3}"><i class="fas fa-step-forward"></i></a>\
 </div>'.format(langDict.navStartTooltip, langDict.navLength, langDict.routeLength(length), langDict.navEndTooltip));
     eNav.find('.nav-start').click(() => planTo(start));
     eNav.find('.nav-end').click(() => planTo(end));
-    eNav.find('[data-toggle="tooltip"]').tooltip();
+    eNav.find('[title]').initTooltip();
     elem.append(eNav);
 }
 
@@ -657,10 +677,10 @@ function addDlShareLinks(elem, coords, routeId)
 {
     var eDownload = $('\
 <div class="btn-group mt-2" role="group">\
-  <a href="#" class="download btn" title="{0}" data-toggle="tooltip" data-placement="bottom"><i class="fas fa-download"></i></a>\
-  <a href="#{2}" class="share btn" title="{1}" data-toggle="tooltip" data-placement="bottom"><i class="fas fa-share-alt"></i></a>\
+  <a href="#" class="download btn" title="{0}"><i class="fas fa-download"></i></a>\
+  <a href="#{2}" class="share btn" title="{1}"><i class="fas fa-share-alt"></i></a>\
 </div>'.format(langDict.dlRouteTooltip, langDict.shareTooltip, routeId));
-    eDownload.find('.download').click(() => dlRoute.download(coords, routeId) ?? false).tooltip();
+    eDownload.find('.download').click(() => dlRoute.download(coords, routeId) ?? false).initTooltip();
     eDownload.find('.share').click(e => {
         var routeId = $(e.currentTarget).attr('href');
         navigator.share({
@@ -668,7 +688,7 @@ function addDlShareLinks(elem, coords, routeId)
             url: location.href.split("#")[0] + routeId
         });
         return false;
-    }).tooltip();
+    }).initTooltip();
     elem.append(eDownload);
 }
 
@@ -689,11 +709,11 @@ function addDlShareLinks(elem, coords, routeId)
         return false;
     }
     var eNav = $('\
-<div class="btn-group mr-2 mt-2" role="group" title="{0}" data-toggle="tooltip" data-placement="bottom">\
+<div class="btn-group mr-2 mt-2" role="group" title="{0}">\
   <a href="#" class="strt-vw btn"><i class="fas fa-street-view"></i></a>\
 </div>'.format(langDict.streetViewTooltip));
     eNav.find('.strt-vw').click(() => streetViewAt(coord, coordNext));
-    eNav.tooltip();
+    eNav.initTooltip();
     elem.append(eNav);
 }
 
