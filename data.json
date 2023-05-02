@@ -246,7 +246,7 @@
 						"md":"data/Mexikovolgy.md",
 						"kml":"data/Mexikovolgy.kml",
 						"rat":5,
-						"upd":"2018 június"
+						"upd":"2023 május"
 					},
 					{
 						"ttl":"Balaton",
@@ -265,21 +265,21 @@
 						"md":"data/24Paradsasvar.md",
 						"kml":"data/24Paradsasvar.kml",
 						"rat":8,
-						"upd":"2022 november"
+						"upd":"2023 május"
 					},
 					{
 						"ttl":"24 (Sirok)",
 						"md":"data/24Sirok.md",
 						"kml":"data/24Sirok.kml",
 						"rat":7,
-						"upd":"2022 november"
+						"upd":"2023 május"
 					},
 					{
 						"ttl":"Kékestető",
 						"md":"data/Kekesteto.md",
 						"kml":"data/Kekesteto.kml",
 						"rat":7,
-						"upd":"2022 november"
+						"upd":"2023 május"
 					},
 					{
 						"ttl":"2408",
@@ -304,7 +304,7 @@
 						"md":"data/Telkibanya.md",
 						"kml":"data/Telkibanya.kml",
 						"rat":7,
-						"upd":"2022 november"
+						"upd":"2023 április"
 					},
 					{
 						"ttl":"Hollóháza",
@@ -318,7 +318,14 @@
 						"md":"data/Erdobenye.md",
 						"kml":"data/Erdobenye.kml",
 						"rat":5,
-						"upd":"2022 november"
+						"upd":"2023 május"
+					},
+					{
+						"ttl":"Gibárti Visszafordítók",
+						"md":"data/Gibart.md",
+						"kml":"data/Gibart.kml",
+						"rat":4,
+						"upd":"2023 május"
 					},
 					{
 						"ttl":"Regéc",
