@@ -1,0 +1,1 @@
+Enyhén kanyargós, tempós útszakasz köti össze Balinkát a 8216-os úttal. Itt több enyhe ívű, tempós kanyarívvel találkozhatunk. Balinka irányából a 8216-os útig az út minősége viszonylag jó, visszafelé viszont már kicsit rosszabb, de még autózható. Alacsony forgalomra számíthatunk.
