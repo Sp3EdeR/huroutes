@@ -225,7 +225,7 @@
 						"md":"data/2505.md",
 						"kml":"data/2505.kml",
 						"rat":8,
-						"upd":"2022 november"
+						"upd":"2023 május"
 					},
 					{
 						"ttl":"Lyukóbánya",
@@ -249,11 +249,18 @@
 						"upd":"2023 május"
 					},
 					{
+						"ttl":"Monósbél",
+						"md":"data/Monosbel.md",
+						"kml":"data/Monosbel.kml",
+						"rat":5,
+						"upd":"2023 május"
+					},
+					{
 						"ttl":"Balaton",
 						"md":"data/Balaton.md",
 						"kml":"data/Balaton.kml",
 						"rat":6,
-						"upd":"2021 szeptember"
+						"upd":"2023 május"
 					}
 				]
 			},
@@ -282,11 +289,11 @@
 						"upd":"2023 május"
 					},
 					{
-						"ttl":"2408",
+						"ttl":"2408 (Galyatető)",
 						"md":"data/2408.md",
 						"kml":"data/2408.kml",
 						"rat":6,
-						"upd":"2022 június"
+						"upd":"2023 május"
 					},
 					{
 						"ttl":"Mátrai Bejáróút",
