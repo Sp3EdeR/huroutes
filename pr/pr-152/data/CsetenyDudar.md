@@ -1,0 +1,1 @@
+Pár jó, igencsak tempós kanyart kínál ez az útszakasz, nagyon jó útminőség mellett. Az út mentén szép mezőkben és völgyekben gyönyörködhetünk. Alacsony - közepes forgalom jellemző az útszakaszra.
