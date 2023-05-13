@@ -155,21 +155,28 @@
 						"md":"data/EtyekAlcsutdoboz.md",
 						"kml":"data/EtyekAlcsutdoboz.kml",
 						"rat":5,
-						"upd":"2022 július"
+						"upd":"2023 május"
 					},
 					{
 						"ttl":"Söréd - Gánt",
 						"md":"data/SoredGant.md",
 						"kml":"data/SoredGant.kml",
 						"rat":5,
-						"upd":"2022 október"
+						"upd":"2023 május"
 					},
 					{
 						"ttl":"Gánt - Csákvár",
 						"md":"data/GantCsakvar.md",
 						"kml":"data/GantCsakvar.kml",
 						"rat":5,
-						"upd":"2022 október"
+						"upd":"2023 május"
+					},
+					{
+						"ttl":"Pusztavámi utca",
+						"md":"data/PusztavamiUtca.md",
+						"kml":"data/PusztavamiUtca.kml",
+						"rat":4,
+						"upd":"2023 május"
 					},
 					{
 						"ttl":"Vértesi Bejáróút",
