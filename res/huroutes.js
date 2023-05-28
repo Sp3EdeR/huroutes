@@ -450,7 +450,7 @@ function addRoute(data)
     const colors = huroutes.opt.route.colors;
     const opacities = huroutes.opt.route.opacities;
 
-    var routeId = data.kml.match(/data\/([\w-]+).kml/)[1];
+    var routeId = data.id || data.kml.match(/data\/([\w-]+).kml/)[1];
     var rating = normRating(data.rat);
     var pathWeight = 3 + (!data.bkg && rating / 2);
     var layer = L.geoJson(null, {
@@ -493,7 +493,16 @@ function addRoute(data)
     });
     layer.routeId = routeId;
     // Load the KML file data into the Leaflet layer
-    omnivore.kml(data.kml, null, layer).addTo(map);
+    // This is done asynchronously to avoid blocking rendering for too long
+    if (data.kml.substr(-3) === '.kml')
+        // Omnivore loads the URL asynchronously with XHR
+        omnivore.kml(data.kml, null, layer).addTo(map);
+    else
+        // The 0-timeout runs the function asynchronously
+        tmout = setTimeout(() => {
+            omnivore.kml.parse(data.kml, null, layer).addTo(map);
+            clearTimeout(tmout);
+        }, 0);
     return routeId;
 }
 

@@ -1,4 +1,3 @@
-import argparse
 import os
 from minify_html import minify as htmlmin
 from rcssmin import cssmin
@@ -29,12 +28,3 @@ def processDir(dir):
             ext = os.path.splitext(fileName)[1].lstrip('.')
             if ext in ['htm', 'html', 'css', 'js']:
                 minify(os.path.join(root, fileName))
-
-def main():
-    parser = argparse.ArgumentParser()
-    parser.add_argument('directory', help='The directory where the files are to be minified')
-    args = parser.parse_args()
-    processDir(args.directory)
-
-if __name__ == "__main__":
-    main()
