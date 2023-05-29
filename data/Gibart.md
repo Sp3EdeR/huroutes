@@ -1,1 +1,0 @@
-Egy nagyon rövid, visszafordítók és éles kanyarokból álló kanyarkombinációt találunk rögtön a város fölött. Az út minősége tökéletes. A szélessége közepes, akár akadhat hely "játszani" is. Csak ezért valószínűleg nem éri meg eljönni ide, de érdemes lehet összekapcsolni az [erdőbényei úttal](#Erdobenye), ha már arra járunk.
