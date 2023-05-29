@@ -183,8 +183,14 @@ $(document).ready(function() {
 
     // Asynchronously loads the huroutes database
     $.getJSON('data.json', initializeContent)
-        .fail(function() {
-            console.error('Failed loading the route database.');
+        .fail(() => {
+            err = () => console.error('Failed loading the route database.');
+            // Google Translate workaround for correcting database path
+            gtBase = $('head base[href]')
+            if (0 < gtBase.length)
+                $.getJSON(gtBase.attr('href') + 'data.json', initializeContent).fail(err);
+            else
+                err();
         });
 
     // Initializing misc. huroutes app components
