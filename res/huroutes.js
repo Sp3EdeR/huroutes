@@ -500,7 +500,7 @@ function addRoute(data)
     layer.routeId = routeId;
     // Load the KML file data into the Leaflet layer
     // This is done asynchronously to avoid blocking rendering for too long
-    if (data.kml.substr(-3) === '.kml')
+    if (data.kml.substr(-4) === '.kml')
         // Omnivore loads the URL asynchronously with XHR
         omnivore.kml(data.kml, null, layer).addTo(map);
     else
