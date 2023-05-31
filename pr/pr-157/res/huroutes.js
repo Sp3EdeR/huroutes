@@ -21,9 +21,8 @@ const huroutes={'opt':{'route':{'colors':['#744','#944','#a5423f','#b04039','#bc
   </Placemark>\
 </Document></kml>','pointTemplate':'{1},{0},0 '}},'streetView':'https://www.google.com/maps/@?api=1&map_action=pano&viewpoint={0},{1}&heading={2}','markers':{'zoomTo':16},'themes':{'Rendszer színmód használata':{'default':'Világos','mapping':{'dark':'Sötét'}},'Világos':{'classes':['bootstrap','maps-light','huroutes-light']},'Sötét':{'classes':['bootstrap-dark','maps-dark','huroutes-dark']},'Sötét világos térképpel':{'classes':['bootstrap-dark','maps-light','huroutes-dark']}},'tooltip':{boundary:'viewport',placement:'bottom'},'l10n':{'providers':{'Google':{'url':'https://translate.google.com/translate?sl={0}&tl={1}&u={2}','getCurrentLang':()=>$('head meta[http-equiv="X-Translated-To"][content]').attr('content'),'langs':[['hu'],['en','gb'],['de'],['fr'],['es'],['it'],['pl'],['uk','ua'],['ro'],['sk'],['cs','cz'],['sl','si'],['hr'],['nl'],['da','dk']]}}}},'lang':{}};String.prototype.format=function(){var args=arguments;return this.replace(/\{(\d+)\}/g,function(m,n){return args[n];});};$.fn.initTooltip=function(){return this.each(function(){$(this).tooltip(huroutes.opt.tooltip);});};(function(){var langDict;var map;var nextDropId=0;$(document).ready(function(){langDict=selectLanguage();map=L.map('map',{zoomControl:false}).fitBounds(huroutes.opt.map.bounds);const tiles=huroutes.opt.map.tiles;(tiles[localStorage.mapstyle]||tiles[Object.keys(tiles)[0]]).addTo(map);const overlays=huroutes.opt.map.overlays;(localStorage.overlays||'').split('|').forEach(item=>{const overlay=overlays[item];if(overlay)
 overlay.addTo(map);});const tileOverlay=huroutes.opt.map.tileOverlays[localStorage.mapstyle];if(tileOverlay)
-tileOverlay.addTo(map);map.createPane('bkgRoutes');map.getPane('bkgRoutes').style.zIndex=450;$.getJSON('data.json',initializeContent).fail(()=>{err=()=>console.error('Failed loading the route database.');gtBase=$('head base[href]')
-if(0<gtBase.length)
-$.getJSON(gtBase.attr('href')+'data.json',initializeContent).fail(err);else
+tileOverlay.addTo(map);map.createPane('bkgRoutes');map.getPane('bkgRoutes').style.zIndex=450;$.getJSON('data.json',initializeContent).fail(()=>{err=()=>console.error('Failed loading the route database.');gtBase=getGoogleTranslateBase();if(gtBase)
+$.getJSON(gtBase+'data.json',initializeContent).fail(err);else
 err();});initColorSelector();initLangSelector();initCtrls(tiles,overlays);$('#options-dialog').on('hidden.bs.modal',updateOptions);$('.options-button [title]').initTooltip();initSidebarEvents();initNavSelector();initDownloadTypeSelector();initAdToast();navigateTo(fragment.get())});var stopFollowingLocation=()=>{};function initCtrls(tiles,overlays)
 {L.control.scale({position:'bottomright',imperial:false}).addTo(map);L.control.zoom({position:'bottomright',zoomInTitle:langDict.zoomInTooltip,zoomOutTitle:langDict.zoomOutTooltip}).addTo(map);L.control.layers(tiles,overlays,{position:'bottomleft'}).addTo(map);map.on('baselayerchange',(layer)=>{localStorage.mapstyle=layer.name;Object.entries(huroutes.opt.map.tileOverlays).forEach(([name,overlay])=>{if(name==layer.name)
 overlay.addTo(map);else if(map.hasLayer(overlay))
@@ -96,8 +95,10 @@ applyTheme(currentColorTheme());const handleMediaChanged=e=>isSystemColorTheme(c
 if(media.addEventListener)
 media.addEventListener('change',handleMediaChanged);else
 media.addListener(handleMediaChanged);var elem=$('#color-themes');$.each(themes,(theme,data)=>{const id=theme.toLowerCase().replace(/ /g,'');let elemOpt=$('<div><input type="radio" name="theme" id="{0}" value="{1}" {2}> <label for="{0}">{1}</label></div>'.format(id,theme,theme==currentColorTheme()?'checked':''));elemOpt.children('input').click(()=>applyTheme(localStorage.theme=theme));elem.append(elemOpt);});}
+function getGoogleTranslateBase()
+{return $('head base[href]').attr('href');}
 function initLangSelector()
-{provider=huroutes.opt.l10n.providers.Google;sourceLang=$('html').attr('lang');lang=provider.getCurrentLang()||sourceLang;langIdx=provider.langs.findIndex(lng=>lng[0]==lang);lang=0<=langIdx?provider.langs.splice(langIdx,1)[0]:provider.langs[0];$('#sidebar .dropdown-toggle').append($('<span class="fi fi-{0}">'.format(lang[lang.length-1])));$('#sidebar .dropdown-menu').append(provider.langs.map(lang=>{var url=($('head base[href]').attr('href')||location.origin+location.pathname);if(lang[0]!=sourceLang)
+{provider=huroutes.opt.l10n.providers.Google;sourceLang=$('html').attr('lang');lang=provider.getCurrentLang()||sourceLang;langIdx=provider.langs.findIndex(lng=>lng[0]==lang);lang=0<=langIdx?provider.langs.splice(langIdx,1)[0]:provider.langs[0];$('#sidebar .dropdown-toggle').append($('<span class="fi fi-{0}">'.format(lang[lang.length-1])));$('#sidebar .dropdown-menu').append(provider.langs.map(lang=>{var url=(getGoogleTranslateBase()||location.origin+location.pathname);if(lang[0]!=sourceLang)
 url=provider.url.format(sourceLang,lang[0],url);return $('<a href="#"><span class="fi fi-{0}"/></a>'.format(lang[lang.length-1])).click(()=>{location=url+location.hash;return false;});}));}
 var navigation={provs:huroutes.opt.navLinkProviders,getId:function(){return this.provs[localStorage.navprovider]?localStorage.navprovider:Object.keys(this.provs)[0];},getLink:function(coord){return this.provs[this.getId()](coord);}}
 function initNavSelector()
@@ -139,11 +140,12 @@ const fragment={isIt:str=>location.hash=='#'+str,isGeoData:(hash=null)=>(hash??l
 {routeId=routeId??navigateTo.lastRouteId
 let data=fragment.asGeoData(target);success=data&&(activateMarker(data,routeId)??true)}
 else if(target.startsWith('#'))
-{routeId=target.split('#')[1];let layer=null;map.eachLayer(i=>i.routeId==routeId&&(layer=i));success=layer&&(activateRoute(layer)??true)}}
+{routeId=target.split('#')[1];let layer=null;map.eachLayer(i=>i.routeId==routeId&&(layer=i));success=layer&&(activateRoute(layer)??true)
+target=(getGoogleTranslateBase()||'')+target;}}
 else if(target.hasOwnProperty('routeId'))
 {activateRoute(target)
 success=true
-routeId=target.routeId;target='#'+routeId;}
+routeId=target.routeId;target=(getGoogleTranslateBase()||'')+'#'+routeId;}
 if(success)
 fragment.set(target,navigateTo.lastRouteId=routeId);return success;}
 addEventListener('popstate',event=>{if(fragment.get())
