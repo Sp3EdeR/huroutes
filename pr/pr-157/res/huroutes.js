@@ -97,9 +97,9 @@ if(media.addEventListener)
 media.addEventListener('change',handleMediaChanged);else
 media.addListener(handleMediaChanged);var elem=$('#color-themes');$.each(themes,(theme,data)=>{const id=theme.toLowerCase().replace(/ /g,'');let elemOpt=$('<div><input type="radio" name="theme" id="{0}" value="{1}" {2}> <label for="{0}">{1}</label></div>'.format(id,theme,theme==currentColorTheme()?'checked':''));elemOpt.children('input').click(()=>applyTheme(localStorage.theme=theme));elem.append(elemOpt);});}
 function initLangSelector()
-{sourceLang=$('html').attr('lang');tmout=setTimeout(()=>{lang=$('html').attr('lang');langs=huroutes.opt.languages;langIdx=langs.findIndex(lng=>lng[0]==lang);lang=0<=langIdx?langs.splice(langIdx,1):langs[0];$('#sidebar .dropdown-toggle').append($('<span class="fi fi-{0}">'.format(lang[0])));$('#sidebar .dropdown-menu').append(langs.map(lang=>{url=($('head base[href]').attr('href')||location.origin+location.pathname);if(lang[0]!=sourceLang)
+{sourceLang=$('html').attr('lang');tmout=setTimeout(()=>{lang=$('html').attr('lang');langs=huroutes.opt.languages;langIdx=langs.findIndex(lng=>lng[0]==lang);lang=0<=langIdx?langs.splice(langIdx,1):langs[0];$('#sidebar .dropdown-toggle').append($('<span class="fi fi-{0}">'.format(lang[0])));$('#sidebar .dropdown-menu').append(langs.map(lang=>{var url=($('head base[href]').attr('href')||location.origin+location.pathname);if(lang[0]!=sourceLang)
 {url='https://translate.google.com/translate?sl={0}&tl={1}&u={2}'.format(sourceLang,lang[0],url);}
-country=lang[lang.length-1];return $('<a href="#"><span class="fi fi-{0}"/></a>'.format(country)).click(()=>{location=url+location.hash;return false;});}));clearTimeout(tmout);},0);}
+const country=lang[lang.length-1];return $('<a href="#"><span class="fi fi-{0}"/></a>'.format(country)).click(()=>{location=url+location.hash;return false;});}));clearTimeout(tmout);},0);}
 var navigation={provs:huroutes.opt.navLinkProviders,getId:function(){return this.provs[localStorage.navprovider]?localStorage.navprovider:Object.keys(this.provs)[0];},getLink:function(coord){return this.provs[this.getId()](coord);}}
 function initNavSelector()
 {var elem=$('#nav-options');$.each(navigation.provs,(key,value)=>{const id=key.toLowerCase().replace(/ /g,'');elem.append($('<div><input type="radio" name="navProv" id="{0}" value="{1}" {2}> <label for="{0}">{1}</label></div>'.format(id,key,key==navigation.getId()?'checked':'')));});}
@@ -170,11 +170,10 @@ function normRating(rat)
 i=1;else if(10<i)
 i=10;return i;}
 function selectLanguage()
-{defaultLang=$('html').attr('lang');if(!defaultLang)
-{console.error('The language is not set in the html tag of index.html, which is required.');defaultLang='hu';}
-defaultLang=huroutes.lang[defaultLang];if(typeof(language)==='undefined')
-return defaultLang;const lang=huroutes.lang[language];if(lang===undefined)
-{console.error('Cannot find the requested language.');return defaultLang;}
+{lang=$('html').attr('lang');if(!lang)
+{console.error('The language is not set in the html tag of index.html, which is required.');lang='hu';}
+lang=huroutes.lang[lang];if(!lang)
+{console.error('Could not load huroutes translations.');throw'Language error';}
 return lang;}
 function downloadString(fileName,mimeType,data,charset='utf-8')
 {var anchor=$('<a id="download" style="display:none" download="{0}"/>'.format(fileName));anchor.attr('href','data:{0};charset={1},{2}'.format(mimeType,charset,encodeURIComponent(data)));$('body').append(anchor);anchor[0].click();anchor.remove();}
