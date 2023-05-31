@@ -62,6 +62,11 @@ p {
   -webkit-box-shadow: inset 0 0 6px #151a1f;
 }
 
+/* Hide Google Translate bar */
+#gt-nvframe {
+  display: none;
+}
+
 /*
  * Layout
  */
@@ -162,15 +167,41 @@ p {
   text-align: center;
 }
 
+.language-select {
+  position: absolute !important;
+  left: 16px; top: 16px;
+  width: 52px;
+  z-index: 1040;
+}
+.language-select .fi {
+  border: 1px solid black;
+  width: 1.8em;
+  line-height: 1.25em;
+}
+.language-select .dropdown-menu {
+  padding: 0.7em;
+}
+.language-select .dropdown-menu .fi {
+  margin: 0.5em;
+}
+body.huroutes-light .language-select .dropdown-menu {
+  background: #fff;
+}
+body.huroutes-dark .language-select .dropdown-menu {
+  background: #13192e;
+}
+
 .options-button {
   font-size: 24px;
   position: absolute;
   top: 10px; right: 16px;
 }
-.huroutes-light .options-button {
+.huroutes-light .options-button,
+.huroutes-light .language-select {
   filter: drop-shadow(2px 2px 1px #000a);
 }
-.huroutes-dark .options-button {
+.huroutes-dark .options-button,
+.huroutes-dark .language-select {
   filter: drop-shadow(3px 3px 2px #000);
 }
 
