@@ -116,29 +116,38 @@ const huroutes = {
         'tooltip': {
             boundary: 'viewport',
             placement: 'bottom'
+        },
+        // Translation languages and flags to show:
+        'l10n': {
+            'providers': {
+                'Google': {
+                    'url': 'https://translate.google.com/translate?sl={0}&tl={1}&u={2}',
+                    'getCurrentLang': () => $('head meta[http-equiv="X-Translated-To"][content]').attr('content'),
+                    'langs': [
+                        ['hu'], // Hungarian
+                        ['en','gb'], // English
+                        ['de'], // German
+                        ['fr'], // French
+                        ['es'], // Spanish
+                        ['it'], // Italian
+                        ['pl'], // Polish
+                        ['uk', 'ua'], // Ukrainian
+                        ['ro'], // Romanian
+                        ['sk'], // Slovakian
+                        ['cs','cz'], // Czech
+                        ['sl','si'], // Slovenian
+                        ['hr'], // Croatian
+                        ['nl'], // Dutch
+                        ['da','dk'], // Danish
+                        ['pt'] // Portugese
+                    ]
+                }
+            }
         }
     },
     // Language configuration strings for the JS-generated content
-    'lang': {
-        'default': 'hu-HU', // The default language to be used in huroutes
-        'hu-HU': {
-            'updateDate': 'Az útvonal legutóbbi felderítésének ideje.',
-            'rating': 'Az útvonal értékelése vezethetőség, változatosság, izgalom szempontjaiból.',
-            'navToPoi': ' Navigáció <span class="nav-start">ehhez a helyhez</span>.',
-            'sharePoi': 'Hely <span class="share">megosztása</span>.',
-            'navLength': 'Az útvonal hossza.',
-            'navStartTooltip': 'Navigálás az útvonal elejére.',
-            'navEndTooltip': 'Navigálás az útvonal végére.',
-            'dlRouteTooltip': 'Az útvonal letöltése.',
-            'shareTooltip': 'Az útvonal megosztása.',
-            'streetViewTooltip': 'Street view megnyitása.',
-            'routeLength': (len) => (len / 1000).toFixed(1) + 'km',
-            'locateTooltip': 'Az aktuális pozícióm mutatása.',
-            'zoomInTooltip': 'Térkép nagyítása',
-            'zoomOutTooltip': 'Térkép kicsinyítése',
-
-        }
-    }
+    // This is to be filled out by the HTML file
+    'lang': {}
 };
 
 /** A simple string formatting extension function.
@@ -157,12 +166,14 @@ $.fn.initTooltip = function() {
 // The main code is encapsulated within this closure
 (function() {
 
-var langDict = selectLanguage();    // The current language translation dictionary
-var map;                            // The global map object
-var nextDropId = 0;                 // Unique ID generation counter
+var langDict;           // The current language translation dictionary
+var map;                // The global map object
+var nextDropId = 0;     // Unique ID generation counter
 
 // This is the initialization function
 $(document).ready(function() {
+    langDict = selectLanguage();
+
     // Initializing the map and its contents
     map = L.map('map', { zoomControl: false }).fitBounds(huroutes.opt.map.bounds);
     const tiles = huroutes.opt.map.tiles;
@@ -186,15 +197,16 @@ $(document).ready(function() {
         .fail(() => {
             err = () => console.error('Failed loading the route database.');
             // Google Translate workaround for correcting database path
-            gtBase = $('head base[href]')
-            if (0 < gtBase.length)
-                $.getJSON(gtBase.attr('href') + 'data.json', initializeContent).fail(err);
+            gtBase = getGoogleTranslateBase();
+            if (gtBase)
+                $.getJSON(gtBase + 'data.json', initializeContent).fail(err);
             else
                 err();
         });
 
     // Initializing misc. huroutes app components
     initColorSelector();
+    initLangSelector();
     initCtrls(tiles, overlays);
     $('#options-dialog').on('hidden.bs.modal', updateOptions);
     $('.options-button [title]').initTooltip();
@@ -574,6 +586,43 @@ function initColorSelector()
 
 }
 
+/**
+ * Detects whether the site is running within Google Translate.
+ * When not running inside Google Translate, it returns `undefined`.
+ * When running inside Google Translate, it returns the "base" URL of the site.
+ */
+function getGoogleTranslateBase()
+{
+    url = $('head base[href]').attr('href');
+    if (url)
+        url = url.split('?')[0];
+    return url;
+}
+
+/**
+ * Initializes the language selection
+ * 
+ * This language selector uses Google Translate for the target languages
+ */
+function initLangSelector()
+{
+    provider = huroutes.opt.l10n.providers.Google;
+    sourceLang = $('html').attr('lang');
+    lang = provider.getCurrentLang() || sourceLang;
+    langIdx = provider.langs.findIndex(lng => lng[0] == lang);
+    lang = 0 <= langIdx ? provider.langs.splice(langIdx, 1)[0] : provider.langs[0];
+
+    $('#sidebar .dropdown-toggle').append($('<span class="fi fi-{0}">'.format(lang[lang.length - 1])));
+    $('#sidebar .dropdown-menu').append(provider.langs.map(lang => {
+        var url = (getGoogleTranslateBase() || location.origin + location.pathname);
+        if (lang[0] != sourceLang)
+            url = provider.url.format(sourceLang, lang[0], url);
+        return $('<a href="#"><span class="fi fi-{0}"/></a>'.format(lang[lang.length - 1])).click(
+            () => { location = url + location.hash; return false; }
+        );
+    }));
+}
+
 /** Singleton for managing the navigation link provider configuration. */
 var navigation = {
     /** Shorthand for the navigation link providers data. */
@@ -800,6 +849,7 @@ function navigateTo(target, routeId) // target accepts fragment string and layer
             let layer = null;
             map.eachLayer(i => i.routeId == routeId && (layer = i));
             success = layer && (activateRoute(layer) ?? true)
+            target = (getGoogleTranslateBase() || '') + target;     // Google Translate compatibility
         }
     }
     else if (target.hasOwnProperty('routeId'))
@@ -807,7 +857,7 @@ function navigateTo(target, routeId) // target accepts fragment string and layer
         activateRoute(target)
         success = true
         routeId = target.routeId;
-        target = '#' + routeId;
+        target = (getGoogleTranslateBase() || '') + '#' + routeId;  // Google Translate compatibility
     }
     if (success)
         fragment.set(target, navigateTo.lastRouteId = routeId);
@@ -917,7 +967,8 @@ var markdown = {
     makeHtml(text)
     {
         var ret = $(this.engine.makeHtml(text));
-        ret.find('a[href^="#"]').click(function() { return !navigateTo(this.href); });
+        // NOTE: Using JQuery to get href, because this.href may return absolute URI
+        ret.find('a[href^="#"]').click(function() { return !navigateTo($(this).attr('href')); });
         ret.find('a:not([href^="#"])').attr('target', '_blank');
         return ret;
     }
@@ -937,14 +988,17 @@ function normRating(rat)
 /** Returns the currently selected language translation data. */
 function selectLanguage()
 {
-    const defaultLang = huroutes.lang[huroutes.lang.default];
-    if (typeof(language) === 'undefined')
-        return defaultLang;
-    const lang = huroutes.lang[language];
-    if (lang === undefined)
+    lang = $('html').attr('lang');
+    if (!lang)
     {
-        console.error('Cannot find the requested language.');
-        return defaultLang;
+        console.error('The language is not set in the html tag of index.html, which is required.');
+        lang = 'hu';
+    }
+    lang = huroutes.lang[lang];
+    if (!lang)
+    {
+        console.error('Could not load huroutes translations.');
+        throw 'Language error';
     }
     return lang;
 }
