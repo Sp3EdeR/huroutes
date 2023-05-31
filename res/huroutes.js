@@ -82,7 +82,7 @@ function addRoute(data)
 {var length=0.0;for(var i=1;i<coords.length;++i)
 length+=coords[i-1].distanceTo(coords[i]);var elemLinks=$('<div class="route-ctrls btn-toolbar" role="toolbar"/>');addNavigationLinks(elemLinks,coords[0],coords[coords.length-1],length);var mididx=Math.floor(coords.length/2);addStreetViewLink(elemLinks,coords[mididx],coords[mididx+1]);elem.append(elemLinks);addDlShareLinks(elemLinks,coords,routeId);}
 if(fragment.isIt(routeId))
-navigateTo(layer);});layer.routeId=routeId;if(data.kml.substr(-3)==='.kml')
+navigateTo(layer);});layer.routeId=routeId;if(data.kml.substr(-4)==='.kml')
 omnivore.kml(data.kml,null,layer).addTo(map);else
 tmout=setTimeout(()=>{omnivore.kml.parse(data.kml,null,layer).addTo(map);clearTimeout(tmout);},0);return routeId;}
 function initColorSelector()
