@@ -166,7 +166,7 @@ var marker={remove:()=>{}};function activateMarker(data,routeId)
 {removeFocus();marker=L.marker(data.geo,{autoPanOnFocus:false});marker.addTo(map);body=$('<div><p><b>{0}</b></p></div>'.format(data.title));if(data.desc)
 body.append($(data.desc));addPoiLinks(body,data.title,data.geo);marker.bindPopup(body[0],{autoPan:false,closeButton:false,autoClose:false,closeOnEscapeKey:false,closeOnClick:false}).openPopup();const areaAround=0.005;map.flyTo(data.geo,huroutes.opt.markers.zoomTo,{animate:true});openRouteDesc(routeId);sidebar.close();}
 var markdown={engine:new showdown.Converter(),makeHtml(text)
-{var ret=$(this.engine.makeHtml(text));ret.find('a[href^="#"]').click(function(){return!navigateTo(this.href);});ret.find('a:not([href^="#"])').attr('target','_blank');return ret;}}
+{var ret=$(this.engine.makeHtml(text));ret.find('a[href^="#"]').click(function(){return!navigateTo($(this).attr('href'));});ret.find('a:not([href^="#"])').attr('target','_blank');return ret;}}
 function normRating(rat)
 {var i=rat?Math.round(rat):5;if(i<1)
 i=1;else if(10<i)
