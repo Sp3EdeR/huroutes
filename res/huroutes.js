@@ -19,12 +19,11 @@ const huroutes={'opt':{'route':{'colors':['#744','#944','#a5423f','#b04039','#bc
       <coordinates>{1}</coordinates>\
     </LineString>\
   </Placemark>\
-</Document></kml>','pointTemplate':'{1},{0},0 '}},'streetView':'https://www.google.com/maps/@?api=1&map_action=pano&viewpoint={0},{1}&heading={2}','markers':{'zoomTo':16},'themes':{'Rendszer színmód használata':{'default':'Világos','mapping':{'dark':'Sötét'}},'Világos':{'classes':['bootstrap','maps-light','huroutes-light']},'Sötét':{'classes':['bootstrap-dark','maps-dark','huroutes-dark']},'Sötét világos térképpel':{'classes':['bootstrap-dark','maps-light','huroutes-dark']}},'tooltip':{boundary:'viewport',placement:'bottom'}},'lang':{'default':'hu-HU','hu-HU':{'updateDate':'Az útvonal legutóbbi felderítésének ideje.','rating':'Az útvonal értékelése vezethetőség, változatosság, izgalom szempontjaiból.','navToPoi':' Navigáció <span class="nav-start">ehhez a helyhez</span>.','sharePoi':'Hely <span class="share">megosztása</span>.','navLength':'Az útvonal hossza.','navStartTooltip':'Navigálás az útvonal elejére.','navEndTooltip':'Navigálás az útvonal végére.','dlRouteTooltip':'Az útvonal letöltése.','shareTooltip':'Az útvonal megosztása.','streetViewTooltip':'Street view megnyitása.','routeLength':(len)=>(len/1000).toFixed(1)+'km','locateTooltip':'Az aktuális pozícióm mutatása.','zoomInTooltip':'Térkép nagyítása','zoomOutTooltip':'Térkép kicsinyítése',}}};String.prototype.format=function(){var args=arguments;return this.replace(/\{(\d+)\}/g,function(m,n){return args[n];});};$.fn.initTooltip=function(){return this.each(function(){$(this).tooltip(huroutes.opt.tooltip);});};(function(){var langDict=selectLanguage();var map;var nextDropId=0;$(document).ready(function(){map=L.map('map',{zoomControl:false}).fitBounds(huroutes.opt.map.bounds);const tiles=huroutes.opt.map.tiles;(tiles[localStorage.mapstyle]||tiles[Object.keys(tiles)[0]]).addTo(map);const overlays=huroutes.opt.map.overlays;(localStorage.overlays||'').split('|').forEach(item=>{const overlay=overlays[item];if(overlay)
+</Document></kml>','pointTemplate':'{1},{0},0 '}},'streetView':'https://www.google.com/maps/@?api=1&map_action=pano&viewpoint={0},{1}&heading={2}','markers':{'zoomTo':16},'themes':{'Rendszer színmód használata':{'default':'Világos','mapping':{'dark':'Sötét'}},'Világos':{'classes':['bootstrap','maps-light','huroutes-light']},'Sötét':{'classes':['bootstrap-dark','maps-dark','huroutes-dark']},'Sötét világos térképpel':{'classes':['bootstrap-dark','maps-light','huroutes-dark']}},'tooltip':{boundary:'viewport',placement:'bottom'},'l10n':{'providers':{'Google':{'url':'https://translate.google.com/translate?sl={0}&tl={1}&u={2}','getCurrentLang':()=>$('head meta[http-equiv="X-Translated-To"][content]').attr('content'),'langs':[['hu'],['en','gb'],['de'],['fr'],['es'],['it'],['pl'],['uk','ua'],['ro'],['sk'],['cs','cz'],['sl','si'],['hr'],['nl'],['da','dk'],['pt']]}}}},'lang':{}};String.prototype.format=function(){var args=arguments;return this.replace(/\{(\d+)\}/g,function(m,n){return args[n];});};$.fn.initTooltip=function(){return this.each(function(){$(this).tooltip(huroutes.opt.tooltip);});};(function(){var langDict;var map;var nextDropId=0;$(document).ready(function(){langDict=selectLanguage();map=L.map('map',{zoomControl:false}).fitBounds(huroutes.opt.map.bounds);const tiles=huroutes.opt.map.tiles;(tiles[localStorage.mapstyle]||tiles[Object.keys(tiles)[0]]).addTo(map);const overlays=huroutes.opt.map.overlays;(localStorage.overlays||'').split('|').forEach(item=>{const overlay=overlays[item];if(overlay)
 overlay.addTo(map);});const tileOverlay=huroutes.opt.map.tileOverlays[localStorage.mapstyle];if(tileOverlay)
-tileOverlay.addTo(map);map.createPane('bkgRoutes');map.getPane('bkgRoutes').style.zIndex=450;$.getJSON('data.json',initializeContent).fail(()=>{err=()=>console.error('Failed loading the route database.');gtBase=$('head base[href]')
-if(0<gtBase.length)
-$.getJSON(gtBase.attr('href')+'data.json',initializeContent).fail(err);else
-err();});initColorSelector();initCtrls(tiles,overlays);$('#options-dialog').on('hidden.bs.modal',updateOptions);$('.options-button [title]').initTooltip();initSidebarEvents();initNavSelector();initDownloadTypeSelector();initAdToast();navigateTo(fragment.get())});var stopFollowingLocation=()=>{};function initCtrls(tiles,overlays)
+tileOverlay.addTo(map);map.createPane('bkgRoutes');map.getPane('bkgRoutes').style.zIndex=450;$.getJSON('data.json',initializeContent).fail(()=>{err=()=>console.error('Failed loading the route database.');gtBase=getGoogleTranslateBase();if(gtBase)
+$.getJSON(gtBase+'data.json',initializeContent).fail(err);else
+err();});initColorSelector();initLangSelector();initCtrls(tiles,overlays);$('#options-dialog').on('hidden.bs.modal',updateOptions);$('.options-button [title]').initTooltip();initSidebarEvents();initNavSelector();initDownloadTypeSelector();initAdToast();navigateTo(fragment.get())});var stopFollowingLocation=()=>{};function initCtrls(tiles,overlays)
 {L.control.scale({position:'bottomright',imperial:false}).addTo(map);L.control.zoom({position:'bottomright',zoomInTitle:langDict.zoomInTooltip,zoomOutTitle:langDict.zoomOutTooltip}).addTo(map);L.control.layers(tiles,overlays,{position:'bottomleft'}).addTo(map);map.on('baselayerchange',(layer)=>{localStorage.mapstyle=layer.name;Object.entries(huroutes.opt.map.tileOverlays).forEach(([name,overlay])=>{if(name==layer.name)
 overlay.addTo(map);else if(map.hasLayer(overlay))
 overlay.remove();});const tileOverlay=huroutes.opt.map.tileOverlays[layer.name];if(tileOverlay)
@@ -96,6 +95,12 @@ applyTheme(currentColorTheme());const handleMediaChanged=e=>isSystemColorTheme(c
 if(media.addEventListener)
 media.addEventListener('change',handleMediaChanged);else
 media.addListener(handleMediaChanged);var elem=$('#color-themes');$.each(themes,(theme,data)=>{const id=theme.toLowerCase().replace(/ /g,'');let elemOpt=$('<div><input type="radio" name="theme" id="{0}" value="{1}" {2}> <label for="{0}">{1}</label></div>'.format(id,theme,theme==currentColorTheme()?'checked':''));elemOpt.children('input').click(()=>applyTheme(localStorage.theme=theme));elem.append(elemOpt);});}
+function getGoogleTranslateBase()
+{url=$('head base[href]').attr('href');if(url)
+url=url.split('?')[0];return url;}
+function initLangSelector()
+{provider=huroutes.opt.l10n.providers.Google;sourceLang=$('html').attr('lang');lang=provider.getCurrentLang()||sourceLang;langIdx=provider.langs.findIndex(lng=>lng[0]==lang);lang=0<=langIdx?provider.langs.splice(langIdx,1)[0]:provider.langs[0];$('#sidebar .dropdown-toggle').append($('<span class="fi fi-{0}">'.format(lang[lang.length-1])));$('#sidebar .dropdown-menu').append(provider.langs.map(lang=>{var url=(getGoogleTranslateBase()||location.origin+location.pathname);if(lang[0]!=sourceLang)
+url=provider.url.format(sourceLang,lang[0],url);return $('<a href="#"><span class="fi fi-{0}"/></a>'.format(lang[lang.length-1])).click(()=>{location=url+location.hash;return false;});}));}
 var navigation={provs:huroutes.opt.navLinkProviders,getId:function(){return this.provs[localStorage.navprovider]?localStorage.navprovider:Object.keys(this.provs)[0];},getLink:function(coord){return this.provs[this.getId()](coord);}}
 function initNavSelector()
 {var elem=$('#nav-options');$.each(navigation.provs,(key,value)=>{const id=key.toLowerCase().replace(/ /g,'');elem.append($('<div><input type="radio" name="navProv" id="{0}" value="{1}" {2}> <label for="{0}">{1}</label></div>'.format(id,key,key==navigation.getId()?'checked':'')));});}
@@ -136,11 +141,12 @@ const fragment={isIt:str=>location.hash=='#'+str,isGeoData:(hash=null)=>(hash??l
 {routeId=routeId??navigateTo.lastRouteId
 let data=fragment.asGeoData(target);success=data&&(activateMarker(data,routeId)??true)}
 else if(target.startsWith('#'))
-{routeId=target.split('#')[1];let layer=null;map.eachLayer(i=>i.routeId==routeId&&(layer=i));success=layer&&(activateRoute(layer)??true)}}
+{routeId=target.split('#')[1];let layer=null;map.eachLayer(i=>i.routeId==routeId&&(layer=i));success=layer&&(activateRoute(layer)??true)
+target=(getGoogleTranslateBase()||'')+target;}}
 else if(target.hasOwnProperty('routeId'))
 {activateRoute(target)
 success=true
-routeId=target.routeId;target='#'+routeId;}
+routeId=target.routeId;target=(getGoogleTranslateBase()||'')+'#'+routeId;}
 if(success)
 fragment.set(target,navigateTo.lastRouteId=routeId);return success;}
 addEventListener('popstate',event=>{if(fragment.get())
@@ -160,15 +166,16 @@ var marker={remove:()=>{}};function activateMarker(data,routeId)
 {removeFocus();marker=L.marker(data.geo,{autoPanOnFocus:false});marker.addTo(map);body=$('<div><p><b>{0}</b></p></div>'.format(data.title));if(data.desc)
 body.append($(data.desc));addPoiLinks(body,data.title,data.geo);marker.bindPopup(body[0],{autoPan:false,closeButton:false,autoClose:false,closeOnEscapeKey:false,closeOnClick:false}).openPopup();const areaAround=0.005;map.flyTo(data.geo,huroutes.opt.markers.zoomTo,{animate:true});openRouteDesc(routeId);sidebar.close();}
 var markdown={engine:new showdown.Converter(),makeHtml(text)
-{var ret=$(this.engine.makeHtml(text));ret.find('a[href^="#"]').click(function(){return!navigateTo(this.href);});ret.find('a:not([href^="#"])').attr('target','_blank');return ret;}}
+{var ret=$(this.engine.makeHtml(text));ret.find('a[href^="#"]').click(function(){return!navigateTo($(this).attr('href'));});ret.find('a:not([href^="#"])').attr('target','_blank');return ret;}}
 function normRating(rat)
 {var i=rat?Math.round(rat):5;if(i<1)
 i=1;else if(10<i)
 i=10;return i;}
 function selectLanguage()
-{const defaultLang=huroutes.lang[huroutes.lang.default];if(typeof(language)==='undefined')
-return defaultLang;const lang=huroutes.lang[language];if(lang===undefined)
-{console.error('Cannot find the requested language.');return defaultLang;}
+{lang=$('html').attr('lang');if(!lang)
+{console.error('The language is not set in the html tag of index.html, which is required.');lang='hu';}
+lang=huroutes.lang[lang];if(!lang)
+{console.error('Could not load huroutes translations.');throw'Language error';}
 return lang;}
 function downloadString(fileName,mimeType,data,charset='utf-8')
 {var anchor=$('<a id="download" style="display:none" download="{0}"/>'.format(fileName));anchor.attr('href','data:{0};charset={1},{2}'.format(mimeType,charset,encodeURIComponent(data)));$('body').append(anchor);anchor[0].click();anchor.remove();}
