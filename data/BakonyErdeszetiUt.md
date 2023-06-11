@@ -1,0 +1,3 @@
+Ez egy nagyon keskeny erdészeti és mezőgazdasági útszakasz. Sok helyen nem lehet jól belátni a kanyarokat, így nem lehet valami gyorsan haladni rajta. A mezőgazdasági és fakitermelő gépek által felhordott sár néhol csúszóssá teszi a felületet. Az útminőség általában jó, csak pár helyen romlik le. Egy csúnya kátyú viszont volt az elejefelé, amin sikerült felkoppantani a futóművet, ami fájt. Mivel nagyrészt sűrű erdőben megy az út, kiemelt vadveszéllyel érdemes számolni. Elenyésző a forgalom, de azért egy-egy autóval, motorossal lehet találkozni. Határozottan rally útvonal érzést nyújt ez a szakasz, de komolyabban csapatni nem igazán lehet.
+
+Ez az útvonal jól kombinálható a [8213-assal](#8213).
