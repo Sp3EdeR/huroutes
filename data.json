@@ -155,14 +155,14 @@
 						"md":"data/EtyekAlcsutdoboz.md",
 						"kml":"data/EtyekAlcsutdoboz.kml",
 						"rat":5,
-						"upd":"2023 május"
+						"upd":"2023 június"
 					},
 					{
 						"ttl":"Söréd - Gánt",
 						"md":"data/SoredGant.md",
 						"kml":"data/SoredGant.kml",
 						"rat":5,
-						"upd":"2023 május"
+						"upd":"2023 június"
 					},
 					{
 						"ttl":"Gánt - Csákvár",
@@ -410,28 +410,42 @@
 						"md":"data/8301.md",
 						"kml":"data/8301.kml",
 						"rat":7,
-						"upd":"2022 március"
+						"upd":"2023 június"
 					},
 					{
 						"ttl":"82 (Csesznek)",
 						"md":"data/82.md",
 						"kml":"data/82.kml",
 						"rat":7,
-						"upd":"2022 március"
+						"upd":"2023 június"
 					},
 					{
 						"ttl":"Cseszneki Mellékút",
 						"md":"data/CsesznekMellekut.md",
 						"kml":"data/CsesznekMellekut.kml",
 						"rat":6,
-						"upd":"2022 március"
+						"upd":"2023 június"
 					},
 					{
 						"ttl":"Csetény - Dudar",
 						"md":"data/CsetenyDudar.md",
 						"kml":"data/CsetenyDudar.kml",
 						"rat":4,
-						"upd":"2022 március"
+						"upd":"2023 június"
+					},
+					{
+						"ttl":"8213",
+						"md":"data/8213.md",
+						"kml":"data/8213.kml",
+						"rat":5,
+						"upd":"2023 június"
+					},
+					{
+						"ttl":"Bakonyi Erdészeti Út",
+						"md":"data/BakonyErdeszetiUt.md",
+						"kml":"data/BakonyErdeszetiUt.kml",
+						"rat":4,
+						"upd":"2023 június"
 					},
 					{
 						"ttl":"Bakonyi Bejáróút",
@@ -508,7 +522,7 @@
 						"md":"data/Balinka.md",
 						"kml":"data/Balinka.kml",
 						"rat":4,
-						"upd":"2022 március"
+						"upd":"2023 június"
 					}
 				]
 			}
