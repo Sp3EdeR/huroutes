@@ -437,12 +437,6 @@ ul a.dropdown-toggle:hover {
  * Map view / map themes
  */
 
-/* Makes the sattelite view's roads translucent */
-.overlay-satteliteroads {
-  filter: opacity(0.6);
-  -webkit-filter: opacity(0.6);
-}
-
 /* A dark filter set for "normal" map styles */
 .maps-dark .tile-openstreetmap, .maps-dark .tile-googlemap, .maps-dark .tile-googleterrain {
   filter: brightness(0.6) invert(1) contrast(3) hue-rotate(200deg) saturate(0.3) brightness(0.7);
@@ -453,8 +447,8 @@ ul a.dropdown-toggle:hover {
   filter: brightness(0.65) invert(0.8) contrast(2.5) hue-rotate(200deg) saturate(0.6) brightness(0.8);
   -webkit-filter: brightness(0.65) invert(0.8) contrast(2.5) hue-rotate(200deg) saturate(0.6) brightness(0.8);
 }
-/* A slight darkening for sattelite maps in dark mode */
-.maps-dark .tile-sattelite, .maps-dark .tile-googlesattelite, .maps-dark .overlay-turistautak {
+/* A slight darkening for satellite maps in dark mode */
+.maps-dark .tile-satellite, .maps-dark .tile-googlesatellite {
   filter: brightness(0.8);
   -webkit-filter: brightness(0.8);
 }

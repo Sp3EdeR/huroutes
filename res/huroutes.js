@@ -18,23 +18,20 @@ const huroutes = {
             'bounds': [[48.509, 15.659], [45.742, 23.193]],
             // The map tile sources supported in the layer selector. The first one is the default map.
             'tiles': {
-                'Térkép': L.tileLayer.provider('OpenStreetMap',{className: 'tile-openstreetmap'}),
-                'Domborzat': L.tileLayer.provider('OpenTopoMap',{className: 'tile-opentopomap'}),
-                'Műhold': L.tileLayer.provider('Esri.WorldImagery',{className: 'tile-sattelite'}),
-                'Google Térkép': L.tileLayer('https://{s}.google.com/vt/lyrs=m&x={x}&y={y}&z={z}',{attribution:'&copy; Google Maps',minZoom:5,maxZoom:18,subdomains:['mt0', 'mt1', 'mt2', 'mt3'],className: 'tile-googlemap'}),
-                'Google Domborzat': L.tileLayer('https://{s}.google.com/vt/lyrs=p&x={x}&y={y}&z={z}',{attribution:'&copy; Google Maps',minZoom:5,maxZoom:18,subdomains:['mt0', 'mt1', 'mt2', 'mt3'],className: 'tile-googleterrain'}),
-                'Google Műhold': L.tileLayer('https://{s}.google.com/vt/lyrs=s,h&x={x}&y={y}&z={z}',{attribution:'&copy; Google Maps',minZoom:5,maxZoom:18,subdomains:['mt0', 'mt1', 'mt2', 'mt3'],className: 'tile-googlesattelite'})
+                'Map': L.tileLayer.provider('OpenStreetMap',{className: 'tile-openstreetmap'}),
+                'Terrain': L.tileLayer.provider('OpenTopoMap',{className: 'tile-opentopomap'}),
+                'Satellite': L.tileLayer.provider('Esri.WorldImagery',{className: 'tile-satellite'}),
+                'Google Map': L.tileLayer('https://{s}.google.com/vt/lyrs=m&x={x}&y={y}&z={z}',{attribution:'&copy; Google Maps',minZoom:5,maxZoom:18,subdomains:['mt0', 'mt1', 'mt2', 'mt3'],className: 'tile-googlemap'}),
+                'Google Terrain': L.tileLayer('https://{s}.google.com/vt/lyrs=p&x={x}&y={y}&z={z}',{attribution:'&copy; Google Maps',minZoom:5,maxZoom:18,subdomains:['mt0', 'mt1', 'mt2', 'mt3'],className: 'tile-googleterrain'}),
+                'Google Satellite': L.tileLayer('https://{s}.google.com/vt/lyrs=s,h&x={x}&y={y}&z={z}',{attribution:'&copy; Google Maps',minZoom:5,maxZoom:18,subdomains:['mt0', 'mt1', 'mt2', 'mt3'],className: 'tile-googlesatellite'})
             },
             // Choosable overlay sources supported in the layer selector. All are off by default.
             'overlays': {
-                'Domborzat Kiemelés': L.tileLayer('https://map.turistautak.hu/tiles/shading/{z}/{x}/{y}.png', {attribution:'&copy; turistautak.hu',minZoom:5,maxZoom: 18,zIndex:5,className: 'overlay-dem'}),
-                'Turistautak': L.tileLayer('https://{s}.tile.openstreetmap.hu/tt/{z}/{x}/{y}.png', {attribution:'&copy; turistautak.hu',minZoom:5,maxZoom: 18,zIndex:100,className: 'overlay-turistautak'})
+                'Elevation Shading': L.tileLayer('https://map.turistautak.hu/tiles/shading/{z}/{x}/{y}.png', {attribution:'&copy; turistautak.hu',minZoom:5,maxZoom: 18,zIndex:5,className: 'overlay-dem'})
             },
             // Overlay sources that are always shown and hidden along with specific map tile sources.
             // The name of the overlay must be the same as the tile layer to which it is bound.
-            'tileOverlays': {
-                'Műhold': L.tileLayer('https://map.turistautak.hu/tiles/lines/{z}/{x}/{y}.png', {attribution:'&copy; turistautak.hu',minZoom:5,maxZoom: 18,zIndex:10,className: 'overlay-satteliteroads'})
-            }
+            'tileOverlays': {}
         },
         // A list of navigation service providers that can be chosen for the "navigate to" links'.
         // The default provider used is the first one.
@@ -102,14 +99,14 @@ const huroutes = {
         // The classes property specifies the CSS classes to apply to the <body> to apply the theme
         // The default theme is the first one
         'themes': {
-            'Rendszer színmód használata': {
+            'System Theme': {
                 // A special color theme - this adapts to the system or browser native color theme
-                'default': 'Világos', // The default theme to use
-                'mapping': {'dark': 'Sötét'} // A mapping from media query color themes to huroutes color theme
+                'default': 'Bright', // The default theme to use
+                'mapping': {'dark': 'Dark'} // A mapping from media query color themes to huroutes color theme
             },
-            'Világos': { 'classes': ['bootstrap', 'maps-light', 'huroutes-light'] },
-            'Sötét': { 'classes': ['bootstrap-dark', 'maps-dark', 'huroutes-dark'] },
-            'Sötét világos térképpel': { 'classes': ['bootstrap-dark', 'maps-light', 'huroutes-dark'] }
+            'Bright': { 'classes': ['bootstrap', 'maps-light', 'huroutes-light'] },
+            'Dark': { 'classes': ['bootstrap-dark', 'maps-dark', 'huroutes-dark'] },
+            'Dark with bright map': { 'classes': ['bootstrap-dark', 'maps-light', 'huroutes-dark'] }
         },
         // Options for the tooltip display:
         // https://getbootstrap.com/docs/4.0/components/tooltips/#options
@@ -174,6 +171,8 @@ var nextDropId = 0;     // Unique ID generation counter
 $(document).ready(function() {
     langDict = selectLanguage();
 
+    upgradeConfig(); // Temporary config upgrading code
+
     // Initializing the map and its contents
     map = L.map('map', { zoomControl: false }).fitBounds(huroutes.opt.map.bounds);
     const tiles = huroutes.opt.map.tiles;
@@ -237,28 +236,30 @@ function initCtrls(tiles, overlays)
     }).addTo(map);
 
     // The map tile and overlay display control at the bottom-left
-    L.control.layers(tiles, overlays, { position: 'bottomleft' }).addTo(map);
+    const l10nTile = tiles => Object.entries(tiles).reduce((acc, [key, val]) => {
+        val.id = key; // Store the identifier within the layer for identification
+        acc[langDict.map[key] || key] = val;
+        return acc;
+    }, {});
+    L.control.layers(l10nTile(tiles), l10nTile(overlays), { position: 'bottomleft' }).addTo(map);
     map.on('baselayerchange', (layer) => {
-        localStorage.mapstyle = layer.name;
+        localStorage.mapstyle = layer.layer.id;
         Object.entries(huroutes.opt.map.tileOverlays).forEach(([name, overlay]) => {
-            if (name == layer.name)
+            if (name == layer.layer.id)
                 overlay.addTo(map);
             else if (map.hasLayer(overlay))
                 overlay.remove();
         });
-        const tileOverlay = huroutes.opt.map.tileOverlays[layer.name];
-        if (tileOverlay)
-            tileOverlay.addTo(map);
     });
     map.on('overlayadd', (overlay) => {
         var overlays = localStorage.overlays;
         overlays = overlays ? overlays.split('|') : [];
-        overlays.push(overlay.name);
+        overlays.push(overlay.layer.id);
         localStorage.overlays = overlays.join('|');
     });
     map.on('overlayremove', (overlay) => {
         var overlays = (localStorage.overlays || '').split('|');
-        const idx = overlays.indexOf(overlay.name);
+        const idx = overlays.indexOf(overlay.layer.id);
         if (idx != -1)
         overlays.splice(idx, 1);
         localStorage.overlays = overlays.join('|');
@@ -578,8 +579,10 @@ function initColorSelector()
     var elem = $('#color-themes');
     $.each(themes, (theme, data) => {
         const id = theme.toLowerCase().replace(/ /g, '');
-        let elemOpt = $('<div><input type="radio" name="theme" id="{0}" value="{1}" {2}> <label for="{0}">{1}</label></div>'
-            .format(id, theme, theme == currentColorTheme() ? 'checked' : ''));
+        let elemOpt = $('<div><input type="radio" name="theme" id="{0}" value="{1}" {3}> <label for="{0}">{2}</label></div>'
+            .format(
+                id, theme, langDict.themes[theme] || theme,
+                theme == currentColorTheme() ? 'checked' : ''));
         elemOpt.children('input').click(() => applyTheme(localStorage.theme = theme));
         elem.append(elemOpt);
     });
@@ -1129,5 +1132,18 @@ function initSidebarEvents()
         sidebar.open()
     })
 }
+
+// TODO: Remove me
+function upgradeConfig() {
+    const convert = (obj, val) => Object.keys(obj).find(key => obj[key] === val) || val;
+    const convertEach = (obj, tokens) => tokens.split('|').map(val => convert(obj, val)).join('|');
+
+    if (localStorage.mapstyle && !(localStorage.mapstyle in huroutes.opt.map.tiles))
+        localStorage.mapstyle = convert(langDict.map, localStorage.mapstyle);
+    if (localStorage.overlays)
+        localStorage.overlays = convertEach(langDict.map, localStorage.overlays);
+    if (localStorage.theme && !(localStorage.theme in huroutes.opt.themes))
+        localStorage.theme = convert(langDict.themes, localStorage.theme);
+};
 
 })();
