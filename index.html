@@ -63,6 +63,21 @@
     // huroutes requires that the language dictionary is provided here
     // The huroutes.lang.<html[lang]> attribute field must be filled in
     huroutes.lang.hu = {
+      'map': {
+        'Map': 'Térkép',
+        'Terrain': 'Domborzat',
+        'Satellite': 'Műhold',
+        'Google Map': 'Google Térkép',
+        'Google Terrain': 'Google Domborzat',
+        'Google Satellite': 'Google Műhold',
+        'Elevation Shading': 'Domborzat Kiemelés'
+      },
+      'themes': {
+        'System Theme': 'Rendszer megjelenése',
+        'Bright': 'Világos',
+        'Dark': 'Sötét',
+        'Dark with bright map': 'Sötét, világos térképpel'
+      },
       'updateDate': 'Az útvonal legutóbbi felderítésének ideje.',
       'rating': 'Az útvonal értékelése vezethetőség, változatosság, izgalom szempontjaiból.',
       'navToPoi': ' Navigáció <span class="nav-start">ehhez a helyhez</span>.',
@@ -78,7 +93,22 @@
       'zoomInTooltip': 'Térkép nagyítása',
       'zoomOutTooltip': 'Térkép kicsinyítése',
     }
+    // Hungarian map types
+    huroutes.opt.map.overlays['Turistautak'] = L.tileLayer('https://{s}.tile.openstreetmap.hu/tt/{z}/{x}/{y}.png', {attribution:'&copy; turistautak.hu',minZoom:5,maxZoom: 18,zIndex:100,className: 'overlay-turistautak'});
+    huroutes.opt.map.tileOverlays['Satellite'] = L.tileLayer('https://map.turistautak.hu/tiles/lines/{z}/{x}/{y}.png', {attribution:'&copy; turistautak.hu',minZoom:5,maxZoom: 18,zIndex:10,className: 'overlay-satelliteroads'});
   </script>
+  <style>
+    /* Dark mode for Turistautak map overlay */
+    .maps-dark .overlay-turistautak {
+      filter: brightness(0.8);
+      -webkit-filter: brightness(0.8);
+    }
+    /* Makes the satellite view's roads translucent */
+    .overlay-satelliteroads {
+      filter: opacity(0.6);
+      -webkit-filter: opacity(0.6);
+    }
+  </style>
 </head>
 
 <body>
