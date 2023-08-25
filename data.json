@@ -27,11 +27,11 @@
 						"upd":"2022 november"
 					},
 					{
-						"ttl":"Kávai kerülő út",
-						"md":"data/KavaiKerulo.md",
-						"kml":"data/KavaiKerulo.kml",
-						"rat":3,
-						"upd":"2022 augusztus"
+						"ttl":"Gombai Görbék",
+						"md":"data/GombaiGorbek.md",
+						"kml":"data/GombaiGorbek.kml",
+						"rat":5,
+						"upd":"2023 augusztus"
 					}
 				]
 			},
