@@ -1,0 +1,9 @@
+Enyhe-közepes kanyarok jellemzik ezt a kellemes tempóval járható utat, ami erdős részek és fűves tisztások között kanyarog. Áthaladó vadakra számítani kell. Az útminőség többnyire jó, a széleken több helyen tapasztalhatunk letört részeket. Az autós forgalom elenyésző, viszont jó idő esetén elég sok bringással találkozhatunk errefelé.
+
+A Magyaregregy előtti útszakaszon - főleg reggel és késő délután - állatokat terelhetnek át. Fokozott figyelemmel közelítsünk a szakasz felé.
+
+Nagy melegben esetleg csobbanhatunk egyet a [magyaregregyi strandon](#geo:Magyaregregyi%20strand@46.233571,18.308359/?b=Egy%20apr%C3%B3%20m%C3%A9ret%C5%B1%20strand%20Magyaregregy%20k%C3%B6zel%C3%A9ben,%20M%C3%A1r%C3%A9-v%C3%A1r%C3%A1hoz%20k%C3%B6zel.), ha pedig kevésbé jó az idő, érdemes megnézni a közeli [Máré-várat](#geo:M%C3%A1r%C3%A9-v%C3%A1r@46.225339,18.322009/?b=M%C3%A1r%C3%A9-v%C3%A1ra%20%C3%A9rdekes%20turista%20l%C3%A1tv%C3%A1nyoss%C3%A1g.%20Az%20aktu%C3%A1lis%20inform%C3%A1ci%C3%B3kr%C3%B3l%20%C3%A9s%20a%20bel%C3%A9p%C5%91%20%C3%A1rakr%C3%B3l%20a%20honlapon%20%C3%A9rdemes%20t%C3%A1j%C3%A9koz%C3%B3dni:%20%3Chttps://www.marevar.hu/hu/%3E.). Ha megéheznénk, kipróbálhatjuk a [Kuckó Erdei Teraszt](#geo:Kuck%C3%B3%20Erdei%20Terasz@46.233673,18.307109/?b=Helyes%20kis%20erdei%20b%C3%BCf%C3%A9%20Magyaregregy%20k%C3%B6zel%C3%A9ben,%20ahol%20speci%C3%A1lis,%20szarvas%20h%C3%BAsb%C3%B3l%20k%C3%A9sz%C3%BClt%20hamburgereket%20k%C3%B3stolhatunk.%20%C3%89rdemes%20az%20aktu%C3%A1lis%20nyitvatart%C3%A1sr%C3%B3l%20a%20%5BGoogle%20Maps-en%5D%28https://goo.gl/maps/Zqwj7Pnky93UtJAg9%29%20vagy%20telefonon%20inform%C3%A1l%C3%B3dni,%20esetleg%20a%20weblapon%20k%C3%B6r%C3%BCln%C3%A9zni:%20%3Chttps://csurmi22.wixsite.com/website-1%3E.).
+
+Ez a szakasz könnyen összefűzhető a [Zobákpuszta és Mánfa](#ZobakpusztaManfa) közötti résszel.
+
+Az útszakasz része a [Kelet-Mecseki Bejáróútnak](#KeletMecsek).

@@ -602,6 +602,27 @@
 						"upd":"2021 május"
 					},
 					{
+						"ttl":"Zobákpuszta - Mánfa",
+						"md":"data/ZobakpusztaManfa.md",
+						"kml":"data/ZobakpusztaManfa.kml",
+						"rat":7,
+						"upd":"2023 augusztus"
+					},
+					{
+						"ttl":"Hosszúhetény - Magyaregregy",
+						"md":"data/HosszuhetenyMagyaregregy.md",
+						"kml":"data/HosszuhetenyMagyaregregy.kml",
+						"rat":6,
+						"upd":"2023 augusztus"
+					},
+					{
+						"ttl":"Lovászhetény - Véménd",
+						"md":"data/LovaszhetenyVemend.md",
+						"kml":"data/LovaszhetenyVemend.kml",
+						"rat":4,
+						"upd":"2023 augusztus"
+					},
+					{
 						"ttl":"Kelet-Mecseki Bejáróút",
 						"md":"data/KeletMecsek.md",
 						"kml":"data/KeletMecsek.kml",
