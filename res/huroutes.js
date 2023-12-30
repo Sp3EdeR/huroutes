@@ -45,18 +45,39 @@ const huroutes = {
         },
         // A list of navigation service providers that can be chosen for the "navigate to" links'.
         // The default provider used is the first one.
+        // The getLink attribute is function(destination, waypoints).
+        // The waypoints attribute defines the number of waypoints passed to the getLink function.
         'navLinkProviders': {
-            'Google': coord => {
-                const link = 'https://www.google.com/maps/dir/?api=1&travelmode=driving&destination={0},{1}';
-                return link.format(coord.lat, coord.lng);
+            'Google': {
+                'getLink': dst => {
+                    const link = 'https://www.google.com/maps/dir/?api=1&travelmode=driving&destination={0},{1}';
+                    return link.format(dst.lat, dst.lng);
+                },
+                'waypoints': 0
             },
-            'Waze': coord => {
-                const link = 'https://www.waze.com/ul?ll={0}%2C{1}&navigate=yes';
-                return link.format(coord.lat, coord.lng);
+            'Google follow route': {
+                'getLink': (dst, wpts) => {
+                    // Undocumented URI for multi-waypoint route planning.
+                    // The double-slash after dir means an unknown starting coordinate.
+                    // The data means determine starting location and start directions.
+                    const link = 'https://www.google.com/maps/dir//{0}/{1},{2}/data=!4m6!4m5!1m1!4e2!1m0!1m0!3e0';
+                    return link.format(wpts.map(c => c.lat + ',' + c.lng).join('/'), dst.lat, dst.lng);
+                },
+                'waypoints': 8 // The starting location and destination are not part of this.
             },
-            'Apple': coord => {
-                const link = 'http://maps.apple.com/?daddr={0},{1}&dirflg=d';
-                return link.format(coord.lat, coord.lng);
+            'Waze': {
+                'getLink': dst => {
+                    const link = 'https://www.waze.com/ul?ll={0}%2C{1}&navigate=yes';
+                    return link.format(dst.lat, dst.lng);
+                },
+                'waypoints': 0
+            },
+            'Apple': {
+                'getLink': dst => {
+                    const link = 'http://maps.apple.com/?daddr={0},{1}&dirflg=d';
+                    return link.format(dst.lat, dst.lng);
+                },
+                'waypoints': 0
             }
         },
         // Route path data download formats.
@@ -531,7 +552,7 @@ function addRoute(data)
             for (var i = 1; i < coords.length; ++i)
                 length += coords[i - 1].distanceTo(coords[i]);
             var elemLinks = $('<div class="route-ctrls btn-toolbar" role="toolbar"/>');
-            addNavigationLinks(elemLinks, coords[0], coords[coords.length - 1], length);
+            addNavigationLinks(elemLinks, coords, length);
             var mididx = Math.floor(coords.length / 2);
             addStreetViewLink(elemLinks, coords[mididx], coords[mididx + 1]);
             elem.append(elemLinks);
@@ -666,7 +687,25 @@ var navigation = {
         return this.provs[localStorage.navprovider] ? localStorage.navprovider : Object.keys(this.provs)[0];
     },
     /** Returns a navigation link. */
-    getLink: function(coord) { return this.provs[this.getId()](coord); }
+    getLink: function(coords, reverse) {
+        const dst = reverse ? coords[0] : coords[coords.length - 1];
+        const wpts = this._getWaypoints(coords, reverse);    
+        return this._getProv().getLink(dst, wpts);
+    },
+    /** Returns the currently selected navigation provider. */
+    _getProv: function() { return this.provs[this.getId()]; },
+    /** Returns a set of waypoints as requested by the link provider. */
+    _getWaypoints: function(coords, reverse) {
+        const count = this._getProv().waypoints;
+        if (!count)
+            return [];
+        let idx = reverse ? coords.length - 1 : 0;
+        const step = coords.length / count * (reverse ? -1 : 1);
+        let wpts = [];
+        for (i = 0; i < count; ++i, idx += step)
+            wpts.push(coords[Math.round(idx)]);
+        return wpts;
+    },
 }
 
 /** Initializes the navigation link configuration. */
@@ -676,30 +715,30 @@ function initNavSelector()
     $.each(navigation.provs, (key, value) => {
         const id = key.toLowerCase().replace(/ /g, '');
         elem.append(
-            $('<div><input type="radio" name="navProv" id="{0}" value="{1}" {2}> <label for="{0}">{1}</label></div>'
-                .format(id, key, key == navigation.getId() ? 'checked' : '')));
+            $('<div><input type="radio" name="navProv" id="{0}" value="{1}" {2}> <label for="{0}" title="{3}">{1}</label></div>'
+                .format(id, key, key == navigation.getId() ? 'checked' : '', langDict['nav-label'][key] || '')));
     });
 }
 
 /**
  * Initiates planning to the selected coordinate with the configured provider.
- * @param {object} coord A WGS84 coordinate object with lat and lng properties.
+ * @param {array} coords An array of WGS84 coordinate objects with lat and lng properties.
+ * @param {bool} reverse Whether reverse navigation is requested.
  * @returns false.
  */
-function planTo(coord)
+function planTo(coords, reverse)
 {
-    open(navigation.getLink(coord), '_blank');
+    open(navigation.getLink(coords, reverse), '_blank');
     return false;
 }
 
 /**
  * Creates navigation links for routes.
  * @param {jquery} elem The element that will contain the navigation link DOM.
- * @param {object} start The coordinate where the "start" link navigates to.
- * @param {object} end The coordinate where the "end" link navigates to.
+ * @param {object} coords The coordinates of the route.
  * @param {number} length The length of the route in kms.
  */
-function addNavigationLinks(elem, start, end, length)
+function addNavigationLinks(elem, coords, length)
 {
     var eNav = $('\
 <div class="btn-group mr-2 mt-2" role="group">\
@@ -707,8 +746,8 @@ function addNavigationLinks(elem, start, end, length)
   <span class="btn" title="{1}"><i class="fas fa-route"></i> <sub>{2}</sub></span>\
   <a href="#" class="nav-end btn" title="{3}"><i class="fas fa-step-forward"></i></a>\
 </div>'.format(langDict.navStartTooltip, langDict.navLength, langDict.routeLength(length), langDict.navEndTooltip));
-    eNav.find('.nav-start').click(() => planTo(start));
-    eNav.find('.nav-end').click(() => planTo(end));
+    eNav.find('.nav-start').click(() => planTo(coords, true));
+    eNav.find('.nav-end').click(() => planTo(coords));
     eNav.find('[title]').initTooltip();
     elem.append(eNav);
 }
