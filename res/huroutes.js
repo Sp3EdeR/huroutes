@@ -27,11 +27,19 @@ const huroutes = {
             },
             // Choosable overlay sources supported in the layer selector. All are off by default.
             'overlays': {
-                'Elevation Shading': L.tileLayer('https://map.turistautak.hu/tiles/shading/{z}/{x}/{y}.png', {attribution:'&copy; turistautak.hu',minZoom:5,maxZoom: 18,zIndex:5,className: 'overlay-dem'})
+                'Elevation Shading': L.tileLayer('https://map.turistautak.hu/tiles/shading/{z}/{x}/{y}.png', {attribution:'&copy; turistautak.hu',minZoom:5,maxZoom: 18,zIndex:5,className: 'overlay-dem'}),
+                'Curvature': L.layerGroup(null, {attribution:'Curves: &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'})
             },
             // Overlay sources that are always shown and hidden along with specific map tile sources.
             // The name of the overlay must be the same as the tile layer to which it is bound.
-            'tileOverlays': {}
+            'tileOverlays': {},
+            // Lazy-content overlay data, which is downloaded only when the user first shows it.
+            // Usage: Create an overlay under 'overlays' with an empty L.layerGroup. Create an
+            // item in 'lazyOverlays' with the same ID as the layergroup overlay. The value is
+            // a function that returns the layer that contains the data.
+            'lazyOverlays': {
+                'Curvature': (layer) => omnivore.geojson('map/curves.geojson', null, layer)
+            }
         },
         // A list of navigation service providers that can be chosen for the "navigate to" links'.
         // The default provider used is the first one.
@@ -181,7 +189,10 @@ $(document).ready(function() {
     (localStorage.overlays || '').split('|').forEach(item => {
         const overlay = overlays[item];
         if (overlay)
+        {
             overlay.addTo(map);
+            initLazyOverlay(item, overlay);
+        }
     });
     const tileOverlay = huroutes.opt.map.tileOverlays[localStorage.mapstyle];
     if (tileOverlay)
@@ -256,6 +267,8 @@ function initCtrls(tiles, overlays)
         overlays = overlays ? overlays.split('|') : [];
         overlays.push(overlay.layer.id);
         localStorage.overlays = overlays.join('|');
+
+        initLazyOverlay(overlay.layer.id, overlay.layer);
     });
     map.on('overlayremove', (overlay) => {
         var overlays = (localStorage.overlays || '').split('|');
@@ -302,6 +315,28 @@ function initCtrls(tiles, overlays)
         if ($(e.target).is('[title]') || $(e.target).parents('[title]').length)
             e.preventDefault();
     }, true);
+}
+
+/**
+ * Initializes data inside of a layer group on demand.
+ * @param {string} id The overlay identifier.
+ * @param {object} layerGroup A Leaflet layerGroup object to which the data is added.
+ */
+function initLazyOverlay(id, layerGroup)
+{
+    try {
+        if (layerGroup.getLayers().length == 0)
+        {
+            var layer = L.geoJson(null, {
+                style: {
+                    color: '#BB0',
+                    opacity: 0.9,
+                    weight: 1.5
+                }
+            });
+            layerGroup.addLayer(huroutes.opt.map.lazyOverlays[id](layer));
+        }
+    } catch { }
 }
 
 /**
