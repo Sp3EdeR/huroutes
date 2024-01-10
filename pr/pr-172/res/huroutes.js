@@ -204,7 +204,7 @@ return;isOpen=false;$('#sidebar').addClass('closed');$('#void-close-sidebar').re
 $('#sidebar').swipe({swipeLeft:sidebar.close});$(window).resize(function(){if(!isOpen&&768<$(window).innerWidth())
 sidebar.open()})}
 function getJSON(url,...args)
-{return $.getJSON(url,...args).then(data=>data,err=>{msg=()=>console.error('Failed loading {0}.'.format(url));gtBase=getGoogleTranslateBase();if(gtBase)
+{return $.getJSON(url,...args).then((...args)=>args,err=>{msg=()=>console.error('Failed loading {0}.'.format(url));gtBase=getGoogleTranslateBase();if(gtBase)
 return $.getJSON(gtBase+url,...args).fail(msg);msg();return err;});}
 function upgradeConfig(){const convert=(obj,val)=>Object.keys(obj).find(key=>obj[key]===val)||val;const convertEach=(obj,tokens)=>tokens.split('|').map(val=>convert(obj,val)).join('|');if(localStorage.mapstyle&&!(localStorage.mapstyle in huroutes.opt.map.tiles))
 localStorage.mapstyle=convert(langDict.map,localStorage.mapstyle);if(localStorage.overlays)
