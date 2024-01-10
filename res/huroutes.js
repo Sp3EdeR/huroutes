@@ -28,17 +28,19 @@ const huroutes = {
             // Choosable overlay sources supported in the layer selector. All are off by default.
             'overlays': {
                 'Elevation Shading': L.tileLayer('https://map.turistautak.hu/tiles/shading/{z}/{x}/{y}.png', {attribution:'&copy; turistautak.hu',minZoom:5,maxZoom: 18,zIndex:5,className: 'overlay-dem'}),
-                'Curvature': L.layerGroup(null, {attribution:'Curves: &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'})
+                'Curvature': L.layerGroup()
             },
             // Overlay sources that are always shown and hidden along with specific map tile sources.
             // The name of the overlay must be the same as the tile layer to which it is bound.
             'tileOverlays': {},
-            // Lazy-content overlay data, which is downloaded only when the user first shows it.
-            // Usage: Create an overlay under 'overlays' with an empty L.layerGroup. Create an
-            // item in 'lazyOverlays' with the same ID as the layergroup overlay. The value is
-            // a function that returns the layer that contains the data.
-            'lazyOverlays': {
-                'Curvature': (layer) => omnivore.geojson('map/curves.geojson', null, layer)
+            // Curvature data definition, used to populate the Curvature overlay when first viewed.
+            // The layer's data is prepared by the build-website github action.
+            'curvatureData': {
+                // Workaround: cannot give it the "geojson" extension, because Google Translate
+                // blocks ajax requests to most extensions, but not json.
+                'geojson': 'map/curves.geo.json',
+                'style': 'map/curves-style.json',
+                'attribution': 'Curves: &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
             }
         },
         // A list of navigation service providers that can be chosen for the "navigate to" links'.
@@ -201,16 +203,7 @@ $(document).ready(function() {
     map.getPane('bkgRoutes').style.zIndex = 450;
 
     // Asynchronously loads the huroutes database
-    $.getJSON('data.json', initializeContent)
-        .fail(() => {
-            err = () => console.error('Failed loading the route database.');
-            // Google Translate workaround for correcting database path
-            gtBase = getGoogleTranslateBase();
-            if (gtBase)
-                $.getJSON(gtBase + 'data.json', initializeContent).fail(err);
-            else
-                err();
-        });
+    getJSON('data.json', initializeContent);
 
     // Initializing misc. huroutes app components
     initColorSelector();
@@ -318,23 +311,27 @@ function initCtrls(tiles, overlays)
 /**
  * Initializes data inside of a layer group on demand.
  * @param {string} id The overlay identifier.
- * @param {object} layerGroup A Leaflet layerGroup object to which the data is added.
+ * @param {object} lg A Leaflet layerGroup object to which the data is added.
  */
-function initLazyOverlay(id, layerGroup)
+function initLazyOverlay(id, lg)
 {
-    try {
-        if (layerGroup.getLayers().length == 0)
-        {
-            var layer = L.geoJson(null, {
-                style: {
-                    color: '#BB0',
-                    opacity: 0.9,
-                    weight: 1.5
-                }
-            });
-            layerGroup.addLayer(huroutes.opt.map.lazyOverlays[id](layer));
-        }
-    } catch { }
+    // Only populate empty layerGroups with data.
+    if (!lg.getLayers || lg.getLayers().length != 0)
+        return;
+
+    // Initialize the Curvature lazy overlay's contents.
+    if (id == 'Curvature')
+    {
+        const cfg = huroutes.opt.map.curvatureData;
+        $.when(getJSON(cfg.geojson), getJSON(cfg.style)).done((r1, r2) => {
+            const styleMap = r2[0];
+            lg.addLayer(L.geoJson(r1[0], {
+                attribution: cfg.attribution,
+                style: (feature) =>
+                    feature.properties.styleUrl && styleMap[feature.properties.styleUrl]
+            }));
+        });
+    }
 }
 
 /**
@@ -1164,6 +1161,21 @@ function initSidebarEvents()
         if (!isOpen && 768 < $(window).innerWidth())
         sidebar.open()
     })
+}
+
+/**
+ * Does the same as $.getJSON, but works around Google Translate relative URL issues.
+ */
+function getJSON(url, ...args)
+{
+    return $.getJSON(url, ...args).then((...args) => args, err => {
+        msg = () => console.error('Failed loading {0}.'.format(url));
+        gtBase = getGoogleTranslateBase();
+        if (gtBase)
+            return $.getJSON(gtBase + url, ...args).fail(msg);
+        msg();
+        return err;
+    });
 }
 
 })();
