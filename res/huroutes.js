@@ -179,8 +179,6 @@ var nextDropId = 0;     // Unique ID generation counter
 $(document).ready(function() {
     langDict = selectLanguage();
 
-    upgradeConfig(); // Temporary config upgrading code
-
     // Initializing the map and its contents
     map = L.map('map', { zoomControl: false }).fitBounds(huroutes.opt.map.bounds);
     const tiles = huroutes.opt.map.tiles;
@@ -1167,18 +1165,5 @@ function initSidebarEvents()
         sidebar.open()
     })
 }
-
-// TODO: Remove me
-function upgradeConfig() {
-    const convert = (obj, val) => Object.keys(obj).find(key => obj[key] === val) || val;
-    const convertEach = (obj, tokens) => tokens.split('|').map(val => convert(obj, val)).join('|');
-
-    if (localStorage.mapstyle && !(localStorage.mapstyle in huroutes.opt.map.tiles))
-        localStorage.mapstyle = convert(langDict.map, localStorage.mapstyle);
-    if (localStorage.overlays)
-        localStorage.overlays = convertEach(langDict.map, localStorage.overlays);
-    if (localStorage.theme && !(localStorage.theme in huroutes.opt.themes))
-        localStorage.theme = convert(langDict.themes, localStorage.theme);
-};
 
 })();
