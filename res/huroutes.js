@@ -327,6 +327,7 @@ function initLazyOverlay(id, lg)
             const styleMap = r2[0];
             lg.addLayer(L.geoJson(r1[0], {
                 attribution: cfg.attribution,
+                interactive: false,
                 style: (feature) =>
                     feature.properties.styleUrl && styleMap[feature.properties.styleUrl]
             }));
