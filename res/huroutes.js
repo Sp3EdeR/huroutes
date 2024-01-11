@@ -628,7 +628,7 @@ function getGoogleTranslateBase()
 {
     url = $('head base[href]').attr('href');
     if (url)
-        url = url.split('?')[0];
+        url = url.split('?')[0].replace(/[^/]+\.[^\s\./]{3,5}$/, '');
     return url;
 }
 
