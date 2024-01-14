@@ -32,7 +32,7 @@ e.preventDefault();},true);}
 function initLazyOverlay(id,lg)
 {if(!lg.getLayers||lg.getLayers().length!=0)
 return;if(id=='Curvature')
-{const cfg=huroutes.opt.map.curvatureData;$.when(getJSON(cfg.geojson),getJSON(cfg.style)).done((r1,r2)=>{const styleMap=r2[0];lg.addLayer(L.geoJson(r1[0],{attribution:cfg.attribution,style:(feature)=>feature.properties.styleUrl&&styleMap[feature.properties.styleUrl]}));});}}
+{const cfg=huroutes.opt.map.curvatureData;$.when(getJSON(cfg.geojson),getJSON(cfg.style)).done((r1,r2)=>{const styleMap=r2[0];lg.addLayer(L.geoJson(r1[0],{attribution:cfg.attribution,interactive:false,style:(feature)=>feature.properties.styleUrl&&styleMap[feature.properties.styleUrl]}));});}}
 function initializeContent(data)
 {if(!Array.isArray(data)||!data.length)
 {console.error('The map data is empty.');return;}
