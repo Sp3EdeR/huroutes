@@ -98,7 +98,7 @@ media.addEventListener('change',handleMediaChanged);else
 media.addListener(handleMediaChanged);var elem=$('#color-themes');$.each(themes,(theme,data)=>{const id=theme.toLowerCase().replace(/ /g,'');let elemOpt=$('<div><input type="radio" name="theme" id="{0}" value="{1}" {3}> <label for="{0}">{2}</label></div>'.format(id,theme,langDict.themes[theme]||theme,theme==currentColorTheme()?'checked':''));elemOpt.children('input').click(()=>applyTheme(localStorage.theme=theme));elem.append(elemOpt);});}
 function getGoogleTranslateBase()
 {url=$('head base[href]').attr('href');if(url)
-url=url.split('?')[0];return url;}
+url=url.split('?')[0].replace(/[^/]+\.[^\s\./]{3,5}$/,'');return url;}
 function initLangSelector()
 {provider=huroutes.opt.l10n.providers.Google;sourceLang=$('html').attr('lang');lang=provider.getCurrentLang()||sourceLang;langIdx=provider.langs.findIndex(lng=>lng[0]==lang);lang=0<=langIdx?provider.langs.splice(langIdx,1)[0]:provider.langs[0];$('#sidebar .dropdown-toggle').append($('<span class="fi fi-{0}">'.format(lang[lang.length-1])));$('#sidebar .dropdown-menu').append(provider.langs.map(lang=>{var url=(getGoogleTranslateBase()||location.origin+location.pathname);if(lang[0]!=sourceLang)
 url=provider.url.format(sourceLang,lang[0],url);return $('<a href="#"><span class="fi fi-{0}"/></a>'.format(lang[lang.length-1])).click(()=>{location=url+location.hash;return false;});}));}
