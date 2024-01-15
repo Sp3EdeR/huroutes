@@ -106,7 +106,7 @@ var navigation={provs:huroutes.opt.navLinkProviders,getId:function(){return this
 return[];let idx=reverse?coords.length-1:0;const step=coords.length/count*(reverse?-1:1);let wpts=[];for(i=0;i<count;++i,idx+=step)
 wpts.push(coords[Math.round(idx)]);return wpts;},}
 function initNavSelector()
-{var elem=$('#nav-options');$.each(navigation.provs,(key,value)=>{const id=key.toLowerCase().replace(/ /g,'');elem.append($('<div><input type="radio" name="navProv" id="{0}" value="{1}" {2}> <label for="{0}" title="{3}">{1}</label></div>'.format(id,key,key==navigation.getId()?'checked':'',langDict['nav-label'][key]||'')));});}
+{var elem=$('#nav-options');$.each(navigation.provs,(key,value)=>{const id=key.toLowerCase().replace(/ /g,'');elem.append($('<div><input type="radio" name="navProv" id="{0}" value="{1}" {2}> <label for="{0}" title="{3}">{4}</label></div>'.format(id,key,key==navigation.getId()?'checked':'',langDict['nav-label'][key]||'',langDict['nav'][key]||key)));});}
 function planTo(coords,reverse)
 {open(navigation.getLink(coords,reverse),'_blank');return false;}
 function addNavigationLinks(elem,coords,length)
