@@ -715,8 +715,10 @@ function initNavSelector()
     $.each(navigation.provs, (key, value) => {
         const id = key.toLowerCase().replace(/ /g, '');
         elem.append(
-            $('<div><input type="radio" name="navProv" id="{0}" value="{1}" {2}> <label for="{0}" title="{3}">{1}</label></div>'
-                .format(id, key, key == navigation.getId() ? 'checked' : '', langDict['nav-label'][key] || '')));
+            $('<div><input type="radio" name="navProv" id="{0}" value="{1}" {2}> <label for="{0}" title="{3}">{4}</label></div>'
+                .format(
+                    id, key, key == navigation.getId() ? 'checked' : '',
+                    langDict['nav-label'][key] || '', langDict['nav'][key] || key)));
     });
 }
 
