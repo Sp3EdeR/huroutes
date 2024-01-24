@@ -60,6 +60,7 @@
   <link rel="stylesheet" href="res/huroutes.css" />
   <script src="res/huroutes.js"></script>
   <script>
+    const phoneRouterOnly = 'Ez a tervező csak a telefonos applikációval működik.';
     // huroutes requires that the language dictionary is provided here
     // The huroutes.lang.<html[lang]> attribute field must be filled in
     huroutes.lang.hu = {
@@ -84,10 +85,16 @@
       'navToPoi': ' Navigáció <span class="nav-start">ehhez a helyhez</span>.',
       'sharePoi': 'Hely <span class="share">megosztása</span>.',
       'nav': {
-        'Google follow route': 'Google útvonal követés'
+        'Google follow route': 'Google útvonal követés',
+        'HERE WeGo follow route': 'HERE WeGo útvonal követés',
+        'Sygic follow route': 'Sygic útvonal követés'
       },
       'nav-label': {
-        'Google follow route': 'Hosszabb útvonalak esetén előfordulhat pontatlan tervezés.'
+        'Google follow route': 'Hosszabb útvonalak esetén előfordulhat pontatlan tervezés.',
+        'HERE WeGo': phoneRouterOnly,
+        'HERE WeGo follow route': phoneRouterOnly,
+        'Sygic': phoneRouterOnly,
+        'Sygic follow route': phoneRouterOnly
       },
       'navLength': 'Az útvonal hossza.',
       'navStartTooltip': 'Navigálás az útvonal elejére.',
@@ -148,7 +155,7 @@
 
   <!-- The options dialog -->
   <div class="modal fade" id="options-dialog" tabindex="-1">
-    <div class="modal-dialog">
+    <div class="modal-dialog modal-dialog-scrollable">
       <div class="modal-content">
         <div class="modal-header">
           <h3>Beállítások</h3>
