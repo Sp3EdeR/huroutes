@@ -78,6 +78,34 @@ const huroutes = {
                     return link.format(dst.lat, dst.lng);
                 },
                 'waypoints': 0
+            },
+            'HERE WeGo': {
+                'getLink': dst => {
+                    const link = 'https://share.here.com/g/{0},{1}?m=d';
+                    return link.format(dst.lat, dst.lng);
+                },
+                'waypoints': 0
+            },
+            'HERE WeGo follow route': {
+                'getLink': (dst, wpts) => {
+                    const link = 'https://share.here.com/g/{0}/{1},{2}?m=d';
+                    return link.format(wpts.map(c => c.lat + ',' + c.lng).join('/'), dst.lat, dst.lng);
+                },
+                'waypoints': 15 // The starting location and destination are not part of this.
+            },
+            'Sygic': {
+                'getLink': dst => {
+                    const link = 'https://go.sygic.com/directions?to={0},{1}&mode=car';
+                    return link.format(dst.lat, dst.lng);
+                },
+                'waypoints': 0
+            },
+            'Sygic follow route': {
+                'getLink': (dst, wpts) => {
+                    const link = 'https://go.sygic.com/directions?to={0},{1}{2}&mode=car';
+                    return link.format(dst.lat, dst.lng, wpts.map(c => '&via[]={0},{1}'.format(c.lat, c.lng)).join(''));
+                },
+                'waypoints': 15
             }
         },
         // Route path data download formats.
