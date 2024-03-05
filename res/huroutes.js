@@ -60,6 +60,8 @@ const huroutes = {
                     // Undocumented URI for multi-waypoint route planning.
                     // The double-slash after dir means an unknown starting coordinate.
                     // The data means determine starting location and start directions.
+                    if (!wpts.length)
+                        return huroutes.opt.navLinkProviders.Google.getLink(dst);
                     const link = 'https://www.google.com/maps/dir//{0}/{1},{2}/data=!4m6!4m5!1m1!4e2!1m0!1m0!3e0';
                     return link.format(wpts.map(c => c.lat + ',' + c.lng).join('/'), dst.lat, dst.lng);
                 },
@@ -88,6 +90,8 @@ const huroutes = {
             },
             'HERE WeGo follow route': {
                 'getLink': (dst, wpts) => {
+                    if (!wpts.length)
+                        return huroutes.opt.navLinkProviders['HERE WeGo'].getLink(dst);
                     const link = 'https://share.here.com/g/{0}/{1},{2}?m=d';
                     return link.format(wpts.map(c => c.lat + ',' + c.lng).join('/'), dst.lat, dst.lng);
                 },
@@ -724,7 +728,7 @@ var navigation = {
     _getProv: function() { return this.provs[this.getId()]; },
     /** Returns a set of waypoints as requested by the link provider. */
     _getWaypoints: function(coords, reverse) {
-        const count = this._getProv().waypoints;
+        const count = Math.min(this._getProv().waypoints, coords.length - 1);
         if (!count)
             return [];
         let idx = reverse ? coords.length - 1 : 0;
@@ -792,7 +796,7 @@ function addPoiLinks(elem, title, coord)
 {
     var eLinks = $('<p> {0} {1}</p>'.format(langDict.navToPoi, langDict.sharePoi));
     var eNav = eLinks.find('.nav-start');
-    eNav.replaceWith($('<a href="#" />').append(eNav.html()).click(() => planTo(coord)));
+    eNav.replaceWith($('<a href="#" />').append(eNav.html()).click(() => planTo([coord])));
     var eShare = eLinks.find('.share');
     eShare.replaceWith($('<a href="#" />').append(eShare.html()).click(() => {
         navigator.share({
