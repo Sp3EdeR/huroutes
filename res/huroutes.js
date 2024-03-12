@@ -1138,8 +1138,17 @@ function initAdToast()
     /** Shows a toast to Android users that don't use the app that it is available. */
     function androidAppToast()
     {
-        if (localStorage.shownAndroidAd || !navigator.userAgent.includes('Android') ||
-            navigator.userAgent.includes('huroutes'))
+        // Don't show if:
+        if (
+            // Already shown the ad
+            localStorage.shownAndroidAd ||
+            // Not running on Android
+            !navigator.userAgent.includes('Android') ||
+            // Running within the Android application
+            navigator.userAgent.includes('huroutes') ||
+            // Running within PWA application
+            navigator.standalone === true ||
+            window.matchMedia('(display-mode: standalone)').matches)
             return;
 
         var androidToast = $('#toast-android-app');
@@ -1252,4 +1261,54 @@ function getJSON(url, ...args)
     });
 }
 
-})();
+})(); // End of main code
+
+// Progressive Web Application code; separated closure
+(function () {
+
+// Opera desktop doesn't support PWA, but pops up beforeinstallprompt.
+if (navigator.userAgent.match(/(Windows|Macintosh|X11).*(Opera|OPR)/))
+    return;
+
+function showToast(id)
+{
+    var toast = $(id);
+    toast.toast('show');
+    // The toast is not shown again once closed.
+    toast.on('hide.bs.toast', () => localStorage.shownPwaAd = true);
+    return toast;
+}
+
+function pwaToast(event)
+{
+    // Prevents default browser notification https://developer.mozilla.org/en-US/docs/Web/API/BeforeInstallPromptEvent
+    event.preventDefault();
+    var toast = showToast('#toast-pwa-app');
+    toast.find('a[href]').on('click', () => {
+        // https://developer.mozilla.org/en-US/docs/Web/API/BeforeInstallPromptEvent/prompt
+        event.prompt();
+        toast.toast('hide');
+        return false;
+    });
+}
+
+if (!localStorage.shownPwaAd)
+{
+    // Safari sucks, it is incompatible
+    sfrTime = -1;
+    if (navigator.userAgent && navigator.userAgent.match(
+        // Test for safari on iOS, but not Chrome-based or Firefox frontend
+        /(?:iP(?:od|ad|hone))(?!.*(?:CriOS|FxiOS))/) &&
+        // Ensure it doesn't pop in standalone mode
+        !navigator.standalone && !window.matchMedia('(display-mode: standalone)').matches)
+    {
+        sfrTime = setTimeout(() => showToast('#toast-safari-app'), 5000);
+    }
+
+    window.addEventListener("beforeinstallprompt", event => {
+        setTimeout(() => pwaToast(event), 5000);
+        clearTimeout(sfrTime);
+    });
+}
+
+})(); // End of PWA code
