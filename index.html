@@ -10,23 +10,32 @@
   <!-- Disable resizing the viewport for mobile -->
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
 
+  <title>huroutes | Magyar utak vezetésre</title>
+
+  <!-- Web app icons and themes -->
+  <link rel="icon" type="image/png" sizes="32x32" href="res/favicon-32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="res/favicon-16.png">
+  <link rel="shortcut icon" href="res/favicon.ico">
+  <link rel="manifest" href="app/manifest.json">
+  <link rel="mask-icon" href="app/safari-pinned-tab.svg" color="#bae1c7">
+  <link rel="apple-touch-icon" sizes="180x180" href="app/maskableicon-180.png">
+  <meta name="application-name" content="huroutes">
+  <meta name="apple-mobile-web-app-title" content="huroutes">
+  <meta name="msapplication-TileColor" content="#2b5797">
+  <meta name="msapplication-config" content="app/mstile.xml">
+  <meta name="theme-color" content="#0000bb">
+
   <!-- Shared link preview card resources -->
   <meta property="og:title" content="huroutes" />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://sp3eder.github.io/huroutes/" />
   <meta property="og:description" content="Magyar utak vezetésre" />
-  <meta property="og:image" content="https://sp3eder.github.io/huroutes/res/banner.jpg" />
-  <meta property="og:image:secure_url" content="https://sp3eder.github.io/huroutes/res/banner.jpg" />
+  <meta property="og:image" content="https://sp3eder.github.io/huroutes/app/banner.jpg" />
+  <meta property="og:image:secure_url" content="https://sp3eder.github.io/huroutes/app/banner.jpg" />
   <meta property="og:image:alt" content="huroutes" />
   <meta property="og:image:type" content="image/jpeg" />
   <meta property="og:image:width" content="1200" />
   <meta property="og:image:height" content="630" />
-
-  <title>huroutes | Magyar utak vezetésre</title>
-  
-  <link rel="icon" href="res/favicon.ico" />
-  <link rel="icon" href="res/favicon.png" sizes="32x32" type="image/png" />
-  <link rel="icon" href="res/favicon-sm.png" sizes="16x16" type="image/png" />
 
   <!-- Google tag (gtag.js) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-7RW997RX2F"></script>
@@ -35,6 +44,11 @@
     function gtag(){dataLayer.push(arguments);}
     gtag('js', new Date());
     gtag('config', 'G-7RW997RX2F');
+  </script>
+
+  <script>
+    if ('serviceWorker' in navigator)
+        navigator.serviceWorker.register('sw.js');
   </script>
 
   <!-- 3rd party library CSS -->
@@ -199,6 +213,35 @@
       <div class="toast-body">
         Elérhető a huroutes alkalmazás a telefonodra! Ha ki szeretnéd próbálni,
         <a href="https://github.com/Sp3EdeR/huroutes-android/releases" target="_blank">innen töltheted le</a>.
+      </div>
+    </div>
+    <!-- Progressive Web App ad toast -->
+    <div id="toast-pwa-app" role="alert" aria-live="assertive" aria-atomic="true" class="toast hide" data-autohide="false">
+      <div class="toast-header">
+        <strong class="mr-auto">Alkalmazásként Telepítés</strong>
+        <button type="button" class="ml-2 mb-1 close" data-dismiss="toast" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="toast-body">
+        <p>Telepíteni tudod ezt az alkalmazást rögtön a böngésződből az eszközödre.
+        Ha ki szeretnéd próbálni, <a href="#">kattints ide</a>.</p>
+        <p>Ha később szeretnéd kipróbálni, a böngésződ címsorában vagy menüjében találhatod
+        meg a telepítés vagy letöltés menüpontot legközelebb.</p>
+      </div>
+    </div>
+    <!-- Safari PWA ad toast -->
+    <div id="toast-safari-app" role="alert" aria-live="assertive" aria-atomic="true" class="toast hide" data-autohide="false">
+      <div class="toast-header">
+        <strong class="mr-auto">Alkalmazásként Telepítés</strong>
+        <button type="button" class="ml-2 mb-1 close" data-dismiss="toast" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="toast-body">
+        Telepíteni tudod ezt az alkalmazást rögtön a böngésződből az eszközödre.
+        Ha ki szeretnéd próbálni, kattints a megosztás <i class="fas fa-external-link-alt"></i>
+        ikonra, majd válaszd ki a "Hozzáadás a kezdőképernyőhöz" lehetőséget.
       </div>
     </div>
     <!-- App update toast -->
