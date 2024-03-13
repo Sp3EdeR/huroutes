@@ -7,4 +7,4 @@ if(!localStorage.shownPwaAd)
 {window.addEventListener("beforeinstallprompt",event=>setTimeout(()=>pwaToast(event),5000));if(navigator.userAgent.match(/iP(ad|od|hone).*Safari/)&&!navigator.standalone&&!window.matchMedia('(display-mode: standalone)').matches)
 toast('#toast-safari-app');}
 if('serviceWorker'in navigator)
-navigator.serviceWorker.register('app/service-worker.js');})();
+navigator.serviceWorker.register('sw.js');})();
