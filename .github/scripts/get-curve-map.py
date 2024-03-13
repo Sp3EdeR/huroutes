@@ -4,6 +4,7 @@ import io
 import json
 import kml2geojson.main as k2g
 import os
+import ssl
 import urllib.request as req
 import zipfile
 
@@ -15,7 +16,10 @@ def main():
     args = parser.parse_args()
 
     print("Downloading %s file..." % args.kmz_url)
-    kmzData = req.urlopen(args.kmz_url).read()
+    sslCtx = ssl.create_default_context()
+    sslCtx.check_hostname = False
+    sslCtx.verify_mode = ssl.CERT_NONE
+    kmzData = req.urlopen(args.kmz_url, context=sslCtx).read()
     print("Opening the KMZ file...")
     kmzFile = io.BytesIO(kmzData)
     z = zipfile.ZipFile(kmzFile)
