@@ -5,6 +5,4 @@ function pwaToast(event)
 {event.preventDefault();var toast=toast('#toast-pwa-app');toast.find('a[href]').on('click',()=>{event.prompt();toast.toast('hide');return false;});}
 if(!localStorage.shownPwaAd)
 {window.addEventListener("beforeinstallprompt",event=>setTimeout(()=>pwaToast(event),5000));if(navigator.userAgent.match(/iP(ad|od|hone).*Safari/)&&!navigator.standalone&&!window.matchMedia('(display-mode: standalone)').matches)
-toast('#toast-safari-app');}
-if('serviceWorker'in navigator)
-navigator.serviceWorker.register('service-worker.js');})();
+toast('#toast-safari-app');}})();
