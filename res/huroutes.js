@@ -1165,7 +1165,7 @@ function initAdToast()
                 if (ver.localeCompare(appVer, undefined, { numeric: true, sensitivity: 'base' }) == 1)
                 {
                     var androidToast = $('#toast-app-update');
-                    androidToast.find('.download-app').attr('href', url);
+                    androidToast.find('a[href]').attr('href', url);
                     androidToast.toast('show');
                 }
             }
