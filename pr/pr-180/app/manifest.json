@@ -16,13 +16,19 @@
             "type": "image/png"
         },
         {
-            "src": "../app/andmaskable-192.png",
+            "src": "../app/maskableicon-180.png",
+            "sizes": "180x180",
+            "type": "image/png",
+            "purpose": "maskable"
+        },
+        {
+            "src": "../app/maskableicon-192.png",
             "sizes": "192x192",
             "type": "image/png",
             "purpose": "maskable"
         },
         {
-            "src": "../app/andmaskable-512.png",
+            "src": "../app/maskableicon-512.png",
             "sizes": "512x512",
             "type": "image/png",
             "purpose": "maskable"

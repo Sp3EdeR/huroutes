@@ -209,4 +209,11 @@ $('#sidebar').swipe({swipeLeft:sidebar.close});$(window).resize(function(){if(!i
 sidebar.open()})}
 function getJSON(url,...args)
 {return $.getJSON(url,...args).then((...args)=>args,err=>{msg=()=>console.error('Failed loading {0}.'.format(url));gtBase=getGoogleTranslateBase();if(gtBase)
-return $.getJSON(gtBase+url,...args).fail(msg);msg();return err;});}})();
+return $.getJSON(gtBase+url,...args).fail(msg);msg();return err;});}})();(function(){if(navigator.userAgent.match(/(Windows|Macintosh|X11).*(Opera|OPR)/))
+return;function showToast(id)
+{var toast=$(id);toast.toast('show');toast.on('hide.bs.toast',()=>localStorage.shownPwaAd=true);return toast;}
+function pwaToast(event)
+{event.preventDefault();var toast=showToast('#toast-pwa-app');toast.find('a[href]').on('click',()=>{event.prompt();toast.toast('hide');return false;});}
+if(!localStorage.shownPwaAd)
+{window.addEventListener("beforeinstallprompt",event=>setTimeout(()=>pwaToast(event),5000));if(navigator.userAgent.match(/iP(ad|od|hone).*Safari/)&&!navigator.standalone&&!window.matchMedia('(display-mode: standalone)').matches)
+showToast('#toast-safari-app');}})();
