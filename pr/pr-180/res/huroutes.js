@@ -215,5 +215,5 @@ return;function showToast(id)
 function pwaToast(event)
 {event.preventDefault();var toast=showToast('#toast-pwa-app');toast.find('a[href]').on('click',()=>{event.prompt();toast.toast('hide');return false;});}
 if(!localStorage.shownPwaAd)
-{window.addEventListener("beforeinstallprompt",event=>setTimeout(()=>pwaToast(event),5000));if(navigator.vendor&&navigator.vendor.match(/Apple/)&&navigator.userAgent&&navigator.userAgent.match(/CriOS|FxiOS/)&&!navigator.standalone&&!window.matchMedia('(display-mode: standalone)').matches)
+{window.addEventListener("beforeinstallprompt",event=>setTimeout(()=>pwaToast(event),5000));if(navigator.vendor&&navigator.vendor.match(/Apple/)&&navigator.userAgent&&navigator.userAgent.match(/Macintosh|iP(od|ad|hone)/)&&!navigator.userAgent.match(/CriOS|FxiOS/)&&!navigator.standalone&&!window.matchMedia('(display-mode: standalone)').matches)
 showToast('#toast-safari-app');}})();
