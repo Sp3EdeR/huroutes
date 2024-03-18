@@ -215,6 +215,6 @@ return;function showToast(id)
 function pwaToast(event)
 {event.preventDefault();var toast=showToast('#toast-pwa-app');toast.find('a[href]').on('click',()=>{event.prompt();toast.toast('hide');return false;});}
 if(!localStorage.shownPwaAd)
-{sfrTime=-1;if(navigator.userAgent&&navigator.userAgent.match(/(?:Macintosh|iP(?:od|ad|hone))(?!.*(?:Chrome|Firefox|CriOS|FxiOS))/)&&!navigator.standalone&&!window.matchMedia('(display-mode: standalone)').matches)
+{sfrTime=-1;if(navigator.userAgent&&navigator.userAgent.match(/(?:iP(?:od|ad|hone))(?!.*(?:CriOS|FxiOS))/)&&!navigator.standalone&&!window.matchMedia('(display-mode: standalone)').matches)
 {sfrTime=setTimeout(()=>showToast('#toast-safari-app'),5000);}
 window.addEventListener("beforeinstallprompt",event=>{setTimeout(()=>pwaToast(event),5000);clearTimeout(sfrTime);});}})();
