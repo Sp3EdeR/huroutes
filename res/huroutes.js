@@ -186,7 +186,7 @@ function downloadString(fileName,mimeType,data,charset='utf-8')
 {var anchor=$('<a id="download" style="display:none" download="{0}"/>'.format(fileName));anchor.attr('href','data:{0};charset={1},{2}'.format(mimeType,charset,encodeURIComponent(data)));$('body').append(anchor);anchor[0].click();anchor.remove();}
 function initAdToast()
 {setTimeout(function(){androidAppToast();androidAppUpdateToast();},5000);function androidAppToast()
-{if(localStorage.shownAndroidAd||!navigator.userAgent.includes('Android')||navigator.userAgent.includes('huroutes'))
+{if(localStorage.shownAndroidAd||!navigator.userAgent.includes('Android')||navigator.userAgent.includes('huroutes')||navigator.standalone===true||window.matchMedia('(display-mode: standalone)').matches)
 return;var androidToast=$('#toast-android-app');androidToast.toast('show');androidToast.on('hide.bs.toast',()=>localStorage.shownAndroidAd=true);androidToast.find('a[href]').on('click',()=>androidToast.toast('hide'));}
 function androidAppUpdateToast()
 {if(!navigator.userAgent.includes('huroutes'))
@@ -209,4 +209,12 @@ $('#sidebar').swipe({swipeLeft:sidebar.close});$(window).resize(function(){if(!i
 sidebar.open()})}
 function getJSON(url,...args)
 {return $.getJSON(url,...args).then((...args)=>args,err=>{msg=()=>console.error('Failed loading {0}.'.format(url));gtBase=getGoogleTranslateBase();if(gtBase)
-return $.getJSON(gtBase+url,...args).fail(msg);msg();return err;});}})();
+return $.getJSON(gtBase+url,...args).fail(msg);msg();return err;});}})();(function(){if(navigator.userAgent.match(/(Windows|Macintosh|X11).*(Opera|OPR)/))
+return;function showToast(id)
+{var toast=$(id);toast.toast('show');toast.on('hide.bs.toast',()=>localStorage.shownPwaAd=true);return toast;}
+function pwaToast(event)
+{event.preventDefault();var toast=showToast('#toast-pwa-app');toast.find('a[href]').on('click',()=>{event.prompt();toast.toast('hide');return false;});}
+if(!localStorage.shownPwaAd)
+{sfrTime=-1;if(navigator.userAgent&&navigator.userAgent.match(/(?:iP(?:od|ad|hone))(?!.*(?:CriOS|FxiOS))/)&&!navigator.standalone&&!window.matchMedia('(display-mode: standalone)').matches)
+{sfrTime=setTimeout(()=>showToast('#toast-safari-app'),5000);}
+window.addEventListener("beforeinstallprompt",event=>{setTimeout(()=>pwaToast(event),5000);clearTimeout(sfrTime);});}})();
