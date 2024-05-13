@@ -10,21 +10,21 @@
 						"md":"data/Szepjuhaszne.md",
 						"kml":"data/Szepjuhaszne.kml",
 						"rat":4,
-						"upd":"2021 október"
+						"upd":"2024 március"
 					},
 					{
 						"ttl":"Egér út",
 						"md":"data/Egerut.md",
 						"kml":"data/Egerut.kml",
 						"rat":3,
-						"upd":"2022 január"
+						"upd":"2024 március"
 					},
 					{
 						"ttl":"Budatétény",
 						"md":"data/Budateteny.md",
 						"kml":"data/Budateteny.kml",
 						"rat":4,
-						"upd":"2022 november"
+						"upd":"2024 március"
 					},
 					{
 						"ttl":"Gombai Görbék",
@@ -104,7 +104,7 @@
 						"md":"data/BajnaBajot.md",
 						"kml":"data/BajnaBajot.kml",
 						"rat":6,
-						"upd":"2022 július"
+						"upd":"2024 február"
 					},
 					{
 						"ttl":"Szomor - Bajna",
@@ -155,7 +155,7 @@
 						"md":"data/EtyekAlcsutdoboz.md",
 						"kml":"data/EtyekAlcsutdoboz.kml",
 						"rat":5,
-						"upd":"2023 június"
+						"upd":"2024 március"
 					},
 					{
 						"ttl":"Söréd - Gánt",
@@ -232,7 +232,7 @@
 						"md":"data/2505.md",
 						"kml":"data/2505.kml",
 						"rat":8,
-						"upd":"2023 június"
+						"upd":"2024 március"
 					},
 					{
 						"ttl":"Lyukóbánya",
@@ -279,14 +279,14 @@
 						"md":"data/24Paradsasvar.md",
 						"kml":"data/24Paradsasvar.kml",
 						"rat":8,
-						"upd":"2023 június"
+						"upd":"2024 március"
 					},
 					{
 						"ttl":"24 (Sirok)",
 						"md":"data/24Sirok.md",
 						"kml":"data/24Sirok.kml",
 						"rat":7,
-						"upd":"2023 június"
+						"upd":"2024 március"
 					},
 					{
 						"ttl":"Kékestető",
@@ -300,7 +300,7 @@
 						"md":"data/2408.md",
 						"kml":"data/2408.kml",
 						"rat":6,
-						"upd":"2023 május"
+						"upd":"2024 március"
 					},
 					{
 						"ttl":"Mátrai Bejáróút",
