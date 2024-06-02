@@ -511,7 +511,14 @@
 						"md":"data/Koroshegy.md",
 						"kml":"data/Koroshegy.kml",
 						"rat":7,
-						"upd":"2022 június"
+						"upd":"2024 június"
+					},
+					{
+						"ttl":"Pölöskei Szörpentin",
+						"md":"data/Poloske.md",
+						"kml":"data/Poloske.kml",
+						"rat":6,
+						"upd":"2024 június"
 					},
 					{
 						"ttl":"Balaton-felvidéki Bejáróút",
@@ -546,7 +553,7 @@
 						"md":"data/PecsOrfu.md",
 						"kml":"data/PecsOrfu.kml",
 						"rat":8,
-						"upd":"2022 május"
+						"upd":"2024 június"
 					},
 					{
 						"ttl":"Magyarterhelend - Orfű",
@@ -653,6 +660,13 @@
 						"kml":"data/6315.kml",
 						"rat":5,
 						"upd":"2022 május"
+					},
+					{
+						"ttl":"Porrog",
+						"md":"data/Porrog.md",
+						"kml":"data/Porrog.kml",
+						"rat":4,
+						"upd":"2024 június"
 					}
 				]
 			}
