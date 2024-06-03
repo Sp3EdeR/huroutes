@@ -602,10 +602,7 @@ function addRoute(data)
         omnivore.kml(data.kml, null, layer).addTo(map);
     else
         // The 0-timeout runs the function asynchronously
-        tmout = setTimeout(() => {
-            omnivore.kml.parse(data.kml, null, layer).addTo(map);
-            clearTimeout(tmout);
-        }, 0);
+        setTimeout(() => omnivore.kml.parse(data.kml, null, layer).addTo(map));
     return routeId;
 }
 
