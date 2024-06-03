@@ -86,7 +86,7 @@ length+=coords[i-1].distanceTo(coords[i]);var elemLinks=$('<div class="route-ctr
 if(fragment.isIt(routeId))
 navigateTo(layer);});layer.routeId=routeId;if(data.kml.substr(-4)==='.kml')
 omnivore.kml(data.kml,null,layer).addTo(map);else
-tmout=setTimeout(()=>{omnivore.kml.parse(data.kml,null,layer).addTo(map);clearTimeout(tmout);},0);return routeId;}
+setTimeout(()=>omnivore.kml.parse(data.kml,null,layer).addTo(map));return routeId;}
 function initColorSelector()
 {const themes=huroutes.opt.themes;const uniqueArray=arr=>$.grep(arr,(item,idx)=>idx===$.inArray(item,arr));const allThemeClasses=uniqueArray($.map(Object.values(themes).filter(i=>i.classes!=undefined),i=>i.classes));const currentColorTheme=()=>themes[localStorage.theme]?localStorage.theme:Object.keys(themes)[0];const isSystemColorTheme=themeName=>!themes[themeName].classes;const getMediaQuery=color=>'(prefers-color-scheme: {0})'.format(color);function applyTheme(themeName)
 {let data=themes[themeName];if(isSystemColorTheme(themeName))
