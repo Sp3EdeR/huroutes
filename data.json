@@ -232,7 +232,7 @@
 						"md":"data/2505.md",
 						"kml":"data/2505.kml",
 						"rat":8,
-						"upd":"2024 március"
+						"upd":"2024 június"
 					},
 					{
 						"ttl":"Lyukóbánya",
@@ -279,14 +279,14 @@
 						"md":"data/24Paradsasvar.md",
 						"kml":"data/24Paradsasvar.kml",
 						"rat":8,
-						"upd":"2024 március"
+						"upd":"2024 június"
 					},
 					{
 						"ttl":"24 (Sirok)",
 						"md":"data/24Sirok.md",
 						"kml":"data/24Sirok.kml",
-						"rat":7,
-						"upd":"2024 március"
+						"rat":8,
+						"upd":"2024 június"
 					},
 					{
 						"ttl":"Kékestető",
@@ -301,6 +301,13 @@
 						"kml":"data/2408.kml",
 						"rat":6,
 						"upd":"2024 március"
+					},
+					{
+						"ttl":"Egerbakta - Pétervására",
+						"md":"data/EgerbaktaPetervasara.md",
+						"kml":"data/EgerbaktaPetervasara.kml",
+						"rat":6,
+						"upd":"2024 június"
 					},
 					{
 						"ttl":"Mátrai Bejáróút",
@@ -358,7 +365,7 @@
 						"md":"data/Cered.md",
 						"kml":"data/Cered.kml",
 						"rat":8,
-						"upd":"2023 június"
+						"upd":"2024 június"
 					},
 					{
 						"ttl":"Hagony - Zabar",
@@ -372,7 +379,7 @@
 						"md":"data/Matraszele.md",
 						"kml":"data/Matraszele.kml",
 						"rat":5,
-						"upd":"2023 június"
+						"upd":"2024 június"
 					},
 					{
 						"ttl":"Aggtelek",
@@ -394,6 +401,13 @@
 						"kml":"data/Borsodbota.kml",
 						"rat":5,
 						"upd":"2022 november"
+					},
+					{
+						"ttl":"2122",
+						"md":"data/2122.md",
+						"kml":"data/2122.kml",
+						"rat":6,
+						"upd":"2024 június"
 					},
 					{
 						"ttl":"Északi Határvonal",

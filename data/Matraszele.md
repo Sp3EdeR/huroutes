@@ -1,3 +1,3 @@
 Egy tökéletes minőségű aszfalt csík vágja el a gyönyörű fenyőerdőt Zagyvaróna és Mátraszele között. Bár enyhén kanyarog csak, és az ívek többsége jól belátható, így egy igen komoly tempó felvehető végig a szakaszon, viszonylag biztonságosan. Ezt az is segíti, hogy nagyon alacsony a szakasz forgalma. Magas tempó mellett pedig egész érdekessé válik a szakasz.
 
-Tökéletes levezetőként használható a [ceredi szerpentin](#Cered) után.
+Tökéletes levezetőként használható a [ceredi szerpentin](#Cered) előtt vagy után.
