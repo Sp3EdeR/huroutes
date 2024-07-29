@@ -589,6 +589,11 @@ function addRoute(data)
             addStreetViewLink(elemLinks, coords[mididx], coords[mididx + 1]);
             elem.append(elemLinks);
             addDlShareLinks(elemLinks, coords, routeId);
+            // Add touch helper for this path
+            const isTouchDevice = 'ontouchstart' in window || 0 < navigator.maxTouchPoints ||
+                0 < navigator.msMaxTouchPoints;
+            if (isTouchDevice)
+                L.path.touchHelper(layer).addTo(map);
         }
 
         if (fragment.isIt(routeId))
