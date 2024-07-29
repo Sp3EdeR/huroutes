@@ -83,7 +83,7 @@ function addRoute(data)
 {const colors=huroutes.opt.route.colors;const opacities=huroutes.opt.route.opacities;var routeId=data.id||data.kml.match(/data\/([\w-]+).kml/)[1];var rating=normRating(data.rat);var pathWeight=3+(!data.bkg&&rating/2);var layer=L.geoJson(null,{filter:feature=>feature.geometry.type=="LineString",pane:data.bkg?'bkgRoutes':'shadowPane',style:{color:data.bkg?colors[0]:colors[rating],opacity:data.bkg?opacities[0]:opacities[rating],weight:pathWeight},focusedStyle:{color:huroutes.opt.route.focusColor,opacity:huroutes.opt.route.focusOpacity,weight:pathWeight+2}});layer.on('click',event=>!navigateTo(event.target));layer.on('mouseover',event=>event.target.focused||event.target.setStyle(event.target.options.focusedStyle));layer.on('mouseout',event=>event.target.focused||event.target.setStyle(event.target.options.style));layer.on('layeradd',event=>{var elem=$('li[data-routeid={0}] .route-links'.format(routeId));var coords=event.layer.getLatLngs();if(Array.isArray(coords)&&2<=coords.length)
 {var length=0.0;for(var i=1;i<coords.length;++i)
 length+=coords[i-1].distanceTo(coords[i]);var elemLinks=$('<div class="route-ctrls btn-toolbar" role="toolbar"/>');addNavigationLinks(elemLinks,coords,length);var mididx=Math.floor(coords.length/2);addStreetViewLink(elemLinks,coords[mididx],coords[mididx+1]);elem.append(elemLinks);addDlShareLinks(elemLinks,coords,routeId);const isTouchDevice='ontouchstart'in window||0<navigator.maxTouchPoints||0<navigator.msMaxTouchPoints;if(isTouchDevice)
-L.path.touchHelper(path).addTo(map);}
+L.path.touchHelper(layer).addTo(map);}
 if(fragment.isIt(routeId))
 navigateTo(layer);});layer.routeId=routeId;if(data.kml.substr(-4)==='.kml')
 omnivore.kml(data.kml,null,layer).addTo(map);else
