@@ -6,7 +6,6 @@ runs:
     - name: Minify the website code
       shell: bash
       run: |
-          sudo pip install --upgrade pip
           sudo pip install minify-html==0.10.2
           sudo pip install rjsmin==1.2.1
           sudo pip install rcssmin==1.1.1
@@ -17,6 +16,5 @@ runs:
       # The script supports processing KMZ files provided by kml.roadcurvature.com. "Curve" KMZ format is not supported.
       shell: bash
       run: |
-          sudo pip install --upgrade pip
           sudo pip install kml2geojson==5.1.0
           python ".github/scripts/get-curve-map.py" "https://kml.roadcurvature.com/europe/hungary.c_1000.kmz" "map/curves.geo.json" "map/curves-style.json"
