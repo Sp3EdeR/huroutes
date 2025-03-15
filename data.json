@@ -24,14 +24,14 @@
 						"md":"data/Budateteny.md",
 						"kml":"data/Budateteny.kml",
 						"rat":4,
-						"upd":"2024 március"
+						"upd":"2025 március"
 					},
 					{
 						"ttl":"Gombai Görbék",
 						"md":"data/GombaiGorbek.md",
 						"kml":"data/GombaiGorbek.kml",
 						"rat":5,
-						"upd":"2024 augusztus"
+						"upd":"2025 január"
 					}
 				]
 			},
@@ -43,14 +43,14 @@
 						"md":"data/Lepence.md",
 						"kml":"data/Lepence.kml",
 						"rat":7,
-						"upd":"2024 szeptember"
+						"upd":"2025 február"
 					},
 					{
 						"ttl":"Dobogókő",
 						"md":"data/Dobogoko.md",
 						"kml":"data/Dobogoko.kml",
 						"rat":6,
-						"upd":"2024 szeptember"
+						"upd":"2025 január"
 					},
 					{
 						"ttl":"Pilisvörösvár - Csobánka",
@@ -90,7 +90,7 @@
 						"md":"data/Hereg.md",
 						"kml":"data/Hereg.kml",
 						"rat":7,
-						"upd":"2024 április"
+						"upd":"2025 január"
 					},
 					{
 						"ttl":"Tarján - Agostyán",
@@ -110,7 +110,7 @@
 						"ttl":"Szomor - Bajna",
 						"md":"data/SzomorBajna.md",
 						"kml":"data/SzomorBajna.kml",
-						"upd":"2024 április",
+						"upd":"2025 január",
 						"rat": 4
 					},
 					{
@@ -155,7 +155,7 @@
 						"md":"data/EtyekAlcsutdoboz.md",
 						"kml":"data/EtyekAlcsutdoboz.kml",
 						"rat":5,
-						"upd":"2024 március"
+						"upd":"2025 március"
 					},
 					{
 						"ttl":"Söréd - Gánt",
