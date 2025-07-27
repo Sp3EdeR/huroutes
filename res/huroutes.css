@@ -18,6 +18,10 @@ body.huroutes-light, .huroutes-light #sidebar {
 }
 body.huroutes-dark, .huroutes-dark #sidebar {
   background: #13192e;
+  background:
+    linear-gradient(90deg,#00000000 93%, #00000034 99%),
+    linear-gradient(80deg, #13192e00 60%, #070c149d 100%),
+    linear-gradient(0deg, #13192e, #152a33, #0f1926);
   color: #fff;
   scrollbar-color: #7092ad #212c38;
 }
