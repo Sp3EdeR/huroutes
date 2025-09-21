@@ -50,14 +50,14 @@
 						"md":"data/Dobogoko.md",
 						"kml":"data/Dobogoko.kml",
 						"rat":6,
-						"upd":"2025 január"
+						"upd":"2025 szeptember"
 					},
 					{
 						"ttl":"Pilisvörösvár - Csobánka",
 						"md":"data/PilisvorosvarCsobanka.md",
 						"kml":"data/PilisvorosvarCsobanka.kml",
 						"rat":5,
-						"upd":"2024 szeptember"
+						"upd":"2025 szeptember"
 					},
 					{
 						"ttl":"Fellegvár",
@@ -128,22 +128,22 @@
 						"ttl":"Kismaros - Márianosztra - Szob",
 						"md":"data/KismarosMarianosztraSzob.md",
 						"kml":"data/KismarosMarianosztraSzob.kml",
-						"rat":6,
-						"upd":"2022 április"
+						"rat":5,
+						"upd":"2025 szeptember"
 					},
 					{
 						"ttl":"Szob - Letkés - Esztergom",
 						"md":"data/SzobLetkesEsztergom.md",
 						"kml":"data/SzobLetkesEsztergom.kml",
 						"rat":6,
-						"upd":"2022 április"
+						"upd":"2025 szeptember"
 					},
 					{
 						"ttl":"Vác - Rétság",
 						"md":"data/VacRetsag.md",
 						"kml":"data/VacRetsag.kml",
 						"rat":5,
-						"upd":"2024 augusztus"
+						"upd":"2025 szeptember"
 					}
 				]
 			},
@@ -201,7 +201,7 @@
 						"md":"data/PenciParade.md",
 						"kml":"data/PenciParade.kml",
 						"rat":6,
-						"upd":"2024 augusztus"
+						"upd":"2025 szeptember"
 					},
 					{
 						"ttl":"Bánk - Romhány",
