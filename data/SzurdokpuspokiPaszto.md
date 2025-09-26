@@ -1,0 +1,1 @@
+Egy viszonylag rövid szakasz, ami önmagában nem lenne túl érdekes, viszont a [Galyatető](#2408) felé vezető úttal együtt értelmet nyer, ahova pont útba eshet. A szakasz részben felújított, részben közepes minőségű, ami élvezetésse teheti, hogy meglepően tempós ahhoz képest, hogy milyen kanyarokkal és szintbeli különbségekkel rendelkezik.
