@@ -303,6 +303,13 @@
 						"upd":"2025 május"
 					},
 					{
+						"ttl":"Szurdokpüspöki - Pásztó",
+						"md":"data/SzurdokpuspokiPaszto.md",
+						"kml":"data/SzurdokpuspokiPaszto.kml",
+						"rat":4,
+						"upd":"2025 szeptember"
+					},
+					{
 						"ttl":"Egerbakta - Pétervására",
 						"md":"data/EgerbaktaPetervasara.md",
 						"kml":"data/EgerbaktaPetervasara.kml",
