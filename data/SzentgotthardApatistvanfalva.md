@@ -1,0 +1,3 @@
+A Szentgotthárdot Apátistvánfalvával összekötő keskeny aszfaltcsík enyhébb ívekkel szeli át a mezőket, majd az Őrségi Nemzeti Park sűrű erdejét. Az aszfaltcsík igen keskeny, és nem mindenhol belátható, így óvatosan kell közlekedni. Összességében viszonylag jó minőségű az aszfaltfelület, bár a szélein kissé letöredezett. Vannak a szakaszon komolyabb bukkanók és dombok is, amik kissé paprikásabbá teszik az utat. Közeledve Apátistvánfalvához fehér aszfaltra, majd a falu közvetlen közelében közepes minőségűre vált az útfelület, így fokozatosan mérsékelni érdemes a tempót.
+
+Mindenképpen figyeljünk az állatokra. Éjszakánként kiemelten vadveszélyes a környék, de nappal is előfordulhatnak vadállatok.

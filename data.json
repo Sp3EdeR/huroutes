@@ -553,6 +553,13 @@
 				"ttl":"Egyéb",
 				"cnt":[
 					{
+						"ttl":"Szentgotthárd - Apátistvánfalva",
+						"md":"data/SzentgotthardApatistvanfalva.md",
+						"kml":"data/SzentgotthardApatistvanfalva.kml",
+						"rat":5,
+						"upd":"2025 december"
+					},
+					{
 						"ttl":"Balinka",
 						"md":"data/Balinka.md",
 						"kml":"data/Balinka.kml",
