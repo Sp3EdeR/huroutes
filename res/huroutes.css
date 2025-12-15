@@ -256,6 +256,8 @@ ul a.dropdown-toggle {
   font-size: 1.1em;
   overflow: hidden;
   padding: 10px;
+  padding-right: 25px;
+  text-overflow: ellipsis;
 }
 ul ul a.dropdown-toggle {
   padding-left: 20px !important;
