@@ -154,6 +154,25 @@ const huroutes = {
         },
         // The street view link format-string template
         'streetView': 'https://www.google.com/maps/@?api=1&map_action=pano&viewpoint={0},{1}&heading={2}',
+        // Configuration of the route labels
+        'routeLabels': {
+            'minZoom': 11, // The minimum zoom level at which route labels are shown
+            // The text template used for route labels. {0} is replaced with the route title.
+            // \uf105 is this: https://fontawesome.com/v5/icons/angle-right?f=classic&s=solid.
+            'textTemplate': "\uf105\uf105\uf105\uf105\uf105\uf105   {0}   \uf105\uf105\uf105\uf105\uf105\uf105",
+            'attributes': {
+                'fill': '#ccc',
+                'font-family': '"Noto Sans", "Font Awesome 5 Free", Roboto, sans-serif',
+                'font-size': 8,
+                'font-style': 'normal',
+                'font-weight': 900, // Needed for the Font Awesome solid icon (missing in regular)
+                'paint-order': 'stroke',
+                'stroke': '#000000',
+                'stroke-width': 1,
+                'stroke-linecap': 'butt',
+                'stroke-linejoin': 'miter'
+            }
+        },
         // Configuration for the current location or placemarkers
         'markers': {
             'zoomTo': 16 // The zoom level for the camera upon jumping to a marker
@@ -267,6 +286,7 @@ $(document).ready(function() {
     initSidebarEvents();
     initNavSelector();
     initDownloadTypeSelector();
+    initRouteLabels();
 
     // Navigates to the page-location specified by the fragment, if any was given
     navigateTo(fragment.get())
@@ -599,6 +619,7 @@ function addRoute(data)
             navigateTo(layer); // event.layer is a different instance; must use layer from closure
     });
     layer.routeId = routeId;
+    layer.routeName = data.ttl;
     // Load the KML file data into the Leaflet layer
     // This is done asynchronously to avoid blocking rendering for too long
     if (data.kml.substr(-4) === '.kml')
@@ -837,6 +858,51 @@ function initDownloadTypeSelector()
             $('<div><input type="radio" name="dlType" id="{0}" value="{1}" {2}> <label for="{0}">{1}</label></div>'
                 .format(id, key, key == dlRoute.getId() ? 'checked' : '')));
     });
+}
+
+/**
+ * Updates route label display on zoom events.
+ */
+function initRouteLabels()
+{
+    map.on('zoom', event => {
+        var map = event.target;
+        updateRouteLabels(map, huroutes.opt.routeLabels.minZoom <= map.getZoom());
+    });
+}
+
+/**
+ * Stores the current visibility state of route labels to avoid frequent switching.
+ */
+var labelsVisible = null;
+
+/**
+ * Updates the visibility of route labels on the map.
+ * @param {object} map The Leaflet map object.
+ * @param {bool} visible Whether route labels should be visible. Default: true.
+ */
+function updateRouteLabels(map, visible = true)
+{
+    if (labelsVisible === visible)
+        return;
+
+    const options = {
+        attributes: huroutes.opt.routeLabels.attributes,
+        center: true,
+        repeat: true,
+        offset: 3
+    };
+
+    map.eachLayer(layer => {
+        if (!layer.routeName)
+            return;
+
+        layer.setText(
+            visible ? huroutes.opt.routeLabels.textTemplate.format(layer.routeName) : null,
+            options);
+    });
+
+    labelsVisible = visible;
 }
 
 /**

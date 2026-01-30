@@ -6,6 +6,7 @@
   color-scheme: light dark;
 }
 body {
+  font-family: "Noto Sans",-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Liberation Sans",sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji" !important;
   font-size: 14px;
   overflow-x: hidden;
   padding: 0;
