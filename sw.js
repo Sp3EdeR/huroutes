@@ -6,6 +6,16 @@ cacheNames = {
     dynamic: "dynamic-v1"
 };
 
+// Fetch content with a timeout
+const fetchWithTimeout = (request, timeoutMs = 1000) => {
+    const controller = new AbortController();
+    const timeoutId = setTimeout(() => controller.abort(
+        new DOMException("Fetch timeout for " + request.url, "TimeoutError")), timeoutMs);
+
+    return fetch(request, { signal: controller.signal })
+        .finally(() => clearTimeout(timeoutId));
+};
+
 // Delete caches not in the list of names
 self.addEventListener('activate', e => {
     cacheIds = Object.keys(cacheNames).map(key => cacheNames[key]);
@@ -21,28 +31,33 @@ self.addEventListener('activate', e => {
 self.addEventListener('fetch', e => {
     const url = new URL(e.request.url);
 
-    // This caching logic serves first from cache, then falls back to net
-    const cacheFirst = async cacheName =>
-        caches.open(cacheName)
-        .then(cache => cache.match(e.request.url)
-            .then(cachedResponse => cachedResponse ||
-                fetch(e.request)
-                .then(response => {
-                    cache.put(e.request, response.clone());
-                    return response;
-                })
-            ));
+    // Process a cache result or fetch and cache if not found
+    // Used in the below caching strategies as a common logic
+    const cacheFirstLogic = cache => cache.match(e.request.url)
+        .then(cachedResponse =>
+            cachedResponse ||
+            fetch(e.request)
+            .then(response => {
+                cache.put(e.request, response.clone());
+                return response;
+            })
+        );
 
-    // This caching logic serves first from net, then falls back to cache
-    const netFirst = async cacheName =>
-        caches.open(cacheName)
+    // This caching logic serves first from cache, then falls back to net (or main browser cache)
+    const cacheFirst = cacheName => caches.open(cacheName).then(cacheFirstLogic);
+
+    // This caching logic serves first from net (or main browser cache), then falls back to cache
+    const netFirst = cacheName => caches.open(cacheName)
         .then(cache => {
-            return fetch(e.request)
+            // Abort the request if the network call hangs longer than 1s
+            return fetchWithTimeout(e.request, 1000)
                 .then(response => {
                     cache.put(e.request, response.clone());
                     return response;
                 })
-                .catch(() => cache.match(e.request.url));
+                .catch(error => error.name === 'TimeoutError' || error.name === 'AbortError' ?
+                    cacheFirstLogic(cache) :       // Try cache, then retry without timeout
+                    cache.match(e.request.url));   // Just try cache then maybe fail
         });
 
     // Requests for huroutes resources
