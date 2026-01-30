@@ -29,11 +29,26 @@ self.addEventListener('activate', e => {
 
 // Cache logic implementation on fetch
 self.addEventListener('fetch', e => {
-    const url = new URL(e.request.url);
+    // Check if a response is compatible with the request mode
+    const isResponseCompatible = (req, resp) => {
+        return resp &&
+            // https://developer.mozilla.org/en-US/docs/Web/API/FetchEvent/respondWith
+            (resp.type !== 'opaque' || req.mode === 'no-cors') &&        // no-cors => opaque
+            (resp.type !== 'opaqueredirect' || req.mode === 'manual') && // manual => opaqueredirect
+            (resp.type !== 'cors' || req.mode !== 'same-origin');        // same-origin => !cors
+    }
+
+    // Match a request in cache and ensure response compatibility
+    const matchCompatibleResponse = (cache, request) =>
+        cache.match(request.url).then(response => {
+            if (!response) return null;
+            if (isResponseCompatible(request, response)) return response;
+            return cache.delete(request).then(() => null);
+        });
 
     // Process a cache result or fetch and cache if not found
     // Used in the below caching strategies as a common logic
-    const cacheFirstLogic = cache => cache.match(e.request.url)
+    const cacheFirstLogic = cache => matchCompatibleResponse(cache, e.request)
         .then(cachedResponse =>
             cachedResponse ||
             fetch(e.request)
@@ -55,10 +70,16 @@ self.addEventListener('fetch', e => {
                     cache.put(e.request, response.clone());
                     return response;
                 })
-                .catch(error => error.name === 'TimeoutError' || error.name === 'AbortError' ?
-                    cacheFirstLogic(cache) :       // Try cache, then retry without timeout
-                    cache.match(e.request.url));   // Just try cache then maybe fail
+                .catch(error => error.name === 'TimeoutError' || error.name === 'AbortError'
+                    ? cacheFirstLogic(cache)                    // Try cache, then retry without timeout
+                    : matchCompatibleResponse(cache, e.request) // Other error, try cache only
+                        .then(response => {
+                            if (response) return response;
+                            throw error;                        // Cache miss, rethrow original error
+                        })); // Just try cache then maybe fail
         });
+
+    const url = new URL(e.request.url);
 
     // Requests for huroutes resources
     if (url.origin == self.location.origin)
