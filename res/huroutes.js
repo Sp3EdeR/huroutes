@@ -159,7 +159,7 @@ const huroutes = {
             'minZoom': 11, // The minimum zoom level at which route labels are shown
             // The text template used for route labels. {0} is replaced with the route title.
             // \uf105 is this: https://fontawesome.com/v5/icons/angle-right?f=classic&s=solid.
-            'textTemplate': "\uf105\uf105\uf105\uf105\uf105\uf105   {0}   \uf105\uf105\uf105\uf105\uf105\uf105",
+            'textTemplate': "      \uf105\uf105\uf105   {0}   \uf105\uf105\uf105      ",
             'attributes': {
                 'fill': '#ccc',
                 'font-family': '"Noto Sans", "Font Awesome 5 Free", Roboto, sans-serif',
@@ -1319,3 +1319,4 @@ if (!localStorage.shownPwaAd)
 }
 
 })(); // End of PWA code
+
