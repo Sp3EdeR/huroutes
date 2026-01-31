@@ -157,9 +157,13 @@ const huroutes = {
         // Configuration of the route labels
         'routeLabels': {
             'minZoom': 11, // The minimum zoom level at which route labels are shown
-            // The text template used for route labels. {0} is replaced with the route title.
-            // \uf105 is this: https://fontawesome.com/v5/icons/angle-right?f=classic&s=solid.
-            'textTemplate': "      \uf105\uf105\uf105   {0}   \uf105\uf105\uf105      ",
+            // The arrow symbols are shown on the route labels to indicate direction
+            'arrows': {
+                'forward': '\uf105'.repeat(3), // FontAwesome angle-right
+                'backward': '\uf104'.repeat(3) // FontAwesome angle-left
+            },
+            // Route label text template. Route name: {0}, arrows: {1}
+            'textTemplate': "      {1}   {0}   {1}      ",
             'attributes': {
                 'fill': '#ccc',
                 'font-family': '"Noto Sans", "Font Awesome 5 Free", Roboto, sans-serif',
@@ -615,6 +619,16 @@ function addRoute(data)
                 L.path.touchHelper(layer).addTo(map);
         }
 
+        // After initializing tools in correct direction, make sure the layer is rendered in the
+        // west -> east direction, so that labels look good.
+        if (Array.isArray(coords) && coords.length > 1 &&
+            coords[coords.length - 1].lng < coords[0].lng)
+        {
+            event.layer.setLatLngs(coords.slice().reverse());
+            // Used by route label arrow direction selection
+            layer.isReversed = true;
+        }
+
         if (fragment.isIt(routeId))
             navigateTo(layer); // event.layer is a different instance; must use layer from closure
     });
@@ -897,9 +911,10 @@ function updateRouteLabels(map, visible = true)
         if (!layer.routeName)
             return;
 
-        layer.setText(
-            visible ? huroutes.opt.routeLabels.textTemplate.format(layer.routeName) : null,
-            options);
+        const arrows = huroutes.opt.routeLabels.arrows;
+        const arrow = (layer.isReversed ? arrows.backward : arrows.forward);
+        const text = huroutes.opt.routeLabels.textTemplate.format(layer.routeName, arrow);
+        layer.setText(visible ? text : null, options);
     });
 
     labelsVisible = visible;
