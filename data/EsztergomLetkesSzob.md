@@ -1,0 +1,3 @@
+Jellemzően enyhébb kanyaríveket kapunk ezen a szakaszon, és az útburkolat nem a legtapadósabb fajtából van. A Szlovák oldalon meglehetősen jó az út minősége, azonban a forgalom közepes - nagyobb szokott lenni. A magyar oldalon viszont jóval kisebb szokott lenni a forgalom. Nagyrészt dombok és mezők között haladunk, de egy rövidebb szakaszon a Börzsöny erdeje és az Ipoly szegődik mellénk. Ezen a részen érdemes figyelni a vadakra.
+
+Könnyen kapcsolható az úthoz a [Szob - Márianosztra - Kismaros szakasz](#SzobMarianosztraKismaros), természetes folytatásként. Érdemes a [dobogókői szerpentin](#Dobogoko) felől érkezni.
