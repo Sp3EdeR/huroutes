@@ -1,4 +1,4 @@
-Majdnem tökéletes útminőséget, viszont szűk útfelületet találunk itt. Enyhe-közepes kanyarokhoz lehet szerencsénk, de viszonylag jó sebességgel lehet azért közlekedni, ami miatt ezek élvezhetőek. A forgalom közepes, és sajnos jár busz is errefelé. Több helyen táblával is jelzett útszűkületekkel van tarkítva a szakasz, ahol mindenképpen időben le kell lassítanunk. A jelölt irányban - azaz nyugatra - elsőbbségünk van az útszűkületekben. Mindenképpen számoljunk vadveszéllyel.
+Majdnem tökéletes útminőséget, viszont szűk útfelületet találunk itt. Enyhe-közepes kanyarokhoz lehet szerencsénk, de viszonylag jó sebességgel lehet azért közlekedni, ami miatt ezek élvezhetőek. A forgalom közepes, és sajnos jár busz is errefelé. Több helyen táblával is jelzett útszűkületekkel van tarkítva a szakasz, ahol mindenképpen időben le kell lassítanunk. A jelölt irányban - azaz keletre - nincs elsőbbségünk az útszűkületekben, erre figyeljünk. Mindenképpen számoljunk vadveszéllyel.
 
 Megfontolható a közeli, [gibárti](#Gibart) kanyarokat hozzáfűzni.
 

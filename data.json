@@ -125,16 +125,16 @@
 				"ttl":"Börzsöny Környéke",
 				"cnt":[
 					{
-						"ttl":"Kismaros - Márianosztra - Szob",
-						"md":"data/KismarosMarianosztraSzob.md",
-						"kml":"data/KismarosMarianosztraSzob.kml",
+						"ttl":"Szob - Márianosztra - Kismaros",
+						"md":"data/SzobMarianosztraKismaros.md",
+						"kml":"data/SzobMarianosztraKismaros.kml",
 						"rat":5,
 						"upd":"2025 szeptember"
 					},
 					{
-						"ttl":"Szob - Letkés - Esztergom",
-						"md":"data/SzobLetkesEsztergom.md",
-						"kml":"data/SzobLetkesEsztergom.kml",
+						"ttl":"Esztergom - Letkés - Szob",
+						"md":"data/EsztergomLetkesSzob.md",
+						"kml":"data/EsztergomLetkesSzob.kml",
 						"rat":6,
 						"upd":"2025 szeptember"
 					},
@@ -158,16 +158,16 @@
 						"upd":"2025 március"
 					},
 					{
-						"ttl":"Söréd - Gánt",
-						"md":"data/SoredGant.md",
-						"kml":"data/SoredGant.kml",
+						"ttl":"Gánt - Söréd",
+						"md":"data/GantSored.md",
+						"kml":"data/GantSored.kml",
 						"rat":5,
 						"upd":"2023 június"
 					},
 					{
-						"ttl":"Gánt - Csákvár",
-						"md":"data/GantCsakvar.md",
-						"kml":"data/GantCsakvar.kml",
+						"ttl":"Csákvár - Gánt",
+						"md":"data/CsakvarGant.md",
+						"kml":"data/CsakvarGant.kml",
 						"rat":5,
 						"upd":"2023 május"
 					},
@@ -228,7 +228,7 @@
 				"ttl":"Bükk",
 				"cnt":[
 					{
-						"ttl":"2505",
+						"ttl":"2505 (Bükk Főút)",
 						"md":"data/2505.md",
 						"kml":"data/2505.kml",
 						"rat":8,
@@ -410,7 +410,7 @@
 						"upd":"2025 május"
 					},
 					{
-						"ttl":"2122",
+						"ttl":"2122 (Alsótold)",
 						"md":"data/2122.md",
 						"kml":"data/2122.kml",
 						"rat":6,
@@ -462,7 +462,7 @@
 						"upd":"2023 június"
 					},
 					{
-						"ttl":"8213",
+						"ttl":"8213 (Szápár - Csőszpuszta)",
 						"md":"data/8213.md",
 						"kml":"data/8213.kml",
 						"rat":5,
@@ -584,14 +584,14 @@
 						"upd":"2024 június"
 					},
 					{
-						"ttl":"Magyarterhelend - Orfű",
-						"md":"data/MagyarhertelendOrfu.md",
-						"kml":"data/MagyarhertelendOrfu.kml",
+						"ttl":"Orfű - Magyarhertelend",
+						"md":"data/OrfuMagyarhertelend.md",
+						"kml":"data/OrfuMagyarhertelend.kml",
 						"rat":6,
 						"upd":"2022 április"
 					},
 					{
-						"ttl":"6605",
+						"ttl":"6605 (Bakonya)",
 						"md":"data/6605.md",
 						"kml":"data/6605.kml",
 						"rat":7,
