@@ -1,0 +1,3 @@
+A Márianosztra környéki rész a [kóspallagi kereszteződésig](#geo:%C3%9Atkeresztez%C5%91d%C3%A9s@47.86869,18.926939) sajnos sok helyen kátyús és megsüllyedt, hullámos. Ezért nehéz rajta tempót menni. Főleg az út közepén lehet normálisabban közlekedni. Túrázókkal is találkozhatunk az út szélén. A [kóspallagi kereszteződés](#geo:%C3%9Atkeresztez%C5%91d%C3%A9s@47.86869,18.926939) és Kismaros között viszont kiváló az útminőség, ez a keleti szakasz akár 3 csillagot is megérne önmagában. A szakasz szinte végig mély erdőben fut, így érdemes figyelni a vadakra.
+
+Könnyen kapcsolható az úthoz az [Esztergomi - Letkés - Szob szakasz](#EsztergomLetkesSzob) is.
