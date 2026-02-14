@@ -190,12 +190,21 @@ const huroutes = {
                 'default': 'Bright', // The default theme to use
                 'mapping': {'dark': 'Dark'} // A mapping from media query color themes to huroutes color theme
             },
-            'Bright': { 'classes': ['bootstrap', 'maps-light', 'huroutes-light'] },
-            'Dark': { 'classes': ['bootstrap-dark', 'maps-dark', 'huroutes-dark'] },
-            'Dark with bright map': { 'classes': ['bootstrap-dark', 'maps-light', 'huroutes-dark'] }
+            'Bright': {
+                'classes': ['maps-light', 'huroutes-light'],
+                'bsTheme': 'light'
+            },
+            'Dark': {
+                'classes': ['maps-dark', 'huroutes-dark'],
+                'bsTheme': 'dark'
+            },
+            'Dark with bright map': {
+                'classes': ['maps-light', 'huroutes-dark'],
+                'bsTheme': 'dark'
+            }
         },
         // Options for the tooltip display:
-        // https://getbootstrap.com/docs/4.0/components/tooltips/#options
+        // https://getbootstrap.com/docs/5.3/components/tooltips/#options
         'tooltip': {
             boundary: 'viewport',
             placement: 'bottom'
@@ -243,7 +252,35 @@ String.prototype.format = function() {
 
 /** Creates a short tooltip initialization method with huroutes options. */
 $.fn.initTooltip = function() {
-    return this.each(function() { $(this).tooltip(huroutes.opt.tooltip); });
+    return this.each(function() {
+        bootstrap.Tooltip.getOrCreateInstance(this, huroutes.opt.tooltip);
+    });
+};
+
+/** Bootstrap toast handling wrapper. */
+$.fn.toast = function(action) {
+    return this.each(function() {
+        const inst = bootstrap.Toast.getOrCreateInstance(this);
+        if (action === 'show')
+            inst.show();
+        else if (action === 'hide')
+            inst.hide();
+        else if (action === 'toggle')
+            inst.toggle();
+    });
+};
+
+/** Bootstrap collapse handling wrapper. */
+$.fn.collapse = function(action) {
+    return this.each(function() {
+        const inst = bootstrap.Collapse.getOrCreateInstance(this, { toggle: false });
+        if (action === 'show')
+            inst.show();
+        else if (action === 'hide')
+            inst.hide();
+        else if (action === 'toggle')
+            inst.toggle();
+    });
 };
 
 // The main code is encapsulated within this closure
@@ -286,6 +323,7 @@ $(document).ready(function() {
     initLangSelector();
     initCtrls(tiles, overlays);
     $('#options-dialog').on('hidden.bs.modal', updateOptions);
+    $('.language-select [title]').initTooltip();
     $('.options-button [title]').initTooltip();
     initSidebarEvents();
     initNavSelector();
@@ -479,7 +517,7 @@ function addDataItem(parentElem, item)
 function createMenuItem(elem, data)
 {
     var dropId = 'menu' + nextDropId++;
-    elem.append($('<a href="#{0}" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle"/>'.format(dropId)).html(data.ttl));
+    elem.append($('<a href="#{0}" data-bs-toggle="collapse" aria-expanded="false" class="dropdown-toggle"/>'.format(dropId)).html(data.ttl));
     if (data.md || data.kml || data.pnt)
         console.error('Menu {0} contains route data that it should not.'.format(data.ttl));
     return dropId;
@@ -494,7 +532,7 @@ function createMenuRouteItem(elem, data)
 {
     elem.addClass('menuitem');
     var dropId = 'menu' + nextDropId++;
-    elem.append($('<a href="#{0}" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle"/>'.format(dropId)).html(data.ttl).click(function() {
+    elem.append($('<a href="#{0}" data-bs-toggle="collapse" aria-expanded="false" class="dropdown-toggle"/>'.format(dropId)).html(data.ttl).click(function() {
         navigateTo('#' + $(this).parents('li').first().attr('data-routeid'));
     }));
     var elemDiv = $('<div class="menu list-unstyled collapse panel"/>').prop('id', dropId);
@@ -681,7 +719,10 @@ function initColorSelector()
             applyTheme(selected);
         }
         else
+        {
+            document.documentElement.setAttribute('data-bs-theme', data.bsTheme);
             $('body').removeClass(allThemeClasses).addClass(data.classes);
+        }
     }
 
     applyTheme(currentColorTheme());
@@ -735,7 +776,7 @@ function initLangSelector()
     langIdx = provider.langs.findIndex(lng => lng[0] == lang);
     lang = 0 <= langIdx ? provider.langs.splice(langIdx, 1)[0] : provider.langs[0];
 
-    $('#sidebar .dropdown-toggle').append($('<span class="fi fi-{0}">'.format(lang[lang.length - 1])));
+    $('#language-select').append($('<span class="fi fi-{0}">'.format(lang[lang.length - 1])));
     $('#sidebar .dropdown-menu').append(provider.langs.map(lang => {
         var url = (getGoogleTranslateBase() || location.origin + location.pathname);
         if (lang[0] != sourceLang)
@@ -811,7 +852,7 @@ function planTo(coords, reverse)
 function addNavigationLinks(elem, coords, length)
 {
     var eNav = $('\
-<div class="btn-group mr-2 mt-2" role="group">\
+<div class="btn-group me-2 mt-2" role="group">\
   <a href="#" class="nav-start btn" title="{0}"><i class="fas fa-step-backward"></i></a>\
   <span class="btn" title="{1}"><i class="fas fa-route"></i> <sub>{2}</sub></span>\
   <a href="#" class="nav-end btn" title="{3}"><i class="fas fa-step-forward"></i></a>\
@@ -962,7 +1003,7 @@ function addDlShareLinks(elem, coords, routeId)
         return false;
     }
     var eNav = $('\
-<div class="btn-group mr-2 mt-2" role="group" title="{0}">\
+<div class="btn-group me-2 mt-2" role="group" title="{0}">\
   <a href="#" class="strt-vw btn"><i class="fas fa-street-view"></i></a>\
 </div>'.format(langDict.streetViewTooltip));
     eNav.find('.strt-vw').click(() => streetViewAt(coord, coordNext));
