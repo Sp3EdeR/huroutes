@@ -358,7 +358,7 @@ function initCtrls(tiles, overlays)
             $('#toast-location-error').toast('show');
             localStorage.removeItem('showLocation');
         },
-        setView: 'untilPan',
+        setView: 'untilPanOrZoom',
         showPopup: false,
         strings: { title: langDict.locateTooltip }
     }).addTo(map);
