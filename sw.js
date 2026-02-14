@@ -1,7 +1,7 @@
 (function () {
 
 cacheNames = {
-    thirdparty: "thirdparty-v2",
+    thirdparty: "thirdparty-v3",
     static: "static-v2",
     dynamic: "dynamic-v1"
 };
