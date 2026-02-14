@@ -52,9 +52,7 @@
   </script>
 
   <!-- 3rd party library CSS -->
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha256-+IZRbz1B6ee9mUx/ejmonK+ulIP5A5bLDd6v6NHqXnI=" crossorigin="anonymous" referrerpolicy="no-referrer">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@forevolve/bootstrap-dark@4.0.2/dist/css/toggle-bootstrap.min.css" integrity="sha256-FrYhUW1FIy6GrbYaAdOOeWzysJaYHvXRTvC5JkpI2Io=" crossorigin="anonymous" referrerpolicy="no-referrer">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@forevolve/bootstrap-dark@4.0.2/dist/css/toggle-bootstrap-dark.min.css" integrity="sha256-eqdjE7gK5OBNAjYKy+tYZdioTsdhYcRprawOAIscGxY=" crossorigin="anonymous" referrerpolicy="no-referrer">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" integrity="sha256-2FMn2Zx6PuH5tdBQDRNwrOo60ts5wWPC9R8jK67b3t4=" crossorigin="anonymous" referrerpolicy="no-referrer">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.4/css/all.min.css" integrity="sha256-mUZM63G8m73Mcidfrv5E+Y61y7a12O5mW4ezU3bxqW4=" crossorigin="anonymous" referrerpolicy="no-referrer">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource/noto-sans@5.2.10/index.css" integrity="sha256-DgDXFQXB8ZVeD/0eW8nW7FEA5BmUwx/vn6XTUR4z7to=" crossorigin="anonymous" referrerpolicy="no-referrer">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flag-icons@7.5.0/css/flag-icons.min.css" integrity="sha256-tyPeBlnZW2qWbAF1hQiCt9qo6SOgOSymvJBum+FrrwI=" crossorigin="anonymous" referrerpolicy="no-referrer">
@@ -64,7 +62,7 @@
   <!-- 3rd party library JS -->
   <script src="https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
   <script src="https://cdn.jsdelivr.net/npm/jquery-touchswipe@1.6.19/jquery.touchSwipe.min.js" integrity="sha256-ns1OeEP3SedE9Theqmu444I44sikbp1O+bF/6BNUUy0=" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js" integrity="sha256-GRJrh0oydT1CwS36bBeJK/2TggpaUQC6GzTaTQdZm0k=" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha256-5P1JGBOIxI7FBAvT/mb1fCnI5n/NhQKzNUuW7Hq0fMc=" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
   <script src="https://cdn.jsdelivr.net/npm/showdown@2.1.0/dist/showdown.min.js" integrity="sha256-iOtvu+DCcN3zOEruDJYg0HDgkKJuB8Z0Ia42yQO11kk=" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
   <script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
   <script src="https://cdn.jsdelivr.net/npm/leaflet-providers@3.0.0/leaflet-providers.js" integrity="sha256-SZMwMOIwpXRGjWgSFT0ljD6zknwdYIhj0vnmRJgpvaA=" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
@@ -147,14 +145,14 @@
   <div class="container-fluid">
     <div class="row">
       <!-- The sidebar panel -->
-      <nav id="sidebar" class="sidebar col-md-4 col-xl-3">
+      <nav id="sidebar" class="sidebar col-11 col-md-4 col-xl-3">
         <div class="sidebar-header">
           <div class="language-select dropdown">
-            <a class="dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-expanded="false"></a>
-            <div class="dropdown-menu"><!-- Filled up by Javascript --></div>
+            <a class="dropdown-toggle" id="language-select" href="#" role="button" data-bs-toggle="dropdown" data-bs-auto-close="true" aria-expanded="false" title="Nyelv kiválasztása"></a>
+            <div class="dropdown-menu" aria-labelledby="language-select"><!-- Filled up by Javascript --></div>
           </div>
           <h2 class="title">huroutes</h2>
-          <div class="options-button"><a href="#" data-toggle="modal" data-target="#options-dialog"><span class="fas fa-cog" title="Beállítások"></span></a></div>
+          <div class="options-button"><a href="#" data-bs-toggle="modal" data-bs-target="#options-dialog"><span class="fas fa-cog" title="Beállítások"></span></a></div>
           <p class="sub-title">Magyar utak vezetésre</p>
         </div>
         <div id="menubox" class="menubox"></div>
@@ -167,7 +165,7 @@
         <div id="void-open-sidebar" class="panel-void"></div>
       </nav>
       <!-- The map panel -->
-      <div id="main" class="col-md-8 offset-md-4 col-xl-9 offset-xl-3">
+      <div id="main" class="col-12 col-md-8 offset-md-4 col-xl-9 offset-xl-3">
         <div id="map" class="map"></div>
       </div>
       <!-- A void panel that covers the map and helps closing the sidebar -->
@@ -181,7 +179,7 @@
       <div class="modal-content">
         <div class="modal-header">
           <h3>Beállítások</h3>
-          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
           <p>Színtéma kiválasztása</p>
@@ -198,7 +196,7 @@
           </form>
         </div>
         <div class="modal-footer">
-          <button type="button" id="options-dialog-ok" class="btn btn-primary" data-dismiss="modal">OK</button>
+          <button type="button" id="options-dialog-ok" class="btn btn-primary" data-bs-dismiss="modal">OK</button>
         </div>
       </div>
     </div>
@@ -207,12 +205,10 @@
   <!-- Toasts -->
   <div aria-live="polite" aria-atomic="true" style="position: fixed; right: 10px; top:10px; min-height: 200px; z-index: 1049;">
     <!-- Android app ad toast -->
-    <div id="toast-android-app" role="alert" aria-live="assertive" aria-atomic="true" class="toast hide" data-autohide="false">
+    <div id="toast-android-app" role="alert" aria-live="assertive" aria-atomic="true" class="toast" data-bs-autohide="false">
       <div class="toast-header">
-        <strong class="mr-auto">Android Alkalmazás</strong>
-        <button type="button" class="ml-2 mb-1 close" data-dismiss="toast" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
+        <strong class="me-auto">Android Alkalmazás</strong>
+        <button type="button" class="btn-close ms-2 mb-1" data-bs-dismiss="toast" aria-label="Close"></button>
       </div>
       <div class="toast-body">
         Elérhető a huroutes a telefonodra, natív alkalmazásként! Ha ki szeretnéd próbálni,
@@ -220,12 +216,10 @@
       </div>
     </div>
     <!-- Progressive Web App ad toast -->
-    <div id="toast-pwa-app" role="alert" aria-live="assertive" aria-atomic="true" class="toast hide" data-autohide="false">
+    <div id="toast-pwa-app" role="alert" aria-live="assertive" aria-atomic="true" class="toast" data-bs-autohide="false">
       <div class="toast-header">
-        <strong class="mr-auto">Alkalmazásként Telepítés</strong>
-        <button type="button" class="ml-2 mb-1 close" data-dismiss="toast" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
+        <strong class="me-auto">Alkalmazásként Telepítés</strong>
+        <button type="button" class="btn-close ms-2 mb-1" data-bs-dismiss="toast" aria-label="Close"></button>
       </div>
       <div class="toast-body">
         <p>Telepíteni tudod ezt az alkalmazást rögtön a böngésződből az eszközödre.
@@ -235,12 +229,10 @@
       </div>
     </div>
     <!-- Safari PWA ad toast -->
-    <div id="toast-safari-app" role="alert" aria-live="assertive" aria-atomic="true" class="toast hide" data-autohide="false">
+    <div id="toast-safari-app" role="alert" aria-live="assertive" aria-atomic="true" class="toast" data-bs-autohide="false">
       <div class="toast-header">
-        <strong class="mr-auto">Alkalmazásként Telepítés</strong>
-        <button type="button" class="ml-2 mb-1 close" data-dismiss="toast" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
+        <strong class="me-auto">Alkalmazásként Telepítés</strong>
+        <button type="button" class="btn-close ms-2 mb-1" data-bs-dismiss="toast" aria-label="Close"></button>
       </div>
       <div class="toast-body">
         Telepíteni tudod ezt az alkalmazást rögtön a böngésződből az eszközödre.
@@ -249,12 +241,10 @@
       </div>
     </div>
     <!-- App update toast -->
-    <div id="toast-app-update" role="alert" aria-live="assertive" aria-atomic="true" class="toast hide" data-autohide="false">
+    <div id="toast-app-update" role="alert" aria-live="assertive" aria-atomic="true" class="toast" data-bs-autohide="false">
       <div class="toast-header">
-        <strong class="mr-auto">Alkalmazás Frissítése</strong>
-        <button type="button" class="ml-2 mb-1 close" data-dismiss="toast" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
+        <strong class="me-auto">Alkalmazás Frissítése</strong>
+        <button type="button" class="btn-close ms-2 mb-1" data-bs-dismiss="toast" aria-label="Close"></button>
       </div>
       <div class="toast-body">
         Elérhető ennek az alkalmazásnak egy új verziója!
@@ -263,12 +253,10 @@
       </div>
     </div>
     <!-- Location requesting error toast -->
-    <div id="toast-location-error" role="alert" aria-live="assertive" aria-atomic="true" class="toast hide" data-autohide="true" data-delay="5000">
+    <div id="toast-location-error" role="alert" aria-live="assertive" aria-atomic="true" class="toast" data-bs-autohide="true" data-bs-delay="5000">
       <div class="toast-header">
-        <strong class="mr-auto">Helymeghatározási Hiba</strong>
-        <button type="button" class="ml-2 mb-1 close" data-dismiss="toast" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
+        <strong class="me-auto">Helymeghatározási Hiba</strong>
+        <button type="button" class="btn-close ms-2 mb-1" data-bs-dismiss="toast" aria-label="Close"></button>
       </div>
       <div class="toast-body">Nem sikerült lekérni a tartózkodási helyet. Talán hiányzik a helymeghatározási engedély?</div>
     </div>
