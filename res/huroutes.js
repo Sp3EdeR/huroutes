@@ -166,7 +166,7 @@ const huroutes = {
             'textTemplate': "      {1}   {0}   {1}      ",
             'attributes': {
                 'fill': '#ccc',
-                'font-family': '"Noto Sans", "Font Awesome 5 Free", Roboto, sans-serif',
+                'font-family': '"Noto Sans", "Font Awesome 7 Free", Roboto, sans-serif',
                 'font-size': 8,
                 'font-style': 'normal',
                 'font-weight': 900, // Needed for the Font Awesome solid icon (missing in regular)
@@ -565,7 +565,7 @@ function createInfoPanel(elem, data)
         {
             var eUpd = $('\
 <span class="update-date" title="{0}">\
-  <i class="far fa-clock"></i> {1}\
+    <i class="fa-regular fa-clock"></i> {1}\
 </span>'.format(langDict.updateDate, data.upd)).initTooltip();
             elemHeader.append(eUpd);
         }
@@ -575,11 +575,11 @@ function createInfoPanel(elem, data)
                 langDict.rating
             )).initTooltip();
             for (var i = 0; i < 5; ++i)
-                starsOutter.append($('<i class="far fa-star"></i>'));
+                starsOutter.append($('<i class="fa-regular fa-star"></i>'));
             var rating = normRating(data.rat);
             var starsInner = $('<span class="stars-inner" style="width:{0};" />'.format(rating * 10 + '%'));
             for (var i = 0; i < 5; ++i)
-                starsInner.append($('<i class="fas fa-star"></i>'));
+                starsInner.append($('<i class="fa-solid fa-star"></i>'));
             starsOutter.append(starsInner);
             elemHeader.append(starsOutter);
         }
@@ -853,9 +853,9 @@ function addNavigationLinks(elem, coords, length)
 {
     var eNav = $('\
 <div class="btn-group me-2 mt-2" role="group">\
-  <a href="#" class="nav-start btn" title="{0}"><i class="fas fa-step-backward"></i></a>\
-  <span class="btn" title="{1}"><i class="fas fa-route"></i> <sub>{2}</sub></span>\
-  <a href="#" class="nav-end btn" title="{3}"><i class="fas fa-step-forward"></i></a>\
+    <a href="#" class="nav-start btn" title="{0}"><i class="fa-solid fa-backward-step"></i></a>\
+    <span class="btn" title="{1}"><i class="fa-solid fa-route"></i> <sub>{2}</sub></span>\
+    <a href="#" class="nav-end btn" title="{3}"><i class="fa-solid fa-forward-step"></i></a>\
 </div>'.format(langDict.navStartTooltip, langDict.navLength, langDict.routeLength(length), langDict.navEndTooltip));
     eNav.find('.nav-start').click(() => planTo(coords, true));
     eNav.find('.nav-end').click(() => planTo(coords));
@@ -971,8 +971,8 @@ function addDlShareLinks(elem, coords, routeId)
 {
     var eDownload = $('\
 <div class="btn-group mt-2" role="group">\
-  <a href="#" class="download btn" title="{0}"><i class="fas fa-download"></i></a>\
-  <a href="#{2}" class="share btn" title="{1}"><i class="fas fa-share-alt"></i></a>\
+    <a href="#" class="download btn" title="{0}"><i class="fa-solid fa-download"></i></a>\
+    <a href="#{2}" class="share btn" title="{1}"><i class="fa-solid fa-share-nodes"></i></a>\
 </div>'.format(langDict.dlRouteTooltip, langDict.shareTooltip, routeId));
     eDownload.find('.download').click(() => dlRoute.download(coords, routeId) ?? false).initTooltip();
     eDownload.find('.share').click(e => {
@@ -1004,7 +1004,7 @@ function addDlShareLinks(elem, coords, routeId)
     }
     var eNav = $('\
 <div class="btn-group me-2 mt-2" role="group" title="{0}">\
-  <a href="#" class="strt-vw btn"><i class="fas fa-street-view"></i></a>\
+    <a href="#" class="strt-vw btn"><i class="fa-solid fa-street-view"></i></a>\
 </div>'.format(langDict.streetViewTooltip));
     eNav.find('.strt-vw').click(() => streetViewAt(coord, coordNext));
     eNav.initTooltip();
