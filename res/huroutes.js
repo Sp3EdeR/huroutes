@@ -253,7 +253,37 @@ String.prototype.format = function() {
 /** Creates a short tooltip initialization method with huroutes options. */
 $.fn.initTooltip = function() {
     return this.each(function() {
-        bootstrap.Tooltip.getOrCreateInstance(this, huroutes.opt.tooltip);
+        const inst = bootstrap.Tooltip.getOrCreateInstance(this, huroutes.opt.tooltip);
+        const autoHideEvents = [
+            'pointerdown', 'pointerup', 'pointercancel', 'mousedown', 'mouseup', 'contextmenu',
+            'wheel', 'keydown', 'keyup', 'touchstart', 'touchend', 'touchcancel', 'scroll',
+            'focusin', 'input'
+        ];
+        let autoHideBound = false;
+
+        const autoHideListener = (e) => {
+            if (this.contains(e.target))
+                return;
+            inst.hide();
+        };
+
+        const bindAutoHide = () => {
+            if (autoHideBound)
+                return;
+            autoHideEvents.forEach(type => document.addEventListener(type, autoHideListener, true));
+            autoHideBound = true;
+        };
+
+        const unbindAutoHide = () => {
+            if (!autoHideBound)
+                return;
+            autoHideEvents.forEach(type => document.removeEventListener(type, autoHideListener, true));
+            autoHideBound = false;
+        };
+
+        $(this)
+            .on('shown.bs.tooltip', bindAutoHide)
+            .on('hide.bs.tooltip hidden.bs.tooltip', unbindAutoHide);
     });
 };
 
