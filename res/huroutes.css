@@ -10,6 +10,7 @@ body {
   font-size: 16px;
   overflow-x: hidden;
   padding: 0;
+  --fa-width: auto;
 }
 body.huroutes-light, .huroutes-light #sidebar {
   background: #fff;
