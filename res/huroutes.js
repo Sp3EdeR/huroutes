@@ -21,7 +21,7 @@ return huroutes.opt.navLinkProviders['HERE WeGo'].getLink(dst);const link='https
       <coordinates>{1}</coordinates>\
     </LineString>\
   </Placemark>\
-</Document></kml>','pointTemplate':'{1},{0},0 '}},'streetView':'https://www.google.com/maps/@?api=1&map_action=pano&viewpoint={0},{1}&heading={2}','routeLabels':{'minZoom':11,'arrows':{'forward':'\uf105'.repeat(3),'backward':'\uf104'.repeat(3)},'textTemplate':"      {1}   {0}   {1}      ",'attributes':{'fill':'#ccc','font-family':'"Noto Sans", "Font Awesome 5 Free", Roboto, sans-serif','font-size':8,'font-style':'normal','font-weight':900,'paint-order':'stroke','stroke':'#000000','stroke-width':1,'stroke-linecap':'butt','stroke-linejoin':'miter'}},'markers':{'zoomTo':16},'themes':{'System Theme':{'default':'Bright','mapping':{'dark':'Dark'}},'Bright':{'classes':['maps-light','huroutes-light'],'bsTheme':'light'},'Dark':{'classes':['maps-dark','huroutes-dark'],'bsTheme':'dark'},'Dark with bright map':{'classes':['maps-light','huroutes-dark'],'bsTheme':'dark'}},'tooltip':{boundary:'viewport',placement:'bottom'},'l10n':{'providers':{'Google':{'url':'https://translate.google.com/translate?sl={0}&tl={1}&u={2}','getCurrentLang':()=>$('head meta[http-equiv="X-Translated-To"][content]').attr('content'),'langs':[['hu'],['en','gb'],['de'],['fr'],['es'],['it'],['pl'],['uk','ua'],['ro'],['sk'],['cs','cz'],['sl','si'],['hr'],['nl'],['da','dk'],['pt']]}}}},'lang':{}};String.prototype.format=function(){var args=arguments;return this.replace(/\{(\d+)\}/g,function(m,n){return args[n];});};$.fn.initTooltip=function(){return this.each(function(){bootstrap.Tooltip.getOrCreateInstance(this,huroutes.opt.tooltip);});};$.fn.toast=function(action){return this.each(function(){const inst=bootstrap.Toast.getOrCreateInstance(this);if(action==='show')
+</Document></kml>','pointTemplate':'{1},{0},0 '}},'streetView':'https://www.google.com/maps/@?api=1&map_action=pano&viewpoint={0},{1}&heading={2}','routeLabels':{'minZoom':11,'arrows':{'forward':'\uf105'.repeat(3),'backward':'\uf104'.repeat(3)},'textTemplate':"      {1}   {0}   {1}      ",'attributes':{'fill':'#ccc','font-family':'"Noto Sans", "Font Awesome 7 Free", Roboto, sans-serif','font-size':8,'font-style':'normal','font-weight':900,'paint-order':'stroke','stroke':'#000000','stroke-width':1,'stroke-linecap':'butt','stroke-linejoin':'miter'}},'markers':{'zoomTo':16},'themes':{'System Theme':{'default':'Bright','mapping':{'dark':'Dark'}},'Bright':{'classes':['maps-light','huroutes-light'],'bsTheme':'light'},'Dark':{'classes':['maps-dark','huroutes-dark'],'bsTheme':'dark'},'Dark with bright map':{'classes':['maps-light','huroutes-dark'],'bsTheme':'dark'}},'tooltip':{boundary:'viewport',placement:'bottom'},'l10n':{'providers':{'Google':{'url':'https://translate.google.com/translate?sl={0}&tl={1}&u={2}','getCurrentLang':()=>$('head meta[http-equiv="X-Translated-To"][content]').attr('content'),'langs':[['hu'],['en','gb'],['de'],['fr'],['es'],['it'],['pl'],['uk','ua'],['ro'],['sk'],['cs','cz'],['sl','si'],['hr'],['nl'],['da','dk'],['pt']]}}}},'lang':{}};String.prototype.format=function(){var args=arguments;return this.replace(/\{(\d+)\}/g,function(m,n){return args[n];});};$.fn.initTooltip=function(){return this.each(function(){bootstrap.Tooltip.getOrCreateInstance(this,huroutes.opt.tooltip);});};$.fn.toast=function(action){return this.each(function(){const inst=bootstrap.Toast.getOrCreateInstance(this);if(action==='show')
 inst.show();else if(action==='hide')
 inst.hide();else if(action==='toggle')
 inst.toggle();});};$.fn.collapse=function(action){return this.each(function(){const inst=bootstrap.Collapse.getOrCreateInstance(this,{toggle:false});if(action==='show')
@@ -72,12 +72,12 @@ if(data.rat||data.upd)
 {var elemHeader=$('<p class="route-header"/>');if(data.upd)
 {var eUpd=$('\
 <span class="update-date" title="{0}">\
-  <i class="far fa-clock"></i> {1}\
+    <i class="fa-regular fa-clock"></i> {1}\
 </span>'.format(langDict.updateDate,data.upd)).initTooltip();elemHeader.append(eUpd);}
 if(data.rat)
 {var starsOutter=$('<span class="stars-outer" title="{0}"/>'.format(langDict.rating)).initTooltip();for(var i=0;i<5;++i)
-starsOutter.append($('<i class="far fa-star"></i>'));var rating=normRating(data.rat);var starsInner=$('<span class="stars-inner" style="width:{0};" />'.format(rating*10+'%'));for(var i=0;i<5;++i)
-starsInner.append($('<i class="fas fa-star"></i>'));starsOutter.append(starsInner);elemHeader.append(starsOutter);}
+starsOutter.append($('<i class="fa-regular fa-star"></i>'));var rating=normRating(data.rat);var starsInner=$('<span class="stars-inner" style="width:{0};" />'.format(rating*10+'%'));for(var i=0;i<5;++i)
+starsInner.append($('<i class="fa-solid fa-star"></i>'));starsOutter.append(starsInner);elemHeader.append(starsOutter);}
 elem.append(elemHeader);}
 if(data.md)
 {var descCont=$('<div class="route-desc"/>');const addMarkdown=text=>descCont.append($(markdown.makeHtml(text)));if(data.md.substr(-3)==='.md')
@@ -123,9 +123,9 @@ function planTo(coords,reverse)
 function addNavigationLinks(elem,coords,length)
 {var eNav=$('\
 <div class="btn-group me-2 mt-2" role="group">\
-  <a href="#" class="nav-start btn" title="{0}"><i class="fas fa-step-backward"></i></a>\
-  <span class="btn" title="{1}"><i class="fas fa-route"></i> <sub>{2}</sub></span>\
-  <a href="#" class="nav-end btn" title="{3}"><i class="fas fa-step-forward"></i></a>\
+    <a href="#" class="nav-start btn" title="{0}"><i class="fa-solid fa-backward-step"></i></a>\
+    <span class="btn" title="{1}"><i class="fa-solid fa-route"></i> <sub>{2}</sub></span>\
+    <a href="#" class="nav-end btn" title="{3}"><i class="fa-solid fa-forward-step"></i></a>\
 </div>'.format(langDict.navStartTooltip,langDict.navLength,langDict.routeLength(length),langDict.navEndTooltip));eNav.find('.nav-start').click(()=>planTo(coords,true));eNav.find('.nav-end').click(()=>planTo(coords));eNav.find('[title]').initTooltip();elem.append(eNav);}
 function addPoiLinks(elem,title,coord)
 {var eLinks=$('<p> {0} {1}</p>'.format(langDict.navToPoi,langDict.sharePoi));var eNav=eLinks.find('.nav-start');eNav.replaceWith($('<a href="#" />').append(eNav.html()).click(()=>planTo([coord])));var eShare=eLinks.find('.share');eShare.replaceWith($('<a href="#" />').append(eShare.html()).click(()=>{navigator.share({title:title,url:location.href});return false;}));elem.append(eLinks);}
@@ -141,15 +141,15 @@ return;const arrows=huroutes.opt.routeLabels.arrows;const arrow=(layer.isReverse
 function addDlShareLinks(elem,coords,routeId)
 {var eDownload=$('\
 <div class="btn-group mt-2" role="group">\
-  <a href="#" class="download btn" title="{0}"><i class="fas fa-download"></i></a>\
-  <a href="#{2}" class="share btn" title="{1}"><i class="fas fa-share-alt"></i></a>\
+    <a href="#" class="download btn" title="{0}"><i class="fa-solid fa-download"></i></a>\
+    <a href="#{2}" class="share btn" title="{1}"><i class="fa-solid fa-share-nodes"></i></a>\
 </div>'.format(langDict.dlRouteTooltip,langDict.shareTooltip,routeId));eDownload.find('.download').click(()=>dlRoute.download(coords,routeId)??false).initTooltip();eDownload.find('.share').click(e=>{var routeId=$(e.currentTarget).attr('href');navigator.share({title:routeId.slice(1),url:location.href.split("#")[0]+routeId});return false;}).initTooltip();elem.append(eDownload);}
 function addStreetViewLink(elem,coord,coordNext)
 {const streetViewAt=(coord,coordNext)=>{var angle=[coordNext.lat-coord.lat,coordNext.lng-coord.lng];angle=90-Math.atan2(angle[0],angle[1])*(180/Math.PI);if(angle<-180)
 angle+=360;open(huroutes.opt.streetView.format(coord.lat,coord.lng,angle),'_blank');return false;}
 var eNav=$('\
 <div class="btn-group me-2 mt-2" role="group" title="{0}">\
-  <a href="#" class="strt-vw btn"><i class="fas fa-street-view"></i></a>\
+    <a href="#" class="strt-vw btn"><i class="fa-solid fa-street-view"></i></a>\
 </div>'.format(langDict.streetViewTooltip));eNav.find('.strt-vw').click(()=>streetViewAt(coord,coordNext));eNav.initTooltip();elem.append(eNav);}
 function updateOptions()
 {var selection=$('input[name=navProv]:checked').val();if(selection)
