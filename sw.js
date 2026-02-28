@@ -1,6 +1,6 @@
 (function () {
 
-cacheNames = {
+const cacheNames = {
     thirdparty: "thirdparty-v3",
     static: "static-v2",
     dynamic: "dynamic-v1"
@@ -18,7 +18,7 @@ const fetchWithTimeout = (request, timeoutMs = 1000) => {
 
 // Delete caches not in the list of names
 self.addEventListener('activate', e => {
-    cacheIds = Object.keys(cacheNames).map(key => cacheNames[key]);
+    const cacheIds = Object.keys(cacheNames).map(key => cacheNames[key]);
     e.waitUntil(
         caches.keys()
         .then(names => names.filter(name => !cacheIds.includes(name)))
@@ -29,6 +29,10 @@ self.addEventListener('activate', e => {
 
 // Cache logic implementation on fetch
 self.addEventListener('fetch', e => {
+    // Only cache GET requests; let other methods pass through untouched
+    if (e.request.method !== 'GET')
+        return;
+
     // Check if a response is compatible with the request mode
     const isResponseCompatible = (req, resp) => {
         return resp &&
@@ -53,7 +57,8 @@ self.addEventListener('fetch', e => {
             cachedResponse ||
             fetch(e.request)
             .then(response => {
-                cache.put(e.request, response.clone());
+                if (response.ok)
+                    cache.put(e.request, response.clone());
                 return response;
             })
         );
@@ -67,7 +72,8 @@ self.addEventListener('fetch', e => {
             // Abort the request if the network call hangs longer than 1s
             return fetchWithTimeout(e.request, 1000)
                 .then(response => {
-                    cache.put(e.request, response.clone());
+                    if (response.ok)
+                        cache.put(e.request, response.clone());
                     return response;
                 })
                 .catch(error => error.name === 'TimeoutError' || error.name === 'AbortError'
@@ -82,7 +88,7 @@ self.addEventListener('fetch', e => {
     const url = new URL(e.request.url);
 
     // Requests for huroutes resources
-    if (url.origin == self.location.origin)
+    if (url.origin === self.location.origin)
     {
         // Cache huroutes images to the static cache and serve cache-first
         if (e.request.destination === 'image')
@@ -93,7 +99,7 @@ self.addEventListener('fetch', e => {
     }
 
     // Cache CDN stuff to the thirdparty cache and serve cache-first
-    if (url.hostname == "cdn.jsdelivr.net")
+    if (url.hostname === "cdn.jsdelivr.net")
         return e.respondWith(cacheFirst(cacheNames.thirdparty));
 });
 

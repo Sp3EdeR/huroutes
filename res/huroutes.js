@@ -245,8 +245,7 @@ const huroutes = {
 /** A simple string formatting extension function.
   * Avoiding string templates due to their relatively late browser adoption.
   */
-String.prototype.format = function() {
-    var args = arguments;
+String.prototype.format = function(...args) {
     return this.replace(/\{(\d+)\}/g, function (m, n) { return args[n]; });
 };
 
@@ -313,12 +312,14 @@ $.fn.collapse = function(action) {
     });
 };
 
+let initLangSelector;
+
 // The main code is encapsulated within this closure
 (function() {
 
-var langDict;           // The current language translation dictionary
-var map;                // The global map object
-var nextDropId = 0;     // Unique ID generation counter
+let langDict;           // The current language translation dictionary
+let map;                // The global map object
+let nextDropId = 0;     // Unique ID generation counter
 
 // This is the initialization function
 $(document).ready(function() {
@@ -350,7 +351,6 @@ $(document).ready(function() {
 
     // Initializing misc. huroutes app components
     initColorSelector();
-    initLangSelector();
     initCtrls(tiles, overlays);
     $('#options-dialog').on('hidden.bs.modal', updateOptions);
     $('.language-select [title]').initTooltip();
@@ -365,7 +365,7 @@ $(document).ready(function() {
 });
 
 /** Stops following the current location with the camera. */
-var stopFollowingLocation = ()=>{};
+let stopFollowingLocation = ()=>{};
 /**
  * Initializes the display and behavior of map controllers.
  * @param {object} tiles A dictionary of map tile provider objects.
@@ -398,7 +398,7 @@ function initCtrls(tiles, overlays)
         });
     });
     map.on('overlayadd', (overlay) => {
-        var overlays = localStorage.overlays;
+        let overlays = localStorage.overlays;
         overlays = overlays ? overlays.split('|') : [];
         overlays.push(overlay.layer.id);
         localStorage.overlays = overlays.join('|');
@@ -406,7 +406,7 @@ function initCtrls(tiles, overlays)
         initLazyOverlay(overlay.layer.id, overlay.layer);
     });
     map.on('overlayremove', (overlay) => {
-        var overlays = (localStorage.overlays || '').split('|');
+        let overlays = (localStorage.overlays || '').split('|');
         const idx = overlays.indexOf(overlay.layer.id);
         if (idx != -1)
         overlays.splice(idx, 1);
@@ -414,7 +414,7 @@ function initCtrls(tiles, overlays)
     });
 
     // The location arrow control that allows showing the user's location, bottom-right
-    var locationCtrl = L.control.locate({
+    let locationCtrl = L.control.locate({
         cacheLocation: false,
         clickBehavior: { inView: 'stop', outOfView: 'setView', inViewNotFollowing: 'setView' },
         initialZoomLevel: huroutes.opt.markers.zoomTo,
@@ -434,7 +434,7 @@ function initCtrls(tiles, overlays)
     map.on('locatedeactivate', () => localStorage.removeItem('showLocation'));
     if (localStorage.showLocation)
     {
-        var oldView = locationCtrl.options.setView;
+        let oldView = locationCtrl.options.setView;
         locationCtrl.options.setView = false;
         locationCtrl.start();
         locationCtrl.options.setView = oldView;
@@ -501,7 +501,7 @@ function initializeContent(data)
  */
 function addDataGroup(parentElem, id, content)
 {
-    var elem = $('<ul class="menu list-unstyled components"/>');
+    let elem = $('<ul class="menu list-unstyled components"/>');
     if (id)
     {
         elem.prop('id', id);
@@ -525,10 +525,10 @@ function addDataItem(parentElem, item)
         console.error('Titleless menu item defined in the database.');
         return;
     }
-    var elem = $('<li class="menu"/>');
+    let elem = $('<li class="menu"/>');
     if (Array.isArray(item.cnt))
     {
-        var dropId = createMenuItem(elem, item);
+        let dropId = createMenuItem(elem, item);
         addDataGroup(elem, dropId, item.cnt);
     }
     else if (item.kml)
@@ -546,8 +546,8 @@ function addDataItem(parentElem, item)
  */
 function createMenuItem(elem, data)
 {
-    var dropId = 'menu' + nextDropId++;
-    elem.append($('<a href="#{0}" data-bs-toggle="collapse" aria-expanded="false" class="dropdown-toggle"/>'.format(dropId)).html(data.ttl));
+    let dropId = 'menu' + nextDropId++;
+    elem.append($('<a href="#{0}" data-bs-toggle="collapse" aria-expanded="false" class="dropdown-toggle position-relative"/>'.format(dropId)).html(data.ttl));
     if (data.md || data.kml || data.pnt)
         console.error('Menu {0} contains route data that it should not.'.format(data.ttl));
     return dropId;
@@ -561,14 +561,14 @@ function createMenuItem(elem, data)
 function createMenuRouteItem(elem, data)
 {
     elem.addClass('menuitem');
-    var dropId = 'menu' + nextDropId++;
-    elem.append($('<a href="#{0}" data-bs-toggle="collapse" aria-expanded="false" class="dropdown-toggle"/>'.format(dropId)).html(data.ttl).click(function() {
+    let dropId = 'menu' + nextDropId++;
+    elem.append($('<a href="#{0}" data-bs-toggle="collapse" aria-expanded="false" class="dropdown-toggle position-relative"/>'.format(dropId)).html(data.ttl).click(function() {
         navigateTo('#' + $(this).parents('li').first().attr('data-routeid'));
     }));
-    var elemDiv = $('<div class="menu list-unstyled collapse panel"/>').prop('id', dropId);
+    let elemDiv = $('<div class="menu list-unstyled collapse panel m-2 p-2 rounded" style="text-align: justify;"/>').prop('id', dropId);
     createInfoPanel(elemDiv, data);
     elem.append(elemDiv);
-    var routeId = addRoute(data);
+    let routeId = addRoute(data);
     elem.attr('data-routeid', routeId);
 }
 
@@ -590,10 +590,10 @@ function createInfoPanel(elem, data)
     // Creating the route heading with rating and date
     if (data.rat || data.upd)
     {
-        var elemHeader = $('<p class="route-header"/>');
+        let elemHeader = $('<p class="route-header"/>');
         if (data.upd)
         {
-            var eUpd = $('\
+            let eUpd = $('\
 <span class="update-date" title="{0}">\
     <i class="fa-regular fa-clock"></i> {1}\
 </span>'.format(langDict.updateDate, data.upd)).initTooltip();
@@ -601,14 +601,14 @@ function createInfoPanel(elem, data)
         }
         if (data.rat)
         {
-            var starsOutter = $('<span class="stars-outer" title="{0}"/>'.format(
+            let starsOutter = $('<span class="stars-outer" title="{0}"/>'.format(
                 langDict.rating
             )).initTooltip();
-            for (var i = 0; i < 5; ++i)
+            for (let i = 0; i < 5; ++i)
                 starsOutter.append($('<i class="fa-regular fa-star"></i>'));
-            var rating = normRating(data.rat);
-            var starsInner = $('<span class="stars-inner" style="width:{0};" />'.format(rating * 10 + '%'));
-            for (var i = 0; i < 5; ++i)
+            let rating = normRating(data.rat);
+            let starsInner = $('<span class="stars-inner" style="width:{0};" />'.format(rating * 10 + '%'));
+            for (let i = 0; i < 5; ++i)
                 starsInner.append($('<i class="fa-solid fa-star"></i>'));
             starsOutter.append(starsInner);
             elemHeader.append(starsOutter);
@@ -618,7 +618,7 @@ function createInfoPanel(elem, data)
     // Creating the route description panel with markdown contents
     if (data.md)
     {
-        var descCont = $('<div class="route-desc"/>');
+        let descCont = $('<div class="route-desc"/>');
         const addMarkdown = text => descCont.append($(markdown.makeHtml(text)));
         if (data.md.substr(-3) === '.md')
             $.ajax(data.md)
@@ -644,10 +644,10 @@ function addRoute(data)
     const colors = huroutes.opt.route.colors;
     const opacities = huroutes.opt.route.opacities;
 
-    var routeId = data.id || data.kml.match(/data\/([\w-]+).kml/)[1];
-    var rating = normRating(data.rat);
-    var pathWeight = 3 + (!data.bkg && rating / 2);
-    var layer = L.geoJson(null, {
+    let routeId = data.id || data.kml.match(/data\/([\w-]+).kml/)[1];
+    let rating = normRating(data.rat);
+    let pathWeight = 3 + (!data.bkg && rating / 2);
+    let layer = L.geoJson(null, {
         filter: feature => feature.geometry.type == "LineString",
         pane: data.bkg ? 'bkgRoutes' : 'shadowPane',
         style: {
@@ -665,18 +665,18 @@ function addRoute(data)
     layer.on('mouseover', event => event.target.focused || event.target.setStyle(event.target.options.focusedStyle));
     layer.on('mouseout', event => event.target.focused || event.target.setStyle(event.target.options.style));
     layer.on('layeradd', event => {
-        var elem = $('li[data-routeid={0}] .route-links'.format(routeId));
+        let elem = $('li[data-routeid={0}] .route-links'.format(routeId));
 
-        var coords = event.layer.getLatLngs();
+        let coords = event.layer.getLatLngs();
         if (Array.isArray(coords) && 2 <= coords.length)
         {
             // Add statistics and links for this route to the menu.
-            var length = 0.0;
-            for (var i = 1; i < coords.length; ++i)
+            let length = 0.0;
+            for (let i = 1; i < coords.length; ++i)
                 length += coords[i - 1].distanceTo(coords[i]);
-            var elemLinks = $('<div class="route-ctrls btn-toolbar" role="toolbar"/>');
+            let elemLinks = $('<div class="route-ctrls btn-toolbar" role="toolbar"/>');
             addNavigationLinks(elemLinks, coords, length);
-            var mididx = Math.floor(coords.length / 2);
+            let mididx = Math.floor(coords.length / 2);
             addStreetViewLink(elemLinks, coords[mididx], coords[mididx + 1]);
             elem.append(elemLinks);
             addDlShareLinks(elemLinks, coords, routeId);
@@ -767,7 +767,7 @@ function initColorSelector()
         media.addListener(handleMediaChanged);
 
     // Generate the config dialog DOM
-    var elem = $('#color-themes');
+    let elem = $('#color-themes');
     $.each(themes, (theme, data) => {
         const id = theme.toLowerCase().replace(/ /g, '');
         let elemOpt = $('<div><input type="radio" name="theme" id="{0}" value="{1}" {3}> <label for="{0}">{2}</label></div>'
@@ -787,7 +787,7 @@ function initColorSelector()
  */
 function getGoogleTranslateBase()
 {
-    url = $('head base[href]').attr('href');
+    let url = $('head base[href]').attr('href');
     if (url)
         url = url.split('?')[0].replace(/[^/]+\.[^\s\./]{3,5}$/, '');
     return url;
@@ -798,27 +798,28 @@ function getGoogleTranslateBase()
  * 
  * This language selector uses Google Translate for the target languages
  */
-function initLangSelector()
+function initLangSelectorFunc(elem)
 {
-    provider = huroutes.opt.l10n.providers.Google;
-    sourceLang = $('html').attr('lang');
-    lang = provider.getCurrentLang() || sourceLang;
-    langIdx = provider.langs.findIndex(lng => lng[0] == lang);
+    const provider = huroutes.opt.l10n.providers.Google;
+    const sourceLang = $('html').attr('lang');
+    let lang = provider.getCurrentLang() || sourceLang;
+    const langIdx = provider.langs.findIndex(lng => lng[0] == lang);
     lang = 0 <= langIdx ? provider.langs.splice(langIdx, 1)[0] : provider.langs[0];
 
-    $('#language-select').append($('<span class="fi fi-{0}">'.format(lang[lang.length - 1])));
-    $('#sidebar .dropdown-menu').append(provider.langs.map(lang => {
-        var url = (getGoogleTranslateBase() || location.origin + location.pathname);
+    $(elem).find('a').append($('<span class="fi fi-{0}">'.format(lang[lang.length - 1])));
+    $(elem).find('.dropdown-menu').append(provider.langs.map(lang => {
+        let url = (getGoogleTranslateBase() || location.origin + location.pathname);
         if (lang[0] != sourceLang)
             url = provider.url.format(sourceLang, lang[0], url);
-        return $('<a href="#"><span class="fi fi-{0}"/></a>'.format(lang[lang.length - 1])).click(
+        return $('<a href="#"><span class="fi fi-{0} m-2"/></a>'.format(lang[lang.length - 1])).click(
             () => { location = url + location.hash; return false; }
         );
     }));
 }
+initLangSelector = initLangSelectorFunc;
 
 /** Singleton for managing the navigation link provider configuration. */
-var navigation = {
+let navigation = {
     /** Shorthand for the navigation link providers data. */
     provs: huroutes.opt.navLinkProviders,
     /** Returns the currently selected navigation provider ID. */
@@ -841,7 +842,7 @@ var navigation = {
         let idx = reverse ? coords.length - 1 : 0;
         const step = coords.length / count * (reverse ? -1 : 1);
         let wpts = [];
-        for (i = 0; i < count; ++i, idx += step)
+        for (let i = 0; i < count; ++i, idx += step)
             wpts.push(coords[Math.round(idx)]);
         return wpts;
     },
@@ -850,7 +851,7 @@ var navigation = {
 /** Initializes the navigation link configuration. */
 function initNavSelector()
 {
-    var elem = $('#nav-options');
+    let elem = $('#nav-options');
     $.each(navigation.provs, (key, value) => {
         const id = key.toLowerCase().replace(/ /g, '');
         elem.append(
@@ -881,7 +882,7 @@ function planTo(coords, reverse)
  */
 function addNavigationLinks(elem, coords, length)
 {
-    var eNav = $('\
+    let eNav = $('\
 <div class="btn-group me-2 mt-2" role="group">\
     <a href="#" class="nav-start btn" title="{0}"><i class="fa-solid fa-backward-step"></i></a>\
     <span class="btn" title="{1}"><i class="fa-solid fa-route"></i> <sub>{2}</sub></span>\
@@ -901,10 +902,10 @@ function addNavigationLinks(elem, coords, length)
  */
 function addPoiLinks(elem, title, coord)
 {
-    var eLinks = $('<p> {0} {1}</p>'.format(langDict.navToPoi, langDict.sharePoi));
-    var eNav = eLinks.find('.nav-start');
+    let eLinks = $('<p> {0} {1}</p>'.format(langDict.navToPoi, langDict.sharePoi));
+    let eNav = eLinks.find('.nav-start');
     eNav.replaceWith($('<a href="#" />').append(eNav.html()).click(() => planTo([coord])));
-    var eShare = eLinks.find('.share');
+    let eShare = eLinks.find('.share');
     eShare.replaceWith($('<a href="#" />').append(eShare.html()).click(() => {
         navigator.share({
             title: title,
@@ -916,7 +917,7 @@ function addPoiLinks(elem, title, coord)
 }
 
 /** Singleton for managing route downloading format configuration. */
-var dlRoute = {
+let dlRoute = {
     /** Shorthand for the route download format data. */
     fmts: huroutes.opt.downloads,
     /** Returns the currently selected route format ID. */
@@ -925,8 +926,8 @@ var dlRoute = {
     },
     /** Initiates the download of the route in the selected format. */
     download: function(coords, routeId) {
-        var fmt = this.fmts[this.getId()];
-        var file = fmt.fileTemplate.format(
+        let fmt = this.fmts[this.getId()];
+        let file = fmt.fileTemplate.format(
             routeId,
             coords.map(coord => fmt.pointTemplate.format(coord.lat, coord.lng)).join(''));
         downloadString(routeId + '.' + fmt.ext, fmt.mimeType, file);
@@ -936,7 +937,7 @@ var dlRoute = {
 /** Initializes the download format configuration. */
 function initDownloadTypeSelector()
 {
-    var elem = $('#download-types');
+    let elem = $('#download-types');
     $.each(dlRoute.fmts, (key, value) => {
         const id = key.toLowerCase().replace(/ /g, '');
         elem.append(
@@ -951,7 +952,7 @@ function initDownloadTypeSelector()
 function initRouteLabels()
 {
     map.on('zoom', event => {
-        var map = event.target;
+        let map = event.target;
         updateRouteLabels(map, huroutes.opt.routeLabels.minZoom <= map.getZoom());
     });
 }
@@ -959,7 +960,7 @@ function initRouteLabels()
 /**
  * Stores the current visibility state of route labels to avoid frequent switching.
  */
-var labelsVisible = null;
+let labelsVisible = null;
 
 /**
  * Updates the visibility of route labels on the map.
@@ -999,14 +1000,14 @@ function updateRouteLabels(map, visible = true)
  */
 function addDlShareLinks(elem, coords, routeId)
 {
-    var eDownload = $('\
+    let eDownload = $('\
 <div class="btn-group mt-2" role="group">\
     <a href="#" class="download btn" title="{0}"><i class="fa-solid fa-download"></i></a>\
     <a href="#{2}" class="share btn" title="{1}"><i class="fa-solid fa-share-nodes"></i></a>\
 </div>'.format(langDict.dlRouteTooltip, langDict.shareTooltip, routeId));
     eDownload.find('.download').click(() => dlRoute.download(coords, routeId) ?? false).initTooltip();
     eDownload.find('.share').click(e => {
-        var routeId = $(e.currentTarget).attr('href');
+        let routeId = $(e.currentTarget).attr('href');
         navigator.share({
             title: routeId.slice(1),
             url: location.href.split("#")[0] + routeId
@@ -1025,14 +1026,14 @@ function addDlShareLinks(elem, coords, routeId)
  function addStreetViewLink(elem, coord, coordNext)
 {
     const streetViewAt = (coord, coordNext) => {
-        var angle = [ coordNext.lat - coord.lat, coordNext.lng - coord.lng ];
+        let angle = [ coordNext.lat - coord.lat, coordNext.lng - coord.lng ];
         angle = 90 - Math.atan2(angle[0], angle[1]) * (180/Math.PI);
         if (angle < -180)
             angle += 360;
         open(huroutes.opt.streetView.format(coord.lat, coord.lng, angle), '_blank');
         return false;
     }
-    var eNav = $('\
+    let eNav = $('\
 <div class="btn-group me-2 mt-2" role="group" title="{0}">\
     <a href="#" class="strt-vw btn"><i class="fa-solid fa-street-view"></i></a>\
 </div>'.format(langDict.streetViewTooltip));
@@ -1044,7 +1045,7 @@ function addDlShareLinks(elem, coords, routeId)
 /** Stores the app options according to the user's selection. */
 function updateOptions()
 {
-    var selection = $('input[name=navProv]:checked').val();
+    let selection = $('input[name=navProv]:checked').val();
     if (selection)
         localStorage.navprovider = selection;
     selection = $('input[name=dlType]:checked').val();
@@ -1073,7 +1074,7 @@ const fragment = {
      */
     asGeoData: (hash = null) => {
         const re = /#geo:([^@]+)@(-?[0-9\\.]+),(-?[0-9\\.]+)(?:\/(?:[?&](?:b=([^&]+)))*)?/;
-        m = re.exec(hash ?? location.hash);
+        const m = re.exec(hash ?? location.hash);
         return m ? {
             title: decodeURIComponent(m[1]),
             geo: L.latLng(Number(m[2]), Number(m[3])),
@@ -1094,7 +1095,7 @@ const fragment = {
  */
 function navigateTo(target, routeId) // target accepts fragment string and layer
 {
-    var success = false;
+    let success = false;
     if (typeof target === 'string' || target instanceof String)
     {
         if (fragment.isGeoData(target))
@@ -1158,18 +1159,18 @@ function removeFocus()
 /** Opens the specified route's menu while closing all other menus. */
 function openRouteDesc(routeId)
 {
-    var menuItem = routeId ? $('li[data-routeid=' + routeId + ']') : $();
-    var related = menuItem.parents('.collapse').add(menuItem.children('.collapse'));
-    var unrelated = $('.collapse').not(related);
+    let menuItem = routeId ? $('li[data-routeid=' + routeId + ']') : $();
+    let related = menuItem.parents('.collapse').add(menuItem.children('.collapse'));
+    let unrelated = $('.collapse').not(related);
     unrelated.collapse('hide');
     related.collapse('show');
-    var scrollWait = setInterval(function() {
-        var sidebar = $('#sidebar');
+    let scrollWait = setInterval(function() {
+        let sidebar = $('#sidebar');
         if (0 < sidebar.find('.collapsing').length)
             return;
         if (menuItem.length)
         {
-            var ctrl = $([sidebar[0], $('body')[0], $('html')[0]]).filter((i, e) => e.clientHeight < e.scrollHeight).first();
+            let ctrl = $([sidebar[0], $('body')[0], $('html')[0]]).filter((i, e) => e.clientHeight < e.scrollHeight).first();
             ctrl.animate({ scrollTop: menuItem.offset().top + sidebar.scrollTop() });
         }
         clearInterval(scrollWait);
@@ -1183,7 +1184,7 @@ function activateRoute(layer)
     layer.setStyle(layer.options.focusedStyle);
     layer.focused = true;
 
-    var bounds = layer.getBounds();
+    let bounds = layer.getBounds();
     map.flyToBounds(bounds);
 
     openRouteDesc(layer.routeId);
@@ -1191,7 +1192,7 @@ function activateRoute(layer)
 }
 
 /** A marker object that can be used to manipulate the active placemarker. no-op by default. */
-var marker = {remove:()=>{}};
+let marker = {remove:()=>{}};
 /**
  * Displays and views the given place marker.
  * When a valid route ID is given, the route's description is opened. Otherwise the menu is closed.
@@ -1204,7 +1205,7 @@ function activateMarker(data, routeId)
 
     marker = L.marker(data.geo, {autoPanOnFocus: false});
     marker.addTo(map);
-    body = $('<div><p><b>{0}</b></p></div>'.format(data.title));
+    const body = $('<div><p><b>{0}</b></p></div>'.format(data.title));
     if (data.desc)
         body.append($(data.desc));
     addPoiLinks(body, data.title, data.geo);
@@ -1220,16 +1221,16 @@ function activateMarker(data, routeId)
 }
 
 /** A singleton that helps with Markdown processing. */
-var markdown = {
+let markdown = {
     /** The markdown processor engine instance. */
     engine: new showdown.Converter(),
     /** Returns HTML from the given Markdown text. */
     makeHtml(text)
     {
-        var ret = $(this.engine.makeHtml(text));
+        let ret = $(this.engine.makeHtml(text));
         // NOTE: Using JQuery to get href, because this.href may return absolute URI
         ret.find('a[href^="#"]').click(function() { return !navigateTo($(this).attr('href')); });
-        ret.find('a:not([href^="#"])').attr('target', '_blank');
+        ret.find('a:not([href^="#"])').attr('target', '_blank').attr('rel', 'noopener noreferrer');
         return ret;
     }
 }
@@ -1237,7 +1238,7 @@ var markdown = {
 /** Normalizes potentially bogus ratings to valid values. */
 function normRating(rat)
 {
-    var i = rat ? Math.round(rat) : 5;
+    let i = rat ? Math.round(rat) : 5;
     if (i < 1)
         i = 1;
     else if (10 < i)
@@ -1248,7 +1249,7 @@ function normRating(rat)
 /** Returns the currently selected language translation data. */
 function selectLanguage()
 {
-    lang = $('html').attr('lang');
+    let lang = $('html').attr('lang');
     if (!lang)
     {
         console.error('The language is not set in the html tag of index.html, which is required.');
@@ -1272,7 +1273,7 @@ function selectLanguage()
  */
 function downloadString(fileName, mimeType, data, charset = 'utf-8')
 {
-    var anchor = $('<a id="download" style="display:none" download="{0}"/>'.format(fileName));
+    let anchor = $('<a id="download" style="display:none" download="{0}"/>'.format(fileName));
     anchor.attr('href', 'data:{0};charset={1},{2}'.format(mimeType, charset, encodeURIComponent(data)));
     $('body').append(anchor);
     anchor[0].click();
@@ -1280,7 +1281,7 @@ function downloadString(fileName, mimeType, data, charset = 'utf-8')
 }
 
 /** A singleton that contains sidebar manipulation functions. */
-var sidebar = {
+let sidebar = {
     /** Opens the sidebar when in mobile portrait view */
     open: ()=>{},
     /** Closes the sidebar when in mobile portrait view */
@@ -1300,8 +1301,8 @@ function initSidebarEvents()
             setTimeout(() => this.enabled = true, 200);
         }
     }
-    var change = new SidebarChange;
-    var isOpen = true;
+    let change = new SidebarChange;
+    let isOpen = true;
     // Exported function to open the sidebar
     sidebar.open = function()
     {
@@ -1345,8 +1346,8 @@ function initSidebarEvents()
 function getJSON(url, ...args)
 {
     return $.getJSON(url, ...args).then((...args) => args, err => {
-        msg = () => console.error('Failed loading {0}.'.format(url));
-        gtBase = getGoogleTranslateBase();
+        const msg = () => console.error('Failed loading {0}.'.format(url));
+        const gtBase = getGoogleTranslateBase();
         if (gtBase)
             return $.getJSON(gtBase + url, ...args).fail(msg);
         msg();
@@ -1365,7 +1366,7 @@ if (navigator.userAgent.match(/(Windows|Macintosh|X11).*(Opera|OPR)/))
 
 function showToast(id)
 {
-    var toast = $(id);
+    let toast = $(id);
     toast.toast('show');
     // The toast is not shown again once closed.
     toast.on('hide.bs.toast', () => localStorage.shownPwaAd = true);
@@ -1376,7 +1377,7 @@ function pwaToast(event)
 {
     // Prevents default browser notification https://developer.mozilla.org/en-US/docs/Web/API/BeforeInstallPromptEvent
     event.preventDefault();
-    var toast = showToast('#toast-pwa-app');
+    let toast = showToast('#toast-pwa-app');
     toast.find('a[href]').on('click', () => {
         // https://developer.mozilla.org/en-US/docs/Web/API/BeforeInstallPromptEvent/prompt
         event.prompt();
@@ -1388,7 +1389,7 @@ function pwaToast(event)
 if (!localStorage.shownPwaAd)
 {
     // Safari sucks, it is incompatible
-    sfrTime = -1;
+    let sfrTime = -1;
     if (navigator.userAgent && navigator.userAgent.match(
         // Test for safari on iOS, but not Chrome-based or Firefox frontend
         /(?:iP(?:od|ad|hone))(?!.*(?:CriOS|FxiOS))/) &&

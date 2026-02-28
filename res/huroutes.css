@@ -4,56 +4,61 @@
 
 :root {
   color-scheme: light dark;
-}
-body {
   font-family: "Noto Sans",-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Liberation Sans",sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji" !important;
-  font-size: 16px;
-  overflow-x: hidden;
-  padding: 0;
   --fa-width: auto;
 }
-body.huroutes-light, .huroutes-light #sidebar {
+.huroutes-light, .huroutes-light #sidebar {
   background: #fff;
-  color: #000;
 }
-body.huroutes-dark, .huroutes-dark #sidebar {
+.huroutes-dark, .huroutes-dark #menu, .huroutes-dark #sidebar, .huroutes-dark .modal-content {
   background: #13192e;
   background:
     linear-gradient(90deg,#00000000 93%, #00000034 99%),
     linear-gradient(80deg, #13192e00 60%, #070c149d 100%),
     linear-gradient(0deg, #13192e, #152a33, #0f1926);
-  color: #fff;
 }
 
 p {
   margin: 0 0 10px;
 }
 
-/* Restore previous non-underlined sidebar links. */
-#sidebar a,
-#sidebar a:hover,
-#sidebar a:focus {
+a {
+  color: #007bff;
   text-decoration: none;
 }
 
-.huroutes-light a {
+a:hover {
+  color: #0056b3;
+}
+
+/* Restore previous non-underlined sidebar links. */
+#sidebar a.btn {
+  color: #fff !important;
+}
+
+.huroutes-light #sidebar a {
   color: #0078A8;
 }
-.huroutes-dark a {
+.huroutes-dark #sidebar a {
   color: #8ccbff;
 }
-.huroutes-dark a:hover {
+.huroutes-dark #sidebar a:hover {
   color: #eee;
+}
+
+/* Menu offscreen overflow for language dropdown */
+#menu .offcanvas-body {
+  overflow: visible;
 }
 
 /* Sidebar scrollbar design. */
 #sidebar {
   scrollbar-width: auto;
 }
-body.huroutes-light #sidebar {
+.huroutes-light #sidebar {
   scrollbar-color: #3b4c5a #d3d3d3;
 }
-body.huroutes-dark #sidebar {
+.huroutes-dark #sidebar {
   scrollbar-color: #7092ad #212c38;
 }
 #sidebar::-webkit-scrollbar {
@@ -65,10 +70,10 @@ body.huroutes-dark #sidebar {
 #sidebar::-webkit-scrollbar-thumb {
   border-radius: 2px;
 }
-body.huroutes-light #sidebar::-webkit-scrollbar-thumb {
+.huroutes-light #sidebar::-webkit-scrollbar-thumb {
   background-color:#0e2338;
 }
-body.huroutes-dark #sidebar::-webkit-scrollbar-thumb {
+.huroutes-dark #sidebar::-webkit-scrollbar-thumb {
   background-color:#83a5c0;
 }
 
@@ -89,36 +94,22 @@ body.huroutes-dark #sidebar::-webkit-scrollbar-thumb {
  * Layout
  */
 
-/* Map panel layout */
-#main {
-  margin-top: 0;
-  padding: 0;
-  position: fixed;
-  top: 0; right: 0;
-  height: 100%;
-}
-
 /* Menu panel layout */
 #sidebar {
-  display: block;
-  left: 0; top: 0;
+  left: 0;
   padding: 0;
-  position: fixed;
-  overflow-x: hidden;
   overflow-y: auto;
-  height: 100%;
   transition: left 0.25s ease;
   z-index: 1032;
 }
 #sidebar.closed {
-  left: -80vw;
+  left: -83.333%; /* 12-column layout; 11-column width; -10-column offscreen when closed */
   overflow-y: hidden;
 }
 
 /* Side-by-side menu styles */
 @media (min-width: 768px) {
   #sidebar {
-    left: 0;
     transition: none;
   }
   #sidebar.closed {
@@ -131,7 +122,6 @@ body.huroutes-dark #sidebar::-webkit-scrollbar-thumb {
 .panel-void {
   background: #0000007c;
   display: none;
-  position: fixed;
 }
 #void-close-sidebar {
   left: 0; right: 0; top: 0; bottom: 0;
@@ -159,87 +149,38 @@ body.huroutes-dark #sidebar::-webkit-scrollbar-thumb {
 }
 
 /*
- * Sidebar
+ * UI Elements
  */
 
-/* Contains the title, subtitle and options buttons */
-.sidebar-header {
-  padding: 10px;
-  padding-top: 25px;
-}
-
-/* The title is a "hidden" link to github */
-.title {
-  font-size: 2rem;
-  font-weight: normal;
-  text-align: center;
-}
-
-.sub-title {
-  font-weight: bold;
-  text-align: center;
-}
-
-.language-select {
-  position: absolute !important;
-  left: 16px; top: 16px;
-  width: 52px;
-  z-index: 1040;
-}
-.language-select .fi {
-  border: 1px solid black;
-  width: 1.8em;
-  line-height: 1.25em;
-}
+/* Main menu */
 .language-select .dropdown-menu {
-  padding: 0.7em;
+  width: 13em !important;
+  z-index: 1050;
 }
-.language-select .dropdown-menu .fi {
-  margin: 0.5em;
-}
-body.huroutes-light .language-select .dropdown-menu {
+.huroutes-light .language-select .dropdown-menu {
   background: #fff;
 }
-body.huroutes-dark .language-select .dropdown-menu {
+.huroutes-dark .language-select .dropdown-menu {
   background: #13192e;
 }
-
-.options-button {
+#navbarSocial {
   font-size: 24px;
-  position: absolute;
-  top: 10px; right: 16px;
-}
-.huroutes-light .options-button,
-.huroutes-light .language-select {
-  filter: drop-shadow(2px 2px 1px #000a);
-}
-.huroutes-dark .options-button,
-.huroutes-dark .language-select {
-  filter: drop-shadow(3px 3px 2px #000);
 }
 
-/* The contribution box is at the bottom of the menu bar */
-.contrib {
-  font-size: 0.8em;
-  padding: 10px;
-  text-align: right;
+#sidebar .options-button {
+  font-size: 24px;
 }
 
-/* Section separators in the sidebar are added to the menu content */
-.huroutes-light .menubox {
-  border: 1px solid #2c2c2c;
-  border-left: none;
-  border-right: none;
+/* sidebar menu look & feel */
+.huroutes-light #sidebar .menubox a.dropdown-toggle,
+.huroutes-light #sidebar .menubox a.dropdown-toggle:hover {
+  color: #000;
 }
-.huroutes-dark .menubox {
-  border: 1px solid #eee;
-  border-left: none;
-  border-right: none;
+.huroutes-dark #sidebar .menubox a.dropdown-toggle {
+  color: #eee;
 }
-
-/* Menu look & feel */
-a[data-bs-toggle="collapse"] {
-  position: relative;
+.huroutes-dark #sidebar .menubox a.dropdown-toggle:hover {
+  color: #fff;
 }
 
 .dropdown-toggle::after {
@@ -275,9 +216,6 @@ ul ul ul ul a.dropdown-toggle {
 ul ul ul ul ul a.dropdown-toggle {
   padding-left: 80px !important;
 }
-ul a.dropdown-toggle:hover {
-  text-decoration: none;
-}
 .huroutes-light ul a.dropdown-toggle {
   color: #2c2c2c;
 }
@@ -294,12 +232,6 @@ ul a.dropdown-toggle:hover {
 }
 
 /* A route's description panel */
-.sidebar .panel {
-  border-radius: 8px;
-  margin: 10px 0 10px 0;
-  padding: 10px;
-  text-align: justify;
-}
 .huroutes-light .sidebar .panel {
   background: #eaf4ff;
 }
@@ -310,7 +242,6 @@ ul a.dropdown-toggle:hover {
 /* Header containing the route's date and rating */
 .route-header {
   font-size: 1.1em;
-  padding: 0 3px 0 3px;
 }
 .route-header::after {
   clear: both;
@@ -469,15 +400,6 @@ ul a.dropdown-toggle:hover {
 .maps-dark .overlay-dem {
   filter: invert(1);
   -webkit-filter: invert(1);
-}
-
-/*
- * Toasts
- */
-
-/* Toast minimum width for optimum width-height ratio */
-.toast {
-  min-width: 350px;
 }
 
 /*
