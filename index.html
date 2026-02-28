@@ -3,14 +3,13 @@
 <head>
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="description" content="Magyar utak vezetésre" />
+  <meta name="description" content="huroutes - Magyar utak vezetésre - Autós Appok" />
   <meta name="author" content="HU" />
   <meta name="keywords" content="Magyarország, Magyar, autó, motor, sportautó, sportmotor, motorsport, vezetés, hooning, szerpentin, szerpentinek, út, utak, utazás, tanácsok, tippek" />
   <!-- Disable resizing the viewport for mobile -->
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
 
-  <title>huroutes | Magyar utak vezetésre</title>
+  <title>huroutes - Autós Appok</title>
 
   <!-- Web app icons and themes -->
   <link rel="icon" type="image/png" sizes="32x32" href="res/favicon-32.png">
@@ -26,7 +25,7 @@
   <meta name="theme-color" content="#0000bb">
 
   <!-- Shared link preview card resources -->
-  <meta property="og:title" content="huroutes" />
+  <meta property="og:title" content="huroutes - Autós Appok" />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://sp3eder.github.io/huroutes/" />
   <meta property="og:description" content="Magyar utak vezetésre" />
@@ -138,38 +137,53 @@
       -webkit-filter: opacity(0.6);
     }
   </style>
-  <script src="res/app-toasts.js"></script>
+
+  <link rel="stylesheet" href="../res/menu/menu.css">
+  <script src="../res/menu/menu.js"></script>
+  <script src="../res/app/app-toasts.js"></script>
 </head>
 
-<body>
-  <div class="container-fluid">
-    <div class="row">
+<body class="position-absolute w-100 h-100 m-0">
+  <div class="d-flex flex-column w-100 h-100">
+    <script>
+      const future = initMenu('huroutes-tab', `
+        <ul id="navbarSocial" class="navbar-nav mt-5 mt-sm-0 ms-sm-auto py-sm-2 pe-sm-3">
+          <li class="nav-item">
+            <a href="https://github.com/Sp3EdeR/huroutes" target="_blank" rel="noopener noreferrer" class="social-ico" title="Github"><i class="fa-brands fa-github"></i></a>
+            <div class="language-select d-inline-block position-relative overflow-visible mx-2">
+              <a href="#" role="button" data-bs-toggle="dropdown" data-bs-auto-close="true" aria-expanded="false" title="Nyelv kiválasztása"></a>
+              <div class="dropdown-menu dropdown-menu-end position-absolute p-2"><!-- Filled up by Javascript --></div>
+            </div>
+            <div class="options-button d-inline-block"><a href="#" data-bs-toggle="modal" data-bs-target="#options-dialog"><span class="fa-solid fa-gear" title="Beállítások"></span></a></div>
+          </li>
+        </ul>`, { colorMode: 'manual' });
+      future.then(() => {
+        initLangSelector($('#menu .language-select'));
+        $('#sidebar .options-button').addClass('d-none');
+      });
+    </script>
+    <div id="main-content" class="flex-fill position-relative w-100">
       <!-- The sidebar panel -->
-      <nav id="sidebar" class="sidebar col-11 col-md-4 col-xl-3">
+      <nav id="sidebar" class="sidebar d-block position-absolute top-0 h-100 col-11 col-md-4 col-xl-3 overflow-x-hidden">
         <div class="sidebar-header">
-          <div class="language-select dropdown">
-            <a id="language-select" href="#" role="button" data-bs-toggle="dropdown" data-bs-auto-close="true" aria-expanded="false" title="Nyelv kiválasztása"></a>
-            <div class="dropdown-menu" aria-labelledby="language-select"><!-- Filled up by Javascript --></div>
-          </div>
-          <h2 class="title">huroutes</h2>
-          <div class="options-button"><a href="#" data-bs-toggle="modal" data-bs-target="#options-dialog"><span class="fa-solid fa-gear" title="Beállítások"></span></a></div>
-          <p class="sub-title">Magyar utak vezetésre</p>
+          <div class="options-button d-block text-end px-3"><a href="#" data-bs-toggle="modal" data-bs-target="#options-dialog"><span class="fa-solid fa-gear" title="Beállítások"></span></a></div>
+          <p class="text-center my-2">huroutes: magyar utak vezetésre</p>
         </div>
-        <div id="menubox" class="menubox"></div>
-        <div class="contrib">
-          <a href="https://github.com/Sp3EdeR/huroutes/commits/master">módosítástörténet</a> | <a href="https://github.com/Sp3EdeR/huroutes">közreműködés a fejlesztésben</a>
+        <div id="menubox" class="menubox border-top border-bottom"></div>
+        <div class="contrib p-2" style="font-size: 0.8em;">
+          <a href="https://github.com/Sp3EdeR/huroutes/commits/master">módosítástörténet</a>
           <br/>
-          Ajánlott: <a href="https://sp3eder.github.io/" target="_blank" title="Autós alkalmazások gyűjteménye">Autós Appok Gyűjteménye</a>
+          <a href="https://github.com/Sp3EdeR/huroutes">közreműködés a fejlesztésben</a>
         </div>
         <!-- A void panel that covers the sidebar and helps opening it -->
         <div id="void-open-sidebar" class="panel-void"></div>
       </nav>
       <!-- The map panel -->
-      <div id="main" class="col-12 col-md-8 offset-md-4 col-xl-9 offset-xl-3">
+      <div id="main" class="position-absolute top-0 end-0 h-100 offset-1 col-11 offset-md-4 col-md-8 offset-xl-3 col-xl-9">
         <div id="map" class="map"></div>
       </div>
       <!-- A void panel that covers the map and helps closing the sidebar -->
-      <div id="void-close-sidebar" class="panel-void show"></div>
+      <div id="void-close-sidebar" class="panel-void position-absolute show"></div>
     </div>
   </div>
 
@@ -204,19 +218,11 @@
 
   <!-- Toasts -->
   <div aria-live="polite" aria-atomic="true" style="position: fixed; right: 10px; top:10px; min-height: 200px; z-index: 1049;">
-    <!-- Android app ad toast -->
-    <div id="toast-android-app" role="alert" aria-live="assertive" aria-atomic="true" class="toast" data-bs-autohide="false">
-      <div class="toast-header">
-        <strong class="me-auto">Android Alkalmazás</strong>
-        <button type="button" class="btn-close ms-2 mb-1" data-bs-dismiss="toast" aria-label="Close"></button>
-      </div>
-      <div class="toast-body">
-        Elérhető a huroutes a telefonodra, natív alkalmazásként! Ha ki szeretnéd próbálni,
-        <a href="https://github.com/Sp3EdeR/huroutes-android/releases" target="_blank">innen töltheted le</a>.
-      </div>
-    </div>
+    <script>
+      initAppToasts('a huroutes', { colorMode: 'manual' });
+    </script>
     <!-- Progressive Web App ad toast -->
-    <div id="toast-pwa-app" role="alert" aria-live="assertive" aria-atomic="true" class="toast" data-bs-autohide="false">
+    <div id="toast-pwa-app" role="alert" aria-live="assertive" aria-atomic="true" class="toast mb-2" data-bs-autohide="false">
       <div class="toast-header">
         <strong class="me-auto">Alkalmazásként Telepítés</strong>
         <button type="button" class="btn-close ms-2 mb-1" data-bs-dismiss="toast" aria-label="Close"></button>
@@ -229,7 +235,7 @@
       </div>
     </div>
     <!-- Safari PWA ad toast -->
-    <div id="toast-safari-app" role="alert" aria-live="assertive" aria-atomic="true" class="toast" data-bs-autohide="false">
+    <div id="toast-safari-app" role="alert" aria-live="assertive" aria-atomic="true" class="toast mb-2" data-bs-autohide="false">
       <div class="toast-header">
         <strong class="me-auto">Alkalmazásként Telepítés</strong>
         <button type="button" class="btn-close ms-2 mb-1" data-bs-dismiss="toast" aria-label="Close"></button>
@@ -240,20 +246,8 @@
         ikonra, majd válaszd ki a "Hozzáadás a kezdőképernyőhöz" lehetőséget.
       </div>
     </div>
-    <!-- App update toast -->
-    <div id="toast-app-update" role="alert" aria-live="assertive" aria-atomic="true" class="toast" data-bs-autohide="false">
-      <div class="toast-header">
-        <strong class="me-auto">Alkalmazás Frissítése</strong>
-        <button type="button" class="btn-close ms-2 mb-1" data-bs-dismiss="toast" aria-label="Close"></button>
-      </div>
-      <div class="toast-body">
-        Elérhető ennek az alkalmazásnak egy új verziója!
-        <a href="#" target="_blank">Innen töltheted le</a> a telepítőjét.
-        Letöltés után kézzel szükséges indítani a fájlt a frissítéshez.
-      </div>
-    </div>
     <!-- Location requesting error toast -->
-    <div id="toast-location-error" role="alert" aria-live="assertive" aria-atomic="true" class="toast" data-bs-autohide="true" data-bs-delay="5000">
+    <div id="toast-location-error" role="alert" aria-live="assertive" aria-atomic="true" class="toast mb-2" data-bs-autohide="true" data-bs-delay="5000">
       <div class="toast-header">
         <strong class="me-auto">Helymeghatározási Hiba</strong>
         <button type="button" class="btn-close ms-2 mb-1" data-bs-dismiss="toast" aria-label="Close"></button>
