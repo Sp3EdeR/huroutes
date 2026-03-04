@@ -10,12 +10,18 @@
 .huroutes-light, .huroutes-light #sidebar {
   background: #fff;
 }
-.huroutes-dark, .huroutes-dark #menu, .huroutes-dark #sidebar, .huroutes-dark .modal-content {
+.huroutes-dark, .huroutes-dark #sidebar, .huroutes-dark .modal-content {
   background: #13192e;
   background:
     linear-gradient(90deg,#00000000 93%, #00000034 99%),
     linear-gradient(80deg, #13192e00 60%, #070c149d 100%),
     linear-gradient(0deg, #13192e, #152a33, #0f1926);
+}
+.huroutes-dark #menu {
+  background: #13192e;
+  background:
+    linear-gradient(67deg,#0f1926 0%, #0f1825 100%),
+    linear-gradient(192deg,#080e16 0%, #0f182500 100%);
 }
 
 p {
@@ -243,18 +249,8 @@ ul ul ul ul ul a.dropdown-toggle {
 .route-header {
   font-size: 1.1em;
 }
-.route-header::after {
-  clear: both;
-  content: "";
-  display: table;
-}
-
-.update-date {
-  float: left;
-}
 
 .stars-outer {
-  float: right;
   position: relative;
 }
 .stars-inner {
