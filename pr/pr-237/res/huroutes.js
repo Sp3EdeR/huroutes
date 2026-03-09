@@ -74,7 +74,7 @@ console.warn('No last update date given for '+data.ttl);}
 if(data.rat||data.upd)
 {let elemHeader=$('<p class="route-header d-flex flex-nowrap"/>');if(data.upd)
 {let eUpd=$('\
-<span class="update-date text-truncate d-inline-block flex-grow-1" title="{0}">\
+<span class="update-date text-truncate d-inline-block flex-grow-1" title="{0}: {1}">\
     <i class="fa-regular fa-clock"></i> {1}\
 </span>'.format(langDict.updateDate,data.upd)).initTooltip();elemHeader.append(eUpd);}
 if(data.rat)
