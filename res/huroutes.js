@@ -72,15 +72,15 @@ function createInfoPanel(elem,data)
 console.warn('No rating given for '+data.ttl);if(!data.upd)
 console.warn('No last update date given for '+data.ttl);}
 if(data.rat||data.upd)
-{let elemHeader=$('<p class="route-header"/>');if(data.upd)
+{let elemHeader=$('<p class="route-header d-flex flex-nowrap"/>');if(data.upd)
 {let eUpd=$('\
-<span class="update-date" title="{0}">\
+<span class="update-date text-truncate d-inline-block flex-grow-1" title="{0}: {1}">\
     <i class="fa-regular fa-clock"></i> {1}\
 </span>'.format(langDict.updateDate,data.upd)).initTooltip();elemHeader.append(eUpd);}
 if(data.rat)
-{let starsOutter=$('<span class="stars-outer" title="{0}"/>'.format(langDict.rating)).initTooltip();for(let i=0;i<5;++i)
-starsOutter.append($('<i class="fa-regular fa-star"></i>'));let rating=normRating(data.rat);let starsInner=$('<span class="stars-inner" style="width:{0};" />'.format(rating*10+'%'));for(let i=0;i<5;++i)
-starsInner.append($('<i class="fa-solid fa-star"></i>'));starsOutter.append(starsInner);elemHeader.append(starsOutter);}
+{let starsOuter=$('<span class="stars-outer flex-shrink-0" title="{0}"/>'.format(langDict.rating)).initTooltip();for(let i=0;i<5;++i)
+starsOuter.append($('<i class="fa-regular fa-star"></i>'));let rating=normRating(data.rat);let starsInner=$('<span class="stars-inner" style="width:{0};" />'.format(rating*10+'%'));for(let i=0;i<5;++i)
+starsInner.append($('<i class="fa-solid fa-star"></i>'));starsOuter.append(starsInner);elemHeader.append(starsOuter);}
 elem.append(elemHeader);}
 if(data.md)
 {let descCont=$('<div class="route-desc"/>');const addMarkdown=text=>descCont.append($(markdown.makeHtml(text)));if(data.md.substr(-3)==='.md')
