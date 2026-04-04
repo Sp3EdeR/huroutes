@@ -1,0 +1,5 @@
+Fergeteges, tökéletes állapotú, széles, felfelé irányban többsávos útszakasz került átadásra 2026-ban. Az Alpokalja útjait idézi fel az építési módjával, itt-ott még kilátást is nyújt. Mindkét irányból a hegyre fel két nagyon széles sáv segíti az előzést, vagy akár a kanyarívek vételét. A forgalma egyelőre nem túl nagy, de azért megfordulnak buszok és kamionok is rajta. Néhány kanyarnál el lett szórva pár - jó időben - teljesen indokolatlan 40-es és 60-as tábla, ezek betartása esetén nemigen lehet komolyabb adrenalint gyűjteni.
+
+A szakasz két vége javasolt megfordulási helyeken van, ha több kört is szeretnél menni.
+
+Érdemes lehet összekötni a [balatoni](#Balaton) szerpentinnel, bár ezek teljesen más típusú élményekkel szolgálnak. Illetve felfűzhető több érdekes útszakasz a bővebb, [Szarvaskői Karika](#SzarvaskoiKarika) bejáróúton.
