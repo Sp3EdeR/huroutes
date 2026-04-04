@@ -225,7 +225,7 @@
 		"ttl":"Északkeleti Országrész",
 		"cnt":[
 			{
-				"ttl":"Bükk",
+				"ttl":"Keleti-Bükk",
 				"cnt":[
 					{
 						"ttl":"2505 (Bükk Főút)",
@@ -254,20 +254,45 @@
 						"kml":"data/Mexikovolgy.kml",
 						"rat":5,
 						"upd":"2023 május"
+					}
+				]
+			},
+			{
+				"ttl":"Nyugati-Bükk",
+				"cnt":[
+					{
+						"ttl":"Borsodnádasd - Szentdomonkos",
+						"md":"data/BorsodnadasdSzentdomonkos.md",
+						"kml":"data/BorsodnadasdSzentdomonkos.kml",
+						"rat":10,
+						"upd":"2026 április"
+					},
+					{
+						"ttl":"Szentdomonkos - Szarvaskő",
+						"md":"data/SzentdomonkosSzarvasko.md",
+						"kml":"data/SzentdomonkosSzarvasko.kml",
+						"rat":6,
+						"upd":"2026 április"
 					},
 					{
 						"ttl":"Monósbél",
 						"md":"data/Monosbel.md",
 						"kml":"data/Monosbel.kml",
 						"rat":5,
-						"upd":"2023 május"
+						"upd":"2026 április"
 					},
 					{
 						"ttl":"Balaton",
 						"md":"data/Balaton.md",
 						"kml":"data/Balaton.kml",
 						"rat":6,
-						"upd":"2023 május"
+						"upd":"2026 április"
+					},
+					{
+						"ttl":"Szarvaskői Karika Bejáróút",
+						"md":"data/SzarvaskoiKarika.md",
+						"kml":"data/SzarvaskoiKarika.kml",
+						"bkg":true
 					}
 				]
 			},
@@ -279,28 +304,28 @@
 						"md":"data/24Paradsasvar.md",
 						"kml":"data/24Paradsasvar.kml",
 						"rat":8,
-						"upd":"2025 szeptember"
+						"upd":"2026 április"
 					},
 					{
 						"ttl":"24 (Sirok)",
 						"md":"data/24Sirok.md",
 						"kml":"data/24Sirok.kml",
 						"rat":8,
-						"upd":"2025 szeptember"
+						"upd":"2026 április"
 					},
 					{
 						"ttl":"Kékestető",
 						"md":"data/Kekesteto.md",
 						"kml":"data/Kekesteto.kml",
 						"rat":7,
-						"upd":"2025 szeptember"
+						"upd":"2026 április"
 					},
 					{
 						"ttl":"2408 (Galyatető)",
 						"md":"data/2408.md",
 						"kml":"data/2408.kml",
 						"rat":5,
-						"upd":"2025 szeptember"
+						"upd":"2026 április"
 					},
 					{
 						"ttl":"Szurdokpüspöki - Pásztó",
@@ -315,6 +340,13 @@
 						"kml":"data/EgerbaktaPetervasara.kml",
 						"rat":6,
 						"upd":"2024 június"
+					},
+					{
+						"ttl":"Bátor",
+						"md":"data/Bator.md",
+						"kml":"data/Bator.kml",
+						"rat":6,
+						"upd":"2026 április"
 					},
 					{
 						"ttl":"Mátrai Bejáróút",

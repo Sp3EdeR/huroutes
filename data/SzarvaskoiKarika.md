@@ -1,0 +1,3 @@
+Ez egy jó lehetőség Eger környékéről változatos és érdekes útszakasz sorozatot megküldeni egy körtúra keretén belül.
+
+A [balatoni szerpentinen](#Balaton) könnyen meg lehet csóválni az autó farát kis tempónál is. A [Borsodnádasd és Szentdomonkos](#BorsodnadasdSzentdomonkos) egy nagyon magas tempójú, széles szerpentin. A [monósbéli-](#Monosbel) és [Szentomonkos - Szarvaskő közötti](#SzentdomonkosSzarvasko) szakaszok pedig szórakoztató, jó átvezetők.
