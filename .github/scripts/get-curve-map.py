@@ -4,7 +4,6 @@ import io
 import json
 import kml2geojson.main as k2g
 import os
-import ssl
 import urllib.request as req
 import zipfile
 
@@ -16,15 +15,20 @@ def main():
     args = parser.parse_args()
 
     print("Downloading %s file..." % args.kmz_url)
-    sslCtx = ssl.create_default_context()
-    sslCtx.check_hostname = False
-    sslCtx.verify_mode = ssl.CERT_NONE
-    kmzData = req.urlopen(args.kmz_url, context=sslCtx).read()
+    request = req.Request(
+        args.kmz_url,
+        headers={
+            'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36',
+        },
+    )
+    kmzData = req.urlopen(request, timeout=30).read()
+
     print("Opening the KMZ file...")
     kmzFile = io.BytesIO(kmzData)
     z = zipfile.ZipFile(kmzFile)
     [kmlPath] = [s for s in z.namelist() if s.endswith('.kml')]
     kmlFile = z.open(kmlPath)
+
     print("Converting the KMZ to GeoJSON...")
     leafletStyles, geojson = k2g.convert(kmlFile, 'curves', 'leaflet')
 
@@ -60,9 +64,11 @@ def main():
     print("Ensuring that the output directory exists...")
     for outDir in [os.path.dirname(s) for s in [args.geojson_path, args.style_path]]:
         outDir and os.makedirs(outDir, exist_ok=True)
+
     print("Writing GeoJSON data to %s..." % args.geojson_path)
     with open(args.geojson_path, 'w') as f:
         json.dump(geojson, f, separators=(',', ':'))
+
     print("Writing Leaflet style data to %s..." % args.style_path)
     with open(args.style_path, 'w') as f:
         json.dump(leafletStyles, f, separators=(',', ':'))
