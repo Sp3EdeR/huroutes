@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <kml xmlns="http://www.opengis.net/kml/2.2">
   <Document>
-    <name>Hagony - Zabar</name>
+    <name>Hangony - Zabar</name>
     <Style id="icon-1899-DB4436-nodesc-normal">
       <IconStyle>
         <color>ff3644db</color>
@@ -73,7 +73,7 @@
       </Pair>
     </StyleMap>
     <Placemark>
-      <name>Hagony - Zabar</name>
+      <name>Hangony - Zabar</name>
       <styleUrl>#line-1267FF-5000-nodesc</styleUrl>
       <LineString>
         <tessellate>1</tessellate>
