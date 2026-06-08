@@ -1,0 +1,44 @@
+{
+    "name": "huroutes",
+    "short_name": "huroutes",
+    "lang": "hu",
+    "description": "Magyar utak vezetésre",
+    "display": "standalone",
+    "icons": [
+        {
+            "src": "../res/favicon-192.png",
+            "sizes": "192x192",
+            "type": "image/png"
+        },
+        {
+            "src": "../res/favicon-512.png",
+            "sizes": "512x512",
+            "type": "image/png"
+        },
+        {
+            "src": "../app/maskableicon-180.png",
+            "sizes": "180x180",
+            "type": "image/png",
+            "purpose": "maskable"
+        },
+        {
+            "src": "../app/maskableicon-192.png",
+            "sizes": "192x192",
+            "type": "image/png",
+            "purpose": "maskable"
+        },
+        {
+            "src": "../app/maskableicon-512.png",
+            "sizes": "512x512",
+            "type": "image/png",
+            "purpose": "maskable"
+        }
+    ],
+    "start_url": "../",
+    "scope": "../",
+    "theme_color": "#0000bb",
+    "background_color": "#13192e",
+    "categories": [
+        "navigation", "travel"
+    ]
+  }
