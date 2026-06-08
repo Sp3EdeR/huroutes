@@ -683,6 +683,13 @@
 						"upd":"2023 augusztus"
 					},
 					{
+						"ttl":"Bátaszék - Bonyhád",
+						"md":"data/BataszekBonyhad.md",
+						"kml":"data/BataszekBonyhad.kml",
+						"rat":5,
+						"upd":"2026 június"
+					},
+					{
 						"ttl":"Lovászhetény - Véménd",
 						"md":"data/LovaszhetenyVemend.md",
 						"kml":"data/LovaszhetenyVemend.kml",
