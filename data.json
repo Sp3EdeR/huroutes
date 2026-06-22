@@ -25,13 +25,6 @@
 						"kml":"data/Budateteny.kml",
 						"rat":4,
 						"upd":"2025 március"
-					},
-					{
-						"ttl":"Gombai Görbék",
-						"md":"data/GombaiGorbek.md",
-						"kml":"data/GombaiGorbek.kml",
-						"rat":5,
-						"upd":"2026 június"
 					}
 				]
 			},
@@ -190,6 +183,13 @@
 				"ttl":"Egyéb",
 				"cnt":[
 					{
+						"ttl":"Gombai Görbék",
+						"md":"data/GombaiGorbek.md",
+						"kml":"data/GombaiGorbek.kml",
+						"rat":5,
+						"upd":"2026 június"
+					},
+					{
 						"ttl":"3102 (Nagytarcsa - Isaszeg)",
 						"md":"data/3102.md",
 						"kml":"data/3102.kml",
@@ -204,17 +204,17 @@
 						"upd":"2025 szeptember"
 					},
 					{
-						"ttl":"Bánk - Romhány",
-						"md":"data/BankRomhany.md",
-						"kml":"data/BankRomhany.kml",
-						"rat":4,
-						"upd":"2022 április"
-					},
-					{
 						"ttl":"Legénd",
 						"md":"data/Legend.md",
 						"kml":"data/Legend.kml",
 						"rat":3,
+						"upd":"2022 április"
+					},
+					{
+						"ttl":"Bánk - Romhány",
+						"md":"data/BankRomhany.md",
+						"kml":"data/BankRomhany.kml",
+						"rat":4,
 						"upd":"2022 április"
 					}
 				]
