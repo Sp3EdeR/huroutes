@@ -194,7 +194,7 @@
 						"md":"data/3102.md",
 						"kml":"data/3102.kml",
 						"rat":5,
-						"upd":"2026 június"
+						"upd":"2026 július"
 					},
 					{
 						"ttl":"Penci Parádé",
@@ -304,21 +304,21 @@
 						"md":"data/24Paradsasvar.md",
 						"kml":"data/24Paradsasvar.kml",
 						"rat":8,
-						"upd":"2026 május"
+						"upd":"2026 július"
 					},
 					{
 						"ttl":"24 (Sirok)",
 						"md":"data/24Sirok.md",
 						"kml":"data/24Sirok.kml",
 						"rat":8,
-						"upd":"2026 május"
+						"upd":"2026 július"
 					},
 					{
 						"ttl":"Kékestető",
 						"md":"data/Kekesteto.md",
 						"kml":"data/Kekesteto.kml",
 						"rat":7,
-						"upd":"2026 április"
+						"upd":"2026 július"
 					},
 					{
 						"ttl":"2408 (Galyatető)",
@@ -347,6 +347,13 @@
 						"kml":"data/Bator.kml",
 						"rat":6,
 						"upd":"2026 április"
+					},
+					{
+						"ttl":"Egerszalók - Verpelét",
+						"md":"data/EgerszalokVerpelet.md",
+						"kml":"data/EgerszalokVerpelet.kml",
+						"rat":6,
+						"upd":"2026 július"
 					},
 					{
 						"ttl":"Mátrai Bejáróút",
