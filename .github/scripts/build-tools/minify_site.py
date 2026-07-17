@@ -9,11 +9,7 @@ def minify(filePath):
         ext = os.path.splitext(filePath)[1].lstrip('.')
         text = f.read()
         if (ext == 'htm' or ext == 'html'):
-            minified = htmlmin(
-                text,
-                minify_js=True, remove_processing_instructions=False,
-                do_not_minify_doctype=True, ensure_spec_compliant_unquoted_attribute_values=True,
-                keep_spaces_between_attributes=True)
+            minified = htmlmin(text, minify_js=True, minify_css=True)
         elif (ext == 'js'):
             minified = jsmin(text)
         elif (ext == 'css'):

@@ -3,6 +3,8 @@ import os
 import re
 import sys
 
+from lxml import etree # type: ignore[reportAttributeAccessIssue]
+
 class DataProcessor:
     def __init__(self, data, dataDir):
         self.data = data
@@ -50,7 +52,10 @@ class DataProcessor:
             return
         try:
             if 'id' not in route:
-                route['id'] = re.match('data\/([\w-]+).' + type, route[type])[1]
+                match = re.match(r'data\/([\w-]+).' + type, route[type])
+                if match is None:
+                    raise Exception('Failed to extract route id from ' + route[type])
+                route['id'] = match[1]
             trackPath = os.path.join(self._dataDir, route[type])
             with open(trackPath, encoding='utf-8') as trackFile:
                 trackData = trackFile.read()
@@ -61,23 +66,27 @@ class DataProcessor:
         except:
             print('Failed to optimize ' + route[type], file=sys.stderr)
 
-    _kml = {}
+    _kml = None
     def minifyKml(self, kmlText):
-        if 'lxml' not in dir():
-            from lxml import etree
-            self._kml['xmlParser'] = etree.XMLParser(remove_blank_text=True, remove_comments=True)
+        if self._kml is None:
             ns = {'ns': 'http://www.opengis.net/kml/2.2'}
-            self._kml['coordsPath'] = etree.XPath('//ns:coordinates', namespaces=ns)
-            self._kml['mrkPath'] = etree.XPath('//ns:Placemark[not(ns:LineString)]', namespaces=ns)
-            self._kml['coordReplRe'] = re.compile('[\r\n\t ]{2,}')
+            self._kml = {
+                'xmlParser': etree.XMLParser(remove_blank_text=True, remove_comments=True),
+                'coordsPath': etree.XPath('//ns:coordinates', namespaces=ns),
+                'mrkPath': etree.XPath('//ns:Placemark[not(ns:LineString)]', namespaces=ns),
+                'coordWhitespaceRe': re.compile(r'[\r\n\t ]{2,}'),
+                'coordElevationRe': re.compile(r'(\d+\.?\d*,\d+\.?\d*),\d+\.?\d*')
+            }
         doc = etree.XML(bytes(kmlText, 'utf-8'), self._kml['xmlParser'])
         # KML can contain point-markers we don't use on the map.
         # JS already filters these, but we remove this needless data here.
         for markerNode in self._kml['mrkPath'](doc):
             markerNode.getparent().remove(markerNode)
-        # LineString coordinates contain unneeded additional whitespaces.
+        # LineString coordinates contain unneeded additional whitespaces or elevation data.
+        # Elevation data is not expected to be precise enough to be useful, so it is zeroed.
         for coordTag in self._kml['coordsPath'](doc):
-            coordTag.text = self._kml['coordReplRe'].sub(' ', coordTag.text)
+            coordTag.text = self._kml['coordWhitespaceRe'].sub(' ', coordTag.text)
+            coordTag.text = self._kml['coordElevationRe'].sub(r'\1,0', coordTag.text)
         return etree.tostring(doc, encoding='unicode')
 
 def importData(dataFile):
