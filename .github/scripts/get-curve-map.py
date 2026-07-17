@@ -6,6 +6,7 @@ import kml2geojson.main as k2g
 import os
 import urllib.request as req
 import zipfile
+from typing import BinaryIO, cast
 
 def main():
     parser = argparse.ArgumentParser()
@@ -27,17 +28,19 @@ def main():
     kmzFile = io.BytesIO(kmzData)
     z = zipfile.ZipFile(kmzFile)
     [kmlPath] = [s for s in z.namelist() if s.endswith('.kml')]
-    kmlFile = z.open(kmlPath)
 
     print("Converting the KMZ to GeoJSON...")
-    leafletStyles, geojson = k2g.convert(kmlFile, 'curves', 'leaflet')
+    with z.open(kmlPath) as kmlFile:
+        geodata = k2g.convert(cast(BinaryIO, kmlFile), 'curves', 'leaflet')
+    geofeats = [feat for coll in geodata['feature_collections'] for feat in coll['features']]
+    leafletStyles = geodata['style']
 
     print("Removing GeoJSON feature descriptions...")
-    for props in (f['properties'] for f in geojson['features']):
+    for props in (f['properties'] for f in geofeats):
         del props['description']
 
     print("Filtering unused styles...")
-    usedStyles = set(f['properties']['styleUrl'] for f in geojson['features'])
+    usedStyles = set(f['properties']['styleUrl'] for f in geofeats)
     leafletStyles = dict(filter(lambda pair: pair[0] in usedStyles, leafletStyles.items()))
 
     print("Tweaking the styles...")
@@ -63,11 +66,15 @@ def main():
 
     print("Ensuring that the output directory exists...")
     for outDir in [os.path.dirname(s) for s in [args.geojson_path, args.style_path]]:
-        outDir and os.makedirs(outDir, exist_ok=True)
+        if outDir:
+            os.makedirs(outDir, exist_ok=True)
 
     print("Writing GeoJSON data to %s..." % args.geojson_path)
     with open(args.geojson_path, 'w') as f:
-        json.dump(geojson, f, separators=(',', ':'))
+        json.dump({
+            'type': 'FeatureCollection',
+            'features': list(geofeats)
+        }, f, separators=(',', ':'))
 
     print("Writing Leaflet style data to %s..." % args.style_path)
     with open(args.style_path, 'w') as f:
