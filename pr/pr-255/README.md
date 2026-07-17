@@ -22,9 +22,9 @@ A weblap tartalma közösségi és szerkesztheti bárki és meg is köszönünk 
 	* Az útvonal megrajzolásához a `.kml` filet az alábbi módon kell létrehozni:
 		1. Menjünk el a [BRouter webkliens](https://brouter.de/brouter-web/) oldalra.
 		2. Kattintsunk az útvonal pontjaira a térképen.
-		3. Ha már felraktunk legalább 2 pontot a térképre, és szeretnénk javítani-pontosani, kattintsunk a kék ceruza ikonra bal oldalt, vagy nyomjuk meg az **Esc** billentyűt. Ezután megfogás-és-húzással mozgathatjuk az útvonal pontjait, vagy magát az útvonalat.
+		3. Ha már felraktunk legalább 2 pontot a térképre, és szeretnénk javítani/pontosítani, kattintsunk a kék ceruza ikonra bal oldalt, vagy nyomjuk meg az **Esc** billentyűt. Ezután megfogás-és-húzással mozgathatjuk az útvonal pontjait, vagy magát az útvonalat.
 		4. Ha az útvonalunk kész, kattintsunk az "Exportálás" gombra, vagy nyomjuk meg az **X** billentyűt.
-		5. A megnyíló ablakban írjuk be az átvonal azonosítóját (ékezetek és spacek nélkül, NagyBetűs stílusban) és válasszuk ki a KML formátumot.
+		5. A megnyíló ablakban írjuk be az átvonal azonosítóját (ékezetek és space-ek nélkül, NagyBetűs stílusban) és válasszuk ki a KML formátumot.
 		6. Kattintsunk az "Útvonal exportálása" gombra, és mentsük el a fileunkat a megfelelő helyre. Javasolt nem használni ékezetes karaktereket.
 4. Commitoljuk a `data.json`, `.md` és `.kml` fileokban történt módosításainkat a git repóba.
 	* Minden módosítás után írjunk rövid összefoglalót a commit ablakban arról, hogy mit is módosítottunk.
