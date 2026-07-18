@@ -19,13 +19,13 @@ A weblap tartalma közösségi és szerkesztheti bárki és meg is köszönünk 
 2. A saját forkunkban szerkesszük meg a `data.json` filet. A file formátuma a [JSON](https://hu.wikipedia.org/wiki/JSON). Nagyon fontos, hogy ne vétsünk hibát a formátumában, mert az a teljes oldalt elronthatja.
 3. Hozzuk létre a `data.json` fileba esetlegesen beírt új fileokat pontosan a megfelelő helyen. (Kis és nagybetű számít!)
 	* Az útvonal leírására használt `.md` file tartalma [Markdown formátumú](https://en.wikipedia.org/wiki/Markdown). Pontos dokumentáció a formátumról [itt található](https://github.com/showdownjs/showdown/wiki/Showdown's-Markdown-syntax).
-	* Az útvonal megrajzolásához a `.kml` filet az alábbi módon javasolt létrehozni:
-		1. Menjünk el a https://mymaps.google.com/ honlapra.
-		2. Kattintsunk az "új térkép készítése" gombra, vagy nyissunk meg egy korábbi, módosítható térképet.
-		3. A keresőmező alatti eszköztárban kattintsunk az "Útvonalterv" ikonra, majd az újonnan megnyílt rétegen tervezzük meg az útvonalat.
-		4. Ha az útvonalunk kész, kattintsunk a térkép (és nem a réteg) `...` ikonjára, majd válasszuk az "Exportálás KML-be/KMZ-be" opciót.
-		5. A megnyíló ablakban az "Egész térkép" legördülőből válasszuk ki az épp most tervezett utunk rétegét és pipáljuk be az "Exportálás KML formátumban KMZ helyett" pipát.
-		6. Kattintsunk a "Letöltés" gombra, és mentsük el a fileunkat a megfelelő helyre. Javasolt nem használni ékezetes karaktereket.
+	* Az útvonal megrajzolásához a `.kml` filet az alábbi módon kell létrehozni:
+		1. Menjünk el a [BRouter webkliens](https://brouter.de/brouter-web/) oldalra.
+		2. Kattintsunk az útvonal pontjaira a térképen.
+		3. Ha már felraktunk legalább 2 pontot a térképre, és szeretnénk javítani/pontosítani, kattintsunk a kék ceruza ikonra bal oldalt, vagy nyomjuk meg az **Esc** billentyűt. Ezután megfogás-és-húzással mozgathatjuk az útvonal pontjait, vagy magát az útvonalat.
+		4. Ha az útvonalunk kész, kattintsunk az "Exportálás" gombra, vagy nyomjuk meg az **X** billentyűt.
+		5. A megnyíló ablakban írjuk be az átvonal azonosítóját (ékezetek és space-ek nélkül, NagyBetűs stílusban) és válasszuk ki a KML formátumot.
+		6. Kattintsunk az "Útvonal exportálása" gombra, és mentsük el a fileunkat a megfelelő helyre. Javasolt nem használni ékezetes karaktereket.
 4. Commitoljuk a `data.json`, `.md` és `.kml` fileokban történt módosításainkat a git repóba.
 	* Minden módosítás után írjunk rövid összefoglalót a commit ablakban arról, hogy mit is módosítottunk.
 5. Teszteljük a módosításainkat.
