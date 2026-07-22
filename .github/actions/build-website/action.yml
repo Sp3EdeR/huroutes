@@ -19,3 +19,8 @@ runs:
       shell: bash
       run: |
           "$HUROUTES_BUILD_PYTHON" ".github/scripts/get-curve-map.py" "https://kml.roadcurvature.com/europe/hungary.c_1000.kmz" "map/curves.geo.json" "map/curves-style.json"
+    - name: Download full send data
+      # This step downloads the full send map's data for a map overlay.
+      shell: bash
+      run: |
+          "$HUROUTES_BUILD_PYTHON" ".github/scripts/get-full-send-map.py" "hungary" "map/full-send.geo.json"
