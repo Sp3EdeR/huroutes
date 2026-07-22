@@ -28,7 +28,8 @@ const huroutes = {
             // Choosable overlay sources supported in the layer selector. All are off by default.
             'overlays': {
                 'Elevation Shading': L.tileLayer('https://map.turistautak.hu/tiles/shading/{z}/{x}/{y}.png', {attribution:'&copy; turistautak.hu',minZoom:5,maxZoom: 18,zIndex:5,className: 'overlay-dem'}),
-                'Curvature': L.layerGroup()
+                'Curvature': L.layerGroup(),
+                'Full Send': L.layerGroup()
             },
             // Overlay sources that are always shown and hidden along with specific map tile sources.
             // The name of the overlay must be the same as the tile layer to which it is bound.
@@ -41,6 +42,11 @@ const huroutes = {
                 'geojson': 'map/curves.geo.json',
                 'style': 'map/curves-style.json',
                 'attribution': 'Curves: &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+            },
+            // Full Send data definition, used to populate the Full Send overlay when first viewed.
+            'fullSendData': {
+                'geojson': 'map/full-send.geo.json',
+                'attribution': 'Full Send Map: &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
             }
         },
         // A list of navigation service providers that can be chosen for the "navigate to" links'.
@@ -474,6 +480,18 @@ function initLazyOverlay(id, lg)
                 interactive: false,
                 style: (feature) =>
                     feature.properties.styleUrl && styleMap[feature.properties.styleUrl]
+            }));
+        });
+    }
+
+    // Initialize the Full Send lazy overlay's contents.
+    if (id == 'Full Send')
+    {
+        const cfg = huroutes.opt.map.fullSendData;
+        getJSON(cfg.geojson).done(r1 => {
+            lg.addLayer(L.geoJson(r1[0], {
+                attribution: cfg.attribution,
+                interactive: false
             }));
         });
     }
