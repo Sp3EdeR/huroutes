@@ -49,3 +49,5 @@ Használhatunk helyjelölő linkeket az útvonalak leírásai (`.md` fileok) ala
 A repóban található információk és tartalom "közkincs"-ként használhatóak. Tetszőlegesen másolhatóak, szerkeszthetőek a forrás megjelölése nélkül. A tartalomra, annak felhasználhatóságára, helyességére, bármiféle egyéb követelményeire a szerzők NEM vállalnak felelősséget. Mindenki saját felelősségére használja ezeket.
 
 Ezzel együtt a szerkesztők által kért felhasználási mód az lenne - a közösség megtartása érdekében - hogy igyekezzünk visszajuttatni minden hasznos információt a [huroutes oldalra](https://sp3eder.github.io/huroutes) és osszuk tovább ezt, ahol csak lehetséges. Így lesz mindenkinek jó.
+
+CI TEST
