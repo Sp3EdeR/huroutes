@@ -24,7 +24,7 @@ def main():
     mapData = json.loads(mapData)
     layer_ids = [
         layer['id'] for layer in mapData['properties']['datalayers']
-        if re.match(args.datalayer_filter, layer['properties']['name'])
+        if re.match(args.datalayer_filter, layer['properties']['name'], re.IGNORECASE)
     ]
     if not layer_ids or len(layer_ids) > 1:
         raise ValueError("Expected exactly one datalayer to match the filter, but found %d." % len(layer_ids))
