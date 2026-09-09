@@ -289,17 +289,17 @@
 						"upd":"2026 április"
 					},
 					{
+						"ttl":"Szarvaskői Karika Bejáróút",
+						"md":"data/SzarvaskoiKarika.md",
+						"kml":"data/SzarvaskoiKarika.kml",
+						"bkg":true
+					},
+					{
 						"ttl":"Mátraterenye - Pétervására",
 						"md":"data/MatraterenyePetervasara.md",
 						"kml":"data/MatraterenyePetervasara.kml",
 						"rat":4,
 						"upd":"2026 szeptember"
-					},
-					{
-						"ttl":"Szarvaskői Karika Bejáróút",
-						"md":"data/SzarvaskoiKarika.md",
-						"kml":"data/SzarvaskoiKarika.kml",
-						"bkg":true
 					}
 				]
 			},

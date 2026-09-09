@@ -1,3 +1,3 @@
-Az útminőség néhol toldozott-foldozott, de alapvetően nem rossz, közepes. A forgalom közepes, és érdemes vadveszéllyel is számolni.
+Az útminőség közepes: néhol toldozott-foldozott, de alapvetően nem rossz. A 23-as út ezen szakaszán közepes forgalomra és vadveszélyre kell számítani.
 
-A szakaszért önmagáért nem feltétlenül érdemes erre indulni, de átkötőútnak bőven jó; a Google Maps alapján sokkal unalmasabbra számítottam.
+A Heves–Borsodi-dombságon át vezető szakasz elsősorban átkötőútként hasznos a környék útvonalai között.
