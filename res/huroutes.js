@@ -394,6 +394,13 @@ function initCtrls(tiles, overlays)
         return acc;
     }, {});
     L.control.layers(l10nTile(tiles), l10nTile(overlays), { position: 'bottomleft' }).addTo(map);
+
+    // The attribution control lives in the bottom-right corner, so only that corner is pushed up by
+    // its height. Mirror its height into a CSS variable so the bottom-left corner can be lifted too.
+    const attribution = map.attributionControl.getContainer();
+    new ResizeObserver(() => {
+        map.getContainer().style.setProperty('--attribution-height', attribution.offsetHeight + 'px');
+    }).observe(attribution);
     map.on('baselayerchange', (layer) => {
         localStorage.mapstyle = layer.layer.id;
         Object.entries(huroutes.opt.map.tileOverlays).forEach(([name, overlay]) => {
@@ -1424,4 +1431,3 @@ if (!localStorage.shownPwaAd)
 }
 
 })(); // End of PWA code
-
