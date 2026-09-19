@@ -42,12 +42,12 @@ const huroutes = {
                 // blocks ajax requests to most extensions, but not json.
                 'geojson': 'map/curves.geo.json',
                 'style': 'map/curves-style.json',
-                'attribution': openStreetMapAttribution
+                'label': 'Curves'
             },
             // Full Send data definition, used to populate the Full Send overlay when first viewed.
             'fullSendData': {
                 'geojson': 'map/full-send.geo.json',
-                'attribution': openStreetMapAttribution
+                'label': 'Full Send Map'
             }
         },
         // A list of navigation service providers that can be chosen for the "navigate to" links'.
@@ -394,6 +394,21 @@ function initCtrls(tiles, overlays)
         acc[langDict.map[key] || key] = val;
         return acc;
     }, {});
+    let overlayAttribution;
+    const updateOverlayAttribution = () => {
+        if (overlayAttribution)
+            map.attributionControl.removeAttribution(overlayAttribution);
+
+        const sources = [
+            [overlays.Curvature, huroutes.opt.map.curvatureData.label],
+            [overlays['Full Send'], huroutes.opt.map.fullSendData.label]
+        ].filter(([layer]) => map.hasLayer(layer)).map(([, label]) => label);
+        overlayAttribution = sources.length
+            ? sources.join(', ') + ': ' + openStreetMapAttribution
+            : null;
+        if (overlayAttribution)
+            map.attributionControl.addAttribution(overlayAttribution);
+    };
     L.control.layers(l10nTile(tiles), l10nTile(overlays), { position: 'bottomleft' }).addTo(map);
     map.on('baselayerchange', (layer) => {
         localStorage.mapstyle = layer.layer.id;
@@ -411,6 +426,7 @@ function initCtrls(tiles, overlays)
         localStorage.overlays = overlays.join('|');
 
         initLazyOverlay(overlay.layer.id, overlay.layer);
+        updateOverlayAttribution();
     });
     map.on('overlayremove', (overlay) => {
         let overlays = (localStorage.overlays || '').split('|');
@@ -418,7 +434,9 @@ function initCtrls(tiles, overlays)
         if (idx != -1)
         overlays.splice(idx, 1);
         localStorage.overlays = overlays.join('|');
+        updateOverlayAttribution();
     });
+    updateOverlayAttribution();
 
     // The location arrow control that allows showing the user's location, bottom-right
     let locationCtrl = L.control.locate({
@@ -477,7 +495,6 @@ function initLazyOverlay(id, lg)
         $.when(getJSON(cfg.geojson), getJSON(cfg.style)).done((r1, r2) => {
             const styleMap = r2[0];
             lg.addLayer(L.geoJson(r1[0], {
-                attribution: cfg.attribution,
                 interactive: false,
                 style: (feature) =>
                     feature.properties.styleUrl && styleMap[feature.properties.styleUrl]
@@ -491,7 +508,6 @@ function initLazyOverlay(id, lg)
         const cfg = huroutes.opt.map.fullSendData;
         getJSON(cfg.geojson).done(r1 => {
             lg.addLayer(L.geoJson(r1[0], {
-                attribution: cfg.attribution,
                 interactive: false
             }));
         });
