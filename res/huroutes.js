@@ -42,12 +42,12 @@ const huroutes = {
                 // blocks ajax requests to most extensions, but not json.
                 'geojson': 'map/curves.geo.json',
                 'style': 'map/curves-style.json',
-                'label': 'Curves'
+                'osmAttribution': 'Curves'
             },
             // Full Send data definition, used to populate the Full Send overlay when first viewed.
             'fullSendData': {
                 'geojson': 'map/full-send.geo.json',
-                'label': 'Full Send Map'
+                'osmAttribution': 'Full Send Map'
             }
         },
         // A list of navigation service providers that can be chosen for the "navigate to" links'.
@@ -395,14 +395,14 @@ function initCtrls(tiles, overlays)
         return acc;
     }, {});
     let overlayAttribution;
-    const updateOverlayAttribution = () => {
+    const updateOsmAttribution = () => {
         if (overlayAttribution)
             map.attributionControl.removeAttribution(overlayAttribution);
 
         const sources = [
-            [overlays.Curvature, huroutes.opt.map.curvatureData.label],
-            [overlays['Full Send'], huroutes.opt.map.fullSendData.label]
-        ].filter(([layer]) => map.hasLayer(layer)).map(([, label]) => label);
+            [overlays.Curvature, huroutes.opt.map.curvatureData.osmAttribution],
+            [overlays['Full Send'], huroutes.opt.map.fullSendData.osmAttribution]
+        ].filter(([layer]) => map.hasLayer(layer)).map(([, attribution]) => attribution);
         overlayAttribution = sources.length
             ? sources.join(', ') + ': ' + openStreetMapAttribution
             : null;
@@ -426,7 +426,7 @@ function initCtrls(tiles, overlays)
         localStorage.overlays = overlays.join('|');
 
         initLazyOverlay(overlay.layer.id, overlay.layer);
-        updateOverlayAttribution();
+        updateOsmAttribution();
     });
     map.on('overlayremove', (overlay) => {
         let overlays = (localStorage.overlays || '').split('|');
@@ -434,9 +434,9 @@ function initCtrls(tiles, overlays)
         if (idx != -1)
         overlays.splice(idx, 1);
         localStorage.overlays = overlays.join('|');
-        updateOverlayAttribution();
+        updateOsmAttribution();
     });
-    updateOverlayAttribution();
+    updateOsmAttribution();
 
     // The location arrow control that allows showing the user's location, bottom-right
     let locationCtrl = L.control.locate({
