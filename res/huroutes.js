@@ -1,4 +1,5 @@
 /** Configuration and language string data. */
+const openStreetMapAttribution = '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors';
 const huroutes = {
     'opt': {
         // Route drawing configuration
@@ -41,12 +42,12 @@ const huroutes = {
                 // blocks ajax requests to most extensions, but not json.
                 'geojson': 'map/curves.geo.json',
                 'style': 'map/curves-style.json',
-                'attribution': 'Curves: &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+                'attribution': openStreetMapAttribution
             },
             // Full Send data definition, used to populate the Full Send overlay when first viewed.
             'fullSendData': {
                 'geojson': 'map/full-send.geo.json',
-                'attribution': 'Full Send Map: &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+                'attribution': openStreetMapAttribution
             }
         },
         // A list of navigation service providers that can be chosen for the "navigate to" links'.
@@ -1424,4 +1425,3 @@ if (!localStorage.shownPwaAd)
 }
 
 })(); // End of PWA code
-
