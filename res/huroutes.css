@@ -322,6 +322,11 @@ ul ul ul ul ul a.dropdown-toggle {
   text-decoration: none;
 }
 
+/* Keeps the bottom-left controls above the variable-height attribution (see initCtrls) */
+.leaflet-bottom.leaflet-left {
+  bottom: var(--attribution-height, 0px);
+}
+
 /* Googleesque scale control positioning compared to the zoom controls */
 .leaflet-bottom.leaflet-right .leaflet-control-scale {
   bottom: 22px;
