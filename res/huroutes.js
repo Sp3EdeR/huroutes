@@ -1,5 +1,5 @@
 /** Configuration and language string data. */
-const openStreetMapAttribution = '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors';
+const openStreetMapAttribution = '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>';
 const huroutes = {
     'opt': {
         // Route drawing configuration
