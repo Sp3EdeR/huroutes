@@ -394,6 +394,12 @@ function initCtrls(tiles, overlays)
         return acc;
     }, {});
     L.control.layers(l10nTile(tiles), l10nTile(overlays), { position: 'bottomleft' }).addTo(map);
+
+    // Mirror the attribution height into CSS so other bottom control areas can stay clear if it wraps.
+    const attribution = map.attributionControl.getContainer();
+    new ResizeObserver(() => {
+        map.getContainer().style.setProperty('--attribution-height', attribution.offsetHeight + 'px');
+    }).observe(attribution);
     map.on('baselayerchange', (layer) => {
         localStorage.mapstyle = layer.layer.id;
         Object.entries(huroutes.opt.map.tileOverlays).forEach(([name, overlay]) => {
@@ -1424,4 +1430,3 @@ if (!localStorage.shownPwaAd)
 }
 
 })(); // End of PWA code
-
