@@ -293,6 +293,13 @@
 						"md":"data/SzarvaskoiKarika.md",
 						"kml":"data/SzarvaskoiKarika.kml",
 						"bkg":true
+					},
+					{
+						"ttl":"Mátraterenye - Pétervására",
+						"md":"data/MatraterenyePetervasara.md",
+						"kml":"data/MatraterenyePetervasara.kml",
+						"rat":4,
+						"upd":"2026 szeptember"
 					}
 				]
 			},
