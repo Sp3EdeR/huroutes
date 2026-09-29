@@ -950,12 +950,12 @@ let dlRoute = {
         return this.fmts[localStorage.dltype] ? localStorage.dltype : Object.keys(this.fmts)[0];
     },
     /** Initiates the download of the route in the selected format. */
-    download: function(coords, routeId) {
+    download: function(coords, routeId, filename) {
         let fmt = this.fmts[this.getId()];
         let file = fmt.fileTemplate.format(
             routeId,
             coords.map(coord => fmt.pointTemplate.format(coord.lat, coord.lng)).join(''));
-        downloadString(routeId + '.' + fmt.ext, fmt.mimeType, file);
+        downloadString(filename + '.' + fmt.ext, fmt.mimeType, file);
     }
 }
 
@@ -1025,13 +1025,31 @@ function updateRouteLabels(map, visible = true)
  */
 function addDlShareLinks(elem, coords, routeId)
 {
-    let eDownload = $('\
-<div class="btn-group mt-2" role="group">\
-    <a href="#" class="download btn" title="{0}"><i class="fa-solid fa-download"></i></a>\
+    let eButtons = $('\
+<div class="dropup-center dropup btn-group mt-2" role="group">\
+    <a href="#" class="download btn" role="button" data-bs-toggle="dropdown" aria-expanded="false" title="{0}"><i class="fa-solid fa-download"></i></a>\
+    <ul class="dropdown-menu">\
+        <li><button type="button" class="dropdown-item download-forward"><i class="fa-regular fa-circle-up"></i> {3}</button></li>\
+        <li><button type="button" class="dropdown-item download-reverse"><i class="fa-regular fa-circle-down"></i> {4}</button></li>\
+    </ul>\
     <a href="#{2}" class="share btn" title="{1}"><i class="fa-solid fa-share-nodes"></i></a>\
-</div>'.format(langDict.dlRouteTooltip, langDict.shareTooltip, routeId));
-    eDownload.find('.download').click(() => dlRoute.download(coords, routeId) ?? false).initTooltip();
-    eDownload.find('.share').click(e => {
+</div>'.format(
+        langDict.dlRouteTooltip, langDict.shareTooltip, routeId,
+        langDict.dlRouteForward, langDict.dlRouteReverse));
+    
+    let eDlDropdown = eButtons.find('.download');
+    let dlAction = (coordList, id, filename) => {
+        dlRoute.download(coordList, id, filename);
+        bootstrap.Dropdown.getOrCreateInstance(eDlDropdown[0]).hide();
+    };
+    let fwdAction = () => dlAction(coords, routeId, routeId);
+    let reverseName = langDict.dlRouteReverseName.format(routeId);
+    let bwdAction = () => dlAction(coords.slice().reverse(), routeId, reverseName);
+    eButtons.find('.download-forward').click(fwdAction);
+    eButtons.find('.download-reverse').click(bwdAction);
+    eDlDropdown.dblclick(fwdAction).initTooltip();
+
+    eButtons.find('.share').click(e => {
         let routeId = $(e.currentTarget).attr('href');
         navigator.share({
             title: routeId.slice(1),
@@ -1039,7 +1057,7 @@ function addDlShareLinks(elem, coords, routeId)
         });
         return false;
     }).initTooltip();
-    elem.append(eDownload);
+    elem.append(eButtons);
 }
 
 /**

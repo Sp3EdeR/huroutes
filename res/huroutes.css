@@ -16,6 +16,7 @@
     linear-gradient(90deg,#00000000 93%, #00000034 99%),
     linear-gradient(80deg, #13192e00 60%, #070c149d 100%),
     linear-gradient(0deg, #13192e, #152a33, #0f1926);
+  --bs-modal-border-color: #13192e59;
 }
 .huroutes-dark #menu {
   background: #13192e;
@@ -189,20 +190,12 @@ a:hover {
   color: #fff;
 }
 
-.dropdown-toggle::after {
-  display: block;
-  float: right;
-  position: absolute;
-  right: 10px;
-  top: 50%;
-  transform: translateY(-50%);
-}
 
 ul.menu {
   margin-block-end: 0;
   margin-block-start: 0;
 }
-ul a.dropdown-toggle {
+ul > li > a.dropdown-toggle {
   display: block;
   font-size: 1.1em;
   overflow: hidden;
@@ -210,29 +203,37 @@ ul a.dropdown-toggle {
   padding-right: 25px;
   text-overflow: ellipsis;
 }
-ul ul a.dropdown-toggle {
+ul > li > a.dropdown-toggle::after {
+  display: block;
+  float: right;
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+ul ul > li > a.dropdown-toggle {
   padding-left: 20px !important;
 }
-ul ul ul a.dropdown-toggle {
+ul ul ul > li > a.dropdown-toggle {
   padding-left: 40px !important;
 }
-ul ul ul ul a.dropdown-toggle {
+ul ul ul ul > li > a.dropdown-toggle {
   padding-left: 60px !important;
 }
-ul ul ul ul ul a.dropdown-toggle {
+ul ul ul ul ul > li > a.dropdown-toggle {
   padding-left: 80px !important;
 }
-.huroutes-light ul a.dropdown-toggle {
+.huroutes-light ul > li > a.dropdown-toggle {
   color: #2c2c2c;
 }
-.huroutes-light ul a.dropdown-toggle:hover {
+.huroutes-light ul > li > a.dropdown-toggle:hover {
   background: #c6ceeb;
   color: #383966;
 }
-.huroutes-dark ul a.dropdown-toggle {
+.huroutes-dark ul > li > a.dropdown-toggle {
   color: #fff;
 }
-.huroutes-dark ul a.dropdown-toggle:hover {
+.huroutes-dark ul > li > a.dropdown-toggle:hover {
   background: #1b2342;
   color: #bbbfcf;
 }
@@ -306,6 +307,11 @@ ul ul ul ul ul a.dropdown-toggle {
 .huroutes-dark .route-ctrls span.btn {
   padding-left: 0;
   padding-right: 0;
+}
+.huroutes-dark .route-ctrls .dropdown-menu {
+  --bs-dropdown-bg: #13192e;
+  --bs-dropdown-border-color: #13192e59;
+  --bs-dropdown-link-hover-bg: #2e578d;
 }
 
 /*
@@ -418,4 +424,9 @@ ul ul ul ul ul a.dropdown-toggle {
 
 .tooltip .tooltip-inner {
   border: var(--bs-tooltip-border-width) solid var(--bs-tooltip-border-color);
+}
+
+.huroutes-dark .tooltip {
+  --bs-tooltip-bg: #0b0f1b;
+  --bs-tooltip-border-color: #0b0f1b59;
 }
