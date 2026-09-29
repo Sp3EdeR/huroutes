@@ -266,15 +266,22 @@ ul ul ul ul ul > li > a.dropdown-toggle {
 
 /* Route controls toolbar */
 
-.route-ctrls .btn {
+.route-ctrls .btn:not(:has(> div.w-100.h-100)),
+.route-ctrls .btn > div.w-100.h-100 {
   font-size: 1.3rem;
+  padding: .3rem .6rem;
+}
+.route-ctrls .btn:has(> div.w-100.h-100) {
+  padding: 0 0;
+}
+.route-ctrls span.btn {
+  padding: .3rem 0 !important;
 }
 
 .huroutes-light .route-ctrls .btn {
   color: #fff;
   background-color: #007bff;
   border-color: #007bff;
-  padding: .3rem .6rem;
 }
 .huroutes-light .route-ctrls a.btn:hover,
 .huroutes-light .route-ctrls a.btn:focus {
@@ -285,15 +292,10 @@ ul ul ul ul ul > li > a.dropdown-toggle {
   background-color: #0051a8;
   border-color: #003e80;
 }
-.huroutes-light .route-ctrls span.btn {
-  padding-left: 0;
-  padding-right: 0;
-}
 .huroutes-dark .route-ctrls .btn {
   background-color: #3363a1;
   border-color: #3363a1;
   color: #fff;
-  padding: .3rem .6rem;
 }
 .huroutes-dark .route-ctrls a.btn:hover,
 .huroutes-dark .route-ctrls a.btn:focus {
@@ -303,10 +305,6 @@ ul ul ul ul ul > li > a.dropdown-toggle {
 .huroutes-dark .route-ctrls a.btn:active {
   background-color: #264670;
   border-color: #182e4b;
-}
-.huroutes-dark .route-ctrls span.btn {
-  padding-left: 0;
-  padding-right: 0;
 }
 .huroutes-dark .route-ctrls .dropdown-menu {
   --bs-dropdown-bg: #13192e;
