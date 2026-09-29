@@ -134,7 +134,7 @@ function addNavigationLinks(elem,coords,length)
 </div>'.format(langDict.navStartTooltip,langDict.navLength,langDict.routeLength(length),langDict.navEndTooltip));eNav.find('.nav-start').click(()=>planTo(coords,true));eNav.find('.nav-end').click(()=>planTo(coords));eNav.find('[title]').initTooltip();elem.append(eNav);}
 function addPoiLinks(elem,title,coord)
 {let eLinks=$('<p> {0} {1}</p>'.format(langDict.navToPoi,langDict.sharePoi));let eNav=eLinks.find('.nav-start');eNav.replaceWith($('<a href="#" />').append(eNav.html()).click(()=>planTo([coord])));let eShare=eLinks.find('.share');eShare.replaceWith($('<a href="#" />').append(eShare.html()).click(()=>{navigator.share({title:title,url:location.href});return false;}));elem.append(eLinks);}
-let dlRoute={fmts:huroutes.opt.downloads,getId:function(){return this.fmts[localStorage.dltype]?localStorage.dltype:Object.keys(this.fmts)[0];},download:function(coords,routeId){let fmt=this.fmts[this.getId()];let file=fmt.fileTemplate.format(routeId,coords.map(coord=>fmt.pointTemplate.format(coord.lat,coord.lng)).join(''));downloadString(routeId+'.'+fmt.ext,fmt.mimeType,file);}}
+let dlRoute={fmts:huroutes.opt.downloads,getId:function(){return this.fmts[localStorage.dltype]?localStorage.dltype:Object.keys(this.fmts)[0];},download:function(coords,routeId,filename){let fmt=this.fmts[this.getId()];let file=fmt.fileTemplate.format(routeId,coords.map(coord=>fmt.pointTemplate.format(coord.lat,coord.lng)).join(''));downloadString(filename+'.'+fmt.ext,fmt.mimeType,file);}}
 function initDownloadTypeSelector()
 {let elem=$('#download-types');$.each(dlRoute.fmts,(key,value)=>{const id=key.toLowerCase().replace(/ /g,'');elem.append($('<div><input type="radio" name="dlType" id="{0}" value="{1}" {2}> <label for="{0}">{1}</label></div>'.format(id,key,key==dlRoute.getId()?'checked':'')));});}
 function initRouteLabels()
@@ -144,11 +144,15 @@ let labelsVisible=null;function updateRouteLabels(map,visible=true)
 return;const options={attributes:huroutes.opt.routeLabels.attributes,center:true,repeat:true,offset:3};map.eachLayer(layer=>{if(!layer.routeName)
 return;const arrows=huroutes.opt.routeLabels.arrows;const arrow=(layer.isReversed?arrows.backward:arrows.forward);const text=huroutes.opt.routeLabels.textTemplate.format(layer.routeName,arrow);layer.setText(visible?text:null,options);});labelsVisible=visible;}
 function addDlShareLinks(elem,coords,routeId)
-{let eDownload=$('\
-<div class="btn-group mt-2" role="group">\
-    <a href="#" class="download btn" title="{0}"><i class="fa-solid fa-download"></i></a>\
+{let eButtons=$('\
+<div class="dropup-center dropup btn-group mt-2" role="group">\
+    <a href="#" class="download btn" role="button" data-bs-toggle="dropdown" aria-expanded="false" title="{0}"><i class="fa-solid fa-download"></i></a>\
+    <ul class="dropdown-menu">\
+        <li><button type="button" class="dropdown-item download-forward"><i class="fa-regular fa-circle-up"></i> {3}</button></li>\
+        <li><button type="button" class="dropdown-item download-reverse"><i class="fa-regular fa-circle-down"></i> {4}</button></li>\
+    </ul>\
     <a href="#{2}" class="share btn" title="{1}"><i class="fa-solid fa-share-nodes"></i></a>\
-</div>'.format(langDict.dlRouteTooltip,langDict.shareTooltip,routeId));eDownload.find('.download').click(()=>dlRoute.download(coords,routeId)??false).initTooltip();eDownload.find('.share').click(e=>{let routeId=$(e.currentTarget).attr('href');navigator.share({title:routeId.slice(1),url:location.href.split("#")[0]+routeId});return false;}).initTooltip();elem.append(eDownload);}
+</div>'.format(langDict.dlRouteTooltip,langDict.shareTooltip,routeId,langDict.dlRouteForward,langDict.dlRouteReverse));let eDlDropdown=eButtons.find('.download');let dlAction=(coordList,id,filename)=>{dlRoute.download(coordList,id,filename);bootstrap.Dropdown.getOrCreateInstance(eDlDropdown[0]).hide();};let fwdAction=()=>dlAction(coords,routeId,routeId);let reverseName=langDict.dlRouteReverseName.format(routeId);let bwdAction=()=>dlAction(coords.slice().reverse(),routeId,reverseName);eButtons.find('.download-forward').click(fwdAction);eButtons.find('.download-reverse').click(bwdAction);eDlDropdown.dblclick(fwdAction).initTooltip();eButtons.find('.share').click(e=>{let routeId=$(e.currentTarget).attr('href');navigator.share({title:routeId.slice(1),url:location.href.split("#")[0]+routeId});return false;}).initTooltip();elem.append(eButtons);}
 function addStreetViewLink(elem,coord,coordNext)
 {const streetViewAt=(coord,coordNext)=>{let angle=[coordNext.lat-coord.lat,coordNext.lng-coord.lng];angle=90-Math.atan2(angle[0],angle[1])*(180/Math.PI);if(angle<-180)
 angle+=360;open(huroutes.opt.streetView.format(coord.lat,coord.lng,angle),'_blank');return false;}
