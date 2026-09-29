@@ -146,7 +146,7 @@ return;const arrows=huroutes.opt.routeLabels.arrows;const arrow=(layer.isReverse
 function addDlShareLinks(elem,coords,routeId)
 {let eButtons=$('\
 <div class="dropup-center dropup btn-group mt-2" role="group">\
-    <a href="#" class="download btn" role="button" data-bs-toggle="dropdown" aria-expanded="false">\
+    <a href="#" class="download btn" role="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="{0}">\
         <div class="w-100 h-100" title="{0}"><i class="fa-solid fa-download"></i></div>\
     </a>\
     <ul class="dropdown-menu">\
