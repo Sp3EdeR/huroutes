@@ -1027,7 +1027,9 @@ function addDlShareLinks(elem, coords, routeId)
 {
     let eButtons = $('\
 <div class="dropup-center dropup btn-group mt-2" role="group">\
-    <a href="#" class="download btn" role="button" data-bs-toggle="dropdown" aria-expanded="false" title="{0}"><i class="fa-solid fa-download"></i></a>\
+    <a href="#" class="download btn" role="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="{0}">\
+        <div class="w-100 h-100" title="{0}"><i class="fa-solid fa-download"></i></div>\
+    </a>\
     <ul class="dropdown-menu">\
         <li><button type="button" class="dropdown-item download-forward"><i class="fa-regular fa-circle-up"></i> {3}</button></li>\
         <li><button type="button" class="dropdown-item download-reverse"><i class="fa-regular fa-circle-down"></i> {4}</button></li>\
@@ -1038,16 +1040,16 @@ function addDlShareLinks(elem, coords, routeId)
         langDict.dlRouteForward, langDict.dlRouteReverse));
     
     let eDlDropdown = eButtons.find('.download');
-    let dlAction = (coordList, id, filename) => {
-        dlRoute.download(coordList, id, filename);
-        bootstrap.Dropdown.getOrCreateInstance(eDlDropdown[0]).hide();
-    };
-    let fwdAction = () => dlAction(coords, routeId, routeId);
+    let fwdAction = () => dlRoute.download(coords, routeId, routeId);
     let reverseName = langDict.dlRouteReverseName.format(routeId);
-    let bwdAction = () => dlAction(coords.slice().reverse(), routeId, reverseName);
+    let bwdAction = () => dlRoute.download(coords.slice().reverse(), routeId, reverseName);
     eButtons.find('.download-forward').click(fwdAction);
     eButtons.find('.download-reverse').click(bwdAction);
-    eDlDropdown.dblclick(fwdAction).initTooltip();
+    eDlDropdown.dblclick(() => {
+        dlRoute.download(coords, routeId, routeId);
+        bootstrap.Dropdown.getOrCreateInstance(eDlDropdown[0]).hide();
+    });
+    eDlDropdown.find('[title]').initTooltip();
 
     eButtons.find('.share').click(e => {
         let routeId = $(e.currentTarget).attr('href');
